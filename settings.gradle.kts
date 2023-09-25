@@ -13,6 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "DocAppoint"
+rootProject.name = "KAMBN_HAMS"
 include(":app")
- 

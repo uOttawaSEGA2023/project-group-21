@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.DocAppoint" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.KAMBN_HAMS" parent="android:Theme.Material.Light.NoActionBar" />
 </resources>
