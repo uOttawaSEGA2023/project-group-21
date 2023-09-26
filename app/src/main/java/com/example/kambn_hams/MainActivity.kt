@@ -44,6 +44,6 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     KAMBN_HAMSTheme {
-        Greeting("Android")
+        Greeting("KAMBN")
     }
 }
