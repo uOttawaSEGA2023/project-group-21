@@ -1,6 +1,6 @@
 package com.example.kambn_hams
 
-// TEST
+// TEST nahi test
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
