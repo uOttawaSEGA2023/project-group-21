@@ -1,7 +1,7 @@
 package com.example.kambn_hams
 
 // TEST nahi test
-//kyle gae
+
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
