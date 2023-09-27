@@ -1,10 +1,10 @@
-public class Person {
+public class User {
 
-    // Unique attributes for Person
+    // Unique attributes for User
     private int phoneNumber;
     private String firstName, lastName, email, password, address;
 
-    // Constructor for Person
+    // Constructor for User
     public Person(String firstName, String lastName, String email, String password, int phoneNumber, String
             address){
         this.firstName = firstName;

@@ -1,8 +1,8 @@
 // Import package
 package com.example.testapplication;
 
-// Extend Doctor with Person
-public class Doctor extends Person {
+// Extend Doctor with User
+public class Doctor extends User {
 
     // Unique attributes for Doctor
     private int employeeNum, numSpecialties;
