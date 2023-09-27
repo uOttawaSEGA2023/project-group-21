@@ -5,7 +5,7 @@ package com.example.testapplication;
 public class Patient extends Person {
 
     // Unique attributes for Patient
-    int healthCardNum;
+   private int healthCardNum;
 
     // Constructor for Patient
     public Patient(String firstName, String lastName, String email, String password, int phoneNumber, String

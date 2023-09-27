@@ -1,8 +1,8 @@
 public class Person {
 
     // Unique attributes for Person
-    int phoneNumber;
-    String firstName, lastName, email, password, address;
+    private int phoneNumber;
+    private String firstName, lastName, email, password, address;
 
     // Constructor for Person
     public Person(String firstName, String lastName, String email, String password, int phoneNumber, String
