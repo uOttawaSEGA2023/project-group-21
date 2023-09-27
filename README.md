@@ -2,6 +2,7 @@
 
 ### Administrator Sign-in Credentials
 
-- username/email: admin_docappoint@gmail.com
-- password: Admin1@docappoint
+- username/email: admin_kambn@gmail.com
+- password: kambn
+- security questions: N/A
 
