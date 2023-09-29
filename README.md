@@ -2,7 +2,6 @@
 
 ### Administrator Sign-in Credentials
 
-- username/email: admin_kambn@gmail.com
-- password: kambn / logo / app_name
-- security questions: N/A
+- username/email: admin_docappoint@gmail.com
+- password: Admin1@docappoint
 
