@@ -8,9 +8,9 @@ public class Patient extends User {
    private int healthCardNum;
 
     // Constructor for Patient
-    public Patient(String firstName, String lastName, String email, String password, int phoneNumber, String
+    public Patient(String firstName, String lastName, String email, String password, String confirmPassword, String phoneNumber, String
             address, int healthCardNum){
-        super(firstName, lastName, email, password, phoneNumber, address);
+        super(firstName, lastName, email, password, phoneNumber, address, confirmPassword);
         this.healthCardNum = healthCardNum;
     }
 
