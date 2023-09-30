@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "487371514388",
+    "project_id": "hamsdocappoint",
+    "storage_bucket": "hamsdocappoint.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:487371514388:android:6d4b24d2550fcb0feafd01",
+        "android_client_info": {
+          "package_name": "com.example.docappoint"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwx-MT4F_HiJf6602cQCZxZBXPd_2cL_E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
