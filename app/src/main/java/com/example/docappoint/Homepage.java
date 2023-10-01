@@ -50,13 +50,14 @@ public class Homepage extends AppCompatActivity {
         // Connect UI elements to backend
         createAccountButton = findViewById(R.id.createAccountButton);
 
-        //Handle click for the button
+        //Handle click for account creation
         createAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), SelectAccount.class));
             }
         });
+
     }
 
 }
