@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F0EFFF"
     tools:context=".Homepage">
 
     <EditText
@@ -13,9 +14,12 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:background="#E8EBEC"
         android:ems="10"
         android:hint="Email Address"
         android:inputType="text"
+        android:textColor="#9B9B9B"
+        android:textColorHint="#9B9B9B"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,9 +31,12 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:background="#E8EBEC"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
+        android:textColor="#9B9B9B"
+        android:textColorHint="#9B9B9B"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginEmail" />
@@ -41,7 +48,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:background="#CC7A73E7"
         android:text="LOGIN"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginPassword" />
@@ -53,7 +62,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:background="#CC7A73E7"
         android:text="CREATE ACCOUNT"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginButton" />
