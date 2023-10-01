@@ -8,7 +8,7 @@
     tools:context=".PatientRegister">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/patientSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/firstName"
+        android:id="@+id/patientFirstName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -38,10 +38,10 @@
         android:textColorHint="#9B9B9B"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/patientSignUp" />
 
     <EditText
-        android:id="@+id/lastName"
+        android:id="@+id/patientLastName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -55,7 +55,7 @@
         android:textColorHint="#9B9B9B"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/firstName" />
+        app:layout_constraintTop_toBottomOf="@+id/patientFirstName" />
 
     <EditText
         android:id="@+id/healthCardNumber"
@@ -73,10 +73,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lastName" />
+        app:layout_constraintTop_toBottomOf="@+id/patientLastName" />
 
     <EditText
-        android:id="@+id/address"
+        android:id="@+id/patientAddress"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -94,7 +94,7 @@
         app:layout_constraintTop_toBottomOf="@+id/healthCardNumber" />
 
     <EditText
-        android:id="@+id/phoneNumber"
+        android:id="@+id/patientPhoneNumber"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -109,7 +109,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/address" />
+        app:layout_constraintTop_toBottomOf="@+id/patientAddress" />
 
     <EditText
         android:id="@+id/patientEmail"
@@ -127,7 +127,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/patientPhoneNumber" />
 
     <EditText
         android:id="@+id/patientPassword"
@@ -165,7 +165,7 @@
         app:layout_constraintTop_toBottomOf="@+id/patientPassword" />
 
     <Button
-        android:id="@+id/createPatientAccount"
+        android:id="@+id/createPatientAccountButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
@@ -177,5 +177,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/confirmPasswordPatient" />
+
+    <Button
+        android:id="@+id/patientBackToLoginButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="100dp"
+        android:background="#CC7A73E7"
+        android:text="Back To Login"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/createPatientAccountButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
