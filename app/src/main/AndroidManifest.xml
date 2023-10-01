@@ -15,6 +15,9 @@
         android:theme="@style/Theme.DocAppoint"
         tools:targetApi="31">
         <activity
+            android:name=".PatientHomepage"
+            android:exported="false" />
+        <activity
             android:name=".DoctorHomepage"
             android:exported="false" />
         <activity

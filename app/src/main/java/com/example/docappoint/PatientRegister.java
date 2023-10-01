@@ -1,5 +1,6 @@
 package com.example.docappoint;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,6 +12,11 @@ import android.widget.EditText;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.OnFailureListener;
+
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class PatientRegister extends AppCompatActivity {
 
@@ -18,6 +24,9 @@ public class PatientRegister extends AppCompatActivity {
 
     EditText regPatientFirstName,regPatientLastName,regPatientHealthCardNum,regPatientAddress,regPatientPhoneNumber,regPatientEmail,regPatientPassword,regPatientConfirmPassword;
     Button createPatientAccount, patientBackToLogin;
+
+    // Add Firebase Integration (using Firebase Auth to query user)
+    FirebaseAuth pAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +44,9 @@ public class PatientRegister extends AppCompatActivity {
         regPatientConfirmPassword = findViewById(R.id.confirmPasswordPatient);
         createPatientAccount = findViewById(R.id.createPatientAccountButton);
         patientBackToLogin = findViewById(R.id.patientBackToLoginButton);
+
+        // Initialize Firebase class
+        pAuth = FirebaseAuth.getInstance();
 
         // Click events
         createPatientAccount.setOnClickListener(new View.OnClickListener() {
@@ -101,6 +113,27 @@ public class PatientRegister extends AppCompatActivity {
 
                 // Success message if account is successfully created (using Toast data)
                 Toast.makeText(PatientRegister.this, "Success! Account Has Been Created!", Toast.LENGTH_SHORT).show();
+
+                // Create user when provided the email and password (if authentication is successful call addOnSuccessListener
+
+                pAuth.createUserWithEmailAndPassword(patientEmail, patientPassword)
+                        .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                            @Override
+                            public void onSuccess(AuthResult authResult) {
+
+                                // Send the user to the patient homepage
+                                startActivity(new Intent(getApplicationContext(), PatientHomepage.class));
+
+                                // Remove all the previous activity
+                                finish();
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(PatientRegister.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
             }
         });
 
