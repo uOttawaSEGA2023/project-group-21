@@ -76,6 +76,24 @@
         app:layout_constraintTop_toBottomOf="@+id/doctorLastName" />
 
     <EditText
+        android:id="@+id/doctorEmployeeNumber"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="40dp"
+        android:background="#E8EBEC"
+        android:ems="10"
+        android:hint="Employee Number"
+        android:inputType="text"
+        android:textColor="#9B9B9B"
+        android:textColorHint="#9B9B9B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/doctorSpecialties" />
+
+    <EditText
         android:id="@+id/doctorAddress"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -91,7 +109,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/doctorSpecialties" />
+        app:layout_constraintTop_toBottomOf="@+id/doctorEmployeeNumber" />
 
     <EditText
         android:id="@+id/doctorPhoneNumber"
@@ -143,6 +161,7 @@
         android:textColor="#9B9B9B"
         android:textColorHint="#9B9B9B"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/doctorEmail" />
 
@@ -169,7 +188,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="100dp"
         android:background="#CC7A73E7"
         android:text="Create Account"

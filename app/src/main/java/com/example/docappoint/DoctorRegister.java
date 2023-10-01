@@ -23,7 +23,7 @@ public class DoctorRegister extends AppCompatActivity {
 
     // Declare variables to link to xml files
 
-    EditText regDoctorFirstName, regDoctorLastName, regDoctorSpecialties, regDoctorAddress, regDoctorPhoneNumber, regDoctorEmail, regDoctorPassword, regDoctorConfirmPassword;
+    EditText regDoctorFirstName, regDoctorLastName, regDoctorSpecialties, regDoctorEmployeeNumber, regDoctorAddress, regDoctorPhoneNumber, regDoctorEmail, regDoctorPassword, regDoctorConfirmPassword;
     Button createDoctorAccount, doctorBackToLogin;
 
     // Add Firebase Integration (using Firebase Auth to query user)
@@ -38,6 +38,7 @@ public class DoctorRegister extends AppCompatActivity {
         regDoctorFirstName = findViewById(R.id.doctorFirstName);
         regDoctorLastName = findViewById(R.id.doctorLastName);
         regDoctorSpecialties = findViewById(R.id.doctorSpecialties);
+        regDoctorEmployeeNumber = findViewById(R.id.doctorEmployeeNumber);
         regDoctorAddress = findViewById(R.id.doctorAddress);
         regDoctorPhoneNumber = findViewById(R.id.doctorPhoneNumber);
         regDoctorEmail = findViewById(R.id.doctorEmail);
@@ -59,6 +60,7 @@ public class DoctorRegister extends AppCompatActivity {
                 String doctorFirstName = regDoctorFirstName.getText().toString();
                 String doctorLastName = regDoctorLastName.getText().toString();
                 String doctorSpecialties = regDoctorSpecialties.getText().toString();
+                String doctorEmployeeNumber = regDoctorEmployeeNumber.getText().toString();
                 String doctorAddress = regDoctorAddress.getText().toString();
                 String doctorPhoneNumber = regDoctorPhoneNumber.getText().toString();
                 String doctorEmail = regDoctorEmail.getText().toString();
@@ -78,6 +80,11 @@ public class DoctorRegister extends AppCompatActivity {
 
                 if (doctorSpecialties.isEmpty()) {
                     regDoctorSpecialties.setError("This Field is Required");
+                    return;
+                }
+
+                if (doctorEmployeeNumber.isEmpty()) {
+                    regDoctorEmployeeNumber.setError("This Field is Required");
                     return;
                 }
 
@@ -143,6 +150,7 @@ public class DoctorRegister extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), Homepage.class));
+                finish();
             }
         });
     }
