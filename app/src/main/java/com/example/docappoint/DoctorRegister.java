@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
 import com.google.firebase.ktx.Firebase;
 
 public class DoctorRegister extends AppCompatActivity {
