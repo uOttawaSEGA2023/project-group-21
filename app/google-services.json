@@ -1,21 +1,37 @@
 {
   "project_info": {
+<<<<<<< HEAD
     "project_number": "498095942524",
     "project_id": "hams-docappoint",
     "storage_bucket": "hams-docappoint.appspot.com"
+=======
+    "project_number": "487371514388",
+    "project_id": "hamsdocappoint",
+    "storage_bucket": "hamsdocappoint.appspot.com"
+>>>>>>> authentication-fb
   },
   "client": [
     {
       "client_info": {
+<<<<<<< HEAD
         "mobilesdk_app_id": "1:498095942524:android:7fdd92c9be90bc87c612f9",
         "android_client_info": {
           "package_name": "com.example.kambn_hams"
+=======
+        "mobilesdk_app_id": "1:487371514388:android:6d4b24d2550fcb0feafd01",
+        "android_client_info": {
+          "package_name": "com.example.docappoint"
+>>>>>>> authentication-fb
         }
       },
       "oauth_client": [],
       "api_key": [
         {
+<<<<<<< HEAD
           "current_key": "AIzaSyCLtWAPwWoipHO4E5YI9hF_aqsz47QFb0Y"
+=======
+          "current_key": "AIzaSyAwx-MT4F_HiJf6602cQCZxZBXPd_2cL_E"
+>>>>>>> authentication-fb
         }
       ],
       "services": {
