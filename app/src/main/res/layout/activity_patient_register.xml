@@ -7,190 +7,216 @@
     android:background="#F0EFFF"
     tools:context=".PatientRegister">
 
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/header"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/patientBackToLoginButton"
+        style="@style/backButton"
+        android:layout_width="80dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/backdrop"
+        android:layout_width="328dp"
+        android:layout_height="400dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="180dp"
+        android:background="@drawable/backdrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
     <TextView
         android:id="@+id/patientSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="46dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="104dp"
         android:layout_marginEnd="16dp"
-        android:text="Patient Sign Up"
-        android:textColor="#7A73E7"
-        android:textSize="30sp"
+        android:text="@string/patient_signup"
+        android:textColor="@color/main"
+        android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.019"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+
+        />
 
     <EditText
         android:id="@+id/patientFirstName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="40dp"
-        android:background="#E8EBEC"
-        android:ems="10"
-        android:hint="First Name"
+        style="@style/textField"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="216dp"
+        android:layout_marginEnd="50dp"
+        android:hint="@string/firstName"
         android:inputType="text"
-        android:textColor="#9B9B9B"
-        android:textColorHint="#9B9B9B"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/patientSignUp" />
+        app:layout_constraintTop_toBottomOf="@+id/patientSignUp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="name"/>
 
     <EditText
         android:id="@+id/patientLastName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="40dp"
-        android:background="#E8EBEC"
-        android:ems="10"
-        android:hint="Last Name"
+        style="@style/textField"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="258dp"
+        android:layout_marginEnd="50dp"
+        android:hint="@string/lastName"
         android:inputType="text"
-        android:textColor="#9B9B9B"
+        android:textColor="@color/text_box_text"
         android:textColorHint="#9B9B9B"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/patientFirstName" />
+        app:layout_constraintTop_toBottomOf="@+id/patientFirstName"
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="name"/>
 
     <EditText
         android:id="@+id/healthCardNumber"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="40dp"
-        android:background="#E8EBEC"
-        android:ems="10"
-        android:hint=" Health Card Number"
+        style="@style/textField"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginEnd="50dp"
+        android:hint="@string/healthCardNumber"
         android:inputType="text"
-        android:textColor="#9B9B9B"
+        android:textColor="@color/text_box_text"
         android:textColorHint="#9B9B9B"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/patientLastName" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/patientLastName"
+        android:autofillHints="name"
+
+        />
 
     <EditText
         android:id="@+id/patientAddress"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="40dp"
-        android:background="#E8EBEC"
-        android:ems="10"
-        android:hint="Address"
+        style="@style/textField"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="342dp"
+        android:layout_marginEnd="50dp"
+        android:hint="@string/address"
         android:inputType="text"
-        android:textColor="#9B9B9B"
+        android:textColor="@color/text_box_text"
         android:textColorHint="#9B9B9B"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/healthCardNumber" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/healthCardNumber"
+        android:autofillHints="postalAddress"
+        />
 
     <EditText
         android:id="@+id/patientPhoneNumber"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="40dp"
-        android:background="#E8EBEC"
-        android:ems="10"
-        android:hint="Phone Number"
-        android:inputType="text"
-        android:textColor="#9B9B9B"
+        style="@style/textField"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="384dp"
+        android:layout_marginEnd="50dp"
+        android:hint="@string/phoneNumber"
+        android:inputType="phone"
+        android:textColor="@color/text_box_text"
         android:textColorHint="#9B9B9B"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/patientAddress" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/patientAddress"
+        android:autofillHints="phone"
+
+        />
 
     <EditText
         android:id="@+id/patientEmail"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="40dp"
-        android:background="#E8EBEC"
-        android:ems="10"
-        android:hint="Email"
-        android:inputType="text"
+        style="@style/textField"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="426dp"
+        android:layout_marginEnd="50dp"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
         android:textColor="#9B9B9B"
-        android:textColorHint="#9B9B9B"
+        android:textColorHint="@color/text_box_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/patientPhoneNumber" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/patientPhoneNumber"
+        android:autofillHints="username|emailAddress"
+        />
 
     <EditText
         android:id="@+id/patientPassword"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="40dp"
-        android:background="#E8EBEC"
-        android:ems="10"
-        android:hint="Password"
+        style="@style/textField"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="468dp"
+        android:layout_marginEnd="50dp"
+        android:hint="@string/password"
         android:inputType="textPassword"
         android:textColor="#9B9B9B"
-        android:textColorHint="#9B9B9B"
+        android:textColorHint="@color/text_box_text"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/patientEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/patientEmail"
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="password"
+
+        />
 
     <EditText
         android:id="@+id/confirmPasswordPatient"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="40dp"
-        android:background="#E8EBEC"
-        android:ems="10"
-        android:hint="Confirm Password"
+        style="@style/textField"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="510dp"
+        android:layout_marginEnd="50dp"
+        android:hint="@string/confirmPassword"
         android:inputType="textPassword"
         android:textColor="#9B9B9B"
-        android:textColorHint="#9B9B9B"
+        android:textColorHint="@color/text_box_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/patientPassword" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/patientPassword"
+        android:autofillHints="password"
+        />
 
     <Button
         android:id="@+id/createPatientAccountButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="100dp"
-        android:background="#CC7A73E7"
-        android:text="Create Account"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/confirmPasswordPatient" />
-
-    <Button
-        android:id="@+id/patientBackToLoginButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="100dp"
-        android:background="#CC7A73E7"
-        android:text="Back To Login"
+        style="@style/AllButtons"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="612dp"
+        android:layout_marginEnd="108dp"
+        android:elevation="400000dp"
+        android:text="@string/createAccount"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createPatientAccountButton" />
+        app:layout_constraintTop_toBottomOf="@+id/confirmPasswordPatient"
+
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
