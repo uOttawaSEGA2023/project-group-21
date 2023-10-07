@@ -15,6 +15,15 @@
         android:theme="@style/Theme.DocAppoint"
         tools:targetApi="31">
         <activity
+            android:name=".AdminNavigation"
+            android:exported="false" />
+        <activity
+            android:name=".PatientNavigation"
+            android:exported="false" />
+        <activity
+            android:name=".DoctorNavigation"
+            android:exported="false" />
+        <activity
             android:name=".AdminHomepage"
             android:exported="false" />
         <activity

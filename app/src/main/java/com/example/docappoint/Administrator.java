@@ -9,7 +9,7 @@ public class Administrator extends User {
 
     // Main method
     public static void main (String [] args){
-        Administrator administrator = new Administrator("admin@docappoint.com", "docappoint");
+        Administrator administrator = new Administrator("admin_docappoint@gmail.com", "Admin1@docappoint");
     }
 
 }
