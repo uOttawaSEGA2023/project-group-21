@@ -4,13 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".DoctorHomepage">
 
-    <TextView
-        android:id="@+id/AccountOverview"
+    <Button
+        android:id="@+id/doctorContinue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="LOGGED IN AS DOCTOR TEST"
-        tools:layout_editor_absoluteX="137dp"
-        tools:layout_editor_absoluteY="194dp" />
+        android:layout_marginBottom="360dp"
+        android:background="#CC7A73E7"
+        android:text="Continue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/doctorWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="234dp"
+        android:text="Welcome! You are logged in as Doctor"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
