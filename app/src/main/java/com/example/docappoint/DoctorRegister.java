@@ -15,6 +15,8 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.OnFailureListener;
 
+import com.google.android.libraries.places.api.net.FindAutocompletePredictionsRequest;
+import com.google.android.libraries.places.api.net.PlacesClient;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -25,6 +27,12 @@ import com.google.firebase.ktx.Firebase;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import com.google.i18n.phonenumbers.NumberParseException;
+import com.google.i18n.phonenumbers.PhoneNumberUtil;
+import com.google.i18n.phonenumbers.Phonenumber;
+
+import com.google.android.libraries.places.api.Places;
 
 public class DoctorRegister extends AppCompatActivity {
 
@@ -38,6 +46,51 @@ public class DoctorRegister extends AppCompatActivity {
 
     // Add Firestore database (using Firestore to query user)
     FirebaseFirestore dStore;
+
+    //Check if phone number is valid using the libphonenumber API
+    private boolean validPhoneNumberCheck(String number) {
+        PhoneNumberUtil phoneNumberUtil = PhoneNumberUtil.getInstance();
+
+        try{
+            Phonenumber.PhoneNumber NumberToCheck = phoneNumberUtil.parse(number, "CA");
+            return phoneNumberUtil.isValidNumber(NumberToCheck);
+        }
+        catch (NumberParseException e){
+            return false;
+        }
+
+    }
+    private boolean validAddressCheck(String address) {
+        String regex = "^\\d+\\s+[a-zA-Z]+(\\s+[a-zA-Z]+)*(\\s+[a-zA-Z]+(\\s+[a-zA-Z]+)*)?$";
+        return address.matches(regex);
+    }
+
+    private boolean validEmployeeNumCheck(String enumber){
+        System.out.println(enumber.length());
+
+        if (enumber.length() != 4){
+            return false;
+        }
+
+        try {
+            int i  = Integer.parseInt(enumber);
+        }
+        catch (NumberFormatException nfe){
+            return false;
+        }
+
+        return true;
+    }
+
+    private boolean validPasswordCheck(String password){
+        if (password.length() < 6) {
+            return false;
+        }
+
+        String regex = ".*\\d.*";
+        return password.matches(regex);
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +121,6 @@ public class DoctorRegister extends AppCompatActivity {
             public void onClick(View v) {
 
                 // Get the data fields from the user (save data to String variables)
-
                 String doctorFirstName = regDoctorFirstName.getText().toString();
                 String doctorLastName = regDoctorLastName.getText().toString();
                 String doctorSpecialties = regDoctorSpecialties.getText().toString();
@@ -99,14 +151,29 @@ public class DoctorRegister extends AppCompatActivity {
                     regDoctorEmployeeNumber.setError("This Field is Required");
                     return;
                 }
+                if (!validEmployeeNumCheck(doctorEmployeeNumber)){
+                    regDoctorEmployeeNumber.setError("Invalid Employee Number (4 NUMBERS ONLY)");
+                    return;
+                }
+
 
                 if (doctorAddress.isEmpty()) {
                     regDoctorAddress.setError("This Field is Required");
                     return;
                 }
 
+                if (!validAddressCheck(doctorAddress)){
+                    regDoctorAddress.setError("Invalid Address");
+                    return;
+                }
+
                 if (doctorPhoneNumber.isEmpty()) {
                     regDoctorPhoneNumber.setError("This Field is Required");
+                    return;
+                }
+
+                if (!validPhoneNumberCheck(doctorPhoneNumber)){
+                    regDoctorPhoneNumber.setError("Invalid Phone Number");
                     return;
                 }
 
@@ -120,10 +187,16 @@ public class DoctorRegister extends AppCompatActivity {
                     return;
                 }
 
+                if (!validPasswordCheck(doctorPassword)){
+                    regDoctorPassword.setError("Password is not valid (MUST HAVE 1 NUMBER AND BE 6 OR MORE CHARACTERS");
+                    return;
+                }
+
                 if (doctorConfirmPassword.isEmpty()) {
                     regDoctorConfirmPassword.setError("This Field is Required");
                     return;
                 }
+
 
                 // Checks if the password and confirmPassword match
                 if (!doctorPassword.equals(doctorConfirmPassword)) {
