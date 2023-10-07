@@ -166,6 +166,7 @@ public class PatientRegister extends AppCompatActivity {
                                 Toast.makeText(PatientRegister.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
+
             }
         });
 

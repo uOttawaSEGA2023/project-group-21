@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AllButtons">
+
+        <item name="android:textSize">16sp</item> <!-- Adjust text size -->
+        <item name="android:textColor">@color/white</item> <!-- Adjust text colour -->
+        <item name = "android:layout_height">50dp</item><!-- Height of button -->
+        <item name = "android:paddingLeft">20dp</item><!-- Adjust spacing inside from left of button to text -->
+        <item name = "android:paddingRight">20dp</item><!-- Adjust spacing inside from right of button to text -->
+        <item name = "android:background">@drawable/rounded_button</item><!-- Rounded button drawable -->
+        <item name = "android:layout_width">wrap_content</item><!-- Width of button changes based on text -->
+
+    </style>
+
+    <style name="textField">
+        <item name = "android:background">@drawable/rounded_text_box</item> <!-- Rounded textbox drawable -->
+        <item name = "android:layout_width"> 250dp </item><!-- Width of text box -->
+        <item name = "android:layout_height">35dp</item><!-- Height of text box -->
+        <item name = "android:textSize">13dp</item><!-- Text font size -->
+        <item name = "android:ems">10</item>
+        <item name = "android:textColor">@color/text_box_text</item>  <!-- Colour of text box -->
+        <item name = "android:paddingLeft">10dp</item> <!-- Whitespace from left of textbox -->
+
+    </style>
+
+    <style name="backButton">
+        <item name = "android:layout_width">wrap_content</item>
+        <item name = "android:layout_height">wrap_content</item>
+        <item name = "android:background">@drawable/rounded_back_button</item>
+        <item name = "android:text">back</item>
+        <item name = "android:textColor">@color/white</item>
+        <item name = "android:textSize">20dp</item>
+
+    </style>
+
+</resources>
