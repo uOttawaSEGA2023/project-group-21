@@ -18,7 +18,13 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.ktx.Firebase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class DoctorRegister extends AppCompatActivity {
 
@@ -29,6 +35,9 @@ public class DoctorRegister extends AppCompatActivity {
 
     // Add Firebase Integration (using Firebase Auth to query user)
     FirebaseAuth dAuth;
+
+    // Add Firestore database (using Firestore to query user)
+    FirebaseFirestore dStore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +59,8 @@ public class DoctorRegister extends AppCompatActivity {
 
         // Initialize Firebase class
         dAuth = FirebaseAuth.getInstance();
+        dStore = FirebaseFirestore.getInstance();
+
 
         // Click events
         createDoctorAccount.setOnClickListener(new View.OnClickListener() {
@@ -120,8 +131,6 @@ public class DoctorRegister extends AppCompatActivity {
                     return;
                 }
 
-                // Success message if the account is successfully created (using Toast data)
-                Toast.makeText(DoctorRegister.this, "Success! Account Has Been Created!", Toast.LENGTH_SHORT).show();
 
                 // Create user when provided the email and password (if authentication is successful call addOnSuccessListener
 
@@ -130,7 +139,31 @@ public class DoctorRegister extends AppCompatActivity {
                             @Override
                             public void onSuccess(AuthResult authResult) {
 
-                            // Send the user to the doctor homepage
+                                // Success message if the account is successfully created (using Toast data)
+                                Toast.makeText(DoctorRegister.this, "Success! Account Has Been Created!", Toast.LENGTH_SHORT).show();
+
+                                // Get user data that is created
+                                FirebaseUser user = dAuth.getCurrentUser();
+
+                                //Save the reference to collection
+                                DocumentReference dDoc  = dStore.collection("Users").document(user.getUid());
+                                Map<String,Object> userInfo = new HashMap<>();
+                                userInfo.put("First Name", regDoctorFirstName.getText().toString());
+                                userInfo.put("Last Name", regDoctorLastName.getText().toString());
+                                userInfo.put("Specialties", regDoctorSpecialties.getText().toString());
+                                userInfo.put("Employee Number", regDoctorEmployeeNumber.getText().toString());
+                                userInfo.put("Address", regDoctorAddress.getText().toString());
+                                userInfo.put("Phone Number", regDoctorPhoneNumber.getText().toString());
+                                userInfo.put("Email", regDoctorEmail.getText().toString());
+                                userInfo.put("Password", regDoctorPassword.getText().toString());
+
+                                // Specify the user is a doctor user
+                                userInfo.put("isDoctor", 1);
+
+                                // Save to Firestore database
+                                dDoc.set(userInfo);
+
+                                // Send the user to the doctor homepage
                                 startActivity(new Intent(getApplicationContext(),DoctorHomepage.class));
 
                                 // Remove all the previous activity

@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DoctorHomepage">
+    tools:context=".AdminHomepage">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="LOGGED IN AS DOCTOR TEST"
-        tools:layout_editor_absoluteX="137dp"
-        tools:layout_editor_absoluteY="194dp" />
+        android:text="logged in AS ADMIN TEST"
+        tools:layout_editor_absoluteX="145dp"
+        tools:layout_editor_absoluteY="234dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

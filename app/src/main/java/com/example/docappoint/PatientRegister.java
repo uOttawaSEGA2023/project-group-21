@@ -17,6 +17,12 @@ import com.google.android.gms.tasks.OnFailureListener;
 
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class PatientRegister extends AppCompatActivity {
 
@@ -27,6 +33,10 @@ public class PatientRegister extends AppCompatActivity {
 
     // Add Firebase Integration (using Firebase Auth to query user)
     FirebaseAuth pAuth;
+    // Add Firestore database (using Firestore to query user)
+    FirebaseFirestore pStore;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +57,7 @@ public class PatientRegister extends AppCompatActivity {
 
         // Initialize Firebase class
         pAuth = FirebaseAuth.getInstance();
+        pStore = FirebaseFirestore.getInstance();
 
         // Click events
         createPatientAccount.setOnClickListener(new View.OnClickListener() {
@@ -111,8 +122,6 @@ public class PatientRegister extends AppCompatActivity {
                     return;
                 }
 
-                // Success message if account is successfully created (using Toast data)
-                Toast.makeText(PatientRegister.this, "Success! Account Has Been Created!", Toast.LENGTH_SHORT).show();
 
                 // Create user when provided the email and password (if authentication is successful call addOnSuccessListener
 
@@ -121,7 +130,30 @@ public class PatientRegister extends AppCompatActivity {
                             @Override
                             public void onSuccess(AuthResult authResult) {
 
-                                // Send the user to the patient homepage
+                                // Get user data that is created
+                                FirebaseUser user = pAuth.getCurrentUser();
+
+                                // Success message if account is successfully created (using Toast data)
+                                Toast.makeText(PatientRegister.this, "Success! Account Has Been Created!", Toast.LENGTH_SHORT).show();
+
+                                //Save the reference to collection
+                                DocumentReference pDoc  = pStore.collection("Users").document(user.getUid());
+                                Map<String,Object> userInfo = new HashMap<>();
+                                userInfo.put("First Name",regPatientFirstName.getText().toString());
+                                userInfo.put("Last Name",regPatientLastName.getText().toString());
+                                userInfo.put("Health Card Number",regPatientHealthCardNum.getText().toString());
+                                userInfo.put("Address",regPatientAddress.getText().toString());
+                                userInfo.put("Phone Number",regPatientPhoneNumber.getText().toString());
+                                userInfo.put("Email",regPatientEmail.getText().toString());
+                                userInfo.put("Password",regPatientPassword.getText().toString());
+
+                                // Specify the user is a patient user
+                                userInfo.put("isPatient", 1);
+
+                                // Save to Firestore database
+                                pDoc.set(userInfo);
+
+                                // Send the user to the patient homepgae
                                 startActivity(new Intent(getApplicationContext(), PatientHomepage.class));
 
                                 // Remove all the previous activity
