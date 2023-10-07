@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_purple"
+    android:fillViewport="true"
+    android:orientation="vertical"
+    android:visibility="visible">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_purple"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/header"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="328dp"
+            android:layout_height="440dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="160dp"
+            android:background="@drawable/backdrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            style="@style/textField"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="322dp"
+            android:hint="Specialties"
+            android:textColorHint="@color/text_box_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            style="@style/textField"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="364dp"
+            android:hint="Address"
+            android:textColorHint="@color/text_box_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/phoneField"
+            style="@style/textField"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="406dp"
+            android:ems="10"
+            android:hint="Phone Number"
+            android:textColorHint="@color/text_box_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            />
+
+
+        <EditText
+            style="@style/textField"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="448dp"
+            android:ems="10"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:textColorHint="@color/text_box_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            />
+
+        <EditText
+            android:id="@+id/enterPassword"
+            style="@style/textField"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="490dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:textColorHint="@color/text_box_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/confirmPassword"
+            style="@style/textField"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="532dp"
+            android:hint="Confirm Password"
+            android:inputType="textPassword"
+            android:textColorHint="@color/text_box_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editText"
+            style="@style/textField"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="196dp"
+            android:hint="First Name"
+            android:textColorHint="@color/text_box_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editText2"
+            style="@style/textField"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="238dp"
+            android:hint="Last Name"
+            android:textColorHint="@color/text_box_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            style="@style/textField"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="280dp"
+            android:hint="Employee Number"
+            android:textColorHint="@color/text_box_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/createAccount"
+            style="@style/AllButtons"
+            android:layout_marginStart="116dp"
+            android:layout_marginTop="612dp"
+            android:elevation="400000dp"
+            android:text="Create Account"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/back"
+            style="@style/backButton"
+            android:layout_width="80dp"
+            android:layout_height="39dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="76dp"
+            android:layout_marginTop="92dp"
+            android:text="Doctor Sign-In"
+            android:textColor="@color/main"
+            android:textSize="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

@@ -49,7 +49,7 @@
         tools:layout_editor_absoluteY="364dp" />
 
     <TextView
-        android:id="@+id/BasicInfo"
+        android:id="@+id/adminWelcomeText"
         android:layout_width="174dp"
         android:layout_height="50dp"
         android:text="Basic Info"
@@ -63,7 +63,7 @@
         tools:layout_editor_absoluteY="190dp" />
 
     <TextView
-        android:id="@+id/AccountOverview"
+        android:id="@+id/doctorWelcomeText"
         android:layout_width="238dp"
         android:layout_height="39dp"
         android:text="Account Overview"
@@ -89,7 +89,7 @@
         tools:layout_editor_absoluteY="70dp" />
 
     <TextView
-        android:id="@+id/Name"
+        android:id="@+id/patientWelcomeText"
         android:layout_width="184dp"
         android:layout_height="33dp"
         android:text="Name"

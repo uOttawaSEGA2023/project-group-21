@@ -4,13 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F0EFFF"
     tools:context=".AdminHomepage">
 
     <TextView
-        android:id="@+id/BasicInfo"
+        android:id="@+id/adminHeader"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@drawable/header"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/adminWelcomeText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="104dp"
+        android:background="#F0EFFF"
+        android:text="Welcome! You are logged in as Administrator"
+        android:textColor="#7A73E7"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/adminContinueButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="logged in AS ADMIN TEST"
-        tools:layout_editor_absoluteX="145dp"
-        tools:layout_editor_absoluteY="234dp" />
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="400dp"
+        android:layout_marginEnd="108dp"
+        android:background="#7A73E7"
+        android:text="Continue"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/adminHeader" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
