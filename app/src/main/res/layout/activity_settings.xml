@@ -4,6 +4,168 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F0EFFF"
     tools:context=".Settings">
+
+    <Button
+        android:id="@+id/DeleteAccount"
+        android:layout_width="199dp"
+        android:layout_height="48dp"
+        android:background="#B54B4B"
+        android:text="Delete Account"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="709dp" />
+
+    <TextView
+        android:id="@+id/PhoneNumber"
+        android:layout_width="184dp"
+        android:layout_height="33dp"
+        android:text="Phone Number"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.149"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="473dp" />
+
+    <TextView
+        android:id="@+id/Email"
+        android:layout_width="184dp"
+        android:layout_height="33dp"
+        android:text="Email"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.149"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="364dp" />
+
+    <TextView
+        android:id="@+id/BasicInfo"
+        android:layout_width="174dp"
+        android:layout_height="50dp"
+        android:text="Basic Info"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.142"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="190dp" />
+
+    <TextView
+        android:id="@+id/AccountOverview"
+        android:layout_width="238dp"
+        android:layout_height="39dp"
+        android:text="Account Overview"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <View
+        android:id="@+id/ProfilePic"
+        android:layout_width="134dp"
+        android:layout_height="90dp"
+        android:background="#D9D9D9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="70dp" />
+
+    <TextView
+        android:id="@+id/Name"
+        android:layout_width="184dp"
+        android:layout_height="33dp"
+        android:text="Name"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.149"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="259dp" />
+
+    <EditText
+        android:id="@+id/NameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:text="Name"
+        android:textColor="#9B9B9B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.169"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="304dp" />
+
+    <EditText
+        android:id="@+id/EmailText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        android:text="Email"
+        android:textColor="#9B9B9B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.169"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="411dp" />
+
+    <EditText
+        android:id="@+id/PhoneText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="phone"
+        android:minHeight="48dp"
+        android:text="Phone"
+        android:textColor="#9B9B9B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.169"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="519dp" />
+
+    <Button
+        android:id="@+id/LogOut"
+        android:layout_width="199dp"
+        android:layout_height="48dp"
+        android:background="#000000"
+        android:text="Log Out"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="616dp" />
+
+    <Button
+        android:id="@+id/Cancel"
+        android:layout_width="52dp"
+        android:layout_height="48dp"
+        android:text="X"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

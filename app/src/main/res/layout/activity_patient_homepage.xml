@@ -7,7 +7,7 @@
     tools:context=".PatientHomepage">
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="loggeed in AS PATIENT TEST"
