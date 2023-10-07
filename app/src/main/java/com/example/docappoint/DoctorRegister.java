@@ -82,14 +82,15 @@ public class DoctorRegister extends AppCompatActivity {
         return true;
     }
 
-    private boolean validPasswordCheck(String password){
-        if (password.length() < 6) {
+    private boolean validPasswordCheck(String password) {
+        if (password.length() < 8) {
             return false;
         }
 
-        String regex = ".*\\d.*";
-        return password.matches(regex);
+        String checkDig = ".*\\d.*";
+        String checkLetter = ".*[a-zA-Z].*";
 
+        return password.matches(checkDig) && password.matches(checkLetter);
     }
 
     @Override
