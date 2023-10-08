@@ -4,10 +4,15 @@
     <string name="firstName">First Name</string>
     <string name="lastName">Last Name</string>
     <string name="healthCardNumber">Health Card Number</string>
+    <string name="specialties">Specialties</string>
+    <string name="employee_number">Employee Number</string>
     <string name="address">Address</string>
     <string name="phoneNumber">Phone Number</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="confirmPassword">Confirm Password</string>
     <string name="createAccount">Create Account</string>
+    <string name="doctor_signup">Doctor Sign Up</string>
+    <string name="confirm">Confirm</string>
+    <string name = "logIn">Log In</string>
 </resources>
