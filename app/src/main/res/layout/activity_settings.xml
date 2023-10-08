@@ -8,7 +8,7 @@
     tools:context=".Settings">
 
     <Button
-        android:id="@+id/deleteAccountSettings"
+        android:id="@+id/deleteAccountSettingsButton"
         android:layout_width="199dp"
         android:layout_height="48dp"
         android:layout_marginBottom="92dp"
@@ -25,7 +25,6 @@
         android:id="@+id/phoneNumber"
         android:layout_width="184dp"
         android:layout_height="33dp"
-        android:layout_marginBottom="364dp"
         android:text="Phone Number"
         android:textColor="#000000"
         android:textSize="16sp"
@@ -34,28 +33,30 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.565"
         tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/emailSettings"
         android:layout_width="184dp"
         android:layout_height="33dp"
-        android:layout_marginBottom="476dp"
         android:text="Email"
         android:textColor="#000000"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.144"
+        app:layout_constraintHorizontal_bias="0.147"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.428"
         tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/basicInfoSettings"
         android:layout_width="174dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="632dp"
         android:text="Basic Info"
         android:textColor="#000000"
         android:textSize="20sp"
@@ -64,13 +65,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.14"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.223"
         tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/accountOverviewSettings"
         android:layout_width="238dp"
         android:layout_height="39dp"
-        android:layout_marginBottom="816dp"
         android:text="Account Overview"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -80,6 +82,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.02"
         tools:ignore="MissingConstraints" />
 
     <View
@@ -98,7 +102,6 @@
         android:id="@+id/nameSettings"
         android:layout_width="184dp"
         android:layout_height="33dp"
-        android:layout_marginBottom="584dp"
         android:text="Name"
         android:textColor="#000000"
         android:textSize="16sp"
@@ -107,13 +110,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.302"
         tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/nameTextSettings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="524dp"
         android:ems="10"
         android:inputType="text"
         android:minHeight="48dp"
@@ -121,15 +125,16 @@
         android:textColor="#9B9B9B"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.16"
+        app:layout_constraintHorizontal_bias="0.157"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.362"
         tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/emailTextSettings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="412dp"
         android:ems="10"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
@@ -137,15 +142,16 @@
         android:textColor="#9B9B9B"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.157"
+        app:layout_constraintHorizontal_bias="0.16"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499"
         tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/phoneTextSettings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="300dp"
         android:ems="10"
         android:inputType="phone"
         android:minHeight="48dp"
@@ -155,10 +161,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.16"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.631"
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/logOutSettings"
+        android:id="@+id/logOutSettingsButton"
         android:layout_width="199dp"
         android:layout_height="48dp"
         android:layout_marginBottom="192dp"
@@ -172,7 +180,7 @@
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/cancelSettings"
+        android:id="@+id/cancelSettingsButton"
         android:layout_width="52dp"
         android:layout_height="48dp"
         android:layout_marginBottom="808dp"
