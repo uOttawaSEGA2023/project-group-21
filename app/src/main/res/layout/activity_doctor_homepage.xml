@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/doctorWelcomeText"
+        android:id="@+id/accountOverviewSettings"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="104dp"
@@ -43,5 +43,5 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/doctorWelcomeText" />
+        app:layout_constraintTop_toBottomOf="@+id/accountOverviewSettings" />
 </androidx.constraintlayout.widget.ConstraintLayout>
