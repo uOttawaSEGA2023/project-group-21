@@ -7,6 +7,22 @@
     android:background="#F0EFFF"
     tools:context=".Homepage">
 
+    <Button
+        android:id="@+id/createAccountButton"
+        style="@style/AllButtons"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="108dp"
+        android:text="Create Account"
+
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.447"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginButton" />
+
     <TextView
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -14,16 +30,6 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
         android:background="@drawable/header"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/doctorBackToLoginButton"
-        style="@style/backButton"
-        android:layout_width="80dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -88,16 +94,16 @@
     <Button
         android:id="@+id/loginButton"
         style="@style/AllButtons"
+        android:layout_width="0dp"
         android:layout_marginStart="116dp"
         android:layout_marginTop="412dp"
         android:layout_marginEnd="108dp"
-        android:text="@string/confirm"
+        android:text="Log in"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.458"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
 
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
