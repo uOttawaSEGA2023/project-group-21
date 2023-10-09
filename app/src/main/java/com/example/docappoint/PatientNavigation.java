@@ -19,12 +19,16 @@ public class PatientNavigation extends AppCompatActivity {
         // Link UI to variable
         patientSettingBtn = findViewById(R.id.patientSettingButton);
 
-        // Redirect to Patient settings screen when clicked
+        // Redirect to settings screen when clicked
         patientSettingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), Settings.class));
+                finish();
             }
+
         });
+
+
     }
 }

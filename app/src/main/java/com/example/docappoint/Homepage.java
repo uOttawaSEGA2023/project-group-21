@@ -57,7 +57,7 @@ public class Homepage extends AppCompatActivity {
                 checkField((loginAppPassword));
 
                 if (valid) {
-                    fAuth.signInWithEmailAndPassword(loginAppEmail.getText().toString(),loginAppPassword.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                    fAuth.signInWithEmailAndPassword(loginAppEmail.getText().toString(), loginAppPassword.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                         @Override
                         public void onSuccess(AuthResult authResult) {
 
@@ -68,14 +68,14 @@ public class Homepage extends AppCompatActivity {
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(Homepage.this, e.getMessage(),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Homepage.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
             }
-            });
+        });
 
-            //Handle click for account creation
+        //Handle click for account creation
         createAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,28 +113,55 @@ public class Homepage extends AppCompatActivity {
                     startActivity(new Intent(getApplicationContext(), AdminHomepage.class));
                     finish();
                 }
-                if(documentSnapshot.getLong("isPatient") != null) {
+                if (documentSnapshot.getLong("isPatient") != null) {
                     startActivity(new Intent(getApplicationContext(), PatientHomepage.class));
+                    finish();
                 }
 
-                if(documentSnapshot.getLong("isDoctor") != null) {
+                if (documentSnapshot.getLong("isDoctor") != null) {
                     startActivity(new Intent(getApplicationContext(), DoctorHomepage.class));
+                    finish();
                 }
 
             }
         });
     }
-}
-    /*
 
 
-        // If the user is logged in already, redirect to the account's correct homepage
+    // If the user is logged in already, redirect to the account's correct homepage
     @Override
     protected void onStart() {
-            super.onStart();
-        if (FirebaseAuth.getInstance().getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(), PatientHomepage.class));
-            finish();
+        super.onStart();
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+            // Check the user's role and redirect accordingly
+            checkUserRoleAndRedirect();
         }
     }
-    */
+
+    // Method to check the user account type to redirect to correct homepage (for auto-log in)
+    private void checkUserRoleAndRedirect() {
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DocumentReference df = fStore.collection("Users").document(uid);
+
+        // Fetch from database
+
+        df.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot.exists()) {
+                    if (documentSnapshot.getLong("isAdmin") != null) {
+                        startActivity(new Intent(getApplicationContext(), AdminHomepage.class));
+                    } else if (documentSnapshot.getLong("isPatient") != null) {
+                        startActivity(new Intent(getApplicationContext(), PatientHomepage.class));
+                    } else if (documentSnapshot.getLong("isDoctor") != null) {
+                        startActivity(new Intent(getApplicationContext(), DoctorHomepage.class));
+                    } else {
+                        // Error message if the account is not defined (using Toast data)
+                        Toast.makeText(Homepage.this, "Error! No user data found", Toast.LENGTH_SHORT).show();
+                    }
+                    finish();
+                }
+            }
+        });
+    }
+}

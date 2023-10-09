@@ -18,10 +18,12 @@ public class DoctorNavigation extends AppCompatActivity {
 
         doctorSettingsBtn = findViewById(R.id.doctorSettingButton);
 
+        // Redirect to settings screen when clicked
         doctorSettingsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), Settings.class));
+                finish();
             }
         });
     }
