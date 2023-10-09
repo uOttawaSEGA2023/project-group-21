@@ -174,7 +174,7 @@ public class PatientRegister extends AppCompatActivity {
         patientBackToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), Homepage.class));
+                finish();
             }
         });
     }

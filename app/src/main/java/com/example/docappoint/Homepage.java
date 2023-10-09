@@ -44,7 +44,7 @@ public class Homepage extends AppCompatActivity {
 
         // Connect UI elements to backend
         loginAppButton = findViewById(R.id.loginButton);
-        createAccountButton = findViewById(R.id.loginButton);
+        createAccountButton = findViewById(R.id.createAccountButton);
         loginAppEmail = findViewById(R.id.loginEmail);
         loginAppPassword = findViewById(R.id.loginPassword);
 

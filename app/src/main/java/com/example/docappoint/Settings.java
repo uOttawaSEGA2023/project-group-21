@@ -23,7 +23,7 @@ public class Settings extends AppCompatActivity {
 
     EditText nameAccountSettings, emailAccountSettings, phoneAccountSettings;
 
-    Button logOutAccount;
+    Button logOutAccount, settingsBackBtn;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userId;
@@ -38,6 +38,7 @@ public class Settings extends AppCompatActivity {
         emailAccountSettings = findViewById(R.id.emailTextSettings);
         phoneAccountSettings = findViewById(R.id.phoneTextSettings);
         logOutAccount = findViewById(R.id.logOutSettingsButton);
+        settingsBackBtn = findViewById(R.id.settingsBackButton);
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -79,6 +80,15 @@ public class Settings extends AppCompatActivity {
 
                 startActivity(new Intent(getApplicationContext(), Homepage.class));
                 finish();
+            }
+        });
+
+        // Back to welcome <role> screen when back button is clicked
+        // (it should lead to navigation screen so this is an error)
+        settingsBackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
             }
         });
     }
