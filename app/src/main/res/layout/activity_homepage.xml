@@ -87,7 +87,7 @@
         android:id="@+id/dontAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="496dp"
+        android:layout_marginTop="492dp"
         android:text="New to DocAppoint?"
         android:textColor="@color/main"
         android:textStyle="bold"
