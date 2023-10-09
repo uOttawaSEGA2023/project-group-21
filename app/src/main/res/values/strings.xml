@@ -14,5 +14,7 @@
     <string name="createAccount">Create Account</string>
     <string name="doctor_signup">Doctor Sign Up</string>
     <string name="confirm">Confirm</string>
-    <string name = "logIn">Log In</string>
+    <string name="logIn">Log In</string>
+    <string name="patient">Patient</string>
+    <string name="doctor">Doctor</string>
 </resources>
