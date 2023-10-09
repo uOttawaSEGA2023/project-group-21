@@ -28,6 +28,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/patientLogo"
+        android:layout_width="272dp"
+        android:layout_height="234dp"
+        android:layout_marginStart="115dp"
+        android:layout_marginBottom="578dp"
+        android:src="@drawable/whitelogo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/backdrop"
