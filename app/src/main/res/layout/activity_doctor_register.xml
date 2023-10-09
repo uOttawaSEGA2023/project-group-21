@@ -33,7 +33,7 @@
         android:layout_width="272dp"
         android:layout_height="234dp"
         android:layout_marginStart="144dp"
-        android:layout_marginBottom="580dp"
+        android:layout_marginBottom="578dp"
         android:src="@drawable/whitelogo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -97,21 +97,21 @@
         app:layout_constraintTop_toBottomOf="@+id/doctorFirstName"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/doctorSpecialties"
-        style="@style/textField"
+    <Button
+        android:id="@+id/doctorSpecialtiesButton"
+        style="@style/AllButtons"
         android:layout_marginStart="80dp"
         android:layout_marginTop="295dp"
         android:layout_marginEnd="50dp"
-        android:hint="@string/specialties"
-        android:inputType="text"
-        android:textColor="@color/text_box_text"
-        android:textColorHint="#9B9B9B"
+        android:text="@string/specialties"
+        android:layout_width="250dp"
+        android:layout_height="35dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.17"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/doctorLastName"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/doctorLastName"/>
 
     <EditText
         android:id="@+id/doctorEmployeeNumber"
@@ -126,7 +126,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.17"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/doctorSpecialties"
+        app:layout_constraintTop_toBottomOf="@+id/doctorSpecialtiesButton"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
