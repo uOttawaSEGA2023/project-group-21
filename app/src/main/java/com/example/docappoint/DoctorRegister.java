@@ -38,8 +38,8 @@ public class DoctorRegister extends AppCompatActivity {
 
     // Declare variables to link to xml files
 
-    EditText regDoctorFirstName, regDoctorLastName, regDoctorSpecialties, regDoctorEmployeeNumber, regDoctorAddress, regDoctorPhoneNumber, regDoctorEmail, regDoctorPassword, regDoctorConfirmPassword;
-    Button createDoctorAccount, doctorBackToLogin;
+    EditText regDoctorFirstName, regDoctorLastName, regDoctorEmployeeNumber, regDoctorAddress, regDoctorPhoneNumber, regDoctorEmail, regDoctorPassword, regDoctorConfirmPassword;
+    Button createDoctorAccount, doctorBackToLogin,regDoctorSpecialties;
 
     // Add Firebase Integration (using Firebase Auth to query user)
     FirebaseAuth dAuth;
@@ -101,7 +101,7 @@ public class DoctorRegister extends AppCompatActivity {
         // Assign variables to direct xml files
         regDoctorFirstName = findViewById(R.id.doctorFirstName);
         regDoctorLastName = findViewById(R.id.doctorLastName);
-        regDoctorSpecialties = findViewById(R.id.doctorSpecialties);
+        regDoctorSpecialties = findViewById(R.id.doctorSpecialtiesButton);
         regDoctorEmployeeNumber = findViewById(R.id.doctorEmployeeNumber);
         regDoctorAddress = findViewById(R.id.doctorAddress);
         regDoctorPhoneNumber = findViewById(R.id.doctorPhoneNumber);
@@ -258,6 +258,14 @@ public class DoctorRegister extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        // Go to Specialities page
+        regDoctorSpecialties.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), Specialties.class));
             }
         });
     }

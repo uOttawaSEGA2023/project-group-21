@@ -15,6 +15,9 @@
         android:theme="@style/Theme.DocAppoint"
         tools:targetApi="31">
         <activity
+            android:name=".Specialties"
+            android:exported="false" />
+        <activity
             android:name=".AdminNavigation"
             android:exported="false" />
         <activity
