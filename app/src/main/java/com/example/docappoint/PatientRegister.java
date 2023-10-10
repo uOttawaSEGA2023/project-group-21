@@ -20,6 +20,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.i18n.phonenumbers.NumberParseException;
+import com.google.i18n.phonenumbers.PhoneNumberUtil;
+import com.google.i18n.phonenumbers.Phonenumber;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,6 +39,48 @@ public class PatientRegister extends AppCompatActivity {
     // Add Firestore database (using Firestore to query user)
     FirebaseFirestore pStore;
 
+    private boolean validPhoneNumberCheck(String number) {
+        PhoneNumberUtil phoneNumberUtil = PhoneNumberUtil.getInstance();
+
+        try{
+            Phonenumber.PhoneNumber NumberToCheck = phoneNumberUtil.parse(number, "CA");
+            return phoneNumberUtil.isValidNumber(NumberToCheck);
+        }
+        catch (NumberParseException e){
+            return false;
+        }
+
+    }
+    private boolean validAddressCheck(String address) {
+        String regex = "^\\d+\\s+[a-zA-Z]+(\\s+[a-zA-Z]+)*(\\s+[a-zA-Z]+(\\s+[a-zA-Z]+)*)?$";
+        return address.matches(regex);
+    }
+
+    private boolean validHealthCardCheck(String enumber){
+        if (enumber.length() != 10){
+            return false;
+        }
+
+        try {
+            int i  = Integer.parseInt(enumber);
+        }
+        catch (NumberFormatException nfe){
+            return false;
+        }
+
+        return true;
+    }
+
+    private boolean validPasswordCheck(String password) {
+        if (password.length() < 8) {
+            return false;
+        }
+
+        String checkDig = ".*\\d.*";
+        String checkLetter = ".*[a-zA-Z].*";
+
+        return password.matches(checkDig) && password.matches(checkLetter);
+    }
 
 
     @Override
@@ -91,13 +136,28 @@ public class PatientRegister extends AppCompatActivity {
                     return;
                 }
 
+                if (!validHealthCardCheck(patientHealthCardNum)){
+                    regPatientHealthCardNum.setError("Invalid Health Card Number (Must be 10 numbers)");
+                    return;
+                }
+
                 if (patientAddress.isEmpty()) {
                     regPatientAddress.setError("This Field is Required");
                     return;
                 }
 
+                if (!validAddressCheck(patientAddress)){
+                    regPatientAddress.setError("Invalid Address");
+                    return;
+                }
+
                 if (patientPhoneNumber.isEmpty()) {
                     regPatientPhoneNumber.setError("This Field is Required");
+                    return;
+                }
+
+                if (!validPhoneNumberCheck(patientPhoneNumber)){
+                    regPatientPhoneNumber.setError("Invalid Phone Number");
                     return;
                 }
 
@@ -108,6 +168,11 @@ public class PatientRegister extends AppCompatActivity {
 
                 if (patientPassword.isEmpty()) {
                     regPatientPassword.setError("This Field is Required");
+                    return;
+                }
+
+                if (!validPasswordCheck(patientPassword)){
+                    regPatientPassword.setError("Password is not valid (MUST HAVE 1 NUMBER AND 1 CHARACTER WITH 8 OR MORE CHARACTERS");
                     return;
                 }
 

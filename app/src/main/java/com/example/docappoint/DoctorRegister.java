@@ -189,7 +189,7 @@ public class DoctorRegister extends AppCompatActivity {
                 }
 
                 if (!validPasswordCheck(doctorPassword)){
-                    regDoctorPassword.setError("Password is not valid (MUST HAVE 1 NUMBER AND BE 6 OR MORE CHARACTERS");
+                    regDoctorPassword.setError("Password is not valid (MUST HAVE 1 NUMBER AND 1 CHARACTER WITH 8 OR MORE CHARACTERS");
                     return;
                 }
 
