@@ -54,11 +54,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
-        android:id="@+id/checkBox6"
+        android:id="@+id/checkDermatology"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="332dp"
-        android:text="CheckBox"
+        android:text="Dermatology"
         android:textColor="@color/main"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,25 +67,24 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
-        android:id="@+id/checkBox4"
+        android:id="@+id/checkObstetrics"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="272dp"
-        android:text="CheckBox"
+        android:text="Obstetrics"
         android:textColor="@color/main"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.755"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
-        android:id="@+id/checkBox2"
+        android:id="@+id/checkFamilyMedicine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="212dp"
-        android:text="CheckBox"
+        android:text="Family Medicine"
         android:textColor="@color/main"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -94,11 +93,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
-        android:id="@+id/checkBox3"
+        android:id="@+id/checkPediatrics"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="272dp"
-        android:text="CheckBox"
+        android:text="Pediatrics"
         android:textColor="@color/main"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -107,11 +106,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
-        android:id="@+id/checkBox5"
+        android:id="@+id/checkGynecology"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="332dp"
-        android:text="CheckBox"
+        android:text="Gynecology"
         android:textColor="@color/main"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -120,11 +119,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
-        android:id="@+id/checkBox8"
+        android:id="@+id/checkNeurology"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="392dp"
-        android:text="CheckBox"
+        android:text="Neurology"
         android:textColor="@color/main"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -133,11 +132,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
-        android:id="@+id/checkBox7"
+        android:id="@+id/checkPsychiatry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="392dp"
-        android:text="CheckBox"
+        android:text="Psychiatry"
         android:textColor="@color/main"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -146,11 +145,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/checkInternalMedicine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="212dp"
-        android:text="CheckBox"
+        android:text="Internal Medicine"
         android:textColor="@color/main"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

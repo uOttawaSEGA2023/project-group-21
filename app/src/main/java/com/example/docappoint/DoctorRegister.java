@@ -25,6 +25,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.ktx.Firebase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,12 +35,17 @@ import com.google.i18n.phonenumbers.Phonenumber;
 
 import com.google.android.libraries.places.api.Places;
 
+
 public class DoctorRegister extends AppCompatActivity {
 
     // Declare variables to link to xml files
 
+    ArrayList<String> selectedSpecialties = new ArrayList<>();
+
+    private static final int SPECIALTIES_REQUEST_CODE = 1;
+
     EditText regDoctorFirstName, regDoctorLastName, regDoctorEmployeeNumber, regDoctorAddress, regDoctorPhoneNumber, regDoctorEmail, regDoctorPassword, regDoctorConfirmPassword;
-    Button createDoctorAccount, doctorBackToLogin,regDoctorSpecialties;
+    Button createDoctorAccount, doctorBackToLogin, regDoctorSpecialties;
 
     // Add Firebase Integration (using Firebase Auth to query user)
     FirebaseAuth dAuth;
@@ -51,31 +57,30 @@ public class DoctorRegister extends AppCompatActivity {
     private boolean validPhoneNumberCheck(String number) {
         PhoneNumberUtil phoneNumberUtil = PhoneNumberUtil.getInstance();
 
-        try{
+        try {
             Phonenumber.PhoneNumber NumberToCheck = phoneNumberUtil.parse(number, "CA");
             return phoneNumberUtil.isValidNumber(NumberToCheck);
-        }
-        catch (NumberParseException e){
+        } catch (NumberParseException e) {
             return false;
         }
 
     }
+
     private boolean validAddressCheck(String address) {
         String regex = "^\\d+\\s+[a-zA-Z]+(\\s+[a-zA-Z]+)*(\\s+[a-zA-Z]+(\\s+[a-zA-Z]+)*)?$";
         return address.matches(regex);
     }
 
-    private boolean validEmployeeNumCheck(String enumber){
+    private boolean validEmployeeNumCheck(String enumber) {
         System.out.println(enumber.length());
 
-        if (enumber.length() != 4){
+        if (enumber.length() != 4) {
             return false;
         }
 
         try {
-            int i  = Integer.parseInt(enumber);
-        }
-        catch (NumberFormatException nfe){
+            int i = Integer.parseInt(enumber);
+        } catch (NumberFormatException nfe) {
             return false;
         }
 
@@ -115,7 +120,6 @@ public class DoctorRegister extends AppCompatActivity {
         dAuth = FirebaseAuth.getInstance();
         dStore = FirebaseFirestore.getInstance();
 
-
         // Click events
         createDoctorAccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,7 +128,6 @@ public class DoctorRegister extends AppCompatActivity {
                 // Get the data fields from the user (save data to String variables)
                 String doctorFirstName = regDoctorFirstName.getText().toString();
                 String doctorLastName = regDoctorLastName.getText().toString();
-                String doctorSpecialties = regDoctorSpecialties.getText().toString();
                 String doctorEmployeeNumber = regDoctorEmployeeNumber.getText().toString();
                 String doctorAddress = regDoctorAddress.getText().toString();
                 String doctorPhoneNumber = regDoctorPhoneNumber.getText().toString();
@@ -143,27 +146,21 @@ public class DoctorRegister extends AppCompatActivity {
                     return;
                 }
 
-                if (doctorSpecialties.isEmpty()) {
-                    regDoctorSpecialties.setError("This Field is Required");
-                    return;
-                }
-
                 if (doctorEmployeeNumber.isEmpty()) {
                     regDoctorEmployeeNumber.setError("This Field is Required");
                     return;
                 }
-                if (!validEmployeeNumCheck(doctorEmployeeNumber)){
+                if (!validEmployeeNumCheck(doctorEmployeeNumber)) {
                     regDoctorEmployeeNumber.setError("Invalid Employee Number (4 NUMBERS ONLY)");
                     return;
                 }
-
 
                 if (doctorAddress.isEmpty()) {
                     regDoctorAddress.setError("This Field is Required");
                     return;
                 }
 
-                if (!validAddressCheck(doctorAddress)){
+                if (!validAddressCheck(doctorAddress)) {
                     regDoctorAddress.setError("Invalid Address");
                     return;
                 }
@@ -173,7 +170,7 @@ public class DoctorRegister extends AppCompatActivity {
                     return;
                 }
 
-                if (!validPhoneNumberCheck(doctorPhoneNumber)){
+                if (!validPhoneNumberCheck(doctorPhoneNumber)) {
                     regDoctorPhoneNumber.setError("Invalid Phone Number");
                     return;
                 }
@@ -188,7 +185,7 @@ public class DoctorRegister extends AppCompatActivity {
                     return;
                 }
 
-                if (!validPasswordCheck(doctorPassword)){
+                if (!validPasswordCheck(doctorPassword)) {
                     regDoctorPassword.setError("Password is not valid (MUST HAVE 1 NUMBER AND 1 CHARACTER WITH 8 OR MORE CHARACTERS");
                     return;
                 }
@@ -198,17 +195,16 @@ public class DoctorRegister extends AppCompatActivity {
                     return;
                 }
 
-
                 // Checks if the password and confirmPassword match
                 if (!doctorPassword.equals(doctorConfirmPassword)) {
                     regDoctorConfirmPassword.setError("Password Does Not Match");
                     return;
                 }
 
-
-                // Create user when provided the email and password (if authentication is successful call addOnSuccessListener
+                // Create user when provided the email and password (if authentication is successful call addOnSuccessListener)
 
                 dAuth.createUserWithEmailAndPassword(doctorEmail, doctorPassword)
+
                         .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override
                             public void onSuccess(AuthResult authResult) {
@@ -220,11 +216,11 @@ public class DoctorRegister extends AppCompatActivity {
                                 FirebaseUser user = dAuth.getCurrentUser();
 
                                 //Save the reference to collection
-                                DocumentReference dDoc  = dStore.collection("Users").document(user.getUid());
-                                Map<String,Object> userInfo = new HashMap<>();
+                                DocumentReference dDoc = dStore.collection("Users").document(user.getUid());
+                                Map<String, Object> userInfo = new HashMap<>();
                                 userInfo.put("First Name", regDoctorFirstName.getText().toString());
                                 userInfo.put("Last Name", regDoctorLastName.getText().toString());
-                                userInfo.put("Specialties", regDoctorSpecialties.getText().toString());
+                                userInfo.put("Specialties", selectedSpecialties);
                                 userInfo.put("Employee Number", regDoctorEmployeeNumber.getText().toString());
                                 userInfo.put("Address", regDoctorAddress.getText().toString());
                                 userInfo.put("Phone Number", regDoctorPhoneNumber.getText().toString());
@@ -238,7 +234,7 @@ public class DoctorRegister extends AppCompatActivity {
                                 dDoc.set(userInfo);
 
                                 // Send the user to the doctor homepage
-                                startActivity(new Intent(getApplicationContext(),DoctorHomepage.class));
+                                startActivity(new Intent(getApplicationContext(), DoctorHomepage.class));
 
                                 // Remove all the previous activity
                                 finish();
@@ -253,7 +249,7 @@ public class DoctorRegister extends AppCompatActivity {
             }
         });
 
-        // Back to homepage/login screen button
+        // Back to select account screen
         doctorBackToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -265,9 +261,56 @@ public class DoctorRegister extends AppCompatActivity {
         regDoctorSpecialties.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), Specialties.class));
+
+                // Create an intent to open the Specialties class
+                Intent specialtiesIntent = new Intent(getApplicationContext(), Specialties.class);
+
+                // Pass the list of specialties to the Specialties class
+                specialtiesIntent.putStringArrayListExtra("selectedSpecialties", selectedSpecialties);
+
+                // Start the Specialties screen with an expectation to receive a result (to save specialties array)
+                startActivityForResult(specialtiesIntent, SPECIALTIES_REQUEST_CODE);
             }
         });
+
     }
+
+    // Handle the result (request code) from the Specialties class
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // Match the request code and valid condition of Specialties class
+        if (requestCode == SPECIALTIES_REQUEST_CODE) {
+
+            if (resultCode == RESULT_OK) {
+                selectedSpecialties = data.getStringArrayListExtra("selectedSpecialties");
+
+                // Get the current user
+                FirebaseUser user = dAuth.getCurrentUser();
+
+                if (user != null) {
+
+                    // Save the reference to Users field in the Firestore collection
+                    DocumentReference dDoc = dStore.collection("Users").document(user.getUid());
+
+                    Map<String, Object> userInfo = new HashMap<>();
+
+                    // Add specialties array to Specialties field
+                    userInfo.put("Specialties", selectedSpecialties);
+
+                    // Update the user information
+                    dDoc.set(userInfo);
+                }
+            }
+        }
+    }
+
+
+
 }
+
+
+
+
 
