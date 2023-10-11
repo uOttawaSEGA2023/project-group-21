@@ -34,14 +34,14 @@
         android:layout_marginEnd="108dp"
         android:background="@drawable/redbutton"
         android:text="Delete Account"
-        android:textSize="15dp"
+        android:textSize="17dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.318"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.854"
+        app:layout_constraintVertical_bias="0.858"
 
         tools:ignore="MissingConstraints" />
 
@@ -62,12 +62,13 @@
         android:id="@+id/settingsLogo"
         android:layout_width="272dp"
         android:layout_height="234dp"
-        android:layout_marginStart="140dp"
-        android:layout_marginBottom="632dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginBottom="640dp"
         android:src="@drawable/whitelogo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.562" />
 
     <TextView
         android:id="@+id/emailSettings"
@@ -216,7 +217,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.619"
+        app:layout_constraintVertical_bias="0.579"
         tools:ignore="MissingConstraints" />
 
     <Button
