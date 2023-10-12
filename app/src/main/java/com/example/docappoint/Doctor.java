@@ -4,17 +4,18 @@ package com.example.docappoint;
 public class Doctor extends User {
 
     // Unique attributes for Doctor
-    private int employeeNum, numSpecialties;
+    private int employeeNum;
     private String[] specialties;
 
     // Constructor for Doctor
     public Doctor(byte age, String firstName, String lastName, String email, String password, String checkPassword, String phoneNumber, String
-            address, int employeeNum, String[] specialties, int numSpecialties) {
+            address, int employeeNum, String[] specialties) {
         super(firstName, lastName, email, password, checkPassword, phoneNumber, address);
 
         this.employeeNum = employeeNum;
-        this.specialties = new String[numSpecialties];
+        this.specialties = specialties;
     }
+
 
     // Main method
     public static void main(String[] args) {
