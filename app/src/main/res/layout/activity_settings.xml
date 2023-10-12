@@ -59,16 +59,14 @@
         tools:ignore="MissingConstraints" />
 
     <ImageView
-        android:id="@+id/settingsLogo"
-        android:layout_width="272dp"
-        android:layout_height="234dp"
-        android:layout_marginStart="136dp"
-        android:layout_marginBottom="640dp"
+        android:id="@+id/patientLogo"
+        android:layout_width="233dp"
+        android:layout_height="201dp"
+        android:layout_marginStart="144dp"
+        android:layout_marginBottom="595dp"
         android:src="@drawable/whitelogo"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.562" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/emailSettings"
@@ -218,18 +216,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.579"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/cancelSettingsButton"
-        android:layout_width="52dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="808dp"
-        android:text="X"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.035"
-        app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
