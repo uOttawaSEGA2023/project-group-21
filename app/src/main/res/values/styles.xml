@@ -46,4 +46,17 @@
 
     </style>
 
+    <style name="greenButton">
+
+        <item name="android:text">Accept</item> <!-- Adjust text size -->
+        <item name="android:textSize">16sp</item> <!-- Adjust text size -->
+        <item name="android:textColor">@color/green</item> <!-- Adjust text colour -->
+        <item name = "android:layout_height">50dp</item><!-- Height of button -->
+        <item name = "android:paddingLeft">20dp</item><!-- Adjust spacing inside from left of button to text -->
+        <item name = "android:paddingRight">20dp</item><!-- Adjust spacing inside from right of button to text -->
+        <item name = "android:background">@drawable/greenbutton</item><!-- Rounded button drawable -->
+        <item name = "android:layout_width">wrap_content</item><!-- Width of button changes based on text -->
+
+    </style>
+
 </resources>
