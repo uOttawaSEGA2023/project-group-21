@@ -45,17 +45,32 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
         holder.accountLastName.setText(currentRequest.getAccountLastName());
         holder.accountType.setText(currentRequest.getAccountType());
 
+        boolean wasRejected = currentRequest.getStatus();
+
         holder.seeMoreButton.setOnClickListener(v -> {
             Context context = holder.itemView.getContext();
-
-            if ("Doctor".equals(holder.accountType.getText().toString())){
-                Intent intent = new Intent(context, DoctorApproval.class);
-                context.startActivity(intent);
+            if (wasRejected == false){
+                if ("Doctor".equals(holder.accountType.getText().toString())){
+                    Intent intent = new Intent(context, DoctorApproval.class);
+                    context.startActivity(intent);
+                }
+                else {
+                    Intent intent = new Intent(context, PatientApproval.class);
+                    context.startActivity(intent);
+                }
             }
             else {
-                Intent intent = new Intent(context, PatientApproval.class);
-                context.startActivity(intent);
+                //CHANGE SO IT DISPLAYS THE APPROVAL ONLY PAGE
+                if ("Doctor".equals(holder.accountType.getText().toString())){
+                    Intent intent = new Intent(context, DoctorApproval.class);
+                    context.startActivity(intent);
+                }
+                else {
+                    Intent intent = new Intent(context, PatientApproval.class);
+                    context.startActivity(intent);
+                }
             }
+
 
         });
     }

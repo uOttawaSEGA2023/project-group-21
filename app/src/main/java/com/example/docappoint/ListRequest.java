@@ -6,10 +6,14 @@ public class ListRequest {
 
     private String accountType;
 
-    public ListRequest(String accountFirstName, String accountLastName, String accountType) {
+    private boolean wasRejected;
+
+    public ListRequest(String accountFirstName, String accountLastName, String accountType, boolean wasRejected) {
         this.accountFirstName = accountFirstName;
         this.accountLastName = accountLastName;
         this.accountType = accountType;
+        this.wasRejected = wasRejected;
+
     }
 
     public String getAccountFirstName() {
@@ -23,6 +27,8 @@ public class ListRequest {
     public String getAccountType() {
         return accountType;
     }
+
+    public boolean getStatus(){ return wasRejected; };
 
 
 }
