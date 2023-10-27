@@ -16,7 +16,7 @@ public class AdminHomepage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_homepage);
 
-        //  Assign variables to direct xml files
+        // Assign variables to direct xml files
         adminContinue = findViewById(R.id.adminContinueButton);
 
         // Continue button leading to doctor navigation page
