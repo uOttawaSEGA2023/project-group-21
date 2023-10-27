@@ -98,7 +98,7 @@ public class PatientRegister extends AppCompatActivity {
         regPatientPassword = findViewById(R.id.patientPassword);
         regPatientConfirmPassword = findViewById(R.id.confirmPasswordPatient);
         createPatientAccount = findViewById(R.id.createPatientAccountButton);
-        patientBackToLogin = findViewById(R.id.patientBackToLoginButton);
+        patientBackToLogin = findViewById(R.id.patientRegBackButton);
 
         // Initialize Firebase class
         pAuth = FirebaseAuth.getInstance();
