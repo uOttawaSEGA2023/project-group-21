@@ -100,7 +100,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/patientFirstName"
+        android:id="@+id/patientApprovalFirstNameText"
         style="@style/textField"
         android:layout_marginStart="80dp"
         android:layout_marginTop="216dp"
@@ -114,7 +114,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/patientLastName"
+        android:id="@+id/patientApprovalLastNameText"
         style="@style/textField"
         android:layout_marginStart="80dp"
         android:layout_marginTop="258dp"
@@ -126,12 +126,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/patientFirstName"
+        app:layout_constraintTop_toBottomOf="@+id/patientApprovalFirstNameText"
         app:layout_constraintTop_toTopOf="parent"
         android:autofillHints="name"/>
 
     <EditText
-        android:id="@+id/healthCardNumber"
+        android:id="@+id/patientApprovalHealthCardNumberText"
         style="@style/textField"
         android:layout_marginStart="80dp"
         android:layout_marginTop="300dp"
@@ -144,13 +144,13 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/patientLastName"
+        app:layout_constraintTop_toBottomOf="@+id/patientApprovalLastNameText"
         android:autofillHints="name"
 
         />
 
     <EditText
-        android:id="@+id/patientAddress"
+        android:id="@+id/patientApprovalAddressText"
         style="@style/textField"
         android:layout_marginStart="80dp"
         android:layout_marginTop="342dp"
@@ -167,7 +167,7 @@
         />
 
     <EditText
-        android:id="@+id/patientPhoneNumber"
+        android:id="@+id/patientApprovalPhoneNumberText"
         style="@style/textField"
         android:layout_marginStart="80dp"
         android:layout_marginTop="384dp"
@@ -180,13 +180,13 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/patientAddress"
+        app:layout_constraintTop_toBottomOf="@+id/patientApprovalAddressText"
         android:autofillHints="phone"
 
         />
 
     <EditText
-        android:id="@+id/patientEmail"
+        android:id="@+id/patientApprovalEmailText"
         style="@style/textField"
         android:layout_marginStart="80dp"
         android:layout_marginTop="426dp"
@@ -199,12 +199,12 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/patientPhoneNumber"
+        app:layout_constraintTop_toBottomOf="@+id/patientApprovalPhoneNumberText"
         android:autofillHints="username|emailAddress"
         />
 
     <Button
-        android:id="@+id/approveRequest"
+        android:id="@+id/patientApprovalApproveRequestButton"
         android:layout_width="150dp"
         android:layout_height="39dp"
         android:layout_marginStart="44dp"
@@ -215,7 +215,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/denyRequest"
+        android:id="@+id/patientApprovalDenyRequestButton"
         android:layout_width="150dp"
         android:layout_height="39dp"
         android:layout_marginStart="216dp"

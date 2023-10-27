@@ -89,12 +89,12 @@ public class PatientRegister extends AppCompatActivity {
         setContentView(R.layout.activity_patient_register);
 
         //  Assign variables to direct xml files
-        regPatientFirstName = findViewById(R.id.patientFirstName);
-        regPatientLastName = findViewById(R.id.patientLastName);
-        regPatientHealthCardNum = findViewById(R.id.healthCardNumber);
-        regPatientAddress = findViewById(R.id.patientAddress);
-        regPatientPhoneNumber = findViewById(R.id.patientPhoneNumber);
-        regPatientEmail = findViewById(R.id.patientEmail);
+        regPatientFirstName = findViewById(R.id.patientRegisterFirstNameText);
+        regPatientLastName = findViewById(R.id.patientRegisterLastNameText);
+        regPatientHealthCardNum = findViewById(R.id.patientRegisterHealthCardNumberText);
+        regPatientAddress = findViewById(R.id.patientRegisterAddressText);
+        regPatientPhoneNumber = findViewById(R.id.patientRegisterPhoneNumberText);
+        regPatientEmail = findViewById(R.id.patientRegisterEmailText);
         regPatientPassword = findViewById(R.id.patientPassword);
         regPatientConfirmPassword = findViewById(R.id.confirmPasswordPatient);
         createPatientAccount = findViewById(R.id.createPatientAccountButton);

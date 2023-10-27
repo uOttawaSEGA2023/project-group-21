@@ -66,9 +66,8 @@
         app:layout_constraintTop_toTopOf="parent"
 
         />
-
     <EditText
-        android:id="@+id/patientFirstName"
+        android:id="@+id/patientRegisterFirstNameText"
         style="@style/textField"
         android:layout_marginStart="80dp"
         android:layout_marginTop="216dp"
@@ -83,7 +82,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/patientLastName"
+        android:id="@+id/patientRegisterLastNameText"
         style="@style/textField"
         android:layout_marginStart="80dp"
         android:layout_marginTop="258dp"
@@ -95,12 +94,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/patientFirstName"
+        app:layout_constraintTop_toBottomOf="@+id/patientRegisterFirstNameText"
         app:layout_constraintTop_toTopOf="parent"
-        android:autofillHints="name"/>
+        android:autofillHints="name" />
 
     <EditText
-        android:id="@+id/healthCardNumber"
+        android:id="@+id/patientRegisterHealthCardNumberText"
         style="@style/textField"
         android:layout_marginStart="80dp"
         android:layout_marginTop="300dp"
@@ -113,13 +112,11 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/patientLastName"
-        android:autofillHints="name"
-
-        />
+        app:layout_constraintTop_toBottomOf="@+id/patientRegisterLastNameText"
+        android:autofillHints="name" />
 
     <EditText
-        android:id="@+id/patientAddress"
+        android:id="@+id/patientRegisterAddressText"
         style="@style/textField"
         android:layout_marginStart="80dp"
         android:layout_marginTop="342dp"
@@ -132,12 +129,11 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/healthCardNumber"
-        android:autofillHints="postalAddress"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/patientRegisterHealthCardNumberText"
+        android:autofillHints="postalAddress" />
 
     <EditText
-        android:id="@+id/patientPhoneNumber"
+        android:id="@+id/patientRegisterPhoneNumberText"
         style="@style/textField"
         android:layout_marginStart="80dp"
         android:layout_marginTop="384dp"
@@ -150,13 +146,11 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/patientAddress"
-        android:autofillHints="phone"
-
-        />
+        app:layout_constraintTop_toBottomOf="@+id/patientRegisterAddressText"
+        android:autofillHints="phone" />
 
     <EditText
-        android:id="@+id/patientEmail"
+        android:id="@+id/patientRegisterEmailText"
         style="@style/textField"
         android:layout_marginStart="80dp"
         android:layout_marginTop="426dp"
@@ -169,9 +163,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/patientPhoneNumber"
-        android:autofillHints="username|emailAddress"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/patientRegisterPhoneNumberText"
+        android:autofillHints="username|emailAddress" />
 
     <EditText
         android:id="@+id/patientPassword"
@@ -186,7 +179,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/patientEmail"
+        app:layout_constraintTop_toBottomOf="@+id/patientRegisterEmailText"
         app:layout_constraintTop_toTopOf="parent"
         android:autofillHints="password"
 
