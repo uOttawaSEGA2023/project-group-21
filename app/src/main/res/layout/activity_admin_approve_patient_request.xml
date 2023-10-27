@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminNavigation"
+    android:background="#F0EFFF"
+    >
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/header"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0" />
+
+    <EditText
+        android:id="@+id/adminName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-3dp"
+        android:layout_marginTop="-5dp"
+        android:text="Name"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.195"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.018"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/patientLogo"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginBottom="644dp"
+        android:src="@drawable/whitelogo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/admninstratorTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="10dp"
+        android:text="Administrator"
+        android:textSize="10dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.212"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/pfp"
+        android:layout_width="42dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/profilepicture"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        />
+
+    <TextView
+        android:id="@+id/pendingVerification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="116dp"
+        android:layout_marginEnd="10dp"
+        android:text="Patient Account Information"
+        android:textColor="@color/main"
+        android:textSize="27dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/backdrop"
+        android:layout_width="328dp"
+        android:layout_height="320dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="180dp"
+        android:background="@drawable/backdrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/patientFirstName"
+        style="@style/textField"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="216dp"
+        android:layout_marginEnd="50dp"
+        android:autofillHints="name"
+        android:hint="@string/firstName"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/patientLastName"
+        style="@style/textField"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="258dp"
+        android:layout_marginEnd="50dp"
+        android:hint="@string/lastName"
+        android:inputType="text"
+        android:textColor="@color/text_box_text"
+        android:textColorHint="#9B9B9B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/patientFirstName"
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="name"/>
+
+    <EditText
+        android:id="@+id/healthCardNumber"
+        style="@style/textField"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginEnd="50dp"
+        android:hint="@string/healthCardNumber"
+        android:inputType="text"
+        android:textColor="@color/text_box_text"
+        android:textColorHint="#9B9B9B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/patientLastName"
+        android:autofillHints="name"
+
+        />
+
+    <EditText
+        android:id="@+id/patientAddress"
+        style="@style/textField"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="342dp"
+        android:layout_marginEnd="50dp"
+        android:hint="@string/address"
+        android:inputType="text"
+        android:textColor="@color/text_box_text"
+        android:textColorHint="#9B9B9B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="postalAddress"
+        />
+
+    <EditText
+        android:id="@+id/patientPhoneNumber"
+        style="@style/textField"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="384dp"
+        android:layout_marginEnd="50dp"
+        android:hint="@string/phoneNumber"
+        android:inputType="phone"
+        android:textColor="@color/text_box_text"
+        android:textColorHint="#9B9B9B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/patientAddress"
+        android:autofillHints="phone"
+
+        />
+
+    <EditText
+        android:id="@+id/patientEmail"
+        style="@style/textField"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="426dp"
+        android:layout_marginEnd="50dp"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:textColor="#9B9B9B"
+        android:textColorHint="@color/text_box_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/patientPhoneNumber"
+        android:autofillHints="username|emailAddress"
+        />
+
+    <Button
+        android:id="@+id/approveRequest"
+        android:layout_width="150dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="596dp"
+        android:background="@drawable/greenbutton"
+        android:text="Approve"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/denyRequest"
+        android:layout_width="150dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="216dp"
+        android:layout_marginTop="596dp"
+        android:background="@drawable/redbutton"
+        android:text="Reject"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -42,8 +42,8 @@
         android:id="@+id/patientLogo"
         android:layout_width="150dp"
         android:layout_height="100dp"
-        android:layout_marginStart="168dp"
-        android:layout_marginBottom="644dp"
+        android:layout_marginStart="196dp"
+        android:layout_marginBottom="648dp"
         android:src="@drawable/whitelogo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -95,19 +95,19 @@
         android:layout_width="80dp"
         android:layout_height="39dp"
         android:layout_marginStart="164dp"
-        android:layout_marginTop="528dp"
+        android:layout_marginTop="600dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/accountApprovalHistory"
-        android:layout_width="315dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="208dp"
+        android:layout_width="330dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="164dp"
+        android:background="@color/intermediate_purple"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.531"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/intermediate_purple"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
