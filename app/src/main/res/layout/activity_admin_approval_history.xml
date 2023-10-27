@@ -48,20 +48,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/adminSettingButton"
-        style="@style/backButton"
-        android:layout_width="45dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="11dp"
-        android:text="S"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.985"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/admninstratorTitle"
         android:layout_width="wrap_content"
@@ -104,7 +90,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/patientBackToLoginButton"
+        android:id="@+id/patientRegBackButton"
         style="@style/backButton"
         android:layout_width="80dp"
         android:layout_height="39dp"

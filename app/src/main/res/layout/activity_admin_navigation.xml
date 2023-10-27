@@ -119,7 +119,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/viewApprovalHistory"
+        android:id="@+id/viewApprovalHistoryButton"
         android:background="@drawable/rounded_back_button"
         android:layout_width="315dp"
         android:layout_height="35dp"
