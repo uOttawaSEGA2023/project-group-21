@@ -80,7 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="116dp"
         android:layout_marginEnd="10dp"
-        android:text="Doctor Account Information"
+        android:text="Patient Account Information"
         android:textColor="@color/main"
         android:textSize="27dp"
         android:textStyle="bold"
