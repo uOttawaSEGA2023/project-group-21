@@ -201,8 +201,8 @@
         android:id="@+id/doctorApprovalApproveRequestButton"
         android:layout_width="150dp"
         android:layout_height="39dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="596dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="580dp"
         android:background="@drawable/greenbutton"
         android:text="Approve"
         app:layout_constraintStart_toStartOf="parent"
@@ -213,9 +213,19 @@
         android:layout_width="150dp"
         android:layout_height="39dp"
         android:layout_marginStart="216dp"
-        android:layout_marginTop="596dp"
+        android:layout_marginTop="580dp"
         android:background="@drawable/redbutton"
         android:text="Reject"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/doctorApprovalBackButton"
+        style="@style/backButton"
+        android:layout_width="80dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="636dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
