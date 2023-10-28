@@ -216,7 +216,7 @@ public class DoctorRegister extends AppCompatActivity {
                                 FirebaseUser user = dAuth.getCurrentUser();
 
                                 //Save the reference to collection
-                                DocumentReference dDoc = dStore.collection("Users").document(user.getUid());
+                                DocumentReference dDoc = dStore.collection("PendingUsers").document(user.getUid());
                                 Map<String, Object> userInfo = new HashMap<>();
                                 userInfo.put("First Name", regDoctorFirstName.getText().toString());
                                 userInfo.put("Last Name", regDoctorLastName.getText().toString());
@@ -292,7 +292,7 @@ public class DoctorRegister extends AppCompatActivity {
                 if (user != null) {
 
                     // Save the reference to Users field in the Firestore collection
-                    DocumentReference dDoc = dStore.collection("Users").document(user.getUid());
+                    DocumentReference dDoc = dStore.collection("PendingUsers").document(user.getUid());
 
                     Map<String, Object> userInfo = new HashMap<>();
 

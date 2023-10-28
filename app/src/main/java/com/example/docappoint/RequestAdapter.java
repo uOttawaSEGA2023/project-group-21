@@ -49,12 +49,12 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
 
         holder.seeMoreButton.setOnClickListener(v -> {
             Context context = holder.itemView.getContext();
-            if (wasRejected == false){
-                if ("Doctor".equals(holder.accountType.getText().toString())){
+            if (wasRejected == false) {
+                if ("Doctor".equals(holder.accountType.getText().toString())) {
                     Intent intent = new Intent(context, DoctorApproval.class);
                     context.startActivity(intent);
-                }
-                else {
+
+                } else if ("Patient".equals(holder.accountType.getText().toString())) {
                     Intent intent = new Intent(context, PatientApproval.class);
                     context.startActivity(intent);
                 }
@@ -70,8 +70,6 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
                     context.startActivity(intent);
                 }
             }
-
-
         });
     }
 

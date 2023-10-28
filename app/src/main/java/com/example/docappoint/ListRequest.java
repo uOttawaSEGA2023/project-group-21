@@ -8,11 +8,13 @@ public class ListRequest {
 
     private boolean wasRejected;
 
-    public ListRequest(String accountFirstName, String accountLastName, String accountType, boolean wasRejected) {
+    public ListRequest(String accountFirstName, String accountLastName, String accountType) {
         this.accountFirstName = accountFirstName;
         this.accountLastName = accountLastName;
         this.accountType = accountType;
-        this.wasRejected = wasRejected;
+
+        // Default rejection to false to add to list
+        this.wasRejected = false;
 
     }
 

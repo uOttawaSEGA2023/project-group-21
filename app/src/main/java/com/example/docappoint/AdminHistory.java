@@ -24,7 +24,7 @@ public class AdminHistory extends AppCompatActivity {
         setContentView(R.layout.activity_admin_approval_history);
 
 
-        rejectionRequests.add(new ListRequest("Kyle", "Tran", "Ugly", true));
+        rejectionRequests.add(new ListRequest("Kyle", "Tran", "Ugly"));
 
 
         rejectionList = findViewById(R.id.accountApprovalHistory);

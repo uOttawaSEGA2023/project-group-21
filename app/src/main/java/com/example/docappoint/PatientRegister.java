@@ -202,7 +202,7 @@ public class PatientRegister extends AppCompatActivity {
                                 Toast.makeText(PatientRegister.this, "Success! Account Has Been Created!", Toast.LENGTH_SHORT).show();
 
                                 //Save the reference to collection
-                                DocumentReference pDoc  = pStore.collection("Users").document(user.getUid());
+                                DocumentReference pDoc  = pStore.collection("PendingUsers").document(user.getUid());
                                 Map<String,Object> userInfo = new HashMap<>();
                                 userInfo.put("First Name",regPatientFirstName.getText().toString());
                                 userInfo.put("Last Name",regPatientLastName.getText().toString());
