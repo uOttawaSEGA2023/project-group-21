@@ -25,6 +25,7 @@ public class AdminNavigation extends AppCompatActivity {
 
         //TO BE EDITED LATER BECUASE IT NEEDS TO INCREASE DYNAMICALLY
         accountRequests.add(new ListRequest("Kyle", "Tran", "Doctor", false));
+        accountRequests.add(new ListRequest("Nahi", "Ishti", "Patient", false));
 
         adminSettingsBtn = findViewById(R.id.adminSettingButton);
         adminViewHistoryBtn = findViewById(R.id.viewApprovalHistoryButton);
