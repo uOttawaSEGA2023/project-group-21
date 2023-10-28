@@ -69,6 +69,7 @@ public class AdminNavigation extends AppCompatActivity {
                                 // Create ListRequest object ( DEFAULT ISREJECTED IS FALSE )
                                 ListRequest request = new ListRequest(firstName, lastName, userType);
                                 accountRequests.add(request);
+
                             }
 
                             RequestAdapter adapter = new RequestAdapter(accountRequests);
