@@ -61,6 +61,8 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
                     intent.putExtra("address", currentRequest.getAccountAddress());
                     intent.putExtra("phoneNumber", currentRequest.getAccountPhoneNumber());
                     intent.putExtra("email", currentRequest.getAccountEmail());
+                    intent.putExtra("password", currentRequest.getAccountPassword());
+                    intent.putExtra("uid", currentRequest.getAccountUID());
                     ArrayList<String> specialtiesList = currentRequest.getAccountSpecialties();
                     intent.putStringArrayListExtra("specialties", specialtiesList);
                     context.startActivity(intent);
@@ -75,6 +77,8 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
                         intent.putExtra("address", currentRequest.getAccountAddress());
                         intent.putExtra("phoneNumber", currentRequest.getAccountPhoneNumber());
                         intent.putExtra("email", currentRequest.getAccountEmail());
+                        intent.putExtra("password", currentRequest.getAccountPassword());
+                        intent.putExtra("uid", currentRequest.getAccountUID());
                         context.startActivity(intent);
                 }
             }

@@ -198,6 +198,10 @@ public class PatientRegister extends AppCompatActivity {
                                 // Get user data that is created
                                 FirebaseUser user = pAuth.getCurrentUser();
 
+
+                                // Get the user's UID
+                                String patientUID = user.getUid();
+
                                 // Success message if account is successfully created (using Toast data)
                                 Toast.makeText(PatientRegister.this, "Success! Account Has Been Created!", Toast.LENGTH_SHORT).show();
 
@@ -211,6 +215,7 @@ public class PatientRegister extends AppCompatActivity {
                                 userInfo.put("Phone Number",regPatientPhoneNumber.getText().toString());
                                 userInfo.put("Email",regPatientEmail.getText().toString());
                                 userInfo.put("Password",regPatientPassword.getText().toString());
+                                userInfo.put("UID",patientUID);
 
                                 // Specify the user is a patient user
                                 userInfo.put("isPatient", 1);
@@ -231,8 +236,8 @@ public class PatientRegister extends AppCompatActivity {
                                 Toast.makeText(PatientRegister.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
+}
 
-            }
         });
 
         // Back to homepage/login screen button

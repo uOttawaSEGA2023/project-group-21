@@ -65,9 +65,11 @@ public class AdminNavigation extends AppCompatActivity {
                                     String address = document.getString("Address");
                                     String phoneNumber = document.getString("Phone Number");
                                     String email = document.getString("Email");
+                                    String password = document.getString("Password");
+                                    String uid = document.getString("UID");
                                     String employeeNumber = document.getString("Employee Number");
                                     ArrayList<String> specialties = (ArrayList<String>) document.get("Specialties");
-                                    ListRequest request = new ListRequest(firstName, lastName, userType, address, phoneNumber, email, employeeNumber, specialties);
+                                    ListRequest request = new ListRequest(firstName, lastName, userType, address, phoneNumber, email, password, uid, employeeNumber, specialties);
                                     accountRequests.add(request);
 
 
@@ -78,8 +80,10 @@ public class AdminNavigation extends AppCompatActivity {
                                     String address = document.getString("Address");
                                     String phoneNumber = document.getString("Phone Number");
                                     String email = document.getString("Email");
+                                    String password = document.getString("Password");
+                                    String uid = document.getString("UID");
                                     String healthCardNumber = document.getString("Health Card Number");
-                                    ListRequest request = new ListRequest(firstName, lastName, userType, address, phoneNumber, email, healthCardNumber);
+                                    ListRequest request = new ListRequest(firstName, lastName, userType, address, phoneNumber, email, password, uid, healthCardNumber);
                                     accountRequests.add(request);
                                 }
 

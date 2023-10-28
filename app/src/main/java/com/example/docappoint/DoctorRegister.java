@@ -215,6 +215,8 @@ public class DoctorRegister extends AppCompatActivity {
                                 // Get user data that is created
                                 FirebaseUser user = dAuth.getCurrentUser();
 
+                                String doctorUID = user.getUid();
+
                                 //Save the reference to collection
                                 DocumentReference dDoc = dStore.collection("PendingUsers").document(user.getUid());
                                 Map<String, Object> userInfo = new HashMap<>();
@@ -226,6 +228,7 @@ public class DoctorRegister extends AppCompatActivity {
                                 userInfo.put("Phone Number", regDoctorPhoneNumber.getText().toString());
                                 userInfo.put("Email", regDoctorEmail.getText().toString());
                                 userInfo.put("Password", regDoctorPassword.getText().toString());
+                                userInfo.put("UID", doctorUID);
 
                                 // Specify the user is a doctor user
                                 userInfo.put("isDoctor", 1);

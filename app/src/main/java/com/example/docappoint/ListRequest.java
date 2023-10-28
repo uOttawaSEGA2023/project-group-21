@@ -16,6 +16,8 @@ public class ListRequest {
     private String accountAddress;
     private String accountPhoneNumber;
     private String accountEmail;
+    private String accountPassword;
+    private  String accountUID;
 
     // UNIQUE PATIENT FIELDS
     private String accountHealthCardNumber;
@@ -26,28 +28,31 @@ public class ListRequest {
 
 
     // Constructor for Patient
-    public ListRequest(String accountFirstName, String accountLastName, String accountType, String accountAddress, String accountPhoneNumber, String accountEmail, String accountHealthCardNumber) {
+    public ListRequest(String accountFirstName, String accountLastName, String accountType, String accountAddress, String accountPhoneNumber, String accountEmail,String accountPassword, String accountUID, String accountHealthCardNumber) {
         this.accountFirstName = accountFirstName;
         this.accountLastName = accountLastName;
         this.accountType = accountType;
         this.accountAddress = accountAddress;
         this.accountPhoneNumber = accountPhoneNumber;
         this.accountEmail = accountEmail;
+        this.accountPassword = accountPassword;
+        this.accountUID = accountUID;
         this.accountHealthCardNumber = accountHealthCardNumber;
     }
 
     // Constructor for Doctor
-    public ListRequest(String accountFirstName, String accountLastName, String accountType, String accountAddress, String accountPhoneNumber, String accountEmail, String accountEmployeeNumber, ArrayList<String> accountSpecialties) {
+    public ListRequest(String accountFirstName, String accountLastName, String accountType, String accountAddress, String accountPhoneNumber, String accountEmail, String accountPassword, String accountUID, String accountEmployeeNumber, ArrayList<String> accountSpecialties) {
         this.accountFirstName = accountFirstName;
         this.accountLastName = accountLastName;
         this.accountType = accountType;
         this.accountAddress = accountAddress;
         this.accountPhoneNumber = accountPhoneNumber;
         this.accountEmail = accountEmail;
+        this.accountPassword = accountPassword;
+        this.accountUID = accountUID;
         this.accountEmployeeNumber = accountEmployeeNumber;
         this.accountSpecialties = accountSpecialties;
     }
-
 
     // MANDATORY GETTER METHODS
 
@@ -76,6 +81,10 @@ public class ListRequest {
     public String getAccountEmail() {
         return accountEmail;
     }
+    public String getAccountPassword() {
+        return accountPassword;
+    }
+    public String getAccountUID() {return  accountUID;}
 
     // PATIENT GETTER METHODS
 
