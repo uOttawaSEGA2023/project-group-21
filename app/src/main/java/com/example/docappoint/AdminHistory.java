@@ -17,7 +17,9 @@ public class AdminHistory extends AppCompatActivity {
     Button adminHistoryBackBtn;
     RecyclerView rejectionList;
     List<ListRequest> rejectionRequests = new ArrayList<>();
+/*
 
+// TESTING SINCE OTHER CLASSES CHANGED
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,5 +45,5 @@ public class AdminHistory extends AppCompatActivity {
                 finish();
             }
             });
-    }
+    }*/
     }

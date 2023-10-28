@@ -32,13 +32,12 @@ public class DoctorApproval extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_approve_doctor_request);
 
+        // Initialize Firebase and Firestore
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         userId = fAuth.getCurrentUser().getUid();
 
-        // Fetch data from Firestore database for pending users waiting to get approved
-        DocumentReference pendingUsersDocRef = fStore.collection("PendingUsers").document(userId);
-
+        // Link xml files
         doctorApprovalApproveRequestButton = findViewById(R.id.doctorApprovalApproveRequestButton);
         doctorApprovalDenyRequestButton = findViewById(R.id.doctorApprovalDenyRequestButton);
         doctorApprovalBackButton = findViewById(R.id.doctorApprovalBackButton);
@@ -48,6 +47,28 @@ public class DoctorApproval extends AppCompatActivity {
         doctorApprovalEmployeeNumberText = findViewById(R.id.doctorApprovalEmployeeNumberText);
         doctorApprovalPhoneNumberText = findViewById(R.id.doctorApprovalPhoneNumberText);
         doctorApprovalEmailText = findViewById(R.id.doctorApprovalEmailText);
+
+        // Fetch data from Firestore database for pending users waiting to get approved
+        DocumentReference pendingUsersDocRef = fStore.collection("PendingUsers").document(userId);
+
+        // Retrieve user data from the intent extras
+        Intent intent = getIntent();
+        if (intent != null) {
+            String firstName = intent.getStringExtra("firstName");
+            String lastName = intent.getStringExtra("lastName");
+            String address = intent.getStringExtra("address");
+            String employeeNumber = intent.getStringExtra("employeeNumber");
+            String phoneNumber = intent.getStringExtra("phoneNumber");
+            String email = intent.getStringExtra("email");
+
+            // Update the EditText fields with the retrieved data
+            doctorApprovalFirstNameText.setText(firstName);
+            doctorApprovalLastNameText.setText(lastName);
+            doctorApprovalAddressText.setText(address);
+            doctorApprovalEmployeeNumberText.setText(employeeNumber);
+            doctorApprovalPhoneNumberText.setText(phoneNumber);
+            doctorApprovalEmailText.setText(email);
+        }
 
         doctorApprovalApproveRequestButton.setOnClickListener(new View.OnClickListener(){
             @Override

@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHolder> {
@@ -52,11 +53,29 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
             if (wasRejected == false) {
                 if ("Doctor".equals(holder.accountType.getText().toString())) {
                     Intent intent = new Intent(context, DoctorApproval.class);
+
+                    // Pass user data intent to approval page
+                    intent.putExtra("firstName", currentRequest.getAccountFirstName());
+                    intent.putExtra("lastName", currentRequest.getAccountLastName());
+                    intent.putExtra("employeeNumber", currentRequest.getAccountEmployeeNumber());
+                    intent.putExtra("address", currentRequest.getAccountAddress());
+                    intent.putExtra("phoneNumber", currentRequest.getAccountPhoneNumber());
+                    intent.putExtra("email", currentRequest.getAccountEmail());
+                    ArrayList<String> specialtiesList = currentRequest.getAccountSpecialties();
+                    intent.putStringArrayListExtra("specialties", specialtiesList);
                     context.startActivity(intent);
 
                 } else if ("Patient".equals(holder.accountType.getText().toString())) {
                     Intent intent = new Intent(context, PatientApproval.class);
-                    context.startActivity(intent);
+
+                        // Pass user data intent to approval page
+                        intent.putExtra("firstName", currentRequest.getAccountFirstName());
+                        intent.putExtra("lastName", currentRequest.getAccountLastName());
+                        intent.putExtra("healthCardNumber", currentRequest.getAccountHealthCardNumber());
+                        intent.putExtra("address", currentRequest.getAccountAddress());
+                        intent.putExtra("phoneNumber", currentRequest.getAccountPhoneNumber());
+                        intent.putExtra("email", currentRequest.getAccountEmail());
+                        context.startActivity(intent);
                 }
             }
             else {

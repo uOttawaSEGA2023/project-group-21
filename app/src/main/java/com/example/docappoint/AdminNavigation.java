@@ -62,13 +62,26 @@ public class AdminNavigation extends AppCompatActivity {
 
                                 if (isDoctor == 1) {
                                     userType = "Doctor";
+                                    String address = document.getString("Address");
+                                    String phoneNumber = document.getString("Phone Number");
+                                    String email = document.getString("Email");
+                                    String employeeNumber = document.getString("Employee Number");
+                                    ArrayList<String> specialties = (ArrayList<String>) document.get("Specialties");
+                                    ListRequest request = new ListRequest(firstName, lastName, userType, address, phoneNumber, email, employeeNumber, specialties);
+                                    accountRequests.add(request);
+
+
                                 } else if (isPatient == 1) {
                                     userType = "Patient";
-                                }
 
-                                // Create ListRequest object ( DEFAULT ISREJECTED IS FALSE )
-                                ListRequest request = new ListRequest(firstName, lastName, userType);
-                                accountRequests.add(request);
+                                    // Create ListRequest for patients
+                                    String address = document.getString("Address");
+                                    String phoneNumber = document.getString("Phone Number");
+                                    String email = document.getString("Email");
+                                    String healthCardNumber = document.getString("Health Card Number");
+                                    ListRequest request = new ListRequest(firstName, lastName, userType, address, phoneNumber, email, healthCardNumber);
+                                    accountRequests.add(request);
+                                }
 
                             }
 

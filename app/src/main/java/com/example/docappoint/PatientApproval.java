@@ -1,11 +1,16 @@
 package com.example.docappoint;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -15,15 +20,23 @@ public class PatientApproval extends AppCompatActivity {
 
     // Initialize Firestore
     FirebaseFirestore fStore;
+
+    // Initialize Firebase Auth
+    FirebaseAuth mAuth;
+
     EditText patientApprovalFirstNameTxt, patientApprovalLastNameTxt, patientApprovalHealthCardNumberTxt,
             patientApprovalAddressTxt, patientApprovalPhoneNumberTxt, patientApprovalEmailTxt;
 
-    Button patientApprovalApproveRequestBtn, patientApprovalDenyRequestBtn;
+    Button patientApprovalBackBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_approve_patient_request);
+
+        // Initialize Firebase Firestore and Firebase Auth
+        fStore = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
 
         // Link xml elements
         patientApprovalFirstNameTxt = findViewById(R.id.patientApprovalFirstNameText);
@@ -33,38 +46,39 @@ public class PatientApproval extends AppCompatActivity {
         patientApprovalPhoneNumberTxt = findViewById(R.id.patientApprovalPhoneNumberText);
         patientApprovalEmailTxt = findViewById(R.id.patientApprovalEmailText);
 
-        /*
-        // Get Firestore instance to use
-        fStore = FirebaseFirestore.getInstance();
+        // Button to navigate back
+        patientApprovalBackBtn = findViewById(R.id.patientApprovalBackButton);
 
-        // Get the userId from the intent
-        String userId = getIntent().getStringExtra("userId");
+        FirebaseAuth mAuth;
 
-        // Use userId to fetch user data from Firestore
-        DocumentReference patientDocRef = fStore.collection("PendingUsers").document(userId);
+                   // Retrieve user data from the intent extras
+                    Intent intent = getIntent();
+                    if (intent != null) {
+                        String firstName = intent.getStringExtra("firstName");
+                        String lastName = intent.getStringExtra("lastName");
+                        String healthCardNumber = intent.getStringExtra("healthCardNumber");
+                        String address = intent.getStringExtra("address");
+                        String phoneNumber = intent.getStringExtra("phoneNumber");
+                        String email = intent.getStringExtra("email");
 
-        patientDocRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                        // Update the EditText fields with the retrieved data
+                        patientApprovalFirstNameTxt.setText(firstName);
+                        patientApprovalLastNameTxt.setText(lastName);
+                        patientApprovalHealthCardNumberTxt.setText(healthCardNumber);
+                        patientApprovalAddressTxt.setText(address);
+                        patientApprovalPhoneNumberTxt.setText(phoneNumber);
+                        patientApprovalEmailTxt.setText(email);
+                    }
+
+
+        // Button functionality to navigate back
+        patientApprovalBackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if (documentSnapshot.exists()) {
-                    // Display user data in the EditText fields
-                    patientApprovalFirstNameTxt.setText(documentSnapshot.getString("First Name"));
-                    patientApprovalLastNameTxt.setText(documentSnapshot.getString("Last Name"));
-                    patientApprovalHealthCardNumberTxt.setText(documentSnapshot.getString("Health Card Number"));
-                    patientApprovalAddressTxt.setText(documentSnapshot.getString("Address"));
-                    patientApprovalPhoneNumberTxt.setText(documentSnapshot.getString("Phone Number"));
-                    patientApprovalEmailTxt.setText(documentSnapshot.getString("Email"));
-                }
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), AdminNavigation.class));
+                finish();
             }
         });
     }
-
-
-
-
-*/
-    }
 }
 
-
-        // BUTTON FUNCTIONALITY HERE
