@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
@@ -57,7 +58,6 @@ public class PatientApproval extends AppCompatActivity {
         patientApprovalApproveRequestbtn = findViewById(R.id.patientApprovalApproveRequestButton);
         patientApprovalDenyRequestBtn = findViewById(R.id.patientApprovalDenyRequestButton);
 
-        FirebaseAuth mAuth;
 
         // Retrieve user data from the intent extras
         Intent intent = getIntent();
@@ -81,6 +81,7 @@ public class PatientApproval extends AppCompatActivity {
 
             // Approve button will copy PendingUsers collection to Users
             patientApprovalApproveRequestbtn.setOnClickListener(new View.OnClickListener() {
+
                 @Override
                 public void onClick(View v) {
                     savePatientDataToUsers(firstName, lastName, healthCardNumber, address, phoneNumber, email, password);
@@ -97,15 +98,17 @@ public class PatientApproval extends AppCompatActivity {
             });
 
             //Deny button will navigate to the history page
-            patientApprovalDenyRequestBtn.setOnClickListener(new View.OnClickListener(){
+            patientApprovalDenyRequestBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v){
+                public void onClick(View v) {
+
                     savePatientDataToRejectedUsers(firstName, lastName, healthCardNumber, address, phoneNumber, email, password);
 
                     CollectionReference pendingUsersCollection = fStore.collection("PendingUsers");
 
                     // Get the document reference for the user using the UID
                     DocumentReference pendingUserDocument = pendingUsersCollection.document(uid);
+
 
                     pendingUserDocument
                             .update("wasRejected", true);
@@ -117,8 +120,6 @@ public class PatientApproval extends AppCompatActivity {
 
                 }
             });
-
-
         }
 
         // Button functionality to navigate back
@@ -129,70 +130,112 @@ public class PatientApproval extends AppCompatActivity {
                 finish();
             }
         });
+
     }
 
     // Using the PendingUsers information, save it on a new colection called Users in firebase
     private void savePatientDataToUsers(String firstName, String lastName, String healthCardNumber, String address, String phoneNumber, String email, String password) {
-        CollectionReference usersCollection = fStore.collection("Users");
-        DocumentReference patientDocument = usersCollection.document();
 
-        Map<String, Object> patientData = new HashMap<>();
-        patientData.put("First Name", firstName);
-        patientData.put("Last Name", lastName);
-        patientData.put("Health Card Number", healthCardNumber);
-        patientData.put("Address", address);
-        patientData.put("Phone Number", phoneNumber);
-        patientData.put("Email", email);
-        patientData.put("Password", password);
-        patientData.put("isPatient", 1);
+        // Create authentication using Firebase Auth for Users collection
+        FirebaseAuth fAuth = FirebaseAuth.getInstance();
 
-        patientDocument.set(patientData)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
+        // Using email and password
+        fAuth.createUserWithEmailAndPassword(email, password)
+                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
-                    public void onSuccess(Void aVoid) {
-                        // If successful display success toast message
-                        Toast.makeText(PatientApproval.this, "User approved!", Toast.LENGTH_SHORT).show();
+                    public void onSuccess(AuthResult authResult) {
+                        // Get the user data that is created
+                        FirebaseUser user = fAuth.getCurrentUser();
+
+                        // Get the user's UID
+                        String patientUID = user.getUid();
+
+                        // Save the reference to the "Users" collection
+                        DocumentReference patientDocument = fStore.collection("Users").document(patientUID);
+
+                        Map<String, Object> patientData = new HashMap<>();
+                        patientData.put("First Name", firstName);
+                        patientData.put("Last Name", lastName);
+                        patientData.put("Health Card Number", healthCardNumber);
+                        patientData.put("Address", address);
+                        patientData.put("Phone Number", phoneNumber);
+                        patientData.put("Email", email);
+                        patientData.put("Password", password);
+                        patientData.put("isPatient", 1);
+                        patientData.put("isApproved", true);
+
+                        patientDocument.set(patientData)
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        // If successful display success toast message
+                                        Toast.makeText(PatientApproval.this, "User approved!", Toast.LENGTH_SHORT).show();
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(Exception e) {
+                                        // If error occurs display error toast message
+                                        Toast.makeText(PatientApproval.this, "Failed to approve user" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                        ;
+
                     }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(Exception e) {
-                        // If error occurs display error toast message
-                        Toast.makeText(PatientApproval.this, "Failed to approve user" + e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });;
+
+                });
 
     }
 
     private void savePatientDataToRejectedUsers(String firstName, String lastName, String healthCardNumber, String address, String phoneNumber, String email, String password) {
-        CollectionReference usersCollection = fStore.collection("RejectedUsers");
-        DocumentReference doctorDocument = usersCollection.document();
 
-        Map<String, Object>   patientData = new HashMap<>();
-        patientData.put("First Name", firstName);
-        patientData.put("Last Name", lastName);
-        patientData.put("Health Card Number", healthCardNumber);
-        patientData.put("Address", address);
-        patientData.put("Phone Number", phoneNumber);
-        patientData.put("Email", email);
-        patientData.put("Password", password);
-        patientData.put("isPatient", 1);
+        // Create authentication using Firebase Auth for Users collection
+        FirebaseAuth fAuth = FirebaseAuth.getInstance();
 
-        doctorDocument.set(patientData)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
+        // Using email and password
+        fAuth.createUserWithEmailAndPassword(email, password)
+                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
-                    public void onSuccess(Void aVoid) {
-                        // If successful display success toast message
-                        Toast.makeText(PatientApproval.this, "User denied!", Toast.LENGTH_SHORT).show();
+                    public void onSuccess(AuthResult authResult) {
+                        // Get the user data that is created
+                        FirebaseUser user = fAuth.getCurrentUser();
+
+                        // Get the user's UID
+                        String patientUID = user.getUid();
+
+                        // Save the reference to the "Users" collection
+                        DocumentReference patientDocument = fStore.collection("RejectedUsers").document(patientUID);
+
+                        Map<String, Object> patientData = new HashMap<>();
+                        patientData.put("First Name", firstName);
+                        patientData.put("Last Name", lastName);
+                        patientData.put("Health Card Number", healthCardNumber);
+                        patientData.put("Address", address);
+                        patientData.put("Phone Number", phoneNumber);
+                        patientData.put("Email", email);
+                        patientData.put("Password", password);
+                        patientData.put("isPatient", 1);
+                        patientData.put("isApproved", false);
+
+                        patientDocument.set(patientData)
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        // If successful display success toast message
+                                        Toast.makeText(PatientApproval.this, "User denied!", Toast.LENGTH_SHORT).show();
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(Exception e) {
+                                        // If error occurs display error toast message
+                                        Toast.makeText(PatientApproval.this, "Failed to deny user" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+
                     }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(Exception e) {
-                        // If error occurs display error toast message
-                        Toast.makeText(PatientApproval.this, "Failed to deny user" + e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });;
+
+                });
     }
 
     private void deletePatientDataFromPendingUsers(String uid) {

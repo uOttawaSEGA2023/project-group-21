@@ -47,9 +47,6 @@ public class DoctorRegister extends AppCompatActivity {
     EditText regDoctorFirstName, regDoctorLastName, regDoctorEmployeeNumber, regDoctorAddress, regDoctorPhoneNumber, regDoctorEmail, regDoctorPassword, regDoctorConfirmPassword;
     Button createDoctorAccount, doctorBackToLogin, regDoctorSpecialties;
 
-    // Add Firebase Integration (using Firebase Auth to query user)
-    FirebaseAuth dAuth;
-
     // Add Firestore database (using Firestore to query user)
     FirebaseFirestore dStore;
 
@@ -117,7 +114,6 @@ public class DoctorRegister extends AppCompatActivity {
         doctorBackToLogin = findViewById(R.id.doctorBackToLoginButton);
 
         // Initialize Firebase class
-        dAuth = FirebaseAuth.getInstance();
         dStore = FirebaseFirestore.getInstance();
 
         // Click events
@@ -201,48 +197,35 @@ public class DoctorRegister extends AppCompatActivity {
                     return;
                 }
 
-                // Create user when provided the email and password (if authentication is successful call addOnSuccessListener)
+                // Save user data to PendingUsers collection
 
-                dAuth.createUserWithEmailAndPassword(doctorEmail, doctorPassword)
+                //Save the reference to collection
+                DocumentReference dDoc = dStore.collection("PendingUsers").document();
+                Map<String, Object> userInfo = new HashMap<>();
+                userInfo.put("First Name", regDoctorFirstName.getText().toString());
+                userInfo.put("Last Name", regDoctorLastName.getText().toString());
+                userInfo.put("Specialties", selectedSpecialties);
+                userInfo.put("Employee Number", regDoctorEmployeeNumber.getText().toString());
+                userInfo.put("Address", regDoctorAddress.getText().toString());
+                userInfo.put("Phone Number", regDoctorPhoneNumber.getText().toString());
+                userInfo.put("Email", regDoctorEmail.getText().toString());
+                userInfo.put("Password", regDoctorPassword.getText().toString());
+                userInfo.put("UID", dDoc.getId());
 
-                        .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                // Specify the user is a doctor user
+                userInfo.put("isDoctor", 1);
+
+                //set the value of rejected to false
+                userInfo.put("wasRejected", false);
+
+                // Save to Firestore database
+                dDoc.set(userInfo)
+
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
-                            public void onSuccess(AuthResult authResult) {
-
-                                // Success message if the account is successfully created (using Toast data)
+                            public void onSuccess(Void aVoid) {
                                 Toast.makeText(DoctorRegister.this, "Success! Account Has Been Created!", Toast.LENGTH_SHORT).show();
-
-                                // Get user data that is created
-                                FirebaseUser user = dAuth.getCurrentUser();
-
-                                String doctorUID = user.getUid();
-
-                                //Save the reference to collection
-                                DocumentReference dDoc = dStore.collection("PendingUsers").document(user.getUid());
-                                Map<String, Object> userInfo = new HashMap<>();
-                                userInfo.put("First Name", regDoctorFirstName.getText().toString());
-                                userInfo.put("Last Name", regDoctorLastName.getText().toString());
-                                userInfo.put("Specialties", selectedSpecialties);
-                                userInfo.put("Employee Number", regDoctorEmployeeNumber.getText().toString());
-                                userInfo.put("Address", regDoctorAddress.getText().toString());
-                                userInfo.put("Phone Number", regDoctorPhoneNumber.getText().toString());
-                                userInfo.put("Email", regDoctorEmail.getText().toString());
-                                userInfo.put("Password", regDoctorPassword.getText().toString());
-                                userInfo.put("UID", doctorUID);
-
-                                // Specify the user is a doctor user
-                                userInfo.put("isDoctor", 1);
-
-                                //set the value of rejected to false
-                                userInfo.put("wasRejected", false);
-
-                                // Save to Firestore database
-                                dDoc.set(userInfo);
-
-                                // Send the user to the doctor homepage
-                                startActivity(new Intent(getApplicationContext(), DoctorHomepage.class));
-
-                                // Remove all the previous activity
+                                startActivity(new Intent(getApplicationContext(), Homepage.class));
                                 finish();
                             }
                         })
@@ -252,8 +235,11 @@ public class DoctorRegister extends AppCompatActivity {
                                 Toast.makeText(DoctorRegister.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
+
+
             }
         });
+
 
         // Back to select account screen
         doctorBackToLogin.setOnClickListener(new View.OnClickListener() {
@@ -262,6 +248,7 @@ public class DoctorRegister extends AppCompatActivity {
                 finish();
             }
         });
+
 
         // Go to Specialities page
         regDoctorSpecialties.setOnClickListener(new View.OnClickListener() {
@@ -292,29 +279,43 @@ public class DoctorRegister extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 selectedSpecialties = data.getStringArrayListExtra("selectedSpecialties");
 
-                // Get the current user
-                FirebaseUser user = dAuth.getCurrentUser();
 
-                if (user != null) {
+                // Save the reference to Users field in the Firestore collection
+                DocumentReference dDoc = dStore.collection("PendingUsers").document();
 
-                    // Save the reference to Users field in the Firestore collection
-                    DocumentReference dDoc = dStore.collection("PendingUsers").document(user.getUid());
+                Map<String, Object> userInfo = new HashMap<>();
 
-                    Map<String, Object> userInfo = new HashMap<>();
+                // Add specialties array to Specialties field
+                userInfo.put("Specialties", selectedSpecialties);
 
-                    // Add specialties array to Specialties field
-                    userInfo.put("Specialties", selectedSpecialties);
+                // Update the user information
+                dDoc.set(userInfo)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                // After saving specialties, delete the document (containing only the specialties)
+                                dDoc.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
 
-                    // Update the user information
-                    dDoc.set(userInfo);
-                }
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(Exception e) {
+                                        // Handle the error if document deletion fails
+                                        Toast.makeText(DoctorRegister.this, "Error deleting document: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            }
+                        });
+
             }
         }
     }
-
-
-
 }
+
+
+
 
 
 

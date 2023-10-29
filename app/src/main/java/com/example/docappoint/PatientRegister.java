@@ -31,40 +31,37 @@ public class PatientRegister extends AppCompatActivity {
 
     // Declare variables to link to xml files
 
-    EditText regPatientFirstName,regPatientLastName,regPatientHealthCardNum,regPatientAddress,regPatientPhoneNumber,regPatientEmail,regPatientPassword,regPatientConfirmPassword;
+    EditText regPatientFirstName, regPatientLastName, regPatientHealthCardNum, regPatientAddress, regPatientPhoneNumber, regPatientEmail, regPatientPassword, regPatientConfirmPassword;
     Button createPatientAccount, patientBackToLogin;
 
-    // Add Firebase Integration (using Firebase Auth to query user)
-    FirebaseAuth pAuth;
     // Add Firestore database (using Firestore to query user)
     FirebaseFirestore pStore;
 
     private boolean validPhoneNumberCheck(String number) {
         PhoneNumberUtil phoneNumberUtil = PhoneNumberUtil.getInstance();
 
-        try{
+        try {
             Phonenumber.PhoneNumber NumberToCheck = phoneNumberUtil.parse(number, "CA");
             return phoneNumberUtil.isValidNumber(NumberToCheck);
-        }
-        catch (NumberParseException e){
+        } catch (NumberParseException e) {
             return false;
         }
 
     }
+
     private boolean validAddressCheck(String address) {
         String regex = "^\\d+\\s+[a-zA-Z]+(\\s+[a-zA-Z]+)*(\\s+[a-zA-Z]+(\\s+[a-zA-Z]+)*)?$";
         return address.matches(regex);
     }
 
-    private boolean validHealthCardCheck(String enumber){
-        if (enumber.length() != 10){
+    private boolean validHealthCardCheck(String enumber) {
+        if (enumber.length() != 10) {
             return false;
         }
 
         try {
-            int i  = Integer.parseInt(enumber);
-        }
-        catch (NumberFormatException nfe){
+            int i = Integer.parseInt(enumber);
+        } catch (NumberFormatException nfe) {
             return false;
         }
 
@@ -100,8 +97,6 @@ public class PatientRegister extends AppCompatActivity {
         createPatientAccount = findViewById(R.id.createPatientAccountButton);
         patientBackToLogin = findViewById(R.id.patientRegBackButton);
 
-        // Initialize Firebase class
-        pAuth = FirebaseAuth.getInstance();
         pStore = FirebaseFirestore.getInstance();
 
         // Click events
@@ -122,7 +117,7 @@ public class PatientRegister extends AppCompatActivity {
 
                 // Validate the data if field is empty
 
-                if(patientFirstName.isEmpty()){
+                if (patientFirstName.isEmpty()) {
                     regPatientFirstName.setError("This Field is Required");
                     return;
                 }
@@ -136,7 +131,7 @@ public class PatientRegister extends AppCompatActivity {
                     return;
                 }
 
-                if (!validHealthCardCheck(patientHealthCardNum)){
+                if (!validHealthCardCheck(patientHealthCardNum)) {
                     regPatientHealthCardNum.setError("Invalid Health Card Number (Must be 10 numbers)");
                     return;
                 }
@@ -146,7 +141,7 @@ public class PatientRegister extends AppCompatActivity {
                     return;
                 }
 
-                if (!validAddressCheck(patientAddress)){
+                if (!validAddressCheck(patientAddress)) {
                     regPatientAddress.setError("Invalid Address");
                     return;
                 }
@@ -156,7 +151,7 @@ public class PatientRegister extends AppCompatActivity {
                     return;
                 }
 
-                if (!validPhoneNumberCheck(patientPhoneNumber)){
+                if (!validPhoneNumberCheck(patientPhoneNumber)) {
                     regPatientPhoneNumber.setError("Invalid Phone Number");
                     return;
                 }
@@ -171,7 +166,7 @@ public class PatientRegister extends AppCompatActivity {
                     return;
                 }
 
-                if (!validPasswordCheck(patientPassword)){
+                if (!validPasswordCheck(patientPassword)) {
                     regPatientPassword.setError("Password is not valid (MUST HAVE 1 NUMBER AND 1 CHARACTER WITH 8 OR MORE CHARACTERS");
                     return;
                 }
@@ -182,54 +177,36 @@ public class PatientRegister extends AppCompatActivity {
                 }
 
                 // Checks if the password and confirmPassword is the same
-                if (!patientPassword.equals(patientConfirmPassword)){
+                if (!patientPassword.equals(patientConfirmPassword)) {
                     regPatientConfirmPassword.setError("Password Do Not Match");
                     return;
                 }
 
+                //Save the reference to collection
+                DocumentReference pDoc = pStore.collection("PendingUsers").document();
+                Map<String, Object> userInfo = new HashMap<>();
+                userInfo.put("First Name", regPatientFirstName.getText().toString());
+                userInfo.put("Last Name", regPatientLastName.getText().toString());
+                userInfo.put("Health Card Number", regPatientHealthCardNum.getText().toString());
+                userInfo.put("Address", regPatientAddress.getText().toString());
+                userInfo.put("Phone Number", regPatientPhoneNumber.getText().toString());
+                userInfo.put("Email", regPatientEmail.getText().toString());
+                userInfo.put("Password", regPatientPassword.getText().toString());
+                userInfo.put("UID", pDoc.getId());
 
-                // Create user when provided the email and password (if authentication is successful call addOnSuccessListener
+                // Specify the user is a patient user
+                userInfo.put("isPatient", 1);
 
-                pAuth.createUserWithEmailAndPassword(patientEmail, patientPassword)
-                        .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                //set the value of rejected to false
+                userInfo.put("wasRejected", false);
+
+                // Save to Firestore database
+                pDoc.set(userInfo)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
-                            public void onSuccess(AuthResult authResult) {
-
-                                // Get user data that is created
-                                FirebaseUser user = pAuth.getCurrentUser();
-
-
-                                // Get the user's UID
-                                String patientUID = user.getUid();
-
-                                // Success message if account is successfully created (using Toast data)
+                            public void onSuccess(Void aVoid) {
                                 Toast.makeText(PatientRegister.this, "Success! Account Has Been Created!", Toast.LENGTH_SHORT).show();
-
-                                //Save the reference to collection
-                                DocumentReference pDoc  = pStore.collection("PendingUsers").document(user.getUid());
-                                Map<String,Object> userInfo = new HashMap<>();
-                                userInfo.put("First Name",regPatientFirstName.getText().toString());
-                                userInfo.put("Last Name",regPatientLastName.getText().toString());
-                                userInfo.put("Health Card Number",regPatientHealthCardNum.getText().toString());
-                                userInfo.put("Address",regPatientAddress.getText().toString());
-                                userInfo.put("Phone Number",regPatientPhoneNumber.getText().toString());
-                                userInfo.put("Email",regPatientEmail.getText().toString());
-                                userInfo.put("Password",regPatientPassword.getText().toString());
-                                userInfo.put("UID",patientUID);
-
-                                // Specify the user is a patient user
-                                userInfo.put("isPatient", 1);
-
-                                //set the value of rejected to false
-                                userInfo.put("wasRejected", false);
-
-                                // Save to Firestore database
-                                pDoc.set(userInfo);
-
-                                // Send the user to the patient homepgae
-                                startActivity(new Intent(getApplicationContext(), PatientHomepage.class));
-
-                                // Remove all the previous activity
+                                startActivity(new Intent(getApplicationContext(), Homepage.class));
                                 finish();
                             }
                         })
@@ -239,8 +216,7 @@ public class PatientRegister extends AppCompatActivity {
                                 Toast.makeText(PatientRegister.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
-}
-
+            }
         });
 
         // Back to homepage/login screen button
