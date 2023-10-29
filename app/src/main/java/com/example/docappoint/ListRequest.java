@@ -38,7 +38,7 @@ public class ListRequest {
         this.accountPassword = accountPassword;
         this.accountUID = accountUID;
         this.accountHealthCardNumber = accountHealthCardNumber;
-        this.wasRejected = false;
+        //this.wasRejected = false;
     }
 
     // Constructor for Doctor
@@ -53,7 +53,7 @@ public class ListRequest {
         this.accountUID = accountUID;
         this.accountEmployeeNumber = accountEmployeeNumber;
         this.accountSpecialties = accountSpecialties;
-        this.wasRejected = false; 
+        //this.wasRejected = false;
     }
 
     // MANDATORY GETTER METHODS
@@ -103,6 +103,11 @@ public class ListRequest {
 
     public ArrayList<String> getAccountSpecialties() {
         return accountSpecialties;
+    }
+
+    //setter for was rejected value
+    public void setRejected(boolean b){
+        this.wasRejected = b;
     }
 
 }

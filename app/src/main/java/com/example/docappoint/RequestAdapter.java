@@ -70,16 +70,16 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
                 } else if ("Patient".equals(holder.accountType.getText().toString())) {
                     Intent intent = new Intent(context, PatientApproval.class);
 
-                        // Pass user data intent to approval page
-                        intent.putExtra("firstName", currentRequest.getAccountFirstName());
-                        intent.putExtra("lastName", currentRequest.getAccountLastName());
-                        intent.putExtra("healthCardNumber", currentRequest.getAccountHealthCardNumber());
-                        intent.putExtra("address", currentRequest.getAccountAddress());
-                        intent.putExtra("phoneNumber", currentRequest.getAccountPhoneNumber());
-                        intent.putExtra("email", currentRequest.getAccountEmail());
-                        intent.putExtra("password", currentRequest.getAccountPassword());
-                        intent.putExtra("uid", currentRequest.getAccountUID());
-                        context.startActivity(intent);
+                    // Pass user data intent to approval page
+                    intent.putExtra("firstName", currentRequest.getAccountFirstName());
+                    intent.putExtra("lastName", currentRequest.getAccountLastName());
+                    intent.putExtra("healthCardNumber", currentRequest.getAccountHealthCardNumber());
+                    intent.putExtra("address", currentRequest.getAccountAddress());
+                    intent.putExtra("phoneNumber", currentRequest.getAccountPhoneNumber());
+                    intent.putExtra("email", currentRequest.getAccountEmail());
+                    intent.putExtra("password", currentRequest.getAccountPassword());
+                    intent.putExtra("uid", currentRequest.getAccountUID());
+                    context.startActivity(intent);
                 }
             }
             else {

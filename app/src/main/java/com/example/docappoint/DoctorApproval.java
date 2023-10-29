@@ -10,13 +10,16 @@ import android.widget.EditText;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -93,6 +96,29 @@ public class DoctorApproval extends AppCompatActivity {
                     finish();
                 }
             });
+
+            //Deny button will navigate to the history page
+            doctorApprovalDenyRequestBtn.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    saveDoctorDataToRejectedUsers(firstName,lastName,employeeNumber,address,phoneNumber,email,password);
+
+                    CollectionReference pendingUsersCollection = fStore.collection("PendingUsers");
+
+                    // Get the document reference for the user using the UID
+                    DocumentReference pendingUserDocument = pendingUsersCollection.document(uid);
+
+                    pendingUserDocument
+                            .update("wasRejected", true);
+
+                    deleteDoctorDataFromPendingUsers(uid);
+
+
+                    startActivity(new Intent(getApplicationContext(), AdminNavigation.class));
+                    finish();
+
+                }
+            });
         }
 
         // Back button
@@ -102,6 +128,7 @@ public class DoctorApproval extends AppCompatActivity {
 
                 startActivity(new Intent(getApplicationContext(), AdminNavigation.class));
                 finish();
+
             }
         });
 
@@ -122,7 +149,7 @@ public class DoctorApproval extends AppCompatActivity {
         doctorData.put("Password", password);
         doctorData.put("isDoctor", 1);
 
-       doctorDocument.set(doctorData)
+        doctorDocument.set(doctorData)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
@@ -139,6 +166,37 @@ public class DoctorApproval extends AppCompatActivity {
                 });;
     }
 
+    private void saveDoctorDataToRejectedUsers(String firstName, String lastName, String employeeNumber, String address, String phoneNumber, String email, String password) {
+        CollectionReference usersCollection = fStore.collection("RejectedUsers");
+        DocumentReference doctorDocument = usersCollection.document();
+
+        Map<String, Object>   doctorData = new HashMap<>();
+        doctorData.put("First Name", firstName);
+        doctorData.put("Last Name", lastName);
+        doctorData.put("Employee Number", employeeNumber);
+        doctorData.put("Address", address);
+        doctorData.put("Phone Number", phoneNumber);
+        doctorData.put("Email", email);
+        doctorData.put("Password", password);
+        doctorData.put("isDoctor", 1);
+
+        doctorDocument.set(doctorData)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        // If successful display success toast message
+                        Toast.makeText(DoctorApproval.this, "User denied!", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(Exception e) {
+                        // If error occurs display error toast message
+                        Toast.makeText(DoctorApproval.this, "Failed to deny user" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });;
+    }
+
     private void deleteDoctorDataFromPendingUsers(String uid) {
         CollectionReference pendingUsersCollection = fStore.collection("PendingUsers");
 
@@ -149,5 +207,3 @@ public class DoctorApproval extends AppCompatActivity {
     }
 
 }
-
-
