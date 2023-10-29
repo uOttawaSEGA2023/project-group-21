@@ -38,6 +38,7 @@ public class ListRequest {
         this.accountPassword = accountPassword;
         this.accountUID = accountUID;
         this.accountHealthCardNumber = accountHealthCardNumber;
+        this.wasRejected = false;
     }
 
     // Constructor for Doctor
@@ -52,6 +53,7 @@ public class ListRequest {
         this.accountUID = accountUID;
         this.accountEmployeeNumber = accountEmployeeNumber;
         this.accountSpecialties = accountSpecialties;
+        this.wasRejected = false; 
     }
 
     // MANDATORY GETTER METHODS

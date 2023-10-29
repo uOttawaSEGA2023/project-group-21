@@ -82,6 +82,8 @@ public class DoctorApproval extends AppCompatActivity {
                     saveDoctorDataToUsers(firstName,lastName,employeeNumber,address,phoneNumber,email,password);
 
                     // ADD DELETE PENDINGUSERS COLLECTION FUNCTIONALITY HERE AND DELETE CHIP FUNCTIONALITY HERE
+
+
                     Log.d("Email Debug", "Email: " + email);
                     Log.d("UID Debug", "UID: " + uid);
 
