@@ -94,7 +94,7 @@ public class Homepage extends AppCompatActivity {
 
                                         if (isApproved != null && !isApproved) {
                                             // User is explicitly rejected in the RejectedUsers collection
-                                            Toast.makeText(Homepage.this, "Account has been rejected. Contact administrator (613-562-5700)", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(Homepage.this, "Account has been rejected. Contact: (613-562-5700)", Toast.LENGTH_SHORT).show();
                                         }
                                     }
                                 }
@@ -104,6 +104,7 @@ public class Homepage extends AppCompatActivity {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             Toast.makeText(Homepage.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Homepage.this, "Make sure your account is approved by admin. Contact: (613-562-5700)", Toast.LENGTH_LONG).show();
 
                         }
                     });
