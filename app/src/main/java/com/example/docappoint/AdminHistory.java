@@ -9,6 +9,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +23,7 @@ public class AdminHistory extends AppCompatActivity {
     Button adminHistoryBackBtn;
     RecyclerView rejectionList;
     List<ListRequest> rejectionRequests = new ArrayList<>();
-/*
+
 
 // TESTING SINCE OTHER CLASSES CHANGED
     @Override
@@ -26,7 +32,7 @@ public class AdminHistory extends AppCompatActivity {
         setContentView(R.layout.activity_admin_approval_history);
 
 
-        rejectionRequests.add(new ListRequest("Kyle", "Tran", "Ugly"));
+        //rejectionRequests.add(new ListRequest("Kyle", "Tran", "Ugly"));
 
 
         rejectionList = findViewById(R.id.accountApprovalHistory);
@@ -37,6 +43,66 @@ public class AdminHistory extends AppCompatActivity {
         // Link xml files
          adminHistoryBackBtn = findViewById(R.id.patientRegBackButton);
 
+        // Initialize Firestore
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        // Get user data from firestore (PendingUsers Collection)
+        db.collection("RejectedUsers")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+
+                                // PendingUsers data extraction
+                                String firstName = document.getString("First Name");
+                                String lastName = document.getString("Last Name");
+
+                                // Check if user type is doctor or patient and assign it to userType variable
+                                int isDoctor = document.getLong("isDoctor") != null ? Math.toIntExact(document.getLong("isDoctor")) : 0;
+                                int isPatient = document.getLong("isPatient") != null ? Math.toIntExact(document.getLong("isPatient")) : 0;
+
+                                String userType = "N/A";
+
+                                if (isDoctor == 1) {
+                                    userType = "Doctor";
+                                    String address = document.getString("Address");
+                                    String phoneNumber = document.getString("Phone Number");
+                                    String email = document.getString("Email");
+                                    String password = document.getString("Password");
+                                    String uid = document.getString("UID");
+                                    String employeeNumber = document.getString("Employee Number");
+                                    ArrayList<String> specialties = (ArrayList<String>) document.get("Specialties");
+                                    ListRequest request = new ListRequest(firstName, lastName, userType, address, phoneNumber, email, password, uid, employeeNumber, specialties);
+                                    rejectionRequests.add(request);
+
+
+                                } else if (isPatient == 1) {
+                                    userType = "Patient";
+
+                                    // Create ListRequest for patients
+                                    String address = document.getString("Address");
+                                    String phoneNumber = document.getString("Phone Number");
+                                    String email = document.getString("Email");
+                                    String password = document.getString("Password");
+                                    String uid = document.getString("UID");
+                                    String healthCardNumber = document.getString("Health Card Number");
+                                    ListRequest request = new ListRequest(firstName, lastName, userType, address, phoneNumber, email, password, uid, healthCardNumber);
+                                    rejectionRequests.add(request);
+                                }
+
+                            }
+
+                            RequestAdapter adapter = new RequestAdapter(rejectionRequests);
+                            rejectionList.setAdapter(adapter);
+                        }
+                    }
+                });
+
+
+
+
         // Back to admin navigation class
          adminHistoryBackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,5 +111,5 @@ public class AdminHistory extends AppCompatActivity {
                 finish();
             }
             });
-    }*/
+    }
     }

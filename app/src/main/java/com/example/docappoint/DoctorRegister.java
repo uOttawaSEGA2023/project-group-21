@@ -233,6 +233,9 @@ public class DoctorRegister extends AppCompatActivity {
                                 // Specify the user is a doctor user
                                 userInfo.put("isDoctor", 1);
 
+                                //set the value of rejected to false
+                                userInfo.put("wasRejected", false);
+
                                 // Save to Firestore database
                                 dDoc.set(userInfo);
 

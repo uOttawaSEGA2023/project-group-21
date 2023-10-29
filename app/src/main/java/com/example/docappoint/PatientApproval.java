@@ -33,7 +33,7 @@ public class PatientApproval extends AppCompatActivity {
     EditText patientApprovalFirstNameTxt, patientApprovalLastNameTxt, patientApprovalHealthCardNumberTxt,
             patientApprovalAddressTxt, patientApprovalPhoneNumberTxt, patientApprovalEmailTxt;
 
-    Button patientApprovalBackBtn, patientApprovalApproveRequestbtn;
+    Button patientApprovalBackBtn, patientApprovalApproveRequestbtn, patientApprovalDenyRequestBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +55,7 @@ public class PatientApproval extends AppCompatActivity {
         // Buttons
         patientApprovalBackBtn = findViewById(R.id.patientApprovalBackButton);
         patientApprovalApproveRequestbtn = findViewById(R.id.patientApprovalApproveRequestButton);
+        patientApprovalDenyRequestBtn = findViewById(R.id.patientApprovalDenyRequestButton);
 
         FirebaseAuth mAuth;
 
@@ -94,6 +95,30 @@ public class PatientApproval extends AppCompatActivity {
                     finish();
                 }
             });
+
+            //Deny button will navigate to the history page
+            patientApprovalDenyRequestBtn.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    savePatientDataToRejectedUsers(firstName, lastName, healthCardNumber, address, phoneNumber, email, password);
+
+                    CollectionReference pendingUsersCollection = fStore.collection("PendingUsers");
+
+                    // Get the document reference for the user using the UID
+                    DocumentReference pendingUserDocument = pendingUsersCollection.document(uid);
+
+                    pendingUserDocument
+                            .update("wasRejected", true);
+
+                    deletePatientDataFromPendingUsers(uid);
+
+                    startActivity(new Intent(getApplicationContext(), AdminNavigation.class));
+                    finish();
+
+                }
+            });
+
+
         }
 
         // Button functionality to navigate back
@@ -137,6 +162,37 @@ public class PatientApproval extends AppCompatActivity {
                     }
                 });;
 
+    }
+
+    private void savePatientDataToRejectedUsers(String firstName, String lastName, String healthCardNumber, String address, String phoneNumber, String email, String password) {
+        CollectionReference usersCollection = fStore.collection("RejectedUsers");
+        DocumentReference doctorDocument = usersCollection.document();
+
+        Map<String, Object>   patientData = new HashMap<>();
+        patientData.put("First Name", firstName);
+        patientData.put("Last Name", lastName);
+        patientData.put("Health Card Number", healthCardNumber);
+        patientData.put("Address", address);
+        patientData.put("Phone Number", phoneNumber);
+        patientData.put("Email", email);
+        patientData.put("Password", password);
+        patientData.put("isPatient", 1);
+
+        doctorDocument.set(patientData)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        // If successful display success toast message
+                        Toast.makeText(PatientApproval.this, "User denied!", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(Exception e) {
+                        // If error occurs display error toast message
+                        Toast.makeText(PatientApproval.this, "Failed to deny user" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });;
     }
 
     private void deletePatientDataFromPendingUsers(String uid) {
