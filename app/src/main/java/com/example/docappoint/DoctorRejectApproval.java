@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -35,7 +36,9 @@ public class DoctorRejectApproval extends AppCompatActivity{
     FirebaseFirestore fStore;
 
     EditText doctorApprovalFirstNameText, doctorApprovalLastNameText,
-            doctorApprovalAddressText, doctorApprovalEmployeeNumberText, doctorApprovalPhoneNumberText, doctorApprovalEmailText, doctorApprovalSpecialtiesText;
+            doctorApprovalAddressText, doctorApprovalEmployeeNumberText, doctorApprovalPhoneNumberText, doctorApprovalEmailText;
+
+    TextView doctorApprovalSpecialtiesText;
     Button doctorApprovalApproveRequestBtn,doctorApprovalBackBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,14 +85,16 @@ public class DoctorRejectApproval extends AppCompatActivity{
                 doctorApprovalEmployeeNumberText.setText(employeeNumber);
                 doctorApprovalPhoneNumberText.setText(phoneNumber);
                 doctorApprovalEmailText.setText(email);
-                doctorApprovalSpecialtiesText.setText(TextUtils.join(", ", specialties));
+                if (specialties != null) {
+                    doctorApprovalSpecialtiesText.setText(TextUtils.join(", ", specialties));
+                }
 
 
                 // Approve button will copy PendingUsers collection to Users
                 doctorApprovalApproveRequestBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        saveDoctorDataToUsers(firstName, lastName, employeeNumber, address, phoneNumber, email, password);
+                        saveDoctorDataToUsers(firstName, lastName, employeeNumber, address, phoneNumber, email, password, specialties);
 
                         // ADD DELETE PENDINGUSERS COLLECTION FUNCTIONALITY HERE AND DELETE CHIP FUNCTIONALITY HERE
 
@@ -119,7 +124,7 @@ public class DoctorRejectApproval extends AppCompatActivity{
         }
 
         // Using the PendingUsers information, save it on a new collection called Users in firebase
-        private void saveDoctorDataToUsers(String firstName, String lastName, String employeeNumber, String address, String phoneNumber, String email, String password) {
+        private void saveDoctorDataToUsers(String firstName, String lastName, String employeeNumber, String address, String phoneNumber, String email, String password, ArrayList<String> specialties) {
 
             // Create authentication using Firebase Auth for Users collection
             FirebaseAuth fAuth = FirebaseAuth.getInstance();
@@ -149,6 +154,7 @@ public class DoctorRejectApproval extends AppCompatActivity{
                             doctorData.put("Password", password);
                             doctorData.put("isDoctor", 1);
                             doctorData.put("isApproved", true);
+                            doctorData.put("Specialties", specialties);
 
                             doctorDocument.set(doctorData)
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
