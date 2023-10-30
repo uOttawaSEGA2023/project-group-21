@@ -14,7 +14,7 @@
 
     <style name="textField">
         <item name = "android:background">@drawable/rounded_text_box</item> <!-- Rounded textbox drawable -->
-        <item name = "android:layout_width"> 250dp </item><!-- Width of text box -->
+        <item name = "android:layout_width">250dp</item><!-- Width of text box -->
         <item name = "android:layout_height">35dp</item><!-- Height of text box -->
         <item name = "android:textSize">13sp</item><!-- Text font size -->
         <item name = "android:ems">10</item>
