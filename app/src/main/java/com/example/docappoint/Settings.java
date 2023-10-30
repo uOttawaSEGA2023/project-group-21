@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -23,7 +24,7 @@ public class Settings extends AppCompatActivity {
 
     EditText nameAccountSettings, emailAccountSettings, phoneAccountSettings;
 
-    Button logOutAccount, settingsBackBtn;
+    Button logOutAccount, settingsBackBtn, deleteAccountSettingsBtn;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userId;
@@ -39,6 +40,7 @@ public class Settings extends AppCompatActivity {
         phoneAccountSettings = findViewById(R.id.phoneTextSettings);
         logOutAccount = findViewById(R.id.logOutSettingsButton);
         settingsBackBtn = findViewById(R.id.settingsBackButton);
+        deleteAccountSettingsBtn = findViewById(R.id.deleteAccountSettingsButton);
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -89,6 +91,19 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 onBackPressed();
+            }
+        });
+
+
+        deleteAccountSettingsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                CollectionReference usersCollection = fStore.collection("Users");
+
+                // Get the reference for the user with UserId
+                DocumentReference userDocument = usersCollection.document(userId);
+                userDocument.delete();
             }
         });
     }
