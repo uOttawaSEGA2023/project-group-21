@@ -159,8 +159,6 @@ public class PatientApproval extends AppCompatActivity {
                         // Save the reference to the "Users" collection
                         DocumentReference patientDocument = fStore.collection("Users").document(patientUID);
 
-                        patientDocument
-                                .update("wasRejected", true);
 
                         Map<String, Object> patientData = new HashMap<>();
                         patientData.put("First Name", firstName);
@@ -215,6 +213,7 @@ public class PatientApproval extends AppCompatActivity {
 
                         // Save the reference to the "Users" collection
                         DocumentReference patientDocument = fStore.collection("RejectedUsers").document(patientUID);
+
 
                         Map<String, Object> patientData = new HashMap<>();
                         patientData.put("First Name", firstName);

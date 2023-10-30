@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -23,6 +24,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,7 +35,7 @@ public class DoctorRejectApproval extends AppCompatActivity{
     FirebaseFirestore fStore;
 
     EditText doctorApprovalFirstNameText, doctorApprovalLastNameText,
-            doctorApprovalAddressText, doctorApprovalEmployeeNumberText, doctorApprovalPhoneNumberText, doctorApprovalEmailText;
+            doctorApprovalAddressText, doctorApprovalEmployeeNumberText, doctorApprovalPhoneNumberText, doctorApprovalEmailText, doctorApprovalSpecialtiesText;
     Button doctorApprovalApproveRequestBtn,doctorApprovalBackBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,8 @@ public class DoctorRejectApproval extends AppCompatActivity{
             doctorApprovalEmployeeNumberText = findViewById(R.id.doctorApprovalOnlyEmployeeNumberText);
             doctorApprovalPhoneNumberText = findViewById(R.id.doctorApprovalOnlyPhoneNumberText);
             doctorApprovalEmailText = findViewById(R.id.doctorApprovalOnlyEmailText);
+            doctorApprovalSpecialtiesText = findViewById(R.id.doctorApprovalOnlySpecialtiesText);
+
 
             // Link buttons
             doctorApprovalApproveRequestBtn = findViewById(R.id.doctorApprovalApproveRequestButton);
@@ -69,6 +73,7 @@ public class DoctorRejectApproval extends AppCompatActivity{
                 String email = intent.getStringExtra("email");
                 String password = intent.getStringExtra("password");
                 String uid = intent.getStringExtra("uid");
+                ArrayList<String> specialties = intent.getStringArrayListExtra("specialties");
 
                 // Update the EditText fields with the retrieved data
                 doctorApprovalFirstNameText.setText(firstName);
@@ -77,6 +82,8 @@ public class DoctorRejectApproval extends AppCompatActivity{
                 doctorApprovalEmployeeNumberText.setText(employeeNumber);
                 doctorApprovalPhoneNumberText.setText(phoneNumber);
                 doctorApprovalEmailText.setText(email);
+                doctorApprovalSpecialtiesText.setText(TextUtils.join(", ", specialties));
+
 
                 // Approve button will copy PendingUsers collection to Users
                 doctorApprovalApproveRequestBtn.setOnClickListener(new View.OnClickListener() {
