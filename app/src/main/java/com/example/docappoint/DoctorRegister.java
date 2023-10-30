@@ -197,6 +197,11 @@ public class DoctorRegister extends AppCompatActivity {
                     return;
                 }
 
+                if (selectedSpecialties.isEmpty()) {
+                    Toast.makeText(DoctorRegister.this, "You Must Choose at least one Specialty", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
                 // Save user data to PendingUsers collection
 
                 //Save the reference to collection
