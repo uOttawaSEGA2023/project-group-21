@@ -40,7 +40,7 @@
         android:id="@+id/patientLogo"
         android:layout_width="150dp"
         android:layout_height="100dp"
-        android:layout_marginStart="168dp"
+        android:layout_marginStart="172dp"
         android:layout_marginBottom="644dp"
         android:src="@drawable/whitelogo"
         app:layout_constraintBottom_toBottomOf="parent"
