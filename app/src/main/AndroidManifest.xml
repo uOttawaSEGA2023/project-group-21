@@ -60,6 +60,12 @@
             android:name=".DoctorRegister"
             android:exported="false" />
         <activity
+            android:name=".DoctorRejectApproval"
+            android:exported="false" />
+        <activity
+            android:name=".PatientRejectApproval"
+            android:exported="false" />
+        <activity
             android:name=".SelectAccount"
             android:exported="false" />
         <activity

@@ -173,6 +173,7 @@ public class DoctorApproval extends AppCompatActivity {
                         doctorData.put("Password", password);
                         doctorData.put("isDoctor", 1);
                         doctorData.put("isApproved", true);
+                        doctorData.put("UID", doctorUID);
 
                         doctorDocument.set(doctorData)
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -217,6 +218,8 @@ public class DoctorApproval extends AppCompatActivity {
                         // Save the reference to the "Users" collection
                         DocumentReference doctorDocument = fStore.collection("RejectedUsers").document(doctorUID);
 
+                        doctorDocument
+                                .update("wasRejected", true);
 
                         Map<String, Object> doctorData = new HashMap<>();
                         doctorData.put("First Name", firstName);
@@ -228,6 +231,8 @@ public class DoctorApproval extends AppCompatActivity {
                         doctorData.put("Password", password);
                         doctorData.put("isDoctor", 1);
                         doctorData.put("isApproved", false);
+                        doctorData.put("wasRejected", true);
+                        doctorData.put("UID", doctorUID);
 
                         doctorDocument.set(doctorData)
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {

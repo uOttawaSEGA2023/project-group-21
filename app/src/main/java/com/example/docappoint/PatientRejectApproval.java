@@ -10,20 +10,23 @@ import android.widget.EditText;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class PatientApproval extends AppCompatActivity {
+public class PatientRejectApproval extends AppCompatActivity {
 
     // Initialize Firestore
     FirebaseFirestore fStore;
@@ -39,24 +42,23 @@ public class PatientApproval extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_approve_patient_request);
+        setContentView(R.layout.activity_admin_approveonly_patient_request);
 
         // Initialize Firebase Firestore and Firebase Auth
         fStore = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
         // Link xml elements
-        patientApprovalFirstNameTxt = findViewById(R.id.patientApprovalFirstNameText);
-        patientApprovalLastNameTxt = findViewById(R.id.patientApprovalLastNameText);
-        patientApprovalHealthCardNumberTxt = findViewById(R.id.patientApprovalHealthCardNumberText);
-        patientApprovalAddressTxt = findViewById(R.id.patientApprovalAddressText);
-        patientApprovalPhoneNumberTxt = findViewById(R.id.patientApprovalPhoneNumberText);
-        patientApprovalEmailTxt = findViewById(R.id.patientApprovalEmailText);
+        patientApprovalFirstNameTxt = findViewById(R.id.patientApprovalOnlyFirstNameText);
+        patientApprovalLastNameTxt = findViewById(R.id.patientApprovalOnlyLastNameText);
+        patientApprovalHealthCardNumberTxt = findViewById(R.id.patientApprovalOnlyHealthCardNumberText);
+        patientApprovalAddressTxt = findViewById(R.id.patientApprovalOnlyAddressText);
+        patientApprovalPhoneNumberTxt = findViewById(R.id.patientApprovalOnlyPhoneNumberText);
+        patientApprovalEmailTxt = findViewById(R.id.patientApprovalOnlyEmailText);
 
         // Buttons
-        patientApprovalBackBtn = findViewById(R.id.patientApprovalBackButton);
-        patientApprovalApproveRequestbtn = findViewById(R.id.patientApprovalApproveRequestButton);
-        patientApprovalDenyRequestBtn = findViewById(R.id.patientApprovalDenyRequestButton);
+        patientApprovalBackBtn = findViewById(R.id.patientApprovalOnlyBackButton);
+        patientApprovalApproveRequestbtn = findViewById(R.id.patientApprovalOnlyApproveRequestButton);
 
 
         // Retrieve user data from the intent extras
@@ -92,40 +94,11 @@ public class PatientApproval extends AppCompatActivity {
 
                     deletePatientDataFromPendingUsers(uid);
 
-                    // Sign admin back in after action is made to user request
-                    signAdmin();
-
                     startActivity(new Intent(getApplicationContext(), AdminNavigation.class));
                     finish();
                 }
             });
 
-            //Deny button will navigate to the history page
-            patientApprovalDenyRequestBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    savePatientDataToRejectedUsers(firstName, lastName, healthCardNumber, address, phoneNumber, email, password);
-
-                    CollectionReference pendingUsersCollection = fStore.collection("PendingUsers");
-
-                    // Get the document reference for the user using the UID
-                    DocumentReference pendingUserDocument = pendingUsersCollection.document(uid);
-
-
-                    pendingUserDocument
-                            .update("wasRejected", true);
-
-                    deletePatientDataFromPendingUsers(uid);
-
-                    // Sign admin back in after action is made to user request
-                    signAdmin();
-
-                    startActivity(new Intent(getApplicationContext(), AdminNavigation.class));
-                    finish();
-
-                }
-            });
         }
 
         // Button functionality to navigate back
@@ -159,9 +132,6 @@ public class PatientApproval extends AppCompatActivity {
                         // Save the reference to the "Users" collection
                         DocumentReference patientDocument = fStore.collection("Users").document(patientUID);
 
-                        patientDocument
-                                .update("wasRejected", true);
-
                         Map<String, Object> patientData = new HashMap<>();
                         patientData.put("First Name", firstName);
                         patientData.put("Last Name", lastName);
@@ -172,21 +142,20 @@ public class PatientApproval extends AppCompatActivity {
                         patientData.put("Password", password);
                         patientData.put("isPatient", 1);
                         patientData.put("isApproved", true);
-                        patientData.put("UID", patientUID);
 
                         patientDocument.set(patientData)
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
                                         // If successful display success toast message
-                                        Toast.makeText(PatientApproval.this, "User approved!", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(PatientRejectApproval.this, "User approved!", Toast.LENGTH_SHORT).show();
                                     }
                                 })
                                 .addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(Exception e) {
                                         // If error occurs display error toast message
-                                        Toast.makeText(PatientApproval.this, "Failed to approve user" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(PatientRejectApproval.this, "Failed to approve user" + e.getMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 });
                         ;
@@ -197,76 +166,14 @@ public class PatientApproval extends AppCompatActivity {
 
     }
 
-    private void savePatientDataToRejectedUsers(String firstName, String lastName, String healthCardNumber, String address, String phoneNumber, String email, String password) {
-
-        // Create authentication using Firebase Auth for Users collection
-        FirebaseAuth fAuth = FirebaseAuth.getInstance();
-
-        // Using email and password
-        fAuth.createUserWithEmailAndPassword(email, password)
-                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                    @Override
-                    public void onSuccess(AuthResult authResult) {
-                        // Get the user data that is created
-                        FirebaseUser user = fAuth.getCurrentUser();
-
-                        // Get the user's UID
-                        String patientUID = user.getUid();
-
-                        // Save the reference to the "Users" collection
-                        DocumentReference patientDocument = fStore.collection("RejectedUsers").document(patientUID);
-
-                        Map<String, Object> patientData = new HashMap<>();
-                        patientData.put("First Name", firstName);
-                        patientData.put("Last Name", lastName);
-                        patientData.put("Health Card Number", healthCardNumber);
-                        patientData.put("Address", address);
-                        patientData.put("Phone Number", phoneNumber);
-                        patientData.put("Email", email);
-                        patientData.put("Password", password);
-                        patientData.put("isPatient", 1);
-                        patientData.put("isApproved", false);
-                        patientData.put("wasRejected", true);
-                        patientData.put("UID", patientUID);
-
-                        patientDocument.set(patientData)
-                                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void aVoid) {
-                                        // If successful display success toast message
-                                        Toast.makeText(PatientApproval.this, "User denied!", Toast.LENGTH_SHORT).show();
-                                    }
-                                })
-                                .addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(Exception e) {
-                                        // If error occurs display error toast message
-                                        Toast.makeText(PatientApproval.this, "Failed to deny user" + e.getMessage(), Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-
-                    }
-
-                });
-    }
-
     private void deletePatientDataFromPendingUsers(String uid) {
-        CollectionReference pendingUsersCollection = fStore.collection("PendingUsers");
+        CollectionReference rejectedUsersCollection = fStore.collection("RejectedUsers");
 
         // Get the document reference for the user using the UID
-        DocumentReference pendingUserDocument = pendingUsersCollection.document(uid);
-        pendingUserDocument.delete();
+        DocumentReference rejectedUserDocument = rejectedUsersCollection.document(uid);
+        rejectedUserDocument.delete();
 
     }
 
-    // Get admin to sign back in after every account creation (handling error)
-    private void signAdmin() {
-            String adminEmail = "admin_docappoint@gmail.com";
-            String adminPassword = "Admin1@docappoint";
-
-        mAuth.signInWithEmailAndPassword(adminEmail, adminPassword);
-    }
 
 }
-
-

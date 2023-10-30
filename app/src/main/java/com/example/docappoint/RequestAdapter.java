@@ -1,6 +1,7 @@
 package com.example.docappoint;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,6 +48,8 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
         holder.accountType.setText(currentRequest.getAccountType());
 
         boolean wasRejected = currentRequest.getStatus();
+        //boolean wasRejected = true;
+        Log.d("SomeTag" , wasRejected?"true":"false");
 
         holder.seeMoreButton.setOnClickListener(v -> {
             Context context = holder.itemView.getContext();
@@ -85,11 +88,11 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
             else {
                 //CHANGE SO IT DISPLAYS THE APPROVAL ONLY PAGE
                 if ("Doctor".equals(holder.accountType.getText().toString())){
-                    Intent intent = new Intent(context, DoctorApproval.class);
+                    Intent intent = new Intent(context, DoctorRejectApproval.class);
                     context.startActivity(intent);
                 }
                 else {
-                    Intent intent = new Intent(context, PatientApproval.class);
+                    Intent intent = new Intent(context, PatientRejectApproval.class);
                     context.startActivity(intent);
                 }
             }
