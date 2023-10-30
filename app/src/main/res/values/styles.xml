@@ -20,6 +20,7 @@
         <item name = "android:ems">10</item>
         <item name = "android:textColor">@color/text_box_text</item>  <!-- Colour of text box -->
         <item name = "android:paddingLeft">10dp</item> <!-- Whitespace from left of textbox -->
+        <item name = "android:paddingRight">10dp</item> <!-- Whitespace from right of textbox -->
         <item name = "android:textColorHint">@color/text_box_text</item>
 
     </style>
