@@ -93,8 +93,9 @@ public class Homepage extends AppCompatActivity {
                                         Boolean isApproved = rejectedUserSnapshot.getBoolean("isApproved");
 
                                         if (isApproved != null && !isApproved) {
-                                            // User is explicitly rejected in the RejectedUsers collection
-                                            Toast.makeText(Homepage.this, "Account has been rejected. Contact: (613-562-5700)", Toast.LENGTH_SHORT).show();
+                                            // User is rejected by admin and sent to rejection screen
+                                            startActivity(new Intent(getApplicationContext(), StatusRejected.class));
+                                            finish();
                                         }
                                     }
                                 }

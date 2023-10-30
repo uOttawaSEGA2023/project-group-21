@@ -206,7 +206,7 @@ public class PatientRegister extends AppCompatActivity {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 Toast.makeText(PatientRegister.this, "Success! Account Has Been Created!", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getApplicationContext(), Homepage.class));
+                                startActivity(new Intent(getApplicationContext(), StatusPending.class));
                                 finish();
                             }
                         })
