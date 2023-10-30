@@ -92,6 +92,9 @@ public class PatientApproval extends AppCompatActivity {
 
                     deletePatientDataFromPendingUsers(uid);
 
+                    // Sign admin back in after action is made to user request
+                    signAdmin();
+
                     startActivity(new Intent(getApplicationContext(), AdminNavigation.class));
                     finish();
                 }
@@ -114,6 +117,9 @@ public class PatientApproval extends AppCompatActivity {
                             .update("wasRejected", true);
 
                     deletePatientDataFromPendingUsers(uid);
+
+                    // Sign admin back in after action is made to user request
+                    signAdmin();
 
                     startActivity(new Intent(getApplicationContext(), AdminNavigation.class));
                     finish();
@@ -245,6 +251,14 @@ public class PatientApproval extends AppCompatActivity {
         DocumentReference pendingUserDocument = pendingUsersCollection.document(uid);
         pendingUserDocument.delete();
 
+    }
+
+    // Get admin to sign back in after every account creation (handling error)
+    private void signAdmin() {
+            String adminEmail = "admin_docappoint@gmail.com";
+            String adminPassword = "Admin1@docappoint";
+
+        mAuth.signInWithEmailAndPassword(adminEmail, adminPassword);
     }
 
 }
