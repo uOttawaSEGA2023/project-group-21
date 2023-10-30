@@ -1,8 +1,10 @@
 package com.example.docappoint;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -98,14 +100,62 @@ public class Settings extends AppCompatActivity {
         deleteAccountSettingsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AlertDialog dialog = createDialog();
+                dialog.show();
 
+            }
+        });
+
+
+    }
+
+    AlertDialog createDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Are you sure you want to delete your account?");
+
+        builder.setPositiveButton("Delete Account", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
                 CollectionReference usersCollection = fStore.collection("Users");
 
                 // Get the reference for the user with UserId
                 DocumentReference userDocument = usersCollection.document(userId);
                 userDocument.delete();
+
+                AlertDialog innerDialog = createDeleteDialog();
+                innerDialog.show();
+
+
             }
         });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+
+
+            }
+        });
+
+        return builder.create();
+
+    }
+
+    AlertDialog createDeleteDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Account deleted. You will now return to the homepage");
+
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                startActivity(new Intent(getApplicationContext(), Homepage.class));
+                finish();
+
+            }
+        });
+        return builder.create();
     }
 
 
