@@ -8,7 +8,7 @@ public class Doctor extends User {
     private String[] specialties;
 
     // Constructor for Doctor
-    public Doctor(byte age, String firstName, String lastName, String email, String password, String checkPassword, String phoneNumber, String
+    public Doctor(String firstName, String lastName, String email, String password, String checkPassword, String phoneNumber, String
             address, int employeeNum, String[] specialties) {
         super(firstName, lastName, email, password, checkPassword, phoneNumber, address);
 

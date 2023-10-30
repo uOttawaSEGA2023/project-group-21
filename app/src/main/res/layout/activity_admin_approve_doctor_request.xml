@@ -96,24 +96,10 @@
     <TextView
         android:id="@+id/backdrop"
         android:layout_width="328dp"
-        android:layout_height="320dp"
+        android:layout_height="375dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="180dp"
+        android:layout_marginTop="176dp"
         android:background="@drawable/backdrop"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/doctorApprovalFirstNameText"
-        style="@style/textField"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="216dp"
-        android:layout_marginEnd="50dp"
-        android:autofillHints="name"
-        android:hint="@string/firstName"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -121,8 +107,9 @@
         android:id="@+id/doctorApprovalLastNameText"
         style="@style/textField"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="258dp"
+        android:layout_marginTop="246dp"
         android:layout_marginEnd="50dp"
+        android:autofillHints="name"
         android:hint="@string/lastName"
         android:inputType="text"
         android:textColor="@color/text_box_text"
@@ -131,15 +118,15 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/doctorApprovalFirstNameText"
-        app:layout_constraintTop_toTopOf="parent"
-        android:autofillHints="name"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/doctorApprovalEmployeeNumberText"
         style="@style/textField"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="288dp"
         android:layout_marginEnd="50dp"
+        android:autofillHints="name"
         android:hint="@string/employee_number"
         android:inputType="text"
         android:textColor="@color/text_box_text"
@@ -147,16 +134,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/doctorApprovalLastNameText"
-        android:autofillHints="name" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/doctorApprovalAddressText"
         style="@style/textField"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="342dp"
+        android:layout_marginTop="330dp"
         android:layout_marginEnd="50dp"
+        android:autofillHints="postalAddress"
         android:hint="@string/address"
         android:inputType="text"
         android:textColor="@color/text_box_text"
@@ -164,15 +151,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:autofillHints="postalAddress" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/doctorApprovalPhoneNumberText"
         style="@style/textField"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="384dp"
+        android:layout_marginTop="372dp"
         android:layout_marginEnd="50dp"
+        android:autofillHints="phone"
         android:hint="@string/phoneNumber"
         android:inputType="phone"
         android:textColor="@color/text_box_text"
@@ -180,16 +167,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/doctorApprovalAddressText"
-        android:autofillHints="phone" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/doctorApprovalEmailText"
         style="@style/textField"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="426dp"
+        android:layout_marginTop="414dp"
         android:layout_marginEnd="50dp"
+        android:autofillHints="username|emailAddress"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:textColor="#9B9B9B"
@@ -197,9 +184,41 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/doctorApprovalPhoneNumberText"
-        android:autofillHints="username|emailAddress" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/doctorApprovalSpecialtiesText"
+        style="@style/textField"
+        android:layout_height="70dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="456dp"
+        android:layout_marginEnd="50dp"
+        android:autofillHints="username|emailAddress"
+        android:paddingTop="10dp"
+        android:hint="@string/specialties"
+        android:inputType="text"
+        android:textColor="#9B9B9B"
+        android:textColorHint="@color/text_box_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/doctorApprovalPhoneNumberText"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/doctorApprovalFirstNameText"
+        style="@style/textField"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="204dp"
+        android:layout_marginEnd="50dp"
+        android:autofillHints="name"
+        android:hint="@string/firstName"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/doctorApprovalApproveRequestButton"
