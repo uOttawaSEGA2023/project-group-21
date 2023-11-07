@@ -70,6 +70,8 @@ public class PatientApproval extends AppCompatActivity {
             String email = intent.getStringExtra("email");
             String password = intent.getStringExtra("password");
             String uid = intent.getStringExtra("uid");
+            boolean rejected = intent.getBooleanExtra("rejected", false);
+
 
             // Update the EditText fields with the retrieved data
             patientApprovalFirstNameTxt.setText(firstName);
@@ -105,7 +107,7 @@ public class PatientApproval extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
-                    savePatientDataToRejectedUsers(firstName, lastName, healthCardNumber, address, phoneNumber, email, password);
+                    savePatientDataToRejectedUsers(firstName, lastName, healthCardNumber, address, phoneNumber, email, password, rejected);
 
                     CollectionReference pendingUsersCollection = fStore.collection("PendingUsers");
 
@@ -195,7 +197,7 @@ public class PatientApproval extends AppCompatActivity {
 
     }
 
-    private void savePatientDataToRejectedUsers(String firstName, String lastName, String healthCardNumber, String address, String phoneNumber, String email, String password) {
+    private void savePatientDataToRejectedUsers(String firstName, String lastName, String healthCardNumber, String address, String phoneNumber, String email, String password, boolean rejected) {
 
         // Create authentication using Firebase Auth for Users collection
         FirebaseAuth fAuth = FirebaseAuth.getInstance();
@@ -225,8 +227,9 @@ public class PatientApproval extends AppCompatActivity {
                         patientData.put("Password", password);
                         patientData.put("isPatient", 1);
                         patientData.put("isApproved", false);
-                        patientData.put("wasRejected", true);
                         patientData.put("UID", patientUID);
+                        patientData.put("wasRejected", true);
+
 
                         patientDocument.set(patientData)
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {

@@ -28,7 +28,7 @@ public class ListRequest {
 
 
     // Constructor for Patient
-    public ListRequest(String accountFirstName, String accountLastName, String accountType, String accountAddress, String accountPhoneNumber, String accountEmail,String accountPassword, String accountUID, String accountHealthCardNumber) {
+    public ListRequest(String accountFirstName, String accountLastName, String accountType, String accountAddress, String accountPhoneNumber, String accountEmail,String accountPassword, String accountUID, String accountHealthCardNumber, boolean wasRejected) {
         this.accountFirstName = accountFirstName;
         this.accountLastName = accountLastName;
         this.accountType = accountType;
@@ -38,11 +38,11 @@ public class ListRequest {
         this.accountPassword = accountPassword;
         this.accountUID = accountUID;
         this.accountHealthCardNumber = accountHealthCardNumber;
-        //this.wasRejected = false;
+        this.wasRejected = wasRejected;
     }
 
     // Constructor for Doctor
-    public ListRequest(String accountFirstName, String accountLastName, String accountType, String accountAddress, String accountPhoneNumber, String accountEmail, String accountPassword, String accountUID, String accountEmployeeNumber, ArrayList<String> accountSpecialties) {
+    public ListRequest(String accountFirstName, String accountLastName, String accountType, String accountAddress, String accountPhoneNumber, String accountEmail, String accountPassword, String accountUID, String accountEmployeeNumber, ArrayList<String> accountSpecialties, boolean wasRejected) {
         this.accountFirstName = accountFirstName;
         this.accountLastName = accountLastName;
         this.accountType = accountType;
@@ -53,7 +53,7 @@ public class ListRequest {
         this.accountUID = accountUID;
         this.accountEmployeeNumber = accountEmployeeNumber;
         this.accountSpecialties = accountSpecialties;
-        //this.wasRejected = false;
+        this.wasRejected = wasRejected;
     }
 
     // MANDATORY GETTER METHODS

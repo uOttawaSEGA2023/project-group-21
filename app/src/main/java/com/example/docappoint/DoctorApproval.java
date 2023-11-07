@@ -77,6 +77,7 @@ public class DoctorApproval extends AppCompatActivity {
             String email = intent.getStringExtra("email");
             String password = intent.getStringExtra("password");
             String uid = intent.getStringExtra("uid");
+            boolean rejected = intent.getBooleanExtra("rejected", false);
             ArrayList<String> specialties = intent.getStringArrayListExtra("specialties");
 
             // Update the EditText fields with the retrieved data
@@ -116,7 +117,7 @@ public class DoctorApproval extends AppCompatActivity {
             doctorApprovalDenyRequestBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    saveDoctorDataToRejectedUsers(firstName, lastName, employeeNumber, address, phoneNumber, email, password, specialties);
+                    saveDoctorDataToRejectedUsers(firstName, lastName, employeeNumber, address, phoneNumber, email, password, specialties, rejected);
 
                     CollectionReference pendingUsersCollection = fStore.collection("PendingUsers");
 
@@ -183,6 +184,8 @@ public class DoctorApproval extends AppCompatActivity {
                         doctorData.put("isDoctor", 1);
                         doctorData.put("isApproved", true);
                         doctorData.put("Specialties", specialties);
+                        doctorData.put("UID",doctorUID);
+
 
                         doctorDocument.set(doctorData)
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -207,7 +210,7 @@ public class DoctorApproval extends AppCompatActivity {
     }
 
     private void saveDoctorDataToRejectedUsers(String firstName, String lastName, String
-            employeeNumber, String address, String phoneNumber, String email, String password, ArrayList<String> specialties) {
+            employeeNumber, String address, String phoneNumber, String email, String password, ArrayList<String> specialties, boolean rejected) {
 
 
         // Create authentication using Firebase Auth for Users collection
@@ -239,6 +242,8 @@ public class DoctorApproval extends AppCompatActivity {
                         doctorData.put("isDoctor", 1);
                         doctorData.put("isApproved", false);
                         doctorData.put("Specialties", specialties);
+                        doctorData.put("wasRejected", true);
+                        doctorData.put("UID",doctorUID);
 
                         doctorDocument.set(doctorData)
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {

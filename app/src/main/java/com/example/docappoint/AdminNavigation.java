@@ -69,7 +69,8 @@ public class AdminNavigation extends AppCompatActivity {
                                     String uid = document.getString("UID");
                                     String employeeNumber = document.getString("Employee Number");
                                     ArrayList<String> specialties = (ArrayList<String>) document.get("Specialties");
-                                    ListRequest request = new ListRequest(firstName, lastName, userType, address, phoneNumber, email, password, uid, employeeNumber, specialties);
+                                    boolean rejected = document.getBoolean("wasRejected");
+                                    ListRequest request = new ListRequest(firstName, lastName, userType, address, phoneNumber, email, password, uid, employeeNumber, specialties, rejected);
                                     accountRequests.add(request);
 
 
@@ -83,7 +84,8 @@ public class AdminNavigation extends AppCompatActivity {
                                     String password = document.getString("Password");
                                     String uid = document.getString("UID");
                                     String healthCardNumber = document.getString("Health Card Number");
-                                    ListRequest request = new ListRequest(firstName, lastName, userType, address, phoneNumber, email, password, uid, healthCardNumber);
+                                    boolean rejected = document.getBoolean("wasRejected");
+                                    ListRequest request = new ListRequest(firstName, lastName, userType, address, phoneNumber, email, password, uid, healthCardNumber, rejected);
                                     accountRequests.add(request);
                                 }
 

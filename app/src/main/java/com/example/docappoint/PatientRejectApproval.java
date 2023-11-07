@@ -86,6 +86,10 @@ public class PatientRejectApproval extends AppCompatActivity {
 
                 @Override
                 public void onClick(View v) {
+
+                    // Re-create the firebase auth account but using the Users collection information
+                    deleteFirebaseAccount(email);
+
                     savePatientDataToUsers(firstName, lastName, healthCardNumber, address, phoneNumber, email, password);
 
                     // ADD DELETE PENDINGUSERS COLLECTION FUNCTIONALITY HERE AND DELETE CHIP FUNCTIONALITY HERE
@@ -93,6 +97,9 @@ public class PatientRejectApproval extends AppCompatActivity {
                     Log.d("UID Debug", "UID: " + uid);
 
                     deletePatientDataFromPendingUsers(uid);
+
+                    // Sign admin back in after action is made to user request
+                    signAdmin();
 
                     startActivity(new Intent(getApplicationContext(), AdminNavigation.class));
                     finish();
@@ -142,6 +149,7 @@ public class PatientRejectApproval extends AppCompatActivity {
                         patientData.put("Password", password);
                         patientData.put("isPatient", 1);
                         patientData.put("isApproved", true);
+                        patientData.put("UID", patientUID);
 
                         patientDocument.set(patientData)
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -175,5 +183,23 @@ public class PatientRejectApproval extends AppCompatActivity {
 
     }
 
+    // Get admin to sign back in after every account creation (handling error)
+    private void signAdmin() {
+        String adminEmail = "admin_docappoint@gmail.com";
+        String adminPassword = "Admin1@docappoint";
 
+        mAuth.signInWithEmailAndPassword(adminEmail, adminPassword);
+    }
+
+    // Delete current firebaseAuth account (from RejectedUsers information)
+    private void deleteFirebaseAccount(String email) {
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser user = auth.getCurrentUser();
+
+        if (user != null && user.getEmail().equals(email)) {
+            user.delete();
+
+        }
+
+    }
 }

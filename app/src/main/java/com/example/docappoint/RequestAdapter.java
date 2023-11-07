@@ -66,6 +66,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
                     intent.putExtra("email", currentRequest.getAccountEmail());
                     intent.putExtra("password", currentRequest.getAccountPassword());
                     intent.putExtra("uid", currentRequest.getAccountUID());
+                    intent.putExtra("rejected", currentRequest.getStatus());
                     ArrayList<String> specialtiesList = currentRequest.getAccountSpecialties();
                     intent.putStringArrayListExtra("specialties", specialtiesList);
                     context.startActivity(intent);
@@ -82,6 +83,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
                     intent.putExtra("email", currentRequest.getAccountEmail());
                     intent.putExtra("password", currentRequest.getAccountPassword());
                     intent.putExtra("uid", currentRequest.getAccountUID());
+                    intent.putExtra("rejected", currentRequest.getStatus());
                     context.startActivity(intent);
                 }
             }
@@ -89,10 +91,31 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
                 //CHANGE SO IT DISPLAYS THE APPROVAL ONLY PAGE
                 if ("Doctor".equals(holder.accountType.getText().toString())){
                     Intent intent = new Intent(context, DoctorRejectApproval.class);
+                    intent.putExtra("firstName", currentRequest.getAccountFirstName());
+                    intent.putExtra("lastName", currentRequest.getAccountLastName());
+                    intent.putExtra("employeeNumber", currentRequest.getAccountEmployeeNumber());
+                    intent.putExtra("address", currentRequest.getAccountAddress());
+                    intent.putExtra("phoneNumber", currentRequest.getAccountPhoneNumber());
+                    intent.putExtra("email", currentRequest.getAccountEmail());
+                    intent.putExtra("password", currentRequest.getAccountPassword());
+                    intent.putExtra("uid", currentRequest.getAccountUID());
+                    intent.putExtra("rejected", currentRequest.getStatus());
+                    ArrayList<String> specialtiesList = currentRequest.getAccountSpecialties();
+                    intent.putStringArrayListExtra("specialties", specialtiesList);
+
                     context.startActivity(intent);
                 }
                 else {
                     Intent intent = new Intent(context, PatientRejectApproval.class);
+                    intent.putExtra("firstName", currentRequest.getAccountFirstName());
+                    intent.putExtra("lastName", currentRequest.getAccountLastName());
+                    intent.putExtra("healthCardNumber", currentRequest.getAccountHealthCardNumber());
+                    intent.putExtra("address", currentRequest.getAccountAddress());
+                    intent.putExtra("phoneNumber", currentRequest.getAccountPhoneNumber());
+                    intent.putExtra("email", currentRequest.getAccountEmail());
+                    intent.putExtra("password", currentRequest.getAccountPassword());
+                    intent.putExtra("uid", currentRequest.getAccountUID());
+                    intent.putExtra("rejected", currentRequest.getStatus());
                     context.startActivity(intent);
                 }
             }
