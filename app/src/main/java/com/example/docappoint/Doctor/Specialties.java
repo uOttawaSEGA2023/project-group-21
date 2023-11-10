@@ -1,4 +1,4 @@
-package com.example.docappoint;
+package com.example.docappoint.Doctor;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
+
+import com.example.docappoint.R;
 
 import java.util.ArrayList;
 public class Specialties extends AppCompatActivity {

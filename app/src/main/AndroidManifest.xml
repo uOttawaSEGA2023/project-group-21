@@ -21,49 +21,49 @@
             android:name=".StatusRejected"
             android:exported="false" />
         <activity
-            android:name=".DoctorApproval"
+            android:name=".Doctor.DoctorApproval"
             android:exported="false" />
         <activity
-            android:name=".PatientApproval"
+            android:name=".Patient.PatientApproval"
             android:exported="false" />
         <activity
-            android:name=".AdminHistory"
+            android:name=".Administrator.AdminHistory"
             android:exported="false" />
         <activity
-            android:name=".Specialties"
+            android:name=".Doctor.Specialties"
             android:exported="false" />
         <activity
-            android:name=".AdminNavigation"
+            android:name=".Administrator.AdminNavigation"
             android:exported="false" />
         <activity
-            android:name=".PatientNavigation"
+            android:name=".Patient.PatientNavigation"
             android:exported="false" />
         <activity
-            android:name=".DoctorNavigation"
+            android:name=".Doctor.DoctorNavigation"
             android:exported="false" />
         <activity
-            android:name=".AdminHomepage"
+            android:name=".Administrator.AdminHomepage"
             android:exported="false" />
         <activity
             android:name=".Settings"
             android:exported="false" />
         <activity
-            android:name=".PatientHomepage"
+            android:name=".Patient.PatientHomepage"
             android:exported="false" />
         <activity
-            android:name=".DoctorHomepage"
+            android:name=".Doctor.DoctorHomepage"
             android:exported="false" />
         <activity
-            android:name=".PatientRegister"
+            android:name=".Patient.PatientRegister"
             android:exported="false" />
         <activity
-            android:name=".DoctorRegister"
+            android:name=".Doctor.DoctorRegister"
             android:exported="false" />
         <activity
-            android:name=".DoctorRejectApproval"
+            android:name=".Doctor.DoctorRejectApproval"
             android:exported="false" />
         <activity
-            android:name=".PatientRejectApproval"
+            android:name=".Patient.PatientRejectApproval"
             android:exported="false" />
         <activity
             android:name=".SelectAccount"

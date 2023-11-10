@@ -1,4 +1,6 @@
-package com.example.docappoint;
+package com.example.docappoint.Patient;
+
+import com.example.docappoint.User;
 
 // Extend Patient with User
 public class Patient extends User {

@@ -1,4 +1,4 @@
-package com.example.docappoint;
+package com.example.docappoint.Doctor;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,18 +12,13 @@ import android.widget.EditText;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.docappoint.R;
+import com.example.docappoint.StatusPending;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.OnFailureListener;
 
-import com.google.android.libraries.places.api.net.FindAutocompletePredictionsRequest;
-import com.google.android.libraries.places.api.net.PlacesClient;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.ktx.Firebase;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,8 +27,6 @@ import java.util.Map;
 import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.Phonenumber;
-
-import com.google.android.libraries.places.api.Places;
 
 
 public class DoctorRegister extends AppCompatActivity {

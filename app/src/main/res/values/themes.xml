@@ -4,4 +4,8 @@
     <style name="Theme.DocAppoint" parent="Theme.AppCompat.NoActionBar">
 
     </style>
+
+    <style name = "DialogTheme">
+        <item name = "colorAccent">@color/main</item>
+    </style>
 </resources>

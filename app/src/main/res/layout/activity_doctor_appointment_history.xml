@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Administrator.AdminNavigation"
     android:background="#F0EFFF"
     >
 
@@ -21,7 +20,7 @@
         app:layout_constraintHorizontal_bias="0.0" />
 
     <EditText
-        android:id="@+id/adminName"
+        android:id="@+id/doctorName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="-3dp"
@@ -39,7 +38,7 @@
         tools:ignore="MissingConstraints" />
 
     <ImageView
-        android:id="@+id/patientLogo"
+        android:id="@+id/doctorLogo"
         android:layout_width="150dp"
         android:layout_height="100dp"
         android:layout_marginStart="200dp"
@@ -53,12 +52,12 @@
         app:layout_constraintVertical_bias="0.823" />
 
     <TextView
-        android:id="@+id/admninstratorTitle"
+        android:id="@+id/doctorTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:layout_marginEnd="10dp"
-        android:text="Administrator"
+        android:layout_marginStart="-10dp"
+        android:text="Doctor"
         android:textSize="10dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,26 +74,25 @@
         android:background="@drawable/profilepicture"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-
         />
 
     <TextView
-        android:id="@+id/pendingVerification"
+        android:id="@+id/yourPastAppointments"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="112dp"
         android:layout_marginEnd="10dp"
-        android:text="Account Approval History"
+        android:text="Your Past Appointments"
         android:textColor="@color/main"
-        android:textSize="27dp"
+        android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintHorizontal_bias="0.535"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/patientRegBackButton"
+        android:id="@+id/doctorPastAppointmentsBackButton"
         style="@style/backButton"
         android:layout_width="80dp"
         android:layout_height="39dp"
@@ -104,7 +102,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/accountApprovalHistory"
+        android:id="@+id/viewDoctorPastAppointments"
         android:layout_width="330dp"
         android:layout_height="400dp"
         android:layout_marginTop="164dp"

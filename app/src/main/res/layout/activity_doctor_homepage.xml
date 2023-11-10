@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F0EFFF"
-    tools:context=".DoctorHomepage">
+    tools:context=".Doctor.DoctorHomepage">
 
     <TextView
         android:id="@+id/doctorHeader"

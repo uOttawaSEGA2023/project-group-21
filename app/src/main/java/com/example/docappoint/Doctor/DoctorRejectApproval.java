@@ -1,102 +1,111 @@
-package com.example.docappoint;
+package com.example.docappoint.Doctor;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
+import com.example.docappoint.Administrator.AdminNavigation;
+import com.example.docappoint.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PatientRejectApproval extends AppCompatActivity {
+public class DoctorRejectApproval extends AppCompatActivity {
 
-    // Initialize Firestore
+    // Declare Firebase variables
+    FirebaseAuth mAuth;
     FirebaseFirestore fStore;
 
-    // Initialize Firebase Auth
-    FirebaseAuth mAuth;
+    EditText doctorApprovalFirstNameText, doctorApprovalLastNameText,
+            doctorApprovalAddressText, doctorApprovalEmployeeNumberText, doctorApprovalPhoneNumberText, doctorApprovalEmailText;
 
-    EditText patientApprovalFirstNameTxt, patientApprovalLastNameTxt, patientApprovalHealthCardNumberTxt,
-            patientApprovalAddressTxt, patientApprovalPhoneNumberTxt, patientApprovalEmailTxt;
-
-    Button patientApprovalBackBtn, patientApprovalApproveRequestbtn, patientApprovalDenyRequestBtn;
+    TextView doctorApprovalSpecialtiesText;
+    Button doctorApprovalApproveRequestBtn, doctorApprovalBackBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_approveonly_patient_request);
+        setContentView(R.layout.activity_admin_approveonly_doctor_request);
 
-        // Initialize Firebase Firestore and Firebase Auth
+        // Initialize Firebase and Firestore
         fStore = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
-        // Link xml elements
-        patientApprovalFirstNameTxt = findViewById(R.id.patientApprovalOnlyFirstNameText);
-        patientApprovalLastNameTxt = findViewById(R.id.patientApprovalOnlyLastNameText);
-        patientApprovalHealthCardNumberTxt = findViewById(R.id.patientApprovalOnlyHealthCardNumberText);
-        patientApprovalAddressTxt = findViewById(R.id.patientApprovalOnlyAddressText);
-        patientApprovalPhoneNumberTxt = findViewById(R.id.patientApprovalOnlyPhoneNumberText);
-        patientApprovalEmailTxt = findViewById(R.id.patientApprovalOnlyEmailText);
+        // Link xml files
+        doctorApprovalFirstNameText = findViewById(R.id.doctorApprovalOnlyFirstNameText);
+        doctorApprovalLastNameText = findViewById(R.id.doctorApprovalOnlyLastNameText);
+        doctorApprovalAddressText = findViewById(R.id.doctorApprovalOnlyAddressText);
+        doctorApprovalEmployeeNumberText = findViewById(R.id.doctorApprovalOnlyEmployeeNumberText);
+        doctorApprovalPhoneNumberText = findViewById(R.id.doctorApprovalOnlyPhoneNumberText);
+        doctorApprovalEmailText = findViewById(R.id.doctorApprovalOnlyEmailText);
+        doctorApprovalSpecialtiesText = findViewById(R.id.doctorApprovalOnlySpecialtiesText);
 
-        // Buttons
-        patientApprovalBackBtn = findViewById(R.id.patientApprovalOnlyBackButton);
-        patientApprovalApproveRequestbtn = findViewById(R.id.patientApprovalOnlyApproveRequestButton);
 
+        // Link buttons
+        doctorApprovalApproveRequestBtn = findViewById(R.id.doctorApprovalApproveRequestButton);
+        doctorApprovalBackBtn = findViewById(R.id.doctorApprovalOnlyBackButton);
+
+        FirebaseAuth mAuth;
 
         // Retrieve user data from the intent extras
         Intent intent = getIntent();
         if (intent != null) {
             String firstName = intent.getStringExtra("firstName");
             String lastName = intent.getStringExtra("lastName");
-            String healthCardNumber = intent.getStringExtra("healthCardNumber");
             String address = intent.getStringExtra("address");
+            String employeeNumber = intent.getStringExtra("employeeNumber");
             String phoneNumber = intent.getStringExtra("phoneNumber");
             String email = intent.getStringExtra("email");
             String password = intent.getStringExtra("password");
             String uid = intent.getStringExtra("uid");
+            ArrayList<String> specialties = intent.getStringArrayListExtra("specialties");
 
             // Update the EditText fields with the retrieved data
-            patientApprovalFirstNameTxt.setText(firstName);
-            patientApprovalLastNameTxt.setText(lastName);
-            patientApprovalHealthCardNumberTxt.setText(healthCardNumber);
-            patientApprovalAddressTxt.setText(address);
-            patientApprovalPhoneNumberTxt.setText(phoneNumber);
-            patientApprovalEmailTxt.setText(email);
+            doctorApprovalFirstNameText.setText(firstName);
+            doctorApprovalLastNameText.setText(lastName);
+            doctorApprovalAddressText.setText(address);
+            doctorApprovalEmployeeNumberText.setText(employeeNumber);
+            doctorApprovalPhoneNumberText.setText(phoneNumber);
+            doctorApprovalEmailText.setText(email);
+            if (specialties != null) {
+                doctorApprovalSpecialtiesText.setText(TextUtils.join(", ", specialties));
+            }
 
-            // Approve button will copy PendingUsers collection to Users
-            patientApprovalApproveRequestbtn.setOnClickListener(new View.OnClickListener() {
 
+            // Approve button will copy RejectedUsers collection to Users
+            doctorApprovalApproveRequestBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
                     // Re-create the firebase auth account but using the Users collection information
                     deleteFirebaseAccount(email);
 
-                    savePatientDataToUsers(firstName, lastName, healthCardNumber, address, phoneNumber, email, password);
+                    saveDoctorDataToUsers(firstName, lastName, employeeNumber, address, phoneNumber, email, password, specialties);
 
                     // ADD DELETE PENDINGUSERS COLLECTION FUNCTIONALITY HERE AND DELETE CHIP FUNCTIONALITY HERE
+
+
                     Log.d("Email Debug", "Email: " + email);
                     Log.d("UID Debug", "UID: " + uid);
 
-                    deletePatientDataFromPendingUsers(uid);
+                    deleteDoctorDataFromPendingUsers(uid);
 
                     // Sign admin back in after action is made to user request
                     signAdmin();
@@ -105,22 +114,23 @@ public class PatientRejectApproval extends AppCompatActivity {
                     finish();
                 }
             });
-
         }
 
-        // Button functionality to navigate back
-        patientApprovalBackBtn.setOnClickListener(new View.OnClickListener() {
+        // Back button
+        doctorApprovalBackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 startActivity(new Intent(getApplicationContext(), AdminNavigation.class));
                 finish();
+
             }
         });
 
     }
 
-    // Using the PendingUsers information, save it on a new colection called Users in firebase
-    private void savePatientDataToUsers(String firstName, String lastName, String healthCardNumber, String address, String phoneNumber, String email, String password) {
+    // Using the PendingUsers information, save it on a new collection called Users in firebase
+    private void saveDoctorDataToUsers(String firstName, String lastName, String employeeNumber, String address, String phoneNumber, String email, String password, ArrayList<String> specialties) {
 
         // Create authentication using Firebase Auth for Users collection
         FirebaseAuth fAuth = FirebaseAuth.getInstance();
@@ -134,36 +144,38 @@ public class PatientRejectApproval extends AppCompatActivity {
                         FirebaseUser user = fAuth.getCurrentUser();
 
                         // Get the user's UID
-                        String patientUID = user.getUid();
+                        String doctorUID = user.getUid();
 
                         // Save the reference to the "Users" collection
-                        DocumentReference patientDocument = fStore.collection("Users").document(patientUID);
+                        DocumentReference doctorDocument = fStore.collection("Users").document(doctorUID);
 
-                        Map<String, Object> patientData = new HashMap<>();
-                        patientData.put("First Name", firstName);
-                        patientData.put("Last Name", lastName);
-                        patientData.put("Health Card Number", healthCardNumber);
-                        patientData.put("Address", address);
-                        patientData.put("Phone Number", phoneNumber);
-                        patientData.put("Email", email);
-                        patientData.put("Password", password);
-                        patientData.put("isPatient", 1);
-                        patientData.put("isApproved", true);
-                        patientData.put("UID", patientUID);
+                        Map<String, Object> doctorData = new HashMap<>();
 
-                        patientDocument.set(patientData)
+                        doctorData.put("First Name", firstName);
+                        doctorData.put("Last Name", lastName);
+                        doctorData.put("Employee Number", employeeNumber);
+                        doctorData.put("Address", address);
+                        doctorData.put("Phone Number", phoneNumber);
+                        doctorData.put("Email", email);
+                        doctorData.put("Password", password);
+                        doctorData.put("isDoctor", 1);
+                        doctorData.put("isApproved", true);
+                        doctorData.put("Specialties", specialties);
+                        doctorData.put("UID", doctorUID);
+
+                        doctorDocument.set(doctorData)
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
                                         // If successful display success toast message
-                                        Toast.makeText(PatientRejectApproval.this, "User approved!", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(DoctorRejectApproval.this, "User approved!", Toast.LENGTH_SHORT).show();
                                     }
                                 })
                                 .addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(Exception e) {
                                         // If error occurs display error toast message
-                                        Toast.makeText(PatientRejectApproval.this, "Failed to approve user" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(DoctorRejectApproval.this, "Failed to approve user" + e.getMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 });
                         ;
@@ -171,10 +183,10 @@ public class PatientRejectApproval extends AppCompatActivity {
                     }
 
                 });
-
     }
 
-    private void deletePatientDataFromPendingUsers(String uid) {
+
+    private void deleteDoctorDataFromPendingUsers(String uid) {
         CollectionReference rejectedUsersCollection = fStore.collection("RejectedUsers");
 
         // Get the document reference for the user using the UID
@@ -200,6 +212,6 @@ public class PatientRejectApproval extends AppCompatActivity {
             user.delete();
 
         }
-
     }
+
 }

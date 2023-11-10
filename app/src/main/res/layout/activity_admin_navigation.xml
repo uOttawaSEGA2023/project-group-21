@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminNavigation"
+    tools:context=".Administrator.AdminNavigation"
     android:background="#F0EFFF"
 >
 
@@ -36,15 +36,19 @@
         app:layout_constraintVertical_bias="0.018"
         tools:ignore="MissingConstraints" />
 
-    <ImageView
-        android:id="@+id/patientLogo"
-        android:layout_width="150dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="172dp"
-        android:layout_marginBottom="644dp"
-        android:src="@drawable/whitelogo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+    <TextView
+        android:id="@+id/admninstratorTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="10dp"
+        android:text="Administrator"
+        android:textSize="10dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.212"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/adminSettingButton"
@@ -60,19 +64,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/admninstratorTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="10dp"
-        android:text="Administrator"
-        android:textSize="10dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.212"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/patientLogo"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="172dp"
+        android:layout_marginBottom="644dp"
+        android:src="@drawable/whitelogo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/pfp"

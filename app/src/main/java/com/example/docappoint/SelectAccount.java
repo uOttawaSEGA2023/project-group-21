@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.docappoint.Doctor.DoctorRegister;
+import com.example.docappoint.Patient.PatientRegister;
+
 public class SelectAccount extends AppCompatActivity {
 
     Button specifyPatientButton, specifyDoctorButton, selectAccountBackBtn;

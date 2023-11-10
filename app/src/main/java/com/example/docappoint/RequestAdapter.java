@@ -11,6 +11,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.docappoint.Doctor.DoctorApproval;
+import com.example.docappoint.Doctor.DoctorRejectApproval;
+import com.example.docappoint.Patient.PatientApproval;
+import com.example.docappoint.Patient.PatientRejectApproval;
+
 import java.util.ArrayList;
 import java.util.List;
 

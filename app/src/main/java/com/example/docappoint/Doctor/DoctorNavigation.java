@@ -1,4 +1,4 @@
-package com.example.docappoint;
+package com.example.docappoint.Doctor;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,28 +7,29 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class PatientNavigation extends AppCompatActivity {
+import com.example.docappoint.R;
+import com.example.docappoint.Settings;
 
-    Button patientSettingBtn;
+public class DoctorNavigation extends AppCompatActivity {
+
+    Button doctorSettingsBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_patient_navigation);
+        setContentView(R.layout.activity_doctor_navigation);
 
-        // Link UI to variable
-        patientSettingBtn = findViewById(R.id.patientSettingButton);
+        doctorSettingsBtn = findViewById(R.id.doctorSettingButton);
 
         // Redirect to settings screen when clicked
-        patientSettingBtn.setOnClickListener(new View.OnClickListener() {
+        doctorSettingsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), Settings.class));
                 finish();
             }
-
         });
-
-
     }
+
+
 }
