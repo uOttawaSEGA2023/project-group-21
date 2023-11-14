@@ -12,7 +12,7 @@ import com.example.docappoint.Settings;
 
 public class DoctorNavigation extends AppCompatActivity {
 
-    Button doctorSettingsBtn;
+    Button doctorSettingsBtn, doctorViewAppointmentHistoryBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,12 +20,21 @@ public class DoctorNavigation extends AppCompatActivity {
         setContentView(R.layout.activity_doctor_navigation);
 
         doctorSettingsBtn = findViewById(R.id.doctorSettingButton);
+        doctorViewAppointmentHistoryBtn = findViewById(R.id.doctorViewAppointmentHistoryButton);
 
         // Redirect to settings screen when clicked
         doctorSettingsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), Settings.class));
+                finish();
+            }
+        });
+
+        doctorViewAppointmentHistoryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), DoctorApptHistory.class));
                 finish();
             }
         });

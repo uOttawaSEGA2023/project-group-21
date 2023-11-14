@@ -18,8 +18,10 @@ public class DoctorHomepage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_homepage);
 
+
         //  Assign variables to direct xml files
         doctorContinue = findViewById(R.id.doctorContinueButton);
+
 
         // Continue button leading to doctor navigation page
         doctorContinue.setOnClickListener(new View.OnClickListener() {
