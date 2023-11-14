@@ -19,8 +19,8 @@ tools:context=".Patient.PatientHomepage">
         android:id="@+id/patientLogo"
         android:layout_width="140dp"
         android:layout_height="100dp"
-        android:layout_marginEnd="108dp"
-        android:layout_marginBottom="648dp"
+        android:layout_marginEnd="104dp"
+        android:layout_marginBottom="700dp"
         android:src="@drawable/whitelogo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -69,17 +69,17 @@ tools:context=".Patient.PatientHomepage">
         />
 
     <Button
-    android:id="@+id/patientBookApptButton"
-    android:layout_marginStart="116dp"
-    android:layout_marginTop="400dp"
-    android:layout_marginEnd="108dp"
-    android:text="Book appointment"
-    android:textStyle="bold"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.454"
-    app:layout_constraintStart_toStartOf="parent"
-    style="@style/AllButtons"
-    app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/patientBookApptButton"
+        style="@style/AllButtons"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="404dp"
+        android:layout_marginEnd="108dp"
+        android:text="Book appointment"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.625"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/patientSettingButton"
