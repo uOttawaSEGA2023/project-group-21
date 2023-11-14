@@ -17,6 +17,7 @@ public class BookAppointment extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_patient_book_appointment);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
