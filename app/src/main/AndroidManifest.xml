@@ -66,6 +66,9 @@
             android:name=".Patient.PatientRejectApproval"
             android:exported="false" />
         <activity
+            android:name=".Patient.BookAppointment"
+            android:exported="false" />
+        <activity
             android:name=".SelectAccount"
             android:exported="false" />
         <activity

@@ -12,7 +12,7 @@ import com.example.docappoint.Settings;
 
 public class PatientNavigation extends AppCompatActivity {
 
-    Button patientSettingBtn;
+    Button patientSettingBtn, patientBookApptButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,12 +21,22 @@ public class PatientNavigation extends AppCompatActivity {
 
         // Link UI to variable
         patientSettingBtn = findViewById(R.id.patientSettingButton);
+        patientBookApptButton = findViewById(R.id.patientBookApptButton);
 
         // Redirect to settings screen when clicked
         patientSettingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), Settings.class));
+                finish();
+            }
+
+        });
+
+        patientBookApptButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), BookAppointment.class));
                 finish();
             }
 

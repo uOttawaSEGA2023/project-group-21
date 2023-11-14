@@ -33,15 +33,10 @@
         android:id="@+id/patientLogo"
         android:layout_width="233dp"
         android:layout_height="201dp"
-        android:layout_marginStart="144dp"
-        android:layout_marginBottom="598dp"
+        android:layout_marginStart="116dp"
         android:src="@drawable/whitelogo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.984" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/doctorSignUp"
@@ -55,16 +50,15 @@
         android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.181"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/backdrop"
         android:layout_width="328dp"
         android:layout_height="435dp"
-        android:layout_marginStart="45dp"
+        android:layout_marginStart="33dp"
         android:layout_marginTop="180dp"
         android:background="@drawable/backdrop"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -80,7 +74,7 @@
     <EditText
         android:id="@+id/doctorFirstName"
         style="@style/textField"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="69dp"
         android:layout_marginTop="211dp"
         android:layout_marginEnd="50dp"
         android:autofillHints="name"
@@ -95,7 +89,7 @@
     <EditText
         android:id="@+id/doctorLastName"
         style="@style/textField"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="69dp"
         android:layout_marginTop="253dp"
         android:layout_marginEnd="50dp"
         android:autofillHints="name"
@@ -112,7 +106,7 @@
     <Button
         android:id="@+id/doctorSpecialtiesButton"
         style="@style/AllButtons"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="69dp"
         android:layout_marginTop="295dp"
         android:layout_marginEnd="50dp"
         android:text="@string/specialties"
@@ -128,7 +122,7 @@
     <EditText
         android:id="@+id/doctorEmployeeNumber"
         style="@style/textField"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="69dp"
         android:layout_marginTop="337dp"
         android:layout_marginEnd="50dp"
         android:hint="@string/employee_number"
@@ -144,7 +138,7 @@
     <EditText
         android:id="@+id/doctorAddress"
         style="@style/textField"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="69dp"
         android:layout_marginTop="379dp"
         android:layout_marginEnd="50dp"
         android:autofillHints="postalAddress"
@@ -161,7 +155,7 @@
     <EditText
         android:id="@+id/doctorPhoneNumber"
         style="@style/textField"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="69dp"
         android:layout_marginTop="421dp"
         android:layout_marginEnd="50dp"
         android:autofillHints="phone"
@@ -178,7 +172,7 @@
     <EditText
         android:id="@+id/doctorEmail"
         style="@style/textField"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="69dp"
         android:layout_marginTop="463dp"
         android:layout_marginEnd="50dp"
         android:autofillHints="phone"
@@ -195,7 +189,7 @@
     <EditText
         android:id="@+id/doctorPassword"
         style="@style/textField"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="69dp"
         android:layout_marginTop="505dp"
         android:layout_marginEnd="50dp"
         android:autofillHints="password"
@@ -212,7 +206,7 @@
     <EditText
         android:id="@+id/confirmPasswordDoctor"
         style="@style/textField"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="69dp"
         android:layout_marginTop="547dp"
         android:layout_marginEnd="50dp"
         android:autofillHints="password"
@@ -235,7 +229,7 @@
         android:text="@string/createAccount"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.32"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/confirmPasswordDoctor"
         app:layout_constraintTop_toTopOf="parent" />

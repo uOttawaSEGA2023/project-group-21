@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.docappoint.R;
 
-public class SetTime extends AppCompatActivity {
+public class SetShift extends AppCompatActivity {
 
     private TextView text;
     private Button button;
