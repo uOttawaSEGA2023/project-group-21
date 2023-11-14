@@ -69,6 +69,9 @@
             android:name=".SelectAccount"
             android:exported="false" />
         <activity
+            android:name=".Doctor.DoctorApptHistory"
+            android:exported="false" />
+        <activity
             android:name=".Homepage"
             android:exported="true">
             <intent-filter>
