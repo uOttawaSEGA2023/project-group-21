@@ -42,15 +42,11 @@
         android:id="@+id/patientLogo"
         android:layout_width="150dp"
         android:layout_height="100dp"
-        android:layout_marginStart="200dp"
-        android:layout_marginBottom="650dp"
+        android:layout_marginEnd="57dp"
+        android:layout_marginBottom="700dp"
         android:src="@drawable/whitelogo"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.823" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/admninstratorTitle"
@@ -89,7 +85,7 @@
         android:textSize="27dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintHorizontal_bias="0.622"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -97,7 +93,7 @@
         android:id="@+id/backdrop"
         android:layout_width="328dp"
         android:layout_height="375dp"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="33dp"
         android:layout_marginTop="176dp"
         android:background="@drawable/backdrop"
         app:layout_constraintStart_toStartOf="parent"
@@ -106,7 +102,7 @@
     <EditText
         android:id="@+id/doctorApprovalOnlyFirstNameText"
         style="@style/textField"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="72dp"
         android:layout_marginTop="204dp"
         android:layout_marginEnd="50dp"
         android:autofillHints="name"
@@ -120,7 +116,7 @@
     <EditText
         android:id="@+id/doctorApprovalOnlyLastNameText"
         style="@style/textField"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="72dp"
         android:layout_marginTop="246dp"
         android:layout_marginEnd="50dp"
         android:autofillHints="name"
@@ -136,7 +132,7 @@
     <EditText
         android:id="@+id/doctorApprovalOnlyEmployeeNumberText"
         style="@style/textField"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="72dp"
         android:layout_marginTop="288dp"
         android:layout_marginEnd="50dp"
         android:autofillHints="name"
@@ -152,7 +148,7 @@
     <EditText
         android:id="@+id/doctorApprovalOnlyAddressText"
         style="@style/textField"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="72dp"
         android:layout_marginTop="330dp"
         android:layout_marginEnd="50dp"
         android:autofillHints="postalAddress"
@@ -168,7 +164,7 @@
     <EditText
         android:id="@+id/doctorApprovalOnlyPhoneNumberText"
         style="@style/textField"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="72dp"
         android:layout_marginTop="372dp"
         android:layout_marginEnd="50dp"
         android:autofillHints="phone"
@@ -184,7 +180,7 @@
     <EditText
         android:id="@+id/doctorApprovalOnlyEmailText"
         style="@style/textField"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="72dp"
         android:layout_marginTop="414dp"
         android:layout_marginEnd="50dp"
         android:autofillHints="username|emailAddress"
@@ -201,7 +197,7 @@
         android:id="@+id/doctorApprovalOnlySpecialtiesText"
         style="@style/textField"
         android:layout_height="70dp"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="72dp"
         android:layout_marginTop="456dp"
         android:layout_marginEnd="50dp"
         android:autofillHints="username|emailAddress"

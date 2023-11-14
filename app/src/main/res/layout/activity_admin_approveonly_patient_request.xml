@@ -42,15 +42,11 @@
         android:id="@+id/patientLogo"
         android:layout_width="150dp"
         android:layout_height="100dp"
-        android:layout_marginStart="200dp"
-        android:layout_marginBottom="650dp"
+        android:layout_marginEnd="57dp"
+        android:layout_marginBottom="700dp"
         android:src="@drawable/whitelogo"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.823" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/admninstratorTitle"
@@ -89,7 +85,7 @@
         android:textSize="27dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.589"
+        app:layout_constraintHorizontal_bias="0.625"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -97,7 +93,7 @@
         android:id="@+id/backdrop"
         android:layout_width="328dp"
         android:layout_height="320dp"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="33dp"
         android:layout_marginTop="180dp"
         android:background="@drawable/backdrop"
         app:layout_constraintStart_toStartOf="parent"
@@ -106,7 +102,7 @@
     <EditText
         android:id="@+id/patientApprovalOnlyFirstNameText"
         style="@style/textField"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="72dp"
         android:layout_marginTop="216dp"
         android:layout_marginEnd="50dp"
         android:autofillHints="name"
@@ -120,7 +116,7 @@
     <EditText
         android:id="@+id/patientApprovalOnlyLastNameText"
         style="@style/textField"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="72dp"
         android:layout_marginTop="258dp"
         android:layout_marginEnd="50dp"
         android:hint="@string/lastName"
@@ -136,7 +132,7 @@
     <EditText
         android:id="@+id/patientApprovalOnlyHealthCardNumberText"
         style="@style/textField"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="72dp"
         android:layout_marginTop="300dp"
         android:layout_marginEnd="50dp"
         android:hint="@string/healthCardNumber"
@@ -154,7 +150,7 @@
     <EditText
         android:id="@+id/patientApprovalOnlyAddressText"
         style="@style/textField"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="72dp"
         android:layout_marginTop="342dp"
         android:layout_marginEnd="50dp"
         android:hint="@string/address"
@@ -171,7 +167,7 @@
     <EditText
         android:id="@+id/patientApprovalOnlyPhoneNumberText"
         style="@style/textField"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="72dp"
         android:layout_marginTop="384dp"
         android:layout_marginEnd="50dp"
         android:hint="@string/phoneNumber"
@@ -188,7 +184,7 @@
     <EditText
         android:id="@+id/patientApprovalOnlyEmailText"
         style="@style/textField"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="72dp"
         android:layout_marginTop="426dp"
         android:layout_marginEnd="50dp"
         android:hint="@string/email"
@@ -206,7 +202,7 @@
         android:id="@+id/patientApprovalOnlyApproveRequestButton"
         android:layout_width="150dp"
         android:layout_height="39dp"
-        android:layout_marginStart="132dp"
+        android:layout_marginStart="128dp"
         android:layout_marginTop="580dp"
         android:background="@drawable/greenbutton"
         android:text="Approve"
@@ -218,8 +214,8 @@
         style="@style/backButton"
         android:layout_width="80dp"
         android:layout_height="39dp"
-        android:layout_marginStart="165dp"
-        android:layout_marginTop="636dp"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="632dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
