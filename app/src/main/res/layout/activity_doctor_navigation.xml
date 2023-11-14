@@ -87,17 +87,12 @@
     <ImageView
         android:layout_width="330dp"
         android:layout_height="125dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="176dp"
         android:background="@drawable/purplecard"
         app:cardBackgroundColor="@color/main"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.268" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/firstNameRecycle"
@@ -264,17 +259,12 @@
     <ImageView
         android:layout_width="330dp"
         android:layout_height="125dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="476dp"
         android:background="@drawable/purplecard"
         app:cardBackgroundColor="@color/main"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.737" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/doctorShiftCardStartLabel"
@@ -330,7 +320,7 @@
         android:layout_width="75dp"
         android:layout_height="30dp"
         android:layout_marginStart="256dp"
-        android:layout_marginTop="492dp"
+        android:layout_marginTop="500dp"
         android:background="@drawable/rounded_back_button"
         android:text="Change"
         android:textSize="11dp"
@@ -342,7 +332,7 @@
         android:layout_width="75dp"
         android:layout_height="30dp"
         android:layout_marginStart="256dp"
-        android:layout_marginTop="540dp"
+        android:layout_marginTop="544dp"
         android:background="@drawable/rounded_back_button"
         android:text="Cancel"
         android:textSize="11dp"
