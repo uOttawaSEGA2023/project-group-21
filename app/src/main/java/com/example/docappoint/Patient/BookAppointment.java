@@ -13,20 +13,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.docappoint.R;
 
 public class BookAppointment extends AppCompatActivity {
-    private Button button;
+    //private Button button;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_book_appointment);
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openDialog();
-            }
-        });
     }
 
+}
+
+/*
     private void openDialog(){
         DatePickerDialog dateDialog = new DatePickerDialog(this, R.style.DialogTheme, new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -47,5 +44,5 @@ public class BookAppointment extends AppCompatActivity {
         timeDialog.show();
 
     }
-}
+}*/
 
