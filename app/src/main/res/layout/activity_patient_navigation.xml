@@ -19,11 +19,12 @@ tools:context=".Patient.PatientHomepage">
         android:id="@+id/patientLogo"
         android:layout_width="140dp"
         android:layout_height="100dp"
-        android:layout_marginEnd="104dp"
+        android:layout_marginEnd="90dp"
         android:layout_marginBottom="700dp"
         android:src="@drawable/whitelogo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
 
     <EditText
         android:id="@+id/doctorName"
@@ -48,7 +49,7 @@ tools:context=".Patient.PatientHomepage">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:layout_marginStart="-11dp"
+        android:layout_marginStart="-10dp"
         android:text="Patient"
         android:textSize="10dp"
         android:textStyle="bold"
