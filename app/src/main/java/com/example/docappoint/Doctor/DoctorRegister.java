@@ -1,6 +1,7 @@
 package com.example.docappoint.Doctor;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.docappoint.Appointment;
 import com.example.docappoint.R;
 import com.example.docappoint.StatusPending;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -21,7 +23,11 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 import java.util.Random;
 
@@ -214,6 +220,138 @@ public class DoctorRegister extends AppCompatActivity {
                 userInfo.put("Email", regDoctorEmail.getText().toString());
                 userInfo.put("Password", regDoctorPassword.getText().toString());
                 userInfo.put("UID", dDoc.getId());
+
+                //Adding additional Doctor info
+                float rating = 0.0f;
+                userInfo.put("Rating", rating);
+
+                int numOfRating = 0;
+                userInfo.put("numOfRatings", numOfRating);
+
+                List<Appointment> l = new List<Appointment>() {
+                    @Override
+                    public int size() {
+                        return 0;
+                    }
+
+                    @Override
+                    public boolean isEmpty() {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean contains(@Nullable Object o) {
+                        return false;
+                    }
+
+                    @NonNull
+                    @Override
+                    public Iterator<Appointment> iterator() {
+                        return null;
+                    }
+
+                    @NonNull
+                    @Override
+                    public Object[] toArray() {
+                        return new Object[0];
+                    }
+
+                    @NonNull
+                    @Override
+                    public <T> T[] toArray(@NonNull T[] ts) {
+                        return null;
+                    }
+
+                    @Override
+                    public boolean add(Appointment appointment) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean remove(@Nullable Object o) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean containsAll(@NonNull Collection<?> collection) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean addAll(@NonNull Collection<? extends Appointment> collection) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean addAll(int i, @NonNull Collection<? extends Appointment> collection) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean removeAll(@NonNull Collection<?> collection) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean retainAll(@NonNull Collection<?> collection) {
+                        return false;
+                    }
+
+                    @Override
+                    public void clear() {
+
+                    }
+
+                    @Override
+                    public Appointment get(int i) {
+                        return null;
+                    }
+
+                    @Override
+                    public Appointment set(int i, Appointment appointment) {
+                        return null;
+                    }
+
+                    @Override
+                    public void add(int i, Appointment appointment) {
+
+                    }
+
+                    @Override
+                    public Appointment remove(int i) {
+                        return null;
+                    }
+
+                    @Override
+                    public int indexOf(@Nullable Object o) {
+                        return 0;
+                    }
+
+                    @Override
+                    public int lastIndexOf(@Nullable Object o) {
+                        return 0;
+                    }
+
+                    @NonNull
+                    @Override
+                    public ListIterator<Appointment> listIterator() {
+                        return null;
+                    }
+
+                    @NonNull
+                    @Override
+                    public ListIterator<Appointment> listIterator(int i) {
+                        return null;
+                    }
+
+                    @NonNull
+                    @Override
+                    public List<Appointment> subList(int i, int i1) {
+                        return null;
+                    }
+                };
+
+                userInfo.put("docAppointments", l);
 
                 // Specify the user is a doctor user
                 userInfo.put("isDoctor", 1);

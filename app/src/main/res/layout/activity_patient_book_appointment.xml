@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0EFFF"
-    >
+    android:background="#F0EFFF">
 
     <TextView
         android:id="@+id/header"
@@ -14,10 +13,10 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
         android:background="@drawable/header"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/doctorName"
@@ -51,8 +50,8 @@
         android:id="@+id/patientTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
         android:layout_marginStart="-10dp"
+        android:layout_marginTop="40dp"
         android:text="Patient"
         android:textSize="10dp"
         android:textStyle="bold"
@@ -69,15 +68,14 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/profilepicture"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <CalendarView
         android:id="@+id/patientAppointmentDate"
         android:layout_width="315dp"
         android:layout_height="325dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="164dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="160dp"
         android:background="@drawable/rounded_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -86,14 +84,14 @@
         android:id="@+id/chooseADateLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="108dp"
         android:layout_marginEnd="10dp"
         android:text="Book Appointment"
         android:textColor="@color/main"
         android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

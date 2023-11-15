@@ -33,7 +33,7 @@ public class AdminNavigation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_navigation);
 
-        adminSettingsBtn = findViewById(R.id.adminSettingButton);
+        adminSettingsBtn = findViewById(R.id.doctorSelectSettingButton);
         adminViewHistoryBtn = findViewById(R.id.viewApprovalHistoryButton);
         accountApprovalList = findViewById(R.id.accountApprovals);
 
@@ -64,7 +64,7 @@ public class AdminNavigation extends AppCompatActivity {
 
                                 String userType = "N/A";
 
-                                if (isDoctor == 1) {
+                                if (isDoctor == 1 ) {
                                     userType = "Doctor";
                                     String address = document.getString("Address");
                                     String phoneNumber = document.getString("Phone Number");

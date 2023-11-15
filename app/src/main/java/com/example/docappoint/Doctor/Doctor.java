@@ -1,6 +1,9 @@
 package com.example.docappoint.Doctor;
 
+import com.example.docappoint.Appointment;
 import com.example.docappoint.User;
+
+import java.util.List;
 
 // Extend Doctor with User
 public class Doctor extends User {
@@ -9,6 +12,11 @@ public class Doctor extends User {
     private int employeeNum;
     private String[] specialties;
 
+    private float rating;
+    private int numRatings;
+
+    private List<Appointment> appointments;
+
     // Constructor for Doctor
     public Doctor(String firstName, String lastName, String email, String password, String checkPassword, String phoneNumber, String
             address, int employeeNum, String[] specialties) {
@@ -16,6 +24,8 @@ public class Doctor extends User {
 
         this.employeeNum = employeeNum;
         this.specialties = specialties;
+        this.rating = 0.0f;
+        this.numRatings = 0;
     }
 
 

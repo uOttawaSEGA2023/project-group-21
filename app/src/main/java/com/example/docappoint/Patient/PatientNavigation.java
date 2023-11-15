@@ -36,10 +36,9 @@ public class PatientNavigation extends AppCompatActivity {
         patientBookApptButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), BookAppointment.class));
+                startActivity(new Intent(getApplicationContext(), SelectDoctor.class));
                 finish();
             }
-
         });
     }
 }
