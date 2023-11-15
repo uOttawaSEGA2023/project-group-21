@@ -30,8 +30,9 @@ import java.util.Map;
 public class DoctorApproval extends AppCompatActivity {
 
     // Declare Firebase variables
-    FirebaseAuth mAuth;
     FirebaseFirestore fStore;
+
+    FirebaseAuth mAuth;
 
     EditText doctorApprovalFirstNameText, doctorApprovalLastNameText,
             doctorApprovalAddressText, doctorApprovalEmployeeNumberText, doctorApprovalPhoneNumberText, doctorApprovalEmailText;
@@ -96,8 +97,6 @@ public class DoctorApproval extends AppCompatActivity {
                     saveDoctorDataToUsers(firstName, lastName, employeeNumber, address, phoneNumber, email, password, specialties);
 
                     // ADD DELETE PENDINGUSERS COLLECTION FUNCTIONALITY HERE AND DELETE CHIP FUNCTIONALITY HERE
-
-
                     Log.d("Email Debug", "Email: " + email);
                     Log.d("UID Debug", "UID: " + uid);
 
@@ -189,6 +188,9 @@ public class DoctorApproval extends AppCompatActivity {
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
+
+                                        signAdmin();
+
                                         // If successful display success toast message
                                         Toast.makeText(DoctorApproval.this, "User approved!", Toast.LENGTH_SHORT).show();
                                     }
@@ -196,6 +198,9 @@ public class DoctorApproval extends AppCompatActivity {
                                 .addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(Exception e) {
+
+                                        signAdmin();
+
                                         // If error occurs display error toast message
                                         Toast.makeText(DoctorApproval.this, "Failed to approve user" + e.getMessage(), Toast.LENGTH_SHORT).show();
                                     }
@@ -247,6 +252,9 @@ public class DoctorApproval extends AppCompatActivity {
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
+
+                                        signAdmin();
+
                                         // If successful display success toast message
                                         Toast.makeText(DoctorApproval.this, "User denied!", Toast.LENGTH_SHORT).show();
                                     }
@@ -254,6 +262,9 @@ public class DoctorApproval extends AppCompatActivity {
                                 .addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(Exception e) {
+
+                                        signAdmin();
+
                                         // If error occurs display error toast message
                                         Toast.makeText(DoctorApproval.this, "Failed to deny user" + e.getMessage(), Toast.LENGTH_SHORT).show();
                                     }

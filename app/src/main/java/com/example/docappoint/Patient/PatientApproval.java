@@ -179,6 +179,10 @@ public class PatientApproval extends AppCompatActivity {
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
+
+                                        // Sign admin back in after action is made to user request
+                                        signAdmin();
+
                                         // If successful display success toast message
                                         Toast.makeText(PatientApproval.this, "User approved!", Toast.LENGTH_SHORT).show();
                                     }
@@ -186,6 +190,10 @@ public class PatientApproval extends AppCompatActivity {
                                 .addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(Exception e) {
+
+                                        // Sign admin back in after action is made to user request
+                                        signAdmin();
+
                                         // If error occurs display error toast message
                                         Toast.makeText(PatientApproval.this, "Failed to approve user" + e.getMessage(), Toast.LENGTH_SHORT).show();
                                     }
@@ -236,6 +244,10 @@ public class PatientApproval extends AppCompatActivity {
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
+
+                                        // Sign admin back in after action is made to user request
+                                        signAdmin();
+
                                         // If successful display success toast message
                                         Toast.makeText(PatientApproval.this, "User denied!", Toast.LENGTH_SHORT).show();
                                     }
@@ -243,6 +255,10 @@ public class PatientApproval extends AppCompatActivity {
                                 .addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(Exception e) {
+
+                                        // Sign admin back in after action is made to user request
+                                        signAdmin();
+
                                         // If error occurs display error toast message
                                         Toast.makeText(PatientApproval.this, "Failed to deny user" + e.getMessage(), Toast.LENGTH_SHORT).show();
                                     }
