@@ -23,10 +23,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.Phonenumber;
+import java.util.Random;
 
 
 public class DoctorRegister extends AppCompatActivity {
@@ -39,6 +41,8 @@ public class DoctorRegister extends AppCompatActivity {
 
     EditText regDoctorFirstName, regDoctorLastName, regDoctorEmployeeNumber, regDoctorAddress, regDoctorPhoneNumber, regDoctorEmail, regDoctorPassword, regDoctorConfirmPassword;
     Button createDoctorAccount, doctorBackToLogin, regDoctorSpecialties;
+
+    Button  doctorAutoCreateBtn;
 
     // Add Firestore database (using Firestore to query user)
     FirebaseFirestore dStore;
@@ -105,6 +109,7 @@ public class DoctorRegister extends AppCompatActivity {
         regDoctorConfirmPassword = findViewById(R.id.confirmPasswordDoctor);
         createDoctorAccount = findViewById(R.id.createDoctorAccountButton);
         doctorBackToLogin = findViewById(R.id.doctorBackToLoginButton);
+        doctorAutoCreateBtn = findViewById(R.id.doctorRegisterAutoCreateButton);
 
         // Initialize Firebase class
         dStore = FirebaseFirestore.getInstance();
@@ -264,6 +269,26 @@ public class DoctorRegister extends AppCompatActivity {
             }
         });
 
+        doctorAutoCreateBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fillWithRandomData();
+            }
+        });
+    }
+
+    // Auto generates random patient data
+    private void fillWithRandomData() {
+        Random random = new Random();
+
+        regDoctorFirstName.setText("Doctor" + random.nextInt(1000));
+        regDoctorLastName.setText("Test" + random.nextInt(1000));
+        regDoctorEmployeeNumber.setText("1234");
+        regDoctorAddress.setText("93 Switch Grass Cres");
+        regDoctorPhoneNumber.setText("6135016672");
+        regDoctorEmail.setText("doctortest" + random.nextInt(1000) + "@gmail.com");
+        regDoctorPassword.setText("password123");
+        regDoctorConfirmPassword.setText("password123");
     }
 
     // Handle the result (request code) from the Specialties class

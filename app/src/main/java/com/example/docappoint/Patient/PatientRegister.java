@@ -26,12 +26,16 @@ import com.google.i18n.phonenumbers.Phonenumber;
 import java.util.HashMap;
 import java.util.Map;
 
+// to have auto words
+import java.util.Random;
+
 public class PatientRegister extends AppCompatActivity {
 
     // Declare variables to link to xml files
 
     EditText regPatientFirstName, regPatientLastName, regPatientHealthCardNum, regPatientAddress, regPatientPhoneNumber, regPatientEmail, regPatientPassword, regPatientConfirmPassword;
     Button createPatientAccount, patientBackToLogin;
+    Button patientAutoCreateBtn;
 
     // Add Firestore database (using Firestore to query user)
     FirebaseFirestore pStore;
@@ -95,6 +99,7 @@ public class PatientRegister extends AppCompatActivity {
         regPatientConfirmPassword = findViewById(R.id.confirmPasswordPatient);
         createPatientAccount = findViewById(R.id.createPatientAccountButton);
         patientBackToLogin = findViewById(R.id.patientRegBackButton);
+        patientAutoCreateBtn = findViewById(R.id.patientRegisterAutoCreateButton);
 
         pStore = FirebaseFirestore.getInstance();
 
@@ -225,5 +230,27 @@ public class PatientRegister extends AppCompatActivity {
                 finish();
             }
         });
+
+        patientAutoCreateBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fillWithRandomData();
+            }
+        });
+    }
+
+
+    // Auto generates random patient data
+    private void fillWithRandomData() {
+        Random random = new Random();
+
+        regPatientFirstName.setText("Patient" + random.nextInt(1000));
+        regPatientLastName.setText("Test" + random.nextInt(1000));
+        regPatientHealthCardNum.setText("1234567890");
+        regPatientAddress.setText("93 Switch Grass Cres");
+        regPatientPhoneNumber.setText("6135016672");
+        regPatientEmail.setText("patienttest" + random.nextInt(1000) + "@gmail.com");
+        regPatientPassword.setText("password123");
+        regPatientConfirmPassword.setText("password123");
     }
 }
