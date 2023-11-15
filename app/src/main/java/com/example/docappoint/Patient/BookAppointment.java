@@ -91,7 +91,7 @@ public class BookAppointment extends AppCompatActivity implements AdapterView.On
                             String doctorUID = intent.getStringExtra("uid");
                             Log.d("DocUID", doctorUID);
 
-                            Appointment appointment = new Appointment(formattedDate, selectedStartTime, firstName, lastName, userId, doctorUID);
+                            Appointment appointment = new Appointment(formattedDate, selectedStartTime, userId, doctorUID);
 
                             //TODO: ADD APPOINTMENT TO DOCTORS APPOINTMENT & PATIENT APPOINTMENT
 

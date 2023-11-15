@@ -3,18 +3,14 @@ package com.example.docappoint;
 public class Appointment {
     private String appointmentDate;
     private String appointmentTime;
-    private String appointmentPatientFirstName;
-    private String appointmentPatientLastName;
     private float appointmentRating;
     private String patientUID;
     private String doctorUID;
     private boolean hasHappened;
 
-    public Appointment(String appointmentDate, String appointmentTime, String appointmentPatientFirstName, String appointmentPatientLastName, String patientUID, String doctorUID){
+    public Appointment(String appointmentDate, String appointmentTime,String patientUID, String doctorUID){
         this.appointmentDate = appointmentDate;
         this.appointmentTime = appointmentTime;
-        this.appointmentPatientFirstName = appointmentPatientFirstName;
-        this.appointmentPatientLastName = appointmentPatientLastName;
         this.appointmentRating = 0.0f;
         this.hasHappened = false;
         this.patientUID = patientUID;
