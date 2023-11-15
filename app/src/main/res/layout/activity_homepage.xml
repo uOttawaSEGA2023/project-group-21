@@ -7,47 +7,6 @@
     android:background="#F0EFFF"
     tools:context=".Homepage">
 
-    <Button
-        android:id="@+id/createAccountButton"
-        style="@style/AllButtons"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="128dp"
-        android:layout_marginEnd="108dp"
-        android:text="Create Account"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginButton" />
-
-    <TextView
-        android:id="@+id/newToDocAppoint"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="560dp"
-        android:text="NEW TO DOCAPPOINT?"
-        android:textColor="@color/main"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/forgotPasswordClickableText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="480dp"
-        android:text="FORGOT PASSWORD?"
-        android:textSize="16dp"
-        android:textColor="@color/main"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -62,7 +21,7 @@
         android:id="@+id/imageView"
         android:layout_width="339dp"
         android:layout_height="77dp"
-        android:layout_marginStart="36dp"
+        android:layout_marginStart="30dp"
         android:layout_marginBottom="544dp"
         android:src="@drawable/purplelogo"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -70,37 +29,64 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.927" />
+        app:layout_constraintVertical_bias="0.896" />
 
     <TextView
         android:id="@+id/backdrop"
         android:layout_width="328dp"
         android:layout_height="160dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="208dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="256dp"
         android:background="@drawable/backdrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/loginEmail"
-        style="@style/textField"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="244dp"
-        android:layout_marginEnd="50dp"
-        android:autofillHints="name"
-        android:hint="@string/email"
-        android:inputType="text"
+    <Button
+        android:id="@+id/createAccountButton"
+        style="@style/AllButtons"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="652dp"
+        android:layout_marginEnd="108dp"
+        android:text="Create Account"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.645"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/newToDocAppoint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="612dp"
+        android:text="NEW TO DOCAPPOINT?"
+        android:textColor="@color/main"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/forgotPasswordClickableText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="524dp"
+        android:text="FORGOT PASSWORD?"
+        android:textColor="@color/main"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/loginPassword"
         style="@style/textField"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="300dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="348dp"
         android:layout_marginEnd="50dp"
         android:autofillHints="password"
         android:hint="@string/password"
@@ -112,19 +98,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <Button
         android:id="@+id/loginButton"
         style="@style/AllButtons"
-        android:layout_width="0dp"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="416dp"
-        android:layout_marginEnd="108dp"
+        android:layout_width="100dp"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="460dp"
         android:text="Log in"
         android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/loginEmail"
+        style="@style/textField"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="296dp"
+        android:layout_marginEnd="50dp"
+        android:autofillHints="name"
+        android:hint="@string/email"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

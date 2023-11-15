@@ -63,6 +63,9 @@
             android:name=".Doctor.DoctorRejectApproval"
             android:exported="false" />
         <activity
+            android:name=".Doctor.SetShift"
+            android:exported="false" />
+        <activity
             android:name=".Patient.PatientRejectApproval"
             android:exported="false" />
         <activity

@@ -17,4 +17,17 @@
     <string name="logIn">Log In</string>
     <string name="patient">Patient</string>
     <string name="doctor">Doctor</string>
+
+    <string-array name="times">
+        <item>9:00 AM</item> <item>9:30 AM</item> <item>10:00 AM</item> <item>10:30 AM</item> <item>11:00 AM</item> <item>11:30 AM</item>
+        <item>12:00 PM</item> <item>12:30 PM</item> <item>1:00 PM</item> <item>1:30 PM</item> <item>2:00 PM</item> <item>2:30 PM</item>
+        <item>3:00 PM</item> <item>3:30 PM</item> <item>4:00 PM</item> <item>4:30 PM</item> <item>5:00 PM</item>
+    </string-array>
+
+    <string-array name="patientTimes">
+        <item>9:00 AM</item> <item>9:30 AM</item> <item>10:00 AM</item> <item>10:30 AM</item> <item>11:00 AM</item> <item>11:30 AM</item>
+        <item>12:00 PM</item> <item>12:30 PM</item> <item>1:00 PM</item> <item>1:30 PM</item> <item>2:00 PM</item> <item>2:30 PM</item>
+        <item>3:00 PM</item> <item>3:30 PM</item> <item>4:00 PM</item> <item>4:30 PM</item> <item>5:00 PM</item>
+    </string-array>
+
 </resources>

@@ -11,7 +11,7 @@ import com.example.docappoint.Settings;
 
 public class DoctorNavigation extends AppCompatActivity {
 
-    Button doctorSettingsBtn, doctorViewAppointmentHistoryBtn;
+    Button doctorSettingsBtn, doctorViewAppointmentHistoryBtn, doctorAddShiftButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +20,7 @@ public class DoctorNavigation extends AppCompatActivity {
 
         doctorSettingsBtn = findViewById(R.id.doctorSettingButton);
         doctorViewAppointmentHistoryBtn = findViewById(R.id.doctorViewAppointmentHistoryButton);
+        doctorAddShiftButton = findViewById(R.id.doctorAddShiftButton);
 
         // Redirect to settings screen when clicked
         doctorSettingsBtn.setOnClickListener(new View.OnClickListener() {
@@ -34,6 +35,14 @@ public class DoctorNavigation extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), DoctorApptHistory.class));
+                finish();
+            }
+        });
+
+        doctorAddShiftButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), SetShift.class));
                 finish();
             }
         });
