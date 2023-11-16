@@ -27,7 +27,7 @@ public class SetShift extends AppCompatActivity implements AdapterView.OnItemSel
 
     private String selectedDate, startTime, endTime;
 
-    Button setShiftBackBtn;
+    Button setShiftBackBtn, confirmShiftBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +55,7 @@ public class SetShift extends AppCompatActivity implements AdapterView.OnItemSel
         getDate();
 
         setShiftBackBtn = findViewById(R.id.doctorUpcomingBackButton);
+        confirmShiftBtn = findViewById(R.id.confirmDoctorShift);
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
@@ -94,7 +95,7 @@ public class SetShift extends AppCompatActivity implements AdapterView.OnItemSel
         return selectedDate;
     }
 
-    public String getSartTime(){
+    public String getStartTime(){
         return this.startTime;
     }
 

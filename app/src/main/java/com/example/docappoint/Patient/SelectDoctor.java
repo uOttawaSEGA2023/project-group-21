@@ -30,7 +30,7 @@ import java.util.ListIterator;
 
 public class SelectDoctor extends AppCompatActivity {
     RecyclerView selectionOfDoctors;
-    Button settingsButton;
+    Button settingsButton, patientSelectDoctorBackbtn;
 
     ArrayList<DoctorChip> doctorChips = new ArrayList<>();
     private SearchView searchView;
@@ -42,6 +42,7 @@ public class SelectDoctor extends AppCompatActivity {
         setContentView(R.layout.activity_patient_choose_doctor);
 
         settingsButton = findViewById(R.id.doctorSelectSettingButton);
+        patientSelectDoctorBackbtn = findViewById(R.id.patientChooseDoctorBackButton);
         selectionOfDoctors = findViewById(R.id.selectDoctorRecyclerView);
         selectionOfDoctors.setLayoutManager(new LinearLayoutManager(this));
         adapter = new DoctorSearchAdapter(doctorChips); // Initialize the adapter
@@ -104,6 +105,15 @@ public class SelectDoctor extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), Settings.class));
+                finish();
+            }
+        });
+
+        // Back button
+        patientSelectDoctorBackbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), PatientNavigation.class));
                 finish();
             }
         });
