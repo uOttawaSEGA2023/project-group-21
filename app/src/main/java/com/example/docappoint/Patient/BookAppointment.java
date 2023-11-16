@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,10 +17,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.docappoint.Appointment;
 import com.example.docappoint.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
@@ -31,7 +35,7 @@ public class BookAppointment extends AppCompatActivity implements AdapterView.On
 
     private CalendarView patientCalendarView;
     private Calendar selectedDate;
-    private Button confirmButton;
+    private Button confirmButton, bookAppointmentBackBtn;
     private String selectedStartTime;
     private FirebaseAuth fAuth;
     private FirebaseFirestore fStore;
@@ -43,6 +47,7 @@ public class BookAppointment extends AppCompatActivity implements AdapterView.On
         setContentView(R.layout.activity_patient_book_appointment);
 
         confirmButton = findViewById(R.id.confirmPatientAppointment);
+        bookAppointmentBackBtn = findViewById(R.id.bookAppointmentBackButton);
         Spinner apptStartTime = findViewById(R.id.patientAppointmentStartTime);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -61,6 +66,16 @@ public class BookAppointment extends AppCompatActivity implements AdapterView.On
                 selectedDate.set(year, month, dayOfMonth);
             }
         });
+
+      //Back button
+        bookAppointmentBackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), SelectDoctor.class));
+                finish();
+            }
+        });
+
 
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,14 +102,55 @@ public class BookAppointment extends AppCompatActivity implements AdapterView.On
                             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMMM d, yyyy", Locale.getDefault());
                             String formattedDate = simpleDateFormat.format(selectedDate.getTime());
 
-                            Intent intent = new Intent();
+                            // Get Doctor UID
+                            Intent intent = getIntent();
                             String doctorUID = intent.getStringExtra("uid");
-                            Log.d("DocUID", doctorUID);
+                            Log.d("DocUID", "THIS IS DOCTOR UID" + doctorUID);
+
+                            // Get Patient UID
+                            fAuth = FirebaseAuth.getInstance();
+                            userId = fAuth.getCurrentUser().getUid();
 
                             Appointment appointment = new Appointment(formattedDate, selectedStartTime, userId, doctorUID);
 
                             //TODO: ADD APPOINTMENT TO DOCTORS APPOINTMENT & PATIENT APPOINTMENT
 
+                            // Save appointment to doctor user
+                            DocumentReference doctorRef = fStore.collection("Users").document(doctorUID);
+                            doctorRef.update("Appointments", FieldValue.arrayUnion(appointment))
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            Log.d("BookAppointment", "Appointment added to doctor's document.");
+
+                                            // Save appointment to patient user
+                                            DocumentReference patientRef = fStore.collection("Users").document(userId);
+                                            patientRef.update("Appointments", FieldValue.arrayUnion(appointment))
+                                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void aVoid) {
+                                                            Log.d("BookAppointment", "Appointment added to patient's document.");
+
+                                                            // Display result message and redirect user to nav page
+                                                            Toast.makeText(BookAppointment.this, "Success! Appointment Booked!", Toast.LENGTH_SHORT).show();
+                                                            startActivity(new Intent(getApplicationContext(), PatientNavigation.class));
+                                                            finish();
+                                                        }
+                                                    })
+                                                    .addOnFailureListener(new OnFailureListener() {
+                                                        @Override
+                                                        public void onFailure(@NonNull Exception e) {
+                                                            Log.w("BookAppointment", "Error adding appointment to patient's document", e);
+                                                        }
+                                                    });
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.w("BookAppointment", "Error adding appointment to doctor's document", e);
+                                        }
+                                    });
                         } else {
                             Log.d("BookAppointment", "Current data: null");
                         }

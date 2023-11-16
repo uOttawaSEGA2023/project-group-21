@@ -101,6 +101,7 @@ public class DoctorSearchAdapter extends RecyclerView.Adapter<DoctorSearchAdapte
                                     if (isDoctor == 1 && firstName.equals(currentRequest.getAccountFirstName()) && lastName.equals(currentRequest.getAccountLastName())) {
                                         String uid = document.getString("UID");
                                         intent.putExtra("uid", uid);
+                                        context.startActivity(intent);
                                     }
                                 }
                             }

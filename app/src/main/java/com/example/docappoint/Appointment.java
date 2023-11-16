@@ -25,14 +25,6 @@ public class Appointment {
         return appointmentTime;
     }
 
-    public String getAppointmentPatientFirstName() {
-        return appointmentPatientFirstName;
-    }
-
-    public String getAppointmentPatientLastName() {
-        return appointmentPatientLastName;
-    }
-
     public float getAppointmentRating() {
         return appointmentRating;
     }
