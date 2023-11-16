@@ -27,6 +27,8 @@ public class SetShift extends AppCompatActivity implements AdapterView.OnItemSel
 
     private String selectedDate, startTime, endTime;
 
+    Button setShiftBackBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -51,11 +53,24 @@ public class SetShift extends AppCompatActivity implements AdapterView.OnItemSel
         //set the calendar date to current date
         calendarView.setDate(System.currentTimeMillis());
         getDate();
+
+        setShiftBackBtn = findViewById(R.id.doctorUpcomingBackButton);
+
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int day) {
                 //create label that displays the date chosen
                 //DONT FORGET TO ADD 1 TO MONTH IN THIS METHOD
+            }
+        });
+
+        setShiftBackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(getApplicationContext(), ShiftHistory.class));
+                finish();
+
             }
         });
 
