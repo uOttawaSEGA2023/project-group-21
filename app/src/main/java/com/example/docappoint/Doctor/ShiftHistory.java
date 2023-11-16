@@ -11,7 +11,7 @@ import com.example.docappoint.R;
 
 public class ShiftHistory extends AppCompatActivity {
 
-    Button addShiftBtn;
+    Button addShiftBtn, shiftHistoryBackBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,12 +20,23 @@ public class ShiftHistory extends AppCompatActivity {
 
 
         addShiftBtn = findViewById(R.id.doctorAddShift);
+        shiftHistoryBackBtn = findViewById(R.id.viewShiftsBackButton);
 
         addShiftBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 startActivity(new Intent(getApplicationContext(), SetShift.class));
+                finish();
+
+            }
+        });
+
+        shiftHistoryBackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(getApplicationContext(), DoctorNavigation.class));
                 finish();
 
             }
