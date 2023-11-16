@@ -1,5 +1,6 @@
 package com.example.docappoint.Doctor;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -24,6 +25,8 @@ public class SetShift extends AppCompatActivity implements AdapterView.OnItemSel
     CalendarView calendarView;
     Calendar calendar;
 
+    private String selectedDate, startTime, endTime;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -43,7 +46,7 @@ public class SetShift extends AppCompatActivity implements AdapterView.OnItemSel
 
         //date picker code
         calendarView = findViewById(R.id.doctorSelectShiftDate);
-        Calendar.getInstance();
+        calendar = Calendar.getInstance();
 
         //set the calendar date to current date
         calendarView.setDate(System.currentTimeMillis());
@@ -59,19 +62,29 @@ public class SetShift extends AppCompatActivity implements AdapterView.OnItemSel
     }
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        //String text = parent.getItemAtPosition(position).toString();
+        startTime = parent.getItemAtPosition(position).toString();
+        //endTime = parent.getItemAtPosition(position).toString();
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
     }
 
-    public void getDate(){
+    public String getDate(){
         long date = calendarView.getDate();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/mm/yyyy", Locale.getDefault());
         calendar.setTimeInMillis(date);
-        String selectedDate = simpleDateFormat.format(calendar.getTime());
+        selectedDate = simpleDateFormat.format(calendar.getTime());
+
+        return selectedDate;
+    }
+
+    public String getSartTime(){
+        return this.startTime;
+    }
+
+    public String getEndTime(){
+        return this.endTime;
     }
 
 }

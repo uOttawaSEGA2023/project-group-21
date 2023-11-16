@@ -8,6 +8,18 @@
     android:background="#F0EFFF"
     >
 
+    <Button
+        android:id="@+id/doctorViewHistoryBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="628dp"
+        android:background="@drawable/rounded_button"
+        android:text="View Shifts"
+        android:textSize="11dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -118,19 +130,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/clickableViewAllNextAppt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="312dp"
-        android:layout_marginTop="136dp"
-        android:text="View All"
-        android:textColor="@color/main"
-        android:textSize="11dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/doctorAppointmentCardStartLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -224,19 +223,6 @@
         android:text="Next Shift"
         android:textColor="@color/main"
         android:textSize="22dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/clickableViewAllNextShift"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="312dp"
-        android:layout_marginTop="436dp"
-        android:text="View All"
-        android:textColor="@color/main"
-        android:textSize="11dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -336,18 +322,6 @@
         android:text="Start:"
         android:textSize="11dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/doctorAddShiftButton"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:layout_marginStart="148dp"
-        android:layout_marginTop="636dp"
-        android:background="@drawable/rounded_button"
-        android:text="Add Shift"
-        android:textSize="11dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
