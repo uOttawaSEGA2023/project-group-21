@@ -170,6 +170,8 @@ public class PatientApproval extends AppCompatActivity {
                     currAppointment.setIsRejected(false);
                     currAppointment.updateAppointmentField("Doctor", "isAccepted", true);
                     currAppointment.updateAppointmentField("Patient", "isAccepted", true);
+
+
                     currAppointment.updateAppointmentField("Doctor", "isRejected", false);
                     currAppointment.updateAppointmentField("Patient", "isRejected", false);
 

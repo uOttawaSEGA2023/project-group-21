@@ -15,6 +15,7 @@ public class DoctorNavigation extends AppCompatActivity {
 
     Button doctorSettingsBtn, doctorViewAppointmentHistoryBtn, doctorAddShiftButton, doctorViewAppointmentRequestsBtn;
     TextView doctorViewAllTextView;
+    Button viewShiftBtn;
 
 
     @Override
@@ -24,6 +25,7 @@ public class DoctorNavigation extends AppCompatActivity {
 
         doctorSettingsBtn = findViewById(R.id.doctorSettingButton);
         doctorViewAppointmentHistoryBtn = findViewById(R.id.doctorViewAppointmentHistoryButton);
+        doctorViewAppointmentRequestsBtn = findViewById(R.id.doctorViewAppointmentRequestsButton);
         doctorAddShiftButton = findViewById(R.id.doctorAddShiftButton);
         doctorViewAllTextView = findViewById(R.id.clickableViewAllNextAppt);
 

@@ -28,10 +28,10 @@
 
     <Button
         android:id="@+id/doctorViewHistoryBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="628dp"
+        android:layout_width="138dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="632dp"
         android:background="@drawable/rounded_button"
         android:text="View Shifts"
         android:textSize="11dp"
@@ -107,10 +107,10 @@
 
     <Button
         android:id="@+id/doctorAddShiftButton"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="656dp"
+        android:layout_width="138dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="224dp"
+        android:layout_marginTop="632dp"
         android:background="@drawable/rounded_button"
         android:text="Add Shift"
         android:textSize="11dp"
