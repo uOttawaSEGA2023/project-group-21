@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.docappoint.Administrator.AdminNavigation;
+import com.example.docappoint.Appointment;
+import com.example.docappoint.Doctor.DoctorAppointments;
+import com.example.docappoint.Doctor.DoctorNavigation;
 import com.example.docappoint.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.firebase.auth.AuthResult;
@@ -62,7 +65,7 @@ public class PatientApproval extends AppCompatActivity {
 
         // Retrieve user data from the intent extras
         Intent intent = getIntent();
-        if (intent != null) {
+        if (intent != null && intent.getBooleanExtra("isAppointRequest", false) != true) {
             String firstName = intent.getStringExtra("firstName");
             String lastName = intent.getStringExtra("lastName");
             String healthCardNumber = intent.getStringExtra("healthCardNumber");
@@ -72,6 +75,7 @@ public class PatientApproval extends AppCompatActivity {
             String password = intent.getStringExtra("password");
             String uid = intent.getStringExtra("uid");
             boolean rejected = intent.getBooleanExtra("rejected", false);
+
 
 
             // Update the EditText fields with the retrieved data
@@ -129,16 +133,83 @@ public class PatientApproval extends AppCompatActivity {
 
                 }
             });
+
+            // Button functionality to navigate back
+            patientApprovalBackBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(getApplicationContext(), AdminNavigation.class));
+                    finish();
+                }
+            });
+
+        }
+        else if(intent != null && intent.getBooleanExtra("isAppointRequest", false) == true){
+            String firstName = intent.getStringExtra("firstName");
+            String lastName = intent.getStringExtra("lastName");
+            String healthCardNumber = intent.getStringExtra("healthCardNumber");
+            String address = intent.getStringExtra("address");
+            String phoneNumber = intent.getStringExtra("phoneNumber");
+            String email = intent.getStringExtra("email");
+
+            // Update the EditText fields with the retrieved data
+            patientApprovalFirstNameTxt.setText(firstName);
+            patientApprovalLastNameTxt.setText(lastName);
+            patientApprovalHealthCardNumberTxt.setText(healthCardNumber);
+            patientApprovalAddressTxt.setText(address);
+            patientApprovalPhoneNumberTxt.setText(phoneNumber);
+            patientApprovalEmailTxt.setText(email);
+
+            // Approve button will copy PendingUsers collection to Users
+            patientApprovalApproveRequestbtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Appointment currAppointment = (Appointment) getIntent().getSerializableExtra("appointment");
+
+                    currAppointment.setIsAccepted(true);
+                    currAppointment.setIsRejected(false);
+                    currAppointment.updateAppointmentField("Doctor", "isAccepted", true);
+                    currAppointment.updateAppointmentField("Patient", "isAccepted", true);
+                    currAppointment.updateAppointmentField("Doctor", "isRejected", false);
+                    currAppointment.updateAppointmentField("Patient", "isRejected", false);
+
+                    startActivity(new Intent(getApplicationContext(), DoctorAppointments.class));
+                    finish();
+
+                }
+            });
+
+            //Deny button will navigate to the history page
+            patientApprovalDenyRequestBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Appointment currAppointment = (Appointment) getIntent().getSerializableExtra("appointment");
+
+                    currAppointment.setIsAccepted(false);
+                    currAppointment.setIsRejected(true);
+                    currAppointment.updateAppointmentField("Doctor", "isAccepted", false);
+                    currAppointment.updateAppointmentField("Patient", "isAccepted", false);
+                    currAppointment.updateAppointmentField("Doctor", "isRejected", true);
+                    currAppointment.updateAppointmentField("Patient", "isRejected", true);
+
+                    startActivity(new Intent(getApplicationContext(), DoctorAppointments.class));
+                    finish();
+                }
+            });
+
+            // Button functionality to navigate back
+            patientApprovalBackBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(getApplicationContext(), DoctorAppointments.class));
+                    finish();
+                }
+            });
+
+
         }
 
-        // Button functionality to navigate back
-        patientApprovalBackBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), AdminNavigation.class));
-                finish();
-            }
-        });
+
 
     }
 

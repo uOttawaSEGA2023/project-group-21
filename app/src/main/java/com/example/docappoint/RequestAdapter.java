@@ -28,8 +28,8 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
 
         public ViewHolder(View view){
             super(view);
-            accountFirstName = view.findViewById(R.id.firstNameRecycle);
-            accountLastName = view.findViewById(R.id.lastNameRecycle);
+            accountFirstName = view.findViewById(R.id.DoctorAppointmentfirstNameRecycle);
+            accountLastName = view.findViewById(R.id.DoctorAppointmentlastNameRecycle);
             accountType = view.findViewById(R.id.roleRecycle);
             seeMoreButton = view.findViewById(R.id.seeMoreButton);
         }
