@@ -16,6 +16,7 @@ public class DoctorNavigation extends AppCompatActivity {
     Button doctorSettingsBtn, doctorViewAppointmentHistoryBtn, doctorAddShiftButton, doctorViewAppointmentRequestsBtn;
     TextView doctorViewAllTextView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +24,6 @@ public class DoctorNavigation extends AppCompatActivity {
 
         doctorSettingsBtn = findViewById(R.id.doctorSettingButton);
         doctorViewAppointmentHistoryBtn = findViewById(R.id.doctorViewAppointmentHistoryButton);
-        doctorViewAppointmentRequestsBtn = findViewById(R.id.doctorViewAppointmentRequestsButton);
         doctorAddShiftButton = findViewById(R.id.doctorAddShiftButton);
         doctorViewAllTextView = findViewById(R.id.clickableViewAllNextAppt);
 
@@ -34,6 +34,9 @@ public class DoctorNavigation extends AppCompatActivity {
                 finish();
             }
         });
+      
+        viewShiftBtn = findViewById(R.id.doctorViewHistoryBtn);
+
 
         // Redirect to settings screen when clicked
         doctorSettingsBtn.setOnClickListener(new View.OnClickListener() {
@@ -52,13 +55,14 @@ public class DoctorNavigation extends AppCompatActivity {
             }
         });
 
-        doctorAddShiftButton.setOnClickListener(new View.OnClickListener() {
+        viewShiftBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), SetShift.class));
+                startActivity(new Intent(getApplicationContext(), ShiftHistory.class));
                 finish();
             }
         });
+
 
         doctorViewAppointmentRequestsBtn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -67,6 +71,7 @@ public class DoctorNavigation extends AppCompatActivity {
             }
 
         });
+
     }
 
 

@@ -78,6 +78,9 @@
             android:name=".Doctor.DoctorApptHistory"
             android:exported="false" />
         <activity
+            android:name=".Doctor.ShiftHistory"
+            android:exported="false" />
+        <activity
             android:name=".Homepage"
             android:exported="true">
             <intent-filter>

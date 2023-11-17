@@ -26,6 +26,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/doctorViewHistoryBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="628dp"
+        android:background="@drawable/rounded_button"
+        android:text="View Shifts"
+        android:textSize="11dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -105,7 +117,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+
         android:id="@+id/doctorShiftCardStartTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -216,6 +228,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+
         android:id="@+id/clickableViewAllNextShift"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -230,6 +243,7 @@
 
 
     <TextView
+
         android:id="@+id/doctorShiftCardEndTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -355,6 +369,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <TextView
         android:id="@+id/doctorShiftCardEndLabel"
         android:layout_width="wrap_content"
@@ -377,6 +392,7 @@
         android:src="@drawable/whitelogo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
 
     <TextView
         android:id="@+id/WelcomeUserText"
