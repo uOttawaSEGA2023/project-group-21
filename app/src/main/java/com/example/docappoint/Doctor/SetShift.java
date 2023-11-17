@@ -132,41 +132,48 @@ public class SetShift extends AppCompatActivity implements AdapterView.OnItemSel
                     doctorRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                         @Override
                         public void onSuccess(DocumentSnapshot documentSnapshot) {
+
                             //create an arraylist for the current booked shifts
                             if(documentSnapshot.exists()){
                                 List<HashMap<String, Object>> bookedShifts = (List<HashMap<String, Object>>) documentSnapshot.get("Shifts");
                                 if(bookedShifts != null){
                                     //for every shift check if there is overlap, if there is display message and return
                                     for(HashMap<String, Object> s : bookedShifts){
-                                        if(overlappingShift((String) s.get("shiftStartTime"), (String) s.get("shiftEndTime"), getStartTime(), getEndTime())){
+
+                                        String date = (String) s.get("shiftDate");
+
+                                        if(selectedDate.equals(date) && overlappingShift((String) s.get("shiftStartTime"), (String) s.get("shiftEndTime"), getStartTime(), getEndTime())){
                                             Toast.makeText(SetShift.this, "There is a shift overlap. Could not book new shift", Toast.LENGTH_SHORT).show();
                                             return;
                                         }
                                     }
+
+                                    Log.d("CALENDAR DATE, ", "calendar date " + calendar);
+                                    Log.d("CURRENT DATE", "currentDate " + currentDate);
+
+                                    // Make new Shifts field in the doctor's document with new shift object
+                                    doctorRef.update("Shifts", FieldValue.arrayUnion(shift))
+                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void aVoid) {
+                                                    Toast.makeText(SetShift.this, "Success! Shift Added!", Toast.LENGTH_SHORT).show();
+                                                    startActivity(new Intent(getApplicationContext(), DoctorNavigation.class));
+                                                    finish();
+                                                }
+                                            })
+                                            .addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+                                                    Log.d("SetShift", "Error adding shift to doctor's document", e);
+                                                }
+                                            });
                                 }
                             }
 
-                            Log.d("CALENDAR DATE, ", "calendar date " + calendar);
-                            Log.d("CURRENT DATE", "currentDate " + currentDate);
-
-                            // Make new Shifts field in the doctor's document with new shift object
-                            doctorRef.update("Shifts", FieldValue.arrayUnion(shift))
-                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                        @Override
-                                        public void onSuccess(Void aVoid) {
-                                            Toast.makeText(SetShift.this, "Success! Shift Added!", Toast.LENGTH_SHORT).show();
-                                            startActivity(new Intent(getApplicationContext(), DoctorNavigation.class));
-                                            finish();
-                                        }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception e) {
-                                            Log.d("SetShift", "Error adding shift to doctor's document", e);
-                                        }
-                                    });
                         }
+
                     });
+
                 }
             }
         });
