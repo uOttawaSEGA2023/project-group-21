@@ -61,6 +61,8 @@ public class ShiftAdapter extends RecyclerView.Adapter<ShiftAdapter.ViewHolder> 
             public void onClick(View v) {
                 Context context = holder.itemView.getContext();
                 // START HERE WOOOOO
+
+
             }
         });
     }

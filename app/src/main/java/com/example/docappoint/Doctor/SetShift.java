@@ -20,13 +20,18 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 
 public class SetShift extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -105,6 +110,16 @@ public class SetShift extends AppCompatActivity implements AdapterView.OnItemSel
                 // Get current date
                 Calendar currentDate = Calendar.getInstance();
 
+                // Get Firebase Users collection for the current doctor and add the fields
+                fAuth = FirebaseAuth.getInstance();
+                fStore = FirebaseFirestore.getInstance();
+                String userId = fAuth.getCurrentUser().getUid();
+
+                // ADD SHIFTS OBJECTS TO NEW FIELD IN "USERS" COLLECTION IN FIREBASE FOR THE CURRENT DOCTOR (FAUTH ACCOUNT)
+                Shifts shift = new Shifts(selectedDate, getStartTime(), getEndTime(), false, false);
+
+                DocumentReference doctorRef = fStore.collection("Users").document(userId);
+
                 // Check if the selected date is past current date
                 if (calendar.before(currentDate)) {
                     Log.d("CALENDAR DATE, ", "calendar date " + calendar);
@@ -112,36 +127,47 @@ public class SetShift extends AppCompatActivity implements AdapterView.OnItemSel
                     Toast.makeText(SetShift.this, "Cannot book past dates", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
-                Log.d("CALENDAR DATE, ", "calendar date " + calendar);
-                Log.d("CURRENT DATE", "currentDate " + currentDate);
-
-                // ADD SHIFTS OBJECTS TO NEW FIELD IN "USERS" COLLECTION IN FIREBASE FOR THE CURRENT DOCTOR (FAUTH ACCOUNT)
-                Shifts shift = new Shifts(selectedDate, getStartTime(), getEndTime(), false, false);
-
-                // Get Firebase Users collection for the current doctor and add the fields
-                fAuth = FirebaseAuth.getInstance();
-                fStore = FirebaseFirestore.getInstance();
-                String userId = fAuth.getCurrentUser().getUid();
-
-                DocumentReference doctorRef = fStore.collection("Users").document(userId);
-
-                // Make new Shifts field in the doctor's document with new shift object
-                doctorRef.update("Shifts", FieldValue.arrayUnion(shift))
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                Toast.makeText(SetShift.this, "Success! Shift Added!", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getApplicationContext(), DoctorNavigation.class));
-                                finish();
+                else{
+                    //check doctor document to see if shift is already booked and if there is a conflict
+                    doctorRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                        @Override
+                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                            //create an arraylist for the current booked shifts
+                            if(documentSnapshot.exists()){
+                                List<HashMap<String, Object>> bookedShifts = (List<HashMap<String, Object>>) documentSnapshot.get("Shifts");
+                                if(bookedShifts != null){
+                                    //for every shift check if there is overlap, if there is display message and return
+                                    for(HashMap<String, Object> s : bookedShifts){
+                                        if(overlappingShift((String) s.get("shiftStartTime"), (String) s.get("shiftEndTime"), getStartTime(), getEndTime())){
+                                            Toast.makeText(SetShift.this, "There is a shift overlap. Could not book new shift", Toast.LENGTH_SHORT).show();
+                                            return;
+                                        }
+                                    }
+                                }
                             }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Log.d("SetShift", "Error adding shift to doctor's document", e);
-                            }
-                        });
+
+                            Log.d("CALENDAR DATE, ", "calendar date " + calendar);
+                            Log.d("CURRENT DATE", "currentDate " + currentDate);
+
+                            // Make new Shifts field in the doctor's document with new shift object
+                            doctorRef.update("Shifts", FieldValue.arrayUnion(shift))
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            Toast.makeText(SetShift.this, "Success! Shift Added!", Toast.LENGTH_SHORT).show();
+                                            startActivity(new Intent(getApplicationContext(), DoctorNavigation.class));
+                                            finish();
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.d("SetShift", "Error adding shift to doctor's document", e);
+                                        }
+                                    });
+                        }
+                    });
+                }
             }
         });
 
@@ -176,6 +202,33 @@ public class SetShift extends AppCompatActivity implements AdapterView.OnItemSel
 
     public String getEndTime() {
         return this.endTime;
+    }
+
+    public boolean overlappingShift(String currentStartTime, String currentEndTime, String newStartTime, String newEndTime){
+        boolean overlap = false;
+
+        try{
+            //format shift times
+            SimpleDateFormat format = new SimpleDateFormat("HH:mm", Locale.getDefault());
+
+            //convert start time and end times to dates to compare fields
+            Date startTime = format.parse(currentStartTime);
+            Date endTime = format.parse(currentEndTime);
+            Date startTime2 = format.parse(newStartTime);
+            Date endTime2 = format.parse(newEndTime);
+
+            //compare shift times to see if there is any overlap
+            if(startTime2.before(endTime) || endTime2.after(startTime) || startTime2.equals(endTime) || endTime2.equals(startTime)){
+                overlap = true;
+            }
+
+            return overlap;
+        }
+        catch(ParseException e){
+            e.printStackTrace();
+            return overlap;
+        }
+
     }
 
 }

@@ -111,7 +111,6 @@ public class ShiftHistory extends AppCompatActivity {
 
                 startActivity(new Intent(getApplicationContext(), DoctorNavigation.class));
                 finish();
-
             }
         });
 
