@@ -37,7 +37,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/firstNameRecycle"
+                android:id="@+id/DoctorAppointmentfirstNameRecycle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
@@ -50,7 +50,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/lastNameRecycle"
+                android:id="@+id/DoctorAppointmentlastNameRecycle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -58,7 +58,7 @@
                 android:textColor="@color/white"
                 android:textSize="20dp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@id/firstNameRecycle"
+                app:layout_constraintStart_toEndOf="@id/DoctorAppointmentfirstNameRecycle"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button

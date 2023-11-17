@@ -6,12 +6,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
 import com.example.docappoint.R;
 import com.example.docappoint.Settings;
 
 public class DoctorNavigation extends AppCompatActivity {
 
-    Button doctorSettingsBtn, doctorViewAppointmentHistoryBtn, doctorAddShiftButton;
+    Button doctorSettingsBtn, doctorViewAppointmentHistoryBtn, doctorAddShiftButton, doctorViewAppointmentRequestsBtn;
+    TextView doctorViewAllTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +23,17 @@ public class DoctorNavigation extends AppCompatActivity {
 
         doctorSettingsBtn = findViewById(R.id.doctorSettingButton);
         doctorViewAppointmentHistoryBtn = findViewById(R.id.doctorViewAppointmentHistoryButton);
+        doctorViewAppointmentRequestsBtn = findViewById(R.id.doctorViewAppointmentRequestsButton);
         doctorAddShiftButton = findViewById(R.id.doctorAddShiftButton);
+        doctorViewAllTextView = findViewById(R.id.clickableViewAllNextAppt);
+
+        doctorViewAllTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), DoctorAppointments.class));
+                finish();
+            }
+        });
 
         // Redirect to settings screen when clicked
         doctorSettingsBtn.setOnClickListener(new View.OnClickListener() {
@@ -45,6 +58,14 @@ public class DoctorNavigation extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), SetShift.class));
                 finish();
             }
+        });
+
+        doctorViewAppointmentRequestsBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                startActivity(new Intent(getApplicationContext(), DoctorAppointments.class));
+            }
+
         });
     }
 

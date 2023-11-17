@@ -111,7 +111,7 @@ public class BookAppointment extends AppCompatActivity implements AdapterView.On
                             fAuth = FirebaseAuth.getInstance();
                             userId = fAuth.getCurrentUser().getUid();
 
-                            Appointment appointment = new Appointment(formattedDate, selectedStartTime, userId, doctorUID);
+                            Appointment appointment = new Appointment(formattedDate, selectedStartTime,0.0f, false, userId, doctorUID, false, false);
 
                             //TODO: ADD APPOINTMENT TO DOCTORS APPOINTMENT & PATIENT APPOINTMENT
 
@@ -125,6 +125,7 @@ public class BookAppointment extends AppCompatActivity implements AdapterView.On
 
                                             // Save appointment to patient user
                                             DocumentReference patientRef = fStore.collection("Users").document(userId);
+
                                             patientRef.update("Appointments", FieldValue.arrayUnion(appointment))
                                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                         @Override

@@ -34,7 +34,7 @@ public class SelectDoctor extends AppCompatActivity {
 
     ArrayList<DoctorChip> doctorChips = new ArrayList<>();
     private SearchView searchView;
-    private DoctorSearchAdapter adapter; // Make adapter a field to access it in onComplete
+    private DoctorSearchAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

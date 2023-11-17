@@ -86,6 +86,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Doctor.DoctorAppointments"
+            android:exported="false">
+        </activity>
         <activity android:name=".Patient.SelectDoctor"
             android:exported="false"/>
     </application>

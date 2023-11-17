@@ -25,7 +25,7 @@ import com.google.firebase.ktx.Firebase;
 public class Settings extends AppCompatActivity {
 
     EditText nameAccountSettings, emailAccountSettings, phoneAccountSettings;
-
+    View profilePictureSettings;
     Button logOutAccount, settingsBackBtn, deleteAccountSettingsBtn;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
@@ -40,6 +40,7 @@ public class Settings extends AppCompatActivity {
         nameAccountSettings = findViewById(R.id.nameTextSettings);
         emailAccountSettings = findViewById(R.id.emailTextSettings);
         phoneAccountSettings = findViewById(R.id.phoneTextSettings);
+        profilePictureSettings = findViewById(R.id.profilePicSettings);
         logOutAccount = findViewById(R.id.logOutSettingsButton);
         settingsBackBtn = findViewById(R.id.settingsBackButton);
         deleteAccountSettingsBtn = findViewById(R.id.deleteAccountSettingsButton);
@@ -70,6 +71,13 @@ public class Settings extends AppCompatActivity {
                     emailAccountSettings.setText(documentSnapshot.getString("Email"));
                     phoneAccountSettings.setText(documentSnapshot.getString("Phone Number"));
                 }
+            }
+        });
+
+        profilePictureSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
 
