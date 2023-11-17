@@ -93,6 +93,7 @@
             android:exported="false">
         </activity>
         <activity android:name=".Patient.SelectDoctor"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false"/>
     </application>
 

@@ -98,7 +98,7 @@
     <Spinner
         android:id="@+id/patientAppointmentStartTime"
         style="@style/selectTime"
-        android:layout_marginStart="48dp"
+        android:layout_marginStart="56dp"
         android:layout_marginTop="552dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -142,10 +142,13 @@
 
     <TextView
         android:id="@+id/patientAppointmentEndTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="244dp"
-        android:layout_marginTop="556dp"
+        android:layout_width="93dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="252dp"
+        android:layout_marginTop="552dp"
+        android:clickable="false"
+        android:paddingLeft="5dp"
+        android:paddingTop="4dp"
         android:text="End Time"
         android:textColor="@color/main"
         android:textSize="20dp"
@@ -164,7 +167,7 @@
         android:textSize="15dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.801"
+        app:layout_constraintHorizontal_bias="0.781"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

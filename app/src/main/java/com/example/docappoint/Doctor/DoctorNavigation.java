@@ -52,8 +52,6 @@ public class DoctorNavigation extends AppCompatActivity {
                     if (document != null && document.exists()) {
                         String firstName = document.getString("First Name");
                         doctorNameTextView.setText(firstName);
-                        Log.d("Firestore", "First Name: " + firstName);
-                        // Do something with the first name
                     } else {
                         Log.d("Firestore", "No such document");
                     }
