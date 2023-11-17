@@ -5,13 +5,14 @@ public class Shifts {
     private String shiftDate;
     private String shiftStartTime;
     private String shiftEndTime;
-    private boolean shiftCompleted;
+    private boolean shiftCompleted, isBooked;
 
-    public Shifts(String shiftDate, String shiftStartTime, String shiftEndTime, Boolean shiftCompleted) {
+    public Shifts(String shiftDate, String shiftStartTime, String shiftEndTime, Boolean shiftCompleted, Boolean isBooked) {
         this.shiftDate = shiftDate;
         this.shiftStartTime = shiftStartTime;
         this.shiftEndTime = shiftEndTime;
         this.shiftCompleted = false;
+        this.isBooked = false;
     }
 
     // Getters
@@ -30,8 +31,16 @@ public class Shifts {
         return shiftCompleted;
     }
 
+    public Boolean getIsBooked() {
+        return isBooked;
+    }
+
     // Setters
     public void setShiftCompleted(boolean shiftCompleted) {
         this.shiftCompleted = shiftCompleted;
+    }
+
+    public void setIsBooked(boolean isBooked) {
+        this.isBooked = isBooked;
     }
 }
