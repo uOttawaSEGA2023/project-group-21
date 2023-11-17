@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Administrator.AdminNavigation"
     android:background="#F0EFFF"
     >
 
@@ -22,7 +20,7 @@
         app:layout_constraintHorizontal_bias="0.0" />
 
     <EditText
-        android:id="@+id/adminName"
+        android:id="@+id/doctorName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="-3dp"
@@ -50,12 +48,12 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/admninstratorTitle"
+        android:id="@+id/patientLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:layout_marginEnd="10dp"
-        android:text="Administrator"
+        android:layout_marginStart="-10dp"
+        android:text="Patient"
         android:textSize="10dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,42 +70,65 @@
         android:background="@drawable/profilepicture"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-
         />
 
     <TextView
-        android:id="@+id/pendingVerification"
+        android:id="@+id/yourPastAppointments"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="112dp"
         android:layout_marginEnd="10dp"
-        android:text="Account Approval History"
+        android:text="Rate Your Doctor"
         android:textColor="@color/main"
-        android:textSize="27dp"
+        android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintHorizontal_bias="0.535"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/patientRegBackButton"
+        android:id="@+id/patientConfirmRatingButton"
+        style="@style/AllButtons"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="524dp"
+        android:layout_marginEnd="32dp"
+        android:text="Confirm Rating"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/patientPastAppointmentsBackButton"
         style="@style/backButton"
         android:layout_width="80dp"
         android:layout_height="39dp"
-        android:layout_marginStart="164dp"
+        android:layout_marginStart="152dp"
         android:layout_marginTop="600dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/accountApprovalHistory"
-        android:layout_width="330dp"
-        android:layout_height="400dp"
-        android:layout_marginTop="164dp"
-        android:background="@color/light_purple"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+    <RatingBar
+        android:id="@+id/patientRatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="264dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/ratingLabelNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="392dp"
+        android:text="Rating"
+        android:textColor="@color/main"
+        android:textSize="30dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
