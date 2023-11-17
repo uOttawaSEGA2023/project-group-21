@@ -71,7 +71,13 @@ public class DoctorAppointments extends AppCompatActivity {
 
         fetchAppointments(currentDoctorUID);
 
-        backButton.setOnClickListener(view -> finish());
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), DoctorNavigation.class));
+                finish();
+            }
+        });
     }
 
     private void fetchAppointments(String doctorUID) {
@@ -105,11 +111,9 @@ public class DoctorAppointments extends AppCompatActivity {
 
             if (autoAcceptSwitch.isChecked()) {
                 appointment.setIsAccepted(true);
-                appointment.setIsRejected(false);
                 appointment.updateAppointmentField("Doctor", "isAccepted", true);
                 appointment.updateAppointmentField("Patient", "isAccepted", true);
-                appointment.updateAppointmentField("Doctor", "isRejected", false);
-                appointment.updateAppointmentField("Patient", "isRejected", false);
+
             } else {
                 appointment.refreshFromFirestore(() -> {
                     Log.d("isAccepted", String.valueOf(appointment.getIsAccepted()));

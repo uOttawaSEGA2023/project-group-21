@@ -1,20 +1,28 @@
 package com.example.docappoint.Doctor;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.docappoint.R;
 import com.example.docappoint.Settings;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class DoctorNavigation extends AppCompatActivity {
 
     Button doctorSettingsBtn, doctorViewAppointmentHistoryBtn, doctorAddShiftButton, doctorViewAppointmentRequestsBtn;
-    TextView doctorViewAllTextView;
+    TextView doctorViewAllTextView, doctorNameTextView;
     Button viewShiftBtn;
 
 
@@ -28,6 +36,32 @@ public class DoctorNavigation extends AppCompatActivity {
         doctorViewAppointmentRequestsBtn = findViewById(R.id.doctorViewAppointmentRequestsButton);
         doctorAddShiftButton = findViewById(R.id.doctorAddShiftButton);
         doctorViewAllTextView = findViewById(R.id.clickableViewAllNextAppt);
+        doctorNameTextView = findViewById(R.id.doctorNameTextView);
+
+
+        FirebaseAuth fAuth = FirebaseAuth.getInstance();
+        FirebaseFirestore fStore = FirebaseFirestore.getInstance();
+        String userId = fAuth.getCurrentUser().getUid();
+
+        DocumentReference documentReference = fStore.collection("Users").document(userId);
+        documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document != null && document.exists()) {
+                        String firstName = document.getString("First Name");
+                        doctorNameTextView.setText(firstName);
+                        Log.d("Firestore", "First Name: " + firstName);
+                        // Do something with the first name
+                    } else {
+                        Log.d("Firestore", "No such document");
+                    }
+                } else {
+                    Log.d("Firestore", "get failed with ", task.getException());
+                }
+            }
+        });
 
         doctorViewAllTextView.setOnClickListener(new View.OnClickListener() {
             @Override

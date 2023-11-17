@@ -167,13 +167,8 @@ public class PatientApproval extends AppCompatActivity {
                     Appointment currAppointment = (Appointment) getIntent().getSerializableExtra("appointment");
 
                     currAppointment.setIsAccepted(true);
-                    currAppointment.setIsRejected(false);
                     currAppointment.updateAppointmentField("Doctor", "isAccepted", true);
                     currAppointment.updateAppointmentField("Patient", "isAccepted", true);
-
-
-                    currAppointment.updateAppointmentField("Doctor", "isRejected", false);
-                    currAppointment.updateAppointmentField("Patient", "isRejected", false);
 
                     startActivity(new Intent(getApplicationContext(), DoctorAppointments.class));
                     finish();
@@ -187,10 +182,8 @@ public class PatientApproval extends AppCompatActivity {
                 public void onClick(View v) {
                     Appointment currAppointment = (Appointment) getIntent().getSerializableExtra("appointment");
 
-                    currAppointment.setIsAccepted(false);
+
                     currAppointment.setIsRejected(true);
-                    currAppointment.updateAppointmentField("Doctor", "isAccepted", false);
-                    currAppointment.updateAppointmentField("Patient", "isAccepted", false);
                     currAppointment.updateAppointmentField("Doctor", "isRejected", true);
                     currAppointment.updateAppointmentField("Patient", "isRejected", true);
 
