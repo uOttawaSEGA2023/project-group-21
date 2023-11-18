@@ -21,27 +21,28 @@
         style="@style/backButton"
         android:layout_width="80dp"
         android:layout_height="39dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0225"
+        app:layout_constraintHorizontal_bias="0.065" />
 
     <Button
         android:id="@+id/deleteAccountSettingsButton"
         style="@style/redButton"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="412dp"
-        android:layout_marginEnd="108dp"
         android:background="@drawable/redbutton"
         android:text="Delete Account"
-        android:textSize="17dp"
+        android:textSize="14dp"
+        android:layout_width="160dp"
+        android:layout_height="39dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.318"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.858"
+        app:layout_constraintVertical_bias="0.92"
         tools:ignore="MissingConstraints" />
 
     <View
@@ -50,58 +51,65 @@
         android:layout_height="90dp"
         android:background="#D9D9D9"
         android:clickable="true"
-        app:circularflow_defaultRadius="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.229"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintVertical_bias="0.23" />
 
     <ImageView
-        android:id="@+id/patientLogo"
-        android:layout_width="140dp"
-        android:layout_height="100dp"
-        android:layout_marginEnd="90dp"
-        android:layout_marginBottom="700dp"
+        android:id="@+id/docAppointLogo"
+        android:layout_width="135dp"
+        android:layout_height="70dp"
         android:src="@drawable/whitelogo"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.69"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0"
+        />
 
     <TextView
         android:id="@+id/backdrop"
         android:layout_width="328dp"
         android:layout_height="260dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="323dp"
         android:background="@drawable/backdrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.62" />
 
     <EditText
         android:id="@+id/nameTextSettings"
         style="@style/textField"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="368dp"
         android:autofillHints="name"
         android:hint="Name"
         android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
 
     <EditText
         android:id="@+id/emailTextSettings"
         style="@style/textField"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="440dp"
         android:autofillHints="name"
         android:hint="Email"
         android:inputType="text"
         android:textColor="@color/text_box_text"
         android:textColorHint="#9B9B9B"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.6" />
 
     <TextView
         android:id="@+id/emailSettings"
@@ -113,24 +121,25 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.192"
+        app:layout_constraintHorizontal_bias="0.215"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.551"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintVertical_bias="0.555" />
 
     <EditText
         android:id="@+id/phoneTextSettings"
         style="@style/textField"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="512dp"
         android:autofillHints="name"
         android:hint="@string/phoneNumber"
         android:inputType="text"
         android:textColor="@color/text_box_text"
         android:textColorHint="#9B9B9B"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.7" />
 
     <TextView
         android:id="@+id/phoneNumberSettings"
@@ -142,10 +151,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.238"
+        app:layout_constraintHorizontal_bias="0.266"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.645"
+        app:layout_constraintVertical_bias="0.652"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -158,11 +167,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.104"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.359"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintVertical_bias="0.36" />
 
     <TextView
         android:id="@+id/nameSettings"
@@ -174,11 +182,11 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.194"
+        app:layout_constraintHorizontal_bias="0.215"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.455"
-        tools:ignore="MissingConstraints" />
+        />
 
     <TextView
         android:id="@+id/accountOverviewSettings"
@@ -192,27 +200,23 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.144"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintVertical_bias="0.14" />
 
     <Button
         android:id="@+id/logOutSettingsButton"
         style="@style/AllButtons"
-        android:layout_width="0dp"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="412dp"
-        android:layout_marginEnd="108dp"
+        android:layout_width="wrap_content"
+        android:layout_height="39dp"
         android:text="Log Out"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.659"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintVertical_bias="0.84" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

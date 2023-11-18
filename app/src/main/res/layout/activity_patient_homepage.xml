@@ -17,41 +17,42 @@
 
     <ImageView
         android:id="@+id/whiteLogo"
-        android:layout_width="233dp"
-        android:layout_height="201dp"
-        android:paddingTop="125dp"
+        android:layout_width="225dp"
+        android:layout_height="70dp"
         android:src="@drawable/whitelogo"
-        app:layout_constraintBottom_toBottomOf="@+id/patientHeader"
-        app:layout_constraintEnd_toEndOf="@+id/patientHeader"
-        app:layout_constraintStart_toStartOf="@+id/patientHeader" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0" />
 
     <TextView
-        android:id="@+id/nameSettings"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
-        android:background="#F0EFFF"
+        android:id="@+id/loggedInPatient"
         android:text="Welcome! You are logged in as Patient"
-        android:textAlignment="center"
-        android:textColor="#7A73E7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/main"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.15"
+         />
 
     <Button
         android:id="@+id/patientContinueButton"
-        style="@style/AllButtons"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="400dp"
-        android:layout_marginEnd="108dp"
         android:text="Continue"
         android:textStyle="bold"
+        style="@style/AllButtons"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,215 +24,198 @@
         style="@style/backButton"
         android:layout_width="80dp"
         android:layout_height="39dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0225"
+        app:layout_constraintHorizontal_bias="0.065" />
 
     <ImageView
-        android:id="@+id/patientLogo"
-        android:layout_width="233dp"
-        android:layout_height="201dp"
-        android:layout_marginStart="116dp"
+        android:id="@+id/docAppointLogo"
+        android:layout_width="135dp"
+        android:layout_height="70dp"
         android:src="@drawable/whitelogo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.69"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0"
+        />
 
     <TextView
         android:id="@+id/doctorSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="65dp"
-        android:layout_marginTop="96dp"
-        android:layout_marginEnd="16dp"
         android:text="@string/doctor_signup"
         android:textColor="@color/main"
         android:textSize="40sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.14" />
 
     <TextView
         android:id="@+id/backdrop"
         android:layout_width="328dp"
         android:layout_height="435dp"
-        android:layout_marginStart="33dp"
-        android:layout_marginTop="180dp"
         android:background="@drawable/backdrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-
-
+        app:layout_constraintVertical_bias="0.495"
         />
 
     <EditText
         android:id="@+id/doctorFirstName"
         style="@style/textField"
-        android:layout_marginStart="69dp"
-        android:layout_marginTop="211dp"
-        android:layout_marginEnd="50dp"
         android:autofillHints="name"
         android:hint="@string/firstName"
         android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.17"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/doctorSignUp"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.27" />
 
     <EditText
         android:id="@+id/doctorLastName"
         style="@style/textField"
-        android:layout_marginStart="69dp"
-        android:layout_marginTop="253dp"
-        android:layout_marginEnd="50dp"
         android:autofillHints="name"
         android:hint="@string/lastName"
         android:inputType="text"
         android:textColor="@color/text_box_text"
         android:textColorHint="#9B9B9B"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.17"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/doctorFirstName"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3275" />
 
     <Button
         android:id="@+id/doctorSpecialtiesButton"
         style="@style/AllButtons"
-        android:layout_marginStart="69dp"
-        android:layout_marginTop="295dp"
-        android:layout_marginEnd="50dp"
         android:text="@string/specialties"
         android:layout_width="250dp"
         android:layout_height="35dp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.17"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/doctorLastName"/>
+        app:layout_constraintVertical_bias="0.385"/>
 
     <EditText
         android:id="@+id/doctorEmployeeNumber"
         style="@style/textField"
-        android:layout_marginStart="69dp"
-        android:layout_marginTop="337dp"
-        android:layout_marginEnd="50dp"
         android:hint="@string/employee_number"
         android:inputType="text"
         android:textColor="@color/text_box_text"
         android:textColorHint="#9B9B9B"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.17"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/doctorSpecialtiesButton"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4425" />
 
     <EditText
         android:id="@+id/doctorAddress"
         style="@style/textField"
-        android:layout_marginStart="69dp"
-        android:layout_marginTop="379dp"
-        android:layout_marginEnd="50dp"
         android:autofillHints="postalAddress"
         android:hint="@string/address"
         android:inputType="text"
         android:textColor="@color/text_box_text"
         android:textColorHint="#9B9B9B"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.17"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/doctorEmployeeNumber"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
 
     <EditText
         android:id="@+id/doctorPhoneNumber"
         style="@style/textField"
-        android:layout_marginStart="69dp"
-        android:layout_marginTop="421dp"
-        android:layout_marginEnd="50dp"
         android:autofillHints="phone"
         android:hint="@string/phoneNumber"
         android:inputType="phone"
         android:textColor="@color/text_box_text"
         android:textColorHint="#9B9B9B"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.17"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/doctorAddress"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5575"
+        />
 
     <EditText
         android:id="@+id/doctorEmail"
         style="@style/textField"
-        android:layout_marginStart="69dp"
-        android:layout_marginTop="463dp"
-        android:layout_marginEnd="50dp"
         android:autofillHints="phone"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:textColor="@color/text_box_text"
         android:textColorHint="#9B9B9B"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.17"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/doctorPhoneNumber"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.615" />
 
     <EditText
         android:id="@+id/doctorPassword"
         style="@style/textField"
-        android:layout_marginStart="69dp"
-        android:layout_marginTop="505dp"
-        android:layout_marginEnd="50dp"
         android:autofillHints="password"
         android:hint="@string/password"
         android:inputType="textPassword"
         android:textColor="@color/text_box_text"
         android:textColorHint="#9B9B9B"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.17"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/doctorEmail"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.6725"
+        />
 
     <EditText
         android:id="@+id/confirmPasswordDoctor"
         style="@style/textField"
-        android:layout_marginStart="69dp"
-        android:layout_marginTop="547dp"
-        android:layout_marginEnd="50dp"
         android:autofillHints="password"
         android:hint="@string/confirmPassword"
         android:inputType="textPassword"
         android:textColor="@color/text_box_text"
         android:textColorHint="#9B9B9B"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.127"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/doctorPassword"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.73" />
 
     <Button
         android:id="@+id/createDoctorAccountButton"
         style="@style/AllButtons"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="650dp"
-        android:layout_marginEnd="108dp"
         android:text="@string/createAccount"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/confirmPasswordDoctor"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.875" />
 
     <Button
         android:id="@+id/doctorRegisterAutoCreateButton"
