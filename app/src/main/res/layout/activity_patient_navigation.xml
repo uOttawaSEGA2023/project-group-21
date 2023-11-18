@@ -83,6 +83,32 @@ tools:context=".Patient.PatientHomepage">
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:id="@+id/viewPatientUpcomingAppointments"
+        style="@style/AllButtons"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="476dp"
+        android:layout_marginEnd="108dp"
+        android:text="View Upcoming appointments"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.528"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/viewPatientPastAppointments"
+        style="@style/AllButtons"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="544dp"
+        android:layout_marginEnd="108dp"
+        android:text="View Past appointments"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.543"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
         android:id="@+id/patientSettingButton"
         style="@style/backButton"
         android:layout_width="45dp"

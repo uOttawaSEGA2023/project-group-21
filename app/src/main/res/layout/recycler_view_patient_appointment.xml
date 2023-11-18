@@ -25,12 +25,12 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/DoctorAppointmentfirstNameRecycle"
+                android:id="@+id/drLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
-                android:hint="Arun"
+                android:hint="Dr. "
                 android:textColor="@color/white"
                 android:textSize="20dp"
                 android:textStyle="bold"
@@ -38,20 +38,34 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/DoctorAppointmentlastNameRecycle"
+                android:id="@+id/patientAppointmentFirstNameRecycle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="16dp"
+                android:hint="Arun"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/drLabel"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/patientAppointmentLastNameRecycle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
                 android:layout_marginTop="16dp"
                 android:hint="Sabaratnam"
                 android:paddingLeft="5dp"
                 android:textColor="@color/white"
                 android:textSize="20dp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@id/DoctorAppointmentfirstNameRecycle"
+                app:layout_constraintStart_toEndOf="@id/patientAppointmentFirstNameRecycle"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/doctorAppointmentCardStartLabel"
+                android:id="@+id/patientAppointmentCardStartLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
@@ -63,7 +77,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/doctorAppointmentCardEndLabel2"
+                android:id="@+id/patientAppointmentCardEndLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
@@ -75,7 +89,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/doctorAppointmentCardStartTime"
+                android:id="@+id/patientAppointmentCardStartTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="65dp"
@@ -87,7 +101,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/doctorAppointmentCardEndTime2"
+                android:id="@+id/patientCardEndTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="60dp"
@@ -99,7 +113,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/dateDoctorAppointmentCard"
+                android:id="@+id/datePatientAppointmentCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
@@ -111,13 +125,13 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/seeMoreButton"
+                android:id="@+id/cancelPatientAppointment"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:layout_marginStart="224dp"
                 android:layout_marginTop="48dp"
                 android:background="@drawable/rounded_back_button"
-                android:text="View More"
+                android:text="Cancel"
                 android:textSize="12dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
