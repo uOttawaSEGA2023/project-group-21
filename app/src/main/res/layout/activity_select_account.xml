@@ -23,70 +23,65 @@
         style="@style/backButton"
         android:layout_width="80dp"
         android:layout_height="39dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0225"
+        app:layout_constraintHorizontal_bias="0.065" />
 
     <ImageView
-        android:id="@+id/patientLogo"
-        android:layout_width="233dp"
-        android:layout_height="201dp"
-        android:layout_marginStart="144dp"
-        android:layout_marginBottom="598dp"
+        android:id="@+id/docAppointLogo"
+        android:layout_width="135dp"
+        android:layout_height="70dp"
         android:src="@drawable/whitelogo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.69"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.984" />
-
+        app:layout_constraintVertical_bias="0"
+        />
 
     <TextView
         android:id="@+id/specifyAccountType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="144dp"
-        android:layout_marginEnd="16dp"
         android:text="PLEASE SPECIFY ACCOUNT TYPE"
-        android:textColor="#7A73E7"
+        android:textColor="@color/main"
         android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintHorizontal_bias="0.5"  />
 
     <Button
         android:id="@+id/specifyPatientButton"
         style="@style/AllButtons"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="250dp"
-        android:layout_marginEnd="32dp"
         android:text="@string/patient"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/specifyAccountType"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.35"
+        app:layout_constraintHorizontal_bias="0.5"
         />
 
     <Button
         android:id="@+id/specifyDoctorButton"
         style="@style/AllButtons"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="350dp"
-        android:layout_marginEnd="32dp"
         android:text="@string/doctor"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-
-        app:layout_constraintTop_toBottomOf="@+id/specifyPatientButton"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.475"
+        app:layout_constraintHorizontal_bias="0.5"
 
         />
 

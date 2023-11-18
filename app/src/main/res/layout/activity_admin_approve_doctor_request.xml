@@ -20,12 +20,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0" />
 
-    <EditText
+    <TextView
         android:id="@+id/adminName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="-3dp"
-        android:layout_marginTop="-5dp"
         android:text="Name"
         android:textColor="@color/white"
         android:textSize="15dp"
@@ -35,217 +33,217 @@
         app:layout_constraintHorizontal_bias="0.195"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.018"
+        app:layout_constraintVertical_bias="0.024"
         tools:ignore="MissingConstraints" />
-
-    <ImageView
-        android:id="@+id/patientLogo"
-        android:layout_width="150dp"
-        android:layout_height="100dp"
-        android:layout_marginEnd="57dp"
-        android:layout_marginBottom="700dp"
-        android:src="@drawable/whitelogo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/admninstratorTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="10dp"
         android:text="Administrator"
         android:textSize="10dp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.212"
+        app:layout_constraintHorizontal_bias="0.209"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.05" />
 
     <TextView
         android:id="@+id/pfp"
         android:layout_width="42dp"
         android:layout_height="40dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:background="@drawable/profilepicture"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-
+        app:layout_constraintVertical_bias="0.021"
         />
 
-    <TextView
-        android:id="@+id/pendingVerification"
+    <ImageView
+        android:id="@+id/docAppointLogo"
+        android:layout_width="135dp"
+        android:layout_height="70dp"
+        android:src="@drawable/whitelogo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.69"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0"
+        />
+
+     <TextView
+        android:id="@+id/doctorAccountInfoLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
-        android:layout_marginEnd="10dp"
         android:text="Doctor Account Information"
         android:textColor="@color/main"
         android:textSize="27dp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.608"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintHorizontal_bias="0.5"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent"
+         app:layout_constraintVertical_bias="0.15" />
 
     <TextView
         android:id="@+id/backdrop"
         android:layout_width="328dp"
-        android:layout_height="375dp"
-        android:layout_marginStart="33dp"
-        android:layout_marginTop="176dp"
+        android:layout_height="385dp"
         android:background="@drawable/backdrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.41" />
 
     <EditText
         android:id="@+id/doctorApprovalAddressText"
         style="@style/textField"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="328dp"
-        android:layout_marginEnd="50dp"
         android:autofillHints="postalAddress"
         android:hint="@string/address"
         android:inputType="text"
         android:textColor="@color/text_box_text"
         android:textColorHint="#9B9B9B"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4325" />
 
     <EditText
         android:id="@+id/doctorApprovalPhoneNumberText"
         style="@style/textField"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="372dp"
-        android:layout_marginEnd="50dp"
         android:autofillHints="phone"
         android:hint="@string/phoneNumber"
         android:inputType="phone"
         android:textColor="@color/text_box_text"
         android:textColorHint="#9B9B9B"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/doctorApprovalAddressText"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.49" />
 
     <EditText
         android:id="@+id/doctorApprovalEmailText"
         style="@style/textField"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="414dp"
-        android:layout_marginEnd="50dp"
         android:autofillHints="username|emailAddress"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:textColor="#9B9B9B"
         android:textColorHint="@color/text_box_text"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/doctorApprovalPhoneNumberText"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5475" />
 
     <TextView
         android:id="@+id/doctorApprovalSpecialtiesText"
         style="@style/textField"
         android:layout_height="70dp"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="456dp"
-        android:layout_marginEnd="50dp"
         android:autofillHints="username|emailAddress"
         android:hint="@string/specialties"
         android:inputType="text"
         android:paddingTop="10dp"
         android:textColor="#9B9B9B"
         android:textColorHint="@color/text_box_text"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/doctorApprovalPhoneNumberText"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.635" />
 
     <EditText
         android:id="@+id/doctorApprovalFirstNameText"
         style="@style/textField"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="204dp"
-        android:layout_marginEnd="50dp"
         android:autofillHints="name"
         android:hint="@string/firstName"
         android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.26" />
 
     <Button
         android:id="@+id/doctorApprovalApproveRequestButton"
-        android:layout_width="150dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="580dp"
+        android:layout_width="110dp"
+        android:layout_height="40dp"
         android:background="@drawable/greenbutton"
         android:text="Approve"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.23"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.78" />
 
     <Button
         android:id="@+id/doctorApprovalBackButton"
         style="@style/backButton"
         android:layout_width="80dp"
         android:layout_height="39dp"
-        android:layout_marginStart="156dp"
-        android:layout_marginTop="636dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.86" />
 
     <Button
         android:id="@+id/doctorApprovalDenyRequestButton"
-        android:layout_width="150dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="208dp"
-        android:layout_marginTop="580dp"
+        android:layout_width="110dp"
+        android:layout_height="40dp"
         android:background="@drawable/redbutton"
         android:text="Reject"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.77"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.78" />
 
     <EditText
         android:id="@+id/doctorApprovalLastNameText"
         style="@style/textField"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="246dp"
-        android:layout_marginEnd="50dp"
         android:autofillHints="name"
         android:hint="@string/lastName"
         android:inputType="text"
         android:textColor="@color/text_box_text"
         android:textColorHint="#9B9B9B"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/doctorApprovalFirstNameText"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3175" />
 
     <EditText
         android:id="@+id/doctorApprovalEmployeeNumberText"
         style="@style/textField"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="288dp"
-        android:layout_marginEnd="50dp"
         android:autofillHints="name"
         android:hint="@string/employee_number"
         android:inputType="text"
         android:textColor="@color/text_box_text"
         android:textColorHint="#9B9B9B"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/doctorApprovalLastNameText"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.375" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
