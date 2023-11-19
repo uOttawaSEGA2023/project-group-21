@@ -60,12 +60,26 @@
         />
 
     <ImageView
+        android:id="@+id/imageView3"
         android:layout_width="330dp"
         android:layout_height="125dp"
         android:layout_marginStart="44dp"
         android:layout_marginTop="492dp"
         android:background="@drawable/purplecard"
         app:cardBackgroundColor="@color/main"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+
+        android:id="@+id/doctorShiftCardStartTime2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="548dp"
+        android:text="Start Time"
+        android:textSize="11dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -223,20 +237,6 @@
         android:background="@drawable/rounded_back_button"
         android:text="Change"
         android:textSize="11dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-
-        android:id="@+id/clickableViewAllNextShift"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="328dp"
-        android:layout_marginTop="460dp"
-        android:text="View All"
-        android:textColor="@color/main"
-        android:textSize="11dp"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

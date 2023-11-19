@@ -25,6 +25,8 @@ public class DoctorNavigation extends AppCompatActivity {
     TextView doctorViewAllTextView, doctorNameTextView;
     Button viewShiftBtn;
 
+    TextView doctorNavigationDateTxt, doctorNavigationStartTimeTxt,doctorNavigationEndTimeTxt;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,11 @@ public class DoctorNavigation extends AppCompatActivity {
         doctorAddShiftButton = findViewById(R.id.doctorAddShiftButton);
         doctorViewAllTextView = findViewById(R.id.clickableViewAllNextAppt);
         doctorNameTextView = findViewById(R.id.doctorNameTextView);
+
+        // Link xml files to display next shift (NOT IMPLEMENTED YET)
+        doctorNavigationDateTxt = findViewById(R.id.doctorShiftDateLabel);
+        doctorNavigationStartTimeTxt = findViewById(R.id.doctorShiftCardStartTime2);
+        doctorNavigationEndTimeTxt = findViewById(R.id.doctorShiftCardEndTime);
 
 
         FirebaseAuth fAuth = FirebaseAuth.getInstance();
@@ -52,6 +59,7 @@ public class DoctorNavigation extends AppCompatActivity {
                     if (document != null && document.exists()) {
                         String firstName = document.getString("First Name");
                         doctorNameTextView.setText(firstName);
+
                     } else {
                         Log.d("Firestore", "No such document");
                     }
@@ -68,7 +76,7 @@ public class DoctorNavigation extends AppCompatActivity {
                 finish();
             }
         });
-      
+
         viewShiftBtn = findViewById(R.id.doctorViewHistoryBtn);
 
 

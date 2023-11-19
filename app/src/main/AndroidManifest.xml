@@ -15,6 +15,12 @@
         android:theme="@style/Theme.DocAppoint"
         tools:targetApi="31">
         <activity
+            android:name=".Patient.PatientPastAppointments"
+            android:exported="false" />
+        <activity
+            android:name=".Patient.PatientUpcomingAppointments"
+            android:exported="false" />
+        <activity
             android:name=".StatusPending"
             android:exported="false" />
         <activity
@@ -89,12 +95,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Doctor.DoctorAppointments"
-            android:exported="false">
-        </activity>
-        <activity android:name=".Patient.SelectDoctor"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="false"/>
+        <activity
+            android:name=".Doctor.DoctorAppointments"
+            android:exported="false" />
+        <activity
+            android:name=".Patient.SelectDoctor"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
     </application>
 
 </manifest>
