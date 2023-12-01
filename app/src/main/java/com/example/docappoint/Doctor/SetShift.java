@@ -100,7 +100,7 @@ public class SetShift extends AppCompatActivity implements AdapterView.OnItemSel
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(getApplicationContext(), ShiftHistory.class));
+                startActivity(new Intent(getApplicationContext(), DoctorNavigation.class));
                 finish();
 
             }

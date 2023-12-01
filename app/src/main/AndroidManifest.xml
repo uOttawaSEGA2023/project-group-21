@@ -15,6 +15,9 @@
         android:theme="@style/Theme.DocAppoint"
         tools:targetApi="31">
         <activity
+            android:name=".Doctor.DoctorApprovedAppointments"
+            android:exported="false" />
+        <activity
             android:name=".Patient.PatientPastAppointments"
             android:exported="false" />
         <activity

@@ -72,7 +72,7 @@ public class DoctorNavigation extends AppCompatActivity {
         doctorViewAllTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), DoctorAppointments.class));
+                startActivity(new Intent(getApplicationContext(), DoctorApprovedAppointments.class));
                 finish();
             }
         });
