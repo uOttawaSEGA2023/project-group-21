@@ -40,7 +40,7 @@ public class PatientPastAppointments extends AppCompatActivity {
         // Recycler view
         pAppointmentRecyclerView = findViewById(R.id.viewPatientPastAppointments);
         pAppointmentRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        PatientAppointmentAdapter pAdapter = new PatientAppointmentAdapter(pAppointmentList);
+       PatientRatingAdapter pAdapter = new PatientRatingAdapter(pAppointmentList);
         pAppointmentRecyclerView.setAdapter(pAdapter);
 
         // Get current user to access "Users" collection
