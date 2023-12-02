@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -129,7 +130,8 @@ public class Settings extends AppCompatActivity {
                 // Get the reference for the user with UserId
                 DocumentReference userDocument = usersCollection.document(userId);
                 userDocument.delete();
-
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                user.delete();
                 AlertDialog innerDialog = createDeleteDialog();
                 innerDialog.show();
 
