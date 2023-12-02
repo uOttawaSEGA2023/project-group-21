@@ -51,4 +51,8 @@ public class DoctorChip {
     public String getNextAvailableTime() {
         return "0";
     }
+
+    public String getUID() {
+        return uid;
+    }
 }

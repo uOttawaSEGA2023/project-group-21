@@ -74,12 +74,11 @@ public class SelectDoctor extends AppCompatActivity {
                                     ArrayList<Appointment> l = (ArrayList<Appointment>)document.get("docAppointments") ;
 
 
-                                    // Create a new DoctorChip with the retrieved data
                                     DoctorChip doctorChip = new DoctorChip(firstName, lastName, specialties,doctorRating, numOfRating, l, uid);
                                     doctorChips.add(doctorChip);
                                 }
                             }
-                            adapter.notifyDataSetChanged(); // Notify the adapter once data is fetched
+                            adapter.notifyDataSetChanged();
                         } else {
                             Log.d("Yo", "Yo") ;
                         }

@@ -52,7 +52,7 @@ public class DoctorSearchAdapter extends RecyclerView.Adapter<DoctorSearchAdapte
         }
     }
 
-    public DoctorSearchAdapter(ArrayList<DoctorChip> l){this.doctorList = l; this.doctorListFiltered = new ArrayList<>(l);}
+    public DoctorSearchAdapter(ArrayList<DoctorChip> l){this.doctorList = l; this.doctorListFiltered =l;}
 
     @Override
     public DoctorSearchAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -62,51 +62,27 @@ public class DoctorSearchAdapter extends RecyclerView.Adapter<DoctorSearchAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        DoctorChip currentRequest = doctorListFiltered.get(position);
-        ArrayList<String> specialties = currentRequest.getSpecialties();
-        String specialtiesText = (specialties != null) ? TextUtils.join(", ", specialties) : "No Specialties";
+        DoctorChip currentDoctor = doctorListFiltered.get(position);
 
-        holder.doctorFirstName.setText(currentRequest.getAccountFirstName());
-        holder.doctorLastName.setText(currentRequest.getAccountLastName());
-        holder.doctorSpecialties.setText(specialtiesText);
-        holder.doctorRatingNumber.setText(String.valueOf(currentRequest.getRatingNumber()));
-        holder.doctorNumRatings.setText(String.valueOf(currentRequest.getNumberOfRatings()));
-        holder.doctorNextAvailableDate.setText(currentRequest.getNextAvailableDate());
-        holder.doctorNextAvailableTime.setText(currentRequest.getNextAvailableTime());
+        holder.doctorFirstName.setText(currentDoctor.getAccountFirstName());
+        holder.doctorLastName.setText(currentDoctor.getAccountLastName());
+        holder.doctorSpecialties.setText(TextUtils.join(", ", currentDoctor.getSpecialties()));
+        holder.doctorRatingNumber.setText(String.valueOf(currentDoctor.getRatingNumber()));
+        holder.doctorNumRatings.setText(String.valueOf(currentDoctor.getNumberOfRatings()));
+        holder.doctorNextAvailableDate.setText(currentDoctor.getNextAvailableDate());
+        holder.doctorNextAvailableTime.setText(currentDoctor.getNextAvailableTime());
+
+        holder.doctorRatingBar.setRating(currentDoctor.getRatingNumber());
+
+
+        // holder.doctorProfilePicture.setImageBitmap(currentDoctor.getProfilePicture());
 
         holder.doctorBook.setOnClickListener(v -> {
             Context context = holder.itemView.getContext();
+
             Intent intent = new Intent(context, BookAppointment.class);
 
-            // Initialize Firestore
-            FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-            // Get user data from firestore
-            db.collection("Users")
-                    .get()
-                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(Task<QuerySnapshot> task) {
-                            if (task.isSuccessful()) {
-                                for (QueryDocumentSnapshot document : task.getResult()) {
-
-                                    // PendingUsers data extraction
-                                    String firstName = document.getString("First Name");
-                                    String lastName = document.getString("Last Name");
-
-                                    // Check if user type is doctor or patient and assign it to userType variable
-                                    int isDoctor = document.getLong("isDoctor") != null ? Math.toIntExact(document.getLong("isDoctor")) : 0;
-                                    int isPatient = document.getLong("isPatient") != null ? Math.toIntExact(document.getLong("isPatient")) : 0;
-
-                                    if (isDoctor == 1 && firstName.equals(currentRequest.getAccountFirstName()) && lastName.equals(currentRequest.getAccountLastName())) {
-                                        String uid = document.getString("UID");
-                                        intent.putExtra("uid", uid);
-                                        context.startActivity(intent);
-                                    }
-                                }
-                            }
-                        }
-                    });
+            intent.putExtra("uid", currentDoctor.getUID());
 
             context.startActivity(intent);
         });
@@ -119,27 +95,48 @@ public class DoctorSearchAdapter extends RecyclerView.Adapter<DoctorSearchAdapte
     }
 
 
-    // Add a method to filter the list based on the search query
     public void filter(String query) {
-        // Start with an empty list
         ArrayList<DoctorChip> filteredList = new ArrayList<>();
 
-        // If search query is not empty, perform filtering
-        if (!query.isEmpty()) {
+        if (query != null && !query.isEmpty()) {
             query = query.toLowerCase().trim();
 
             for (DoctorChip doctor : doctorList) {
-                // Your existing logic to add matching doctors to filteredList
+                String firstName = doctor.getAccountFirstName();
+                String lastName = doctor.getAccountLastName();
+                ArrayList<String> specialties = doctor.getSpecialties();
+
+                // Check for null to avoid NullPointerException
+                if ((firstName != null && firstName.toLowerCase().contains(query)) ||
+                        (lastName != null && lastName.toLowerCase().contains(query)) ||
+                        (specialties != null && containsSpecialty(specialties, query))) {
+                    filteredList.add(doctor);
+                }
             }
         } else {
-            // If search query is empty, use the original list
+            // Reset to the full list when query is empty
             filteredList.addAll(doctorList);
         }
 
-        // Update the filtered list
+        // Update the filtered list and notify the adapter
         doctorListFiltered = filteredList;
         notifyDataSetChanged();
     }
+
+
+    // Helper method to check if the list of specialties contains the search query
+    private boolean containsSpecialty(ArrayList<String> specialties, String query) {
+        if (specialties != null) {
+            for (String specialty : specialties) {
+                if (specialty.toLowerCase().contains(query)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+
 
 }
 
