@@ -41,7 +41,7 @@ public class DoctorApptHistory extends AppCompatActivity {
         // Recycler view
         dAppointmentRecyclerView = findViewById(R.id.viewDoctorPastAppointments);
         dAppointmentRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        PatientAppointmentAdapter dAdapter = new PatientAppointmentAdapter(dAppointmentList);
+        DoctorPastAppointmentAdapter dAdapter = new DoctorPastAppointmentAdapter(dAppointmentList);
         dAppointmentRecyclerView.setAdapter(dAdapter);
 
         // Get current user to access "Users" collection
