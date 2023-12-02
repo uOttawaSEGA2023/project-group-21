@@ -40,7 +40,7 @@ public class DoctorAppointments extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        appointmentRequests.clear();
+
 
         Log.d("IsEmpty", String.valueOf(appointmentRequests.isEmpty()));
 

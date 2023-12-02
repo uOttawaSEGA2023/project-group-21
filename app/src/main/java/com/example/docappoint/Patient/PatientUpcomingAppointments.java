@@ -46,11 +46,6 @@ public class PatientUpcomingAppointments extends AppCompatActivity {
         PatientAppointmentAdapter pAdapter = new PatientAppointmentAdapter(pAppointmentList);
         pAppointmentRecyclerView.setAdapter(pAdapter);
 
-        // GET DATA FROM USERS IN THE NEW "SHIFTS" FIELD
-        //GO THRU USER IN FIREBASE AND GET SHIFTS
-        //FOR EACH SHIFT CREATE NEW SHIFTS
-        //PUT SHIFTS INSIDE LIST OF SHIFTS
-
         // Get current user to access "Users" collection
         FirebaseFirestore fStore = FirebaseFirestore.getInstance();
         FirebaseAuth fAuth = FirebaseAuth.getInstance();
@@ -79,8 +74,11 @@ public class PatientUpcomingAppointments extends AppCompatActivity {
                                 Boolean isAccepted = (Boolean) appointmentData.get("isAccepted");
                                 Boolean isRejected = (Boolean) appointmentData.get("isRejected");
 
-                               Appointment patientAppointment = new Appointment(appointmentDate, appointmentStartTime, appointmentRating, hasHappened, patientUID, doctorUID, isAccepted, isRejected);
-                                retrievedPatientAppointments.add(patientAppointment);
+
+                                if (hasHappened == false && isAccepted) {
+                                    Appointment patientAppointment = new Appointment(appointmentDate, appointmentStartTime, appointmentRating, hasHappened, patientUID, doctorUID, isAccepted, isRejected);
+                                    retrievedPatientAppointments.add(patientAppointment);
+                                }
                             }
 
                             pAppointmentList.clear();
