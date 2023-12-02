@@ -34,7 +34,7 @@ public class ShiftAdapter extends RecyclerView.Adapter<ShiftAdapter.ViewHolder> 
         public ViewHolder(View view) {
             super(view);
             shiftAdapterDateLabelTxt = view.findViewById(R.id.doctorShiftDateLabel);
-            shiftAdapterCardStartTimeTxt = view.findViewById(R.id.doctorShiftCardStartTime);
+            shiftAdapterCardStartTimeTxt = view.findViewById(R.id.doctorShiftCardStartTime2);
             shiftAdapterCardEndTimeTxt = view.findViewById(R.id.doctorShiftCardEndTime);
             shiftAdapterCancelShiftButton = view.findViewById(R.id.doctorCancelShiftButton);
             shiftAdapterChangeShiftButton = view.findViewById(R.id.doctorChangeShiftButton);
