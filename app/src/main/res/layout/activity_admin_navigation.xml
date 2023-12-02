@@ -61,18 +61,18 @@
         app:layout_constraintVertical_bias="0.021"
         />
 
-    <Button
+    <ImageButton
         android:id="@+id/doctorSelectSettingButton"
-        style="@style/backButton"
         android:layout_width="45dp"
         android:layout_height="35dp"
-        android:text="S"
+        android:background="@drawable/rounded_back_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.96"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.025" />
+        app:layout_constraintVertical_bias="0.025"
+        app:srcCompat="@drawable/setting" />
 
     <ImageView
         android:id="@+id/docAppointLogo"
@@ -81,7 +81,7 @@
         android:src="@drawable/whitelogo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.69"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0"

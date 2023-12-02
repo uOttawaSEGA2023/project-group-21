@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.docappoint.R;
@@ -21,9 +22,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class DoctorNavigation extends AppCompatActivity {
 
-    Button doctorSettingsBtn, doctorViewAppointmentHistoryBtn, doctorAddShiftButton, doctorViewAppointmentRequestsBtn;
+    Button doctorViewAppointmentHistoryBtn, doctorAddShiftButton, doctorViewAppointmentRequestsBtn;
     TextView doctorViewAllTextView, doctorNameTextView;
     Button viewShiftBtn;
+
+    ImageButton doctorSettingsBtn;
 
     TextView doctorNavigationDateTxt, doctorNavigationStartTimeTxt,doctorNavigationEndTimeTxt;
 

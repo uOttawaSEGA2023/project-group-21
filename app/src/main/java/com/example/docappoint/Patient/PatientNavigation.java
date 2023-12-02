@@ -6,13 +6,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.example.docappoint.R;
 import com.example.docappoint.Settings;
 
 public class PatientNavigation extends AppCompatActivity {
 
-    Button patientSettingBtn, patientBookApptButton, patientUpcomingAppointmentsBtn, patientPastAppointmentsBtn;;
+    Button patientBookApptButton, patientUpcomingAppointmentsBtn, patientPastAppointmentsBtn;;
+    ImageButton patientSettingBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

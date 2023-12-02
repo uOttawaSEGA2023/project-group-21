@@ -70,7 +70,7 @@
         android:src="@drawable/whitelogo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.69"
+        app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0"
@@ -90,8 +90,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.15" />
-
-/////////////////////////////////////////////////////////////////////////////////////////
 
     <TextView
         android:id="@+id/backdrop"
@@ -195,7 +193,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5475" />
-
 
     <Button
         android:id="@+id/patientApprovalDenyRequestButtonDoc"

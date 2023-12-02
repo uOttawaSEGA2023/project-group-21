@@ -86,23 +86,11 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/doctorChangeShiftButton"
+                android:id="@+id/doctorCancelSheiftButton"
                 android:layout_width="75dp"
                 android:layout_height="30dp"
                 android:layout_marginStart="228dp"
-                android:layout_marginTop="18dp"
-                android:background="@drawable/rounded_back_button"
-                android:text="Change"
-                android:textSize="11dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/doctorCancelShiftButton"
-                android:layout_width="75dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="228dp"
-                android:layout_marginTop="55dp"
+                android:layout_marginTop="37dp"
                 android:background="@drawable/rounded_back_button"
                 android:text="Cancel"
                 android:textSize="11dp"
