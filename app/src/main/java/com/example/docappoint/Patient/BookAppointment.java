@@ -118,6 +118,7 @@ public class BookAppointment extends AppCompatActivity implements AdapterView.On
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         selectedStartTime = parent.getItemAtPosition(position).toString();
+        Log.d("Selected Start Time:", selectedStartTime);
         updateEndTime();
     }
 
@@ -158,17 +159,14 @@ public class BookAppointment extends AppCompatActivity implements AdapterView.On
         }
     }
 
-    private void findUnavailableTimes(String doctorUID, Calendar selectedDate) {
+    private void findUnavailableTimes(String doctorUID, final Calendar selectedDate) {
         FirebaseFirestore fStore = FirebaseFirestore.getInstance();
         DocumentReference docRef = fStore.collection("Users").document(doctorUID);
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM d, yyyy", Locale.getDefault());
-        String selectedDateString = dateFormat.format(selectedDate.getTime());
+        final String selectedDateString = dateFormat.format(selectedDate.getTime());
 
-        Log.d("Selected: ", selectedDateString);
-
-        availableTimes.clear();
-        availableTimes.addAll(generateDefaultTimes()); // Re-populate with default times
+        final List<CharSequence> defaultTimes = generateDefaultTimes();
 
         docRef.get().addOnSuccessListener(documentSnapshot -> {
             if (documentSnapshot.exists()) {
@@ -176,41 +174,34 @@ public class BookAppointment extends AppCompatActivity implements AdapterView.On
                 if (appointments != null) {
                     for (Map<String, Object> appointmentMap : appointments) {
                         String appointmentDate = (String) appointmentMap.get("appointmentDate");
-                        boolean boop =  selectedDateString.equals(appointmentDate);
-                        Log.d("SelectedisDate", String.valueOf(boop));
                         if (selectedDateString.equals(appointmentDate)) {
                             String appointmentTime = (String) appointmentMap.get("appointmentTime");
-                            Log.d("Appointment Time:", appointmentTime);
-                            if (availableTimes.contains(appointmentTime)) {
-                                Log.d("BookAppointment", "Removing time: " + appointmentTime);
-                                availableTimes.remove(appointmentTime);
-                            } else {
-                                Log.d("BookAppointment", "Time not found or already removed: " + appointmentTime);
-                            }
+                            defaultTimes.remove(appointmentTime); // Remove the unavailable time
                         }
                     }
-                } else {
-                    Log.d("BookAppointment", "No appointments found for this date");
                 }
-            } else {
-                Log.d("BookAppointment", "Doctor document does not exist");
             }
-        }).addOnFailureListener(e -> Log.e("BookAppointment", "Error getting document.", e));
-    }
 
+            runOnUiThread(() -> {
+                timeAdapter.clear();
+                timeAdapter.addAll(defaultTimes);
+                timeAdapter.notifyDataSetChanged();
 
-
-
-    private void updateSpinnerAdapter(List<CharSequence> availableTimes) {
-        runOnUiThread(() -> {
-            timeAdapter.clear();
-            for (CharSequence time : availableTimes) {
-                timeAdapter.add(time);
-            }
-            timeAdapter.notifyDataSetChanged();
+                if (!defaultTimes.isEmpty()) {
+                    apptStartTime.setSelection(0);
+                    selectedStartTime = defaultTimes.get(0).toString();
+                    updateEndTime();
+                }
+            });
+        }).addOnFailureListener(e -> {
+            Log.e("BookAppointment", "Error getting document.", e);
+            runOnUiThread(() -> {
+                timeAdapter.clear();
+                timeAdapter.addAll(defaultTimes);
+                timeAdapter.notifyDataSetChanged();
+            });
         });
     }
-
 
     private void saveAppointment(String doctorUID) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMMM d, yyyy", Locale.getDefault());
@@ -234,15 +225,15 @@ public class BookAppointment extends AppCompatActivity implements AdapterView.On
                 .addOnFailureListener(e -> Log.w("BookAppointment", "Error adding appointment to doctor's document", e));
     }
 
-    private List<String> generateDefaultTimes() {
-        List<String> times = new ArrayList<>();
+    private List<CharSequence> generateDefaultTimes() {
+        List<CharSequence> times = new ArrayList<>();
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR_OF_DAY, 9);
         calendar.set(Calendar.MINUTE, 0);
 
         SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a", Locale.getDefault());
 
-        for (int i = 0; i < 17; i++) {
+        for (int i = 0; i < 17; i++) { // Adjust the number of iterations to match your time range
             times.add(timeFormat.format(calendar.getTime()));
             calendar.add(Calendar.MINUTE, 30);
         }
