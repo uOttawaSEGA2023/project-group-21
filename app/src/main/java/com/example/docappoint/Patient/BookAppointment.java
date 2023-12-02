@@ -13,20 +13,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.docappoint.Appointment;
 import com.example.docappoint.R;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -39,78 +42,147 @@ public class BookAppointment extends AppCompatActivity implements AdapterView.On
     private TextView bookAppointmentEndTime;
     private Calendar selectedDate;
     private Button confirmButton, bookAppointmentBackBtn;
-    private Spinner apptStartTime;
     private String selectedStartTime;
     private FirebaseAuth fAuth;
     private FirebaseFirestore fStore;
     private String userId, firstName, lastName;
-    private ArrayAdapter<CharSequence> timeAdapter;
-    private List<CharSequence> availableTimes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_book_appointment);
 
-        initializeViews();
-        initializeFirebase();
-        initializeSpinner();
-        setupListeners();
-    }
-
-    private void initializeViews() {
-        patientCalendarView = findViewById(R.id.patientAppointmentDate);
-        bookAppointmentEndTime = findViewById(R.id.patientAppointmentEndTime);
         confirmButton = findViewById(R.id.confirmPatientAppointment);
         bookAppointmentBackBtn = findViewById(R.id.bookAppointmentBackButton);
-        apptStartTime = findViewById(R.id.patientAppointmentStartTime);
+        bookAppointmentEndTime = findViewById(R.id.patientAppointmentEndTime);
+        Spinner apptStartTime = findViewById(R.id.patientAppointmentStartTime);
 
-        selectedDate = Calendar.getInstance();
-
-    }
-
-    private void initializeFirebase() {
-        fAuth = FirebaseAuth.getInstance();
-        fStore = FirebaseFirestore.getInstance();
-        userId = fAuth.getCurrentUser().getUid();
-    }
-
-    private void initializeSpinner() {
-        availableTimes = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.patientTimes)));
-        timeAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, availableTimes);
-        timeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        apptStartTime.setAdapter(timeAdapter);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.patientTimes, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        apptStartTime.setAdapter(adapter);
         apptStartTime.setOnItemSelectedListener(this);
-    }
 
-    private void setupListeners() {
+        patientCalendarView = findViewById(R.id.patientAppointmentDate);
+        selectedDate = Calendar.getInstance();
         patientCalendarView.setMinDate(System.currentTimeMillis());
-        patientCalendarView.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
-            selectedDate.set(year, month, dayOfMonth);
-            String doctorUID = getIntent().getStringExtra("uid");
-            if (doctorUID != null) {
-                findUnavailableTimes(doctorUID, selectedDate);
-            } else {
-                Log.e("BookAppointment", "Doctor UID is null.");
+        patientCalendarView.setDate(System.currentTimeMillis(), false, true);
+
+        patientCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                selectedDate.set(year, month, dayOfMonth);
+
+
             }
         });
 
-        bookAppointmentBackBtn.setOnClickListener(v -> {
-            startActivity(new Intent(getApplicationContext(), SelectDoctor.class));
-            finish();
+      //Back button
+        bookAppointmentBackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), SelectDoctor.class));
+                finish();
+            }
         });
 
-        confirmButton.setOnClickListener(v -> {
-            if (isDateTimeInPast(selectedDate, selectedStartTime)) {
-                Toast.makeText(BookAppointment.this, "Cannot select date and time earlier than today", Toast.LENGTH_SHORT).show();
-                return;
-            }
 
-            String doctorUID = getIntent().getStringExtra("uid");
-            if (doctorUID != null) {
-                saveAppointment(doctorUID);
-            } else {
-                Log.e("BookAppointment", "Doctor UID is null.");
+        confirmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isDateTimeInPast(selectedDate, selectedStartTime)) {
+                    Toast.makeText(BookAppointment.this, "Cannot select date and time earlier than today", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                Log.d("NOT WROKING", "NOT WORKING");
+
+                fAuth = FirebaseAuth.getInstance();
+                fStore = FirebaseFirestore.getInstance();
+                userId = fAuth.getCurrentUser().getUid();
+
+                // Get Doctor UID
+                Intent intent = getIntent();
+                String doctorUID = intent.getStringExtra("uid");
+                Log.d("DocUID", "THIS IS DOCTOR UID" + doctorUID);
+
+                checkDoctorAvailability(doctorUID, selectedDate, selectedStartTime, new AvailabilityCallback() {
+                    @Override
+                    public void onResult(boolean isAvailable) {
+                        if (!isAvailable) {
+                            Toast.makeText(BookAppointment.this, "Doctor is not available at the selected time", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                    }
+                });
+
+
+                DocumentReference documentReference = fStore.collection("Users").document(userId);
+                documentReference.addSnapshotListener(BookAppointment.this, new EventListener<DocumentSnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                        if (e != null) {
+                            Log.w("BookAppointment", "Listen failed.", e);
+                            return;
+                        }
+
+                        if (documentSnapshot != null && documentSnapshot.exists()) {
+                            Log.d("BookAppointment", "Current data: " + documentSnapshot.getData());
+                            firstName = documentSnapshot.getString("First Name");
+                            lastName = documentSnapshot.getString("Last Name");
+
+                            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMMM d, yyyy", Locale.getDefault());
+                            String formattedDate = simpleDateFormat.format(selectedDate.getTime());
+
+                            // Get Patient UID
+                            fAuth = FirebaseAuth.getInstance();
+                            userId = fAuth.getCurrentUser().getUid();
+
+                            Appointment appointment = new Appointment(formattedDate, selectedStartTime,0.0f, false, userId, doctorUID, false, false);
+
+                            //TODO: ADD APPOINTMENT TO DOCTORS APPOINTMENT & PATIENT APPOINTMENT
+
+                            // Save appointment to doctor user
+                            DocumentReference doctorRef = fStore.collection("Users").document(doctorUID);
+                            doctorRef.update("Appointments", FieldValue.arrayUnion(appointment))
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            Log.d("BookAppointment", "Appointment added to doctor's document.");
+
+                                            // Save appointment to patient user
+                                            DocumentReference patientRef = fStore.collection("Users").document(userId);
+
+                                            patientRef.update("Appointments", FieldValue.arrayUnion(appointment))
+                                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void aVoid) {
+                                                            Log.d("BookAppointment", "Appointment added to patient's document.");
+
+                                                            // Display result message and redirect user to nav page
+                                                            Toast.makeText(BookAppointment.this, "Success! Appointment Booked!", Toast.LENGTH_SHORT).show();
+                                                            startActivity(new Intent(getApplicationContext(), PatientNavigation.class));
+                                                            finish();
+                                                        }
+                                                    })
+                                                    .addOnFailureListener(new OnFailureListener() {
+                                                        @Override
+                                                        public void onFailure(@NonNull Exception e) {
+                                                            Log.w("BookAppointment", "Error adding appointment to patient's document", e);
+                                                        }
+                                                    });
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.w("BookAppointment", "Error adding appointment to doctor's document", e);
+                                        }
+                                    });
+                        } else {
+                            Log.d("BookAppointment", "Current data: null");
+                        }
+                    }
+                });
             }
         });
     }
@@ -118,14 +190,7 @@ public class BookAppointment extends AppCompatActivity implements AdapterView.On
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         selectedStartTime = parent.getItemAtPosition(position).toString();
-        updateEndTime();
-    }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-    }
-
-    private void updateEndTime() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("h:mm a", Locale.getDefault());
         try {
             Date startTime = dateFormat.parse(selectedStartTime);
@@ -133,12 +198,18 @@ public class BookAppointment extends AppCompatActivity implements AdapterView.On
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTime(startTime);
                 calendar.add(Calendar.MINUTE, 30);
-                bookAppointmentEndTime.setText(dateFormat.format(calendar.getTime()));
+                String endTimeString = dateFormat.format(calendar.getTime());
+                bookAppointmentEndTime.setText(endTimeString);
             }
         } catch (ParseException e) {
             e.printStackTrace();
             bookAppointmentEndTime.setText("");
         }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+        // If nothing is selected you can set a default value or do nothing
     }
 
     private boolean isDateTimeInPast(Calendar selectedDate, String selectedStartTime) {
@@ -158,17 +229,9 @@ public class BookAppointment extends AppCompatActivity implements AdapterView.On
         }
     }
 
-    private void findUnavailableTimes(String doctorUID, Calendar selectedDate) {
+    private void checkDoctorAvailability(String doctorUID, Calendar selectedDate, String selectedTime, AvailabilityCallback callback) {
         FirebaseFirestore fStore = FirebaseFirestore.getInstance();
         DocumentReference docRef = fStore.collection("Users").document(doctorUID);
-
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM d, yyyy", Locale.getDefault());
-        String selectedDateString = dateFormat.format(selectedDate.getTime());
-
-        Log.d("Selected: ", selectedDateString);
-
-        availableTimes.clear();
-        availableTimes.addAll(generateDefaultTimes()); // Re-populate with default times
 
         docRef.get().addOnSuccessListener(documentSnapshot -> {
             if (documentSnapshot.exists()) {
@@ -176,79 +239,37 @@ public class BookAppointment extends AppCompatActivity implements AdapterView.On
                 if (appointments != null) {
                     for (Map<String, Object> appointmentMap : appointments) {
                         String appointmentDate = (String) appointmentMap.get("appointmentDate");
-                        boolean boop =  selectedDateString.equals(appointmentDate);
-                        Log.d("SelectedisDate", String.valueOf(boop));
-                        if (selectedDateString.equals(appointmentDate)) {
-                            String appointmentTime = (String) appointmentMap.get("appointmentTime");
-                            Log.d("Appointment Time:", appointmentTime);
-                            if (availableTimes.contains(appointmentTime)) {
-                                Log.d("BookAppointment", "Removing time: " + appointmentTime);
-                                availableTimes.remove(appointmentTime);
-                            } else {
-                                Log.d("BookAppointment", "Time not found or already removed: " + appointmentTime);
-                            }
+                        String appointmentTime = (String) appointmentMap.get("appointmentTime");
+
+                        if (appointmentDate.equals(convertCalendarToDate(selectedDate)) && appointmentTime.equals(selectedTime)) {
+                            callback.onResult(false); // Doctor is not available
+                            return;
                         }
                     }
+                    callback.onResult(true); // Doctor is available
                 } else {
-                    Log.d("BookAppointment", "No appointments found for this date");
+                    callback.onResult(true); // No appointments found, doctor is available
                 }
             } else {
-                Log.d("BookAppointment", "Doctor document does not exist");
+                Log.e("checkDoctorAvailability", "Doctor document does not exist.");
+                callback.onResult(false); // Error case
             }
-        }).addOnFailureListener(e -> Log.e("BookAppointment", "Error getting document.", e));
-    }
-
-
-
-
-    private void updateSpinnerAdapter(List<CharSequence> availableTimes) {
-        runOnUiThread(() -> {
-            timeAdapter.clear();
-            for (CharSequence time : availableTimes) {
-                timeAdapter.add(time);
-            }
-            timeAdapter.notifyDataSetChanged();
+        }).addOnFailureListener(e -> {
+            Log.e("checkDoctorAvailability", "Error getting doctor document.", e);
+            callback.onResult(false); // Error case
         });
     }
 
-
-    private void saveAppointment(String doctorUID) {
+    private String convertCalendarToDate(Calendar calendar) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMMM d, yyyy", Locale.getDefault());
-        String formattedDate = simpleDateFormat.format(selectedDate.getTime());
-
-        userId = fAuth.getCurrentUser().getUid();
-        Appointment appointment = new Appointment(formattedDate, selectedStartTime, 0.0f, false, userId, doctorUID, false, false);
-
-        DocumentReference doctorRef = fStore.collection("Users").document(doctorUID);
-        doctorRef.update("Appointments", FieldValue.arrayUnion(appointment))
-                .addOnSuccessListener(aVoid -> {
-                    DocumentReference patientRef = fStore.collection("Users").document(userId);
-                    patientRef.update("Appointments", FieldValue.arrayUnion(appointment))
-                            .addOnSuccessListener(aVoid1 -> {
-                                Toast.makeText(BookAppointment.this, "Success! Appointment Booked!", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getApplicationContext(), PatientNavigation.class));
-                                finish();
-                            })
-                            .addOnFailureListener(e -> Log.w("BookAppointment", "Error adding appointment to patient's document", e));
-                })
-                .addOnFailureListener(e -> Log.w("BookAppointment", "Error adding appointment to doctor's document", e));
+        return simpleDateFormat.format(calendar.getTime());
     }
 
-    private List<String> generateDefaultTimes() {
-        List<String> times = new ArrayList<>();
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, 9);
-        calendar.set(Calendar.MINUTE, 0);
-
-        SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a", Locale.getDefault());
-
-        for (int i = 0; i < 16; i++) { // 16 increments for 8 hours
-            times.add(timeFormat.format(calendar.getTime()));
-            calendar.add(Calendar.MINUTE, 30);
-        }
-
-        return times;
+    public interface AvailabilityCallback {
+        void onResult(boolean isAvailable);
     }
 
 
 }
+
+
