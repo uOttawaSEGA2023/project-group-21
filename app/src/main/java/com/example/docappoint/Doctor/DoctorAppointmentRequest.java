@@ -24,7 +24,6 @@ public class DoctorAppointmentRequest {
     private String appointmentTime;
     private Appointment appointment;
 
-    // Constructor is private because we create instances asynchronously
     private DoctorAppointmentRequest(String accountFirstName, String accountLastName, String accountHealthCardNumber,
                                      String accountAddress, String accountPhoneNumber, String accountEmail,
                                      String appointmentDate, String appointmentTime, Appointment app) {
@@ -39,7 +38,6 @@ public class DoctorAppointmentRequest {
         this.appointment = app;
     }
 
-    // Static method to fetch patient info and create a DoctorAppointmentRequest
     public static void createFromUID(Appointment appointment, PatientInfoCallback callback) {
         FirebaseFirestore fStore = FirebaseFirestore.getInstance();
         DocumentReference patientRef = fStore.collection("Users").document(appointment.getPatientUID());

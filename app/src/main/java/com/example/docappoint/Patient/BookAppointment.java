@@ -203,13 +203,22 @@ public class BookAppointment extends AppCompatActivity implements AdapterView.On
         });
     }
 
-    private void saveAppointment(String doctorUID) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMMM d, yyyy", Locale.getDefault());
-        String formattedDate = simpleDateFormat.format(selectedDate.getTime());
-
+    private void saveAppointment(final String doctorUID) {
+        final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMMM d, yyyy", Locale.getDefault());
+        final String formattedDate = simpleDateFormat.format(selectedDate.getTime());
         userId = fAuth.getCurrentUser().getUid();
-        Appointment appointment = new Appointment(formattedDate, selectedStartTime, 0.0f, false, userId, doctorUID, false, false);
 
+        DocumentReference doctorRef = fStore.collection("Users").document(doctorUID);
+        doctorRef.get().addOnSuccessListener(doctorSnapshot -> {
+            boolean autoAccept = doctorSnapshot.exists() && Boolean.TRUE.equals(doctorSnapshot.getBoolean("autoAccept"));
+
+            final Appointment appointment = new Appointment(formattedDate, selectedStartTime, 0.0f, false, userId, doctorUID, autoAccept, false);
+
+            updateAppointmentInFirestore(appointment, doctorUID);
+        }).addOnFailureListener(e -> Log.e("BookAppointment", "Error fetching doctor's autoAccept setting", e));
+    }
+
+    private void updateAppointmentInFirestore(Appointment appointment, String doctorUID) {
         DocumentReference doctorRef = fStore.collection("Users").document(doctorUID);
         doctorRef.update("Appointments", FieldValue.arrayUnion(appointment))
                 .addOnSuccessListener(aVoid -> {
@@ -224,6 +233,7 @@ public class BookAppointment extends AppCompatActivity implements AdapterView.On
                 })
                 .addOnFailureListener(e -> Log.w("BookAppointment", "Error adding appointment to doctor's document", e));
     }
+
 
     private List<CharSequence> generateDefaultTimes() {
         List<CharSequence> times = new ArrayList<>();

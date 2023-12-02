@@ -49,13 +49,13 @@ public class DoctorAppointments extends AppCompatActivity {
 
         autoAcceptSwitch = findViewById(R.id.autoAcceptAppointmentSwitch);
         SharedPreferences preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
-        boolean switchState = preferences.getBoolean("switchState", false); // false is the default value
+        boolean switchState = preferences.getBoolean("switchState", false);
         autoAcceptSwitch.setChecked(switchState);
         autoAcceptSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                // Save state to SharedPreferences
                 preferences.edit().putBoolean("switchState", isChecked).apply();
+                updateAutoAcceptSettingInFirestore(isChecked);
             }
         });
 
@@ -128,7 +128,6 @@ public class DoctorAppointments extends AppCompatActivity {
             }
         }
 
-        // Notify the adapter that the data set has changed after clearing and adding new items
         adapter.notifyDataSetChanged();
     }
 
@@ -143,13 +142,22 @@ public class DoctorAppointments extends AppCompatActivity {
     public  void removeAppointmentRequest(Appointment toRemove) {
         for (int i = 0; i < appointmentRequests.size(); i++) {
             DoctorAppointmentRequest request = appointmentRequests.get(i);
-            Appointment appointment = request.getAppointment(); // Assuming DoctorAppointmentRequest has a method getAppointment()
+            Appointment appointment = request.getAppointment();
             if (appointment.equals(toRemove)) {
                 appointmentRequests.remove(i);
                 adapter.notifyItemRemoved(i);
                 break;
             }
         }
+    }
+
+    private void updateAutoAcceptSettingInFirestore(boolean isAutoAcceptEnabled) {
+        String currentDoctorUID = auth.getCurrentUser().getUid();
+
+        db.collection("Users").document(currentDoctorUID)
+                .update("autoAccept", isAutoAcceptEnabled)
+                .addOnSuccessListener(aVoid -> Log.d("DoctorAppointments", "Auto accept setting updated in Firestore"))
+                .addOnFailureListener(e -> Log.e("DoctorAppointments", "Error updating auto accept setting in Firestore", e));
     }
 
 }
