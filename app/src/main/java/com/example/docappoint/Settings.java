@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,7 +26,7 @@ import com.google.firebase.ktx.Firebase;
 
 public class Settings extends AppCompatActivity {
 
-    EditText nameAccountSettings, emailAccountSettings, phoneAccountSettings;
+    TextView nameAccountSettings, emailAccountSettings, phoneAccountSettings;
     View profilePictureSettings;
     Button logOutAccount, settingsBackBtn, deleteAccountSettingsBtn;
     FirebaseAuth fAuth;
