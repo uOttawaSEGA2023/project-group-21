@@ -106,25 +106,21 @@ public class DoctorSearchAdapter extends RecyclerView.Adapter<DoctorSearchAdapte
                 String lastName = doctor.getAccountLastName();
                 ArrayList<String> specialties = doctor.getSpecialties();
 
-                // Check for null to avoid NullPointerException
                 if ((firstName != null && firstName.toLowerCase().contains(query)) ||
                         (lastName != null && lastName.toLowerCase().contains(query)) ||
-                        (specialties != null && containsSpecialty(specialties, query))) {
+                        (specialties != null && containsSpecialty(specialties, query)) ) {
                     filteredList.add(doctor);
                 }
             }
         } else {
-            // Reset to the full list when query is empty
             filteredList.addAll(doctorList);
         }
 
-        // Update the filtered list and notify the adapter
         doctorListFiltered = filteredList;
         notifyDataSetChanged();
     }
 
 
-    // Helper method to check if the list of specialties contains the search query
     private boolean containsSpecialty(ArrayList<String> specialties, String query) {
         if (specialties != null) {
             for (String specialty : specialties) {

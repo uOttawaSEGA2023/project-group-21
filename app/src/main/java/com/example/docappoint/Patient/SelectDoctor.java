@@ -45,7 +45,7 @@ public class SelectDoctor extends AppCompatActivity {
         patientSelectDoctorBackbtn = findViewById(R.id.patientChooseDoctorBackButton);
         selectionOfDoctors = findViewById(R.id.selectDoctorRecyclerView);
         selectionOfDoctors.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new DoctorSearchAdapter(doctorChips); // Initialize the adapter
+        adapter = new DoctorSearchAdapter(doctorChips);
         selectionOfDoctors.setAdapter(adapter);
 
         searchView = findViewById(R.id.selectDoctorSearchView);
@@ -88,15 +88,15 @@ public class SelectDoctor extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
-                searchView.clearFocus(); // Clear focus from the search view when query submitted
-                adapter.filter(s); // Filter the adapter
-                return true; // Return true to indicate the query was handled
+                searchView.clearFocus();
+                adapter.filter(s);
+                return true;
             }
 
             @Override
             public boolean onQueryTextChange(String s) {
-                adapter.filter(s); // Filter the adapter
-                return true; // Return true since the callback has handled the event
+                adapter.filter(s);
+                return true;
             }
         });
 
