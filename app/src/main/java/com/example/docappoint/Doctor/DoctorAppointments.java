@@ -118,7 +118,7 @@ public class DoctorAppointments extends AppCompatActivity {
                 appointment.refreshFromFirestore(() -> {
                     Log.d("isAccepted", String.valueOf(appointment.getIsAccepted()));
                     Log.d("isRejected", String.valueOf(appointment.getIsRejected()));
-                    if (!appointment.getIsAccepted() && !appointment.getIsRejected()) {
+                    if (!appointment.getIsAccepted() && !appointment.getIsRejected() && !appointment.getHasHappened()) {
                         DoctorAppointmentRequest.createFromUID(appointment, doctorAppointmentRequest -> {
                             appointmentRequests.add(doctorAppointmentRequest);
                             adapter.notifyDataSetChanged();
