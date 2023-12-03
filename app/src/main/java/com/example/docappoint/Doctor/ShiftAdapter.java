@@ -1,26 +1,31 @@
 package com.example.docappoint.Doctor;
 
-import android.content.Context;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.docappoint.R;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.ArrayList;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ShiftAdapter extends RecyclerView.Adapter<ShiftAdapter.ViewHolder> {
 
@@ -36,8 +41,7 @@ public class ShiftAdapter extends RecyclerView.Adapter<ShiftAdapter.ViewHolder> 
             shiftAdapterDateLabelTxt = view.findViewById(R.id.doctorShiftDateLabel);
             shiftAdapterCardStartTimeTxt = view.findViewById(R.id.doctorShiftCardStartTime2);
             shiftAdapterCardEndTimeTxt = view.findViewById(R.id.doctorShiftCardEndTime);
-            shiftAdapterCancelShiftButton = view.findViewById(R.id.doctorCancelShiftButton);
-            shiftAdapterChangeShiftButton = view.findViewById(R.id.doctorChangeShiftButton);
+            shiftAdapterCancelShiftButton = view.findViewById(R.id.doctorCancelSheiftButton);
         }
     }
 
@@ -67,39 +71,32 @@ public class ShiftAdapter extends RecyclerView.Adapter<ShiftAdapter.ViewHolder> 
         holder.shiftAdapterCancelShiftButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Context context = holder.itemView.getContext();
-                // START HERE WOOOOO
+                // Create an AlertDialog Object
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(v.getContext());
+                alertDialogBuilder.setTitle("Cancel Shift");
+                alertDialogBuilder.setMessage("Are you sure you want to cancel this shift?");
 
-                // Get current user to access "Users" collection
-                FirebaseFirestore fStore = FirebaseFirestore.getInstance();
-                FirebaseAuth fAuth = FirebaseAuth.getInstance();
+                // Yes button pressed
+                alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
 
-                FirebaseUser currentUser = fAuth.getCurrentUser();
-                if (currentUser != null) {
-                    String userId = currentUser.getUid();
-                    DocumentReference docRef = fStore.collection("Users").document(userId);
+                        // Delete appointment from the Appointment field and show toast message
+                        findAndDeleteShift(currentShift.getShiftDate(), currentShift.getShiftStartTime(), currentShift.getShiftEndTime(), holder,  currentShift);
+                    }
+                });
 
-                    docRef.get().addOnCompleteListener(task -> {
-                        if (task.isSuccessful()) {
-                            DocumentSnapshot document = task.getResult();
+                // No button pressed
+                alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
 
-                            if (document.exists()) {
-                                List<HashMap<String, Object>> shiftsData = (List<HashMap<String, Object>>) document.get("Shifts");
-
-                                if (shiftsData != null) {
-                                    for (HashMap<String, Object> shiftData : shiftsData) {
-                                        //need to figure out how to query shift that is clicked on
-                                    }
-                                }
-
-                            } else {
-                                Log.d("ERROR DEBUG 1", "DOCUMENT NOT FOUND");
-                            }
-                        } else {
-                            Log.d("ERROR DEBUG 2", "TASK FAILURE");
-                        }
-                    });
-                }
+                // Show alert dialog
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
             }
         });
     }
@@ -107,5 +104,96 @@ public class ShiftAdapter extends RecyclerView.Adapter<ShiftAdapter.ViewHolder> 
     @Override
     public int getItemCount() {
         return shiftList.size();
+    }
+
+    public void findAndDeleteShift(String shiftDate, String shiftStartTime, String shiftEndTime, ShiftAdapter.ViewHolder holder, Shifts currentShifts){
+        FirebaseAuth fAuth = FirebaseAuth.getInstance();
+        FirebaseFirestore fStore = FirebaseFirestore.getInstance();
+        AtomicBoolean isChecked = new AtomicBoolean(false);
+
+        // Get current doctor user
+        if (fAuth.getCurrentUser() != null) {
+            String currentUserID = fAuth.getCurrentUser().getUid();
+
+            DocumentReference userRef = fStore.collection("Users").document(currentUserID);
+            userRef.get().addOnCompleteListener(task -> {
+
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document != null && document.exists()) {
+                        List<HashMap<String, Object>> shifts = (List<HashMap<String, Object>>) document.get("Shifts");
+                        List<HashMap<String, Object>> appointments = (List<HashMap<String, Object>>) document.get("Appointments");
+
+                        if (shifts != null) {
+
+                            // Go through all appointments to find the shift with the matching time
+                            for (HashMap<String, Object> shift : shifts) {
+                                String shiftDateFromList = (String) shift.get("shiftDate");
+                                String shiftStartTimeFromList = (String) shift.get("shiftStartTime");
+                                String shiftEndTimeFromList = (String) shift.get("shiftEndTime");
+
+                                // Check if date and time match
+                                if (shiftDateFromList.equals(shiftDate) && shiftStartTimeFromList.equals(shiftStartTime) && shiftEndTimeFromList.equals(shiftEndTime)) {
+
+
+                                    for(HashMap<String, Object> appointment : appointments ){
+                                        String appointmentDateFromList = (String) appointment.get("appointmentDate");
+                                        String appointmentTimeFromList = (String) appointment.get("appointmentTime");
+
+
+                                        try {
+                                            if(shiftDateFromList.equals(appointmentDateFromList) && isTimeBetween(shiftStartTimeFromList, shiftEndTimeFromList, appointmentTimeFromList)) {
+
+                                                Toast.makeText(holder.itemView.getContext(), "Error - Shift during appointment!", Toast.LENGTH_SHORT).show();
+                                                isChecked.set(true);
+                                                Log.d("Appointment during shift", String.valueOf(isChecked));
+                                                break;
+                                            }
+                                        } catch (ParseException e) {
+                                            throw new RuntimeException(e);
+                                        }
+
+                                    }
+
+
+                                    if(isChecked.get() == false){
+                                        // Delete matching appointment
+                                        userRef.update("Shifts", FieldValue.arrayRemove(shift))
+                                                .addOnSuccessListener(aVoid -> {
+                                                    Toast.makeText(holder.itemView.getContext(), "Shift canceled.", Toast.LENGTH_SHORT).show();
+
+                                                    // Remove the Appointment object from the list
+                                                    shiftList.remove(currentShifts);
+                                                    notifyDataSetChanged();
+                                                })
+                                                .addOnFailureListener(e -> {
+                                                    Log.e("FIREBASE ERROR", "ERROR: " + e.getMessage());
+                                                });
+                                    }
+
+                                    break;
+                                }
+
+                            }
+                        }
+                    } else {
+                        Log.d("Firestore", "Document does not exist");
+                    }
+                }
+            });
+        }
+
+    }
+
+    public static boolean isTimeBetween(String startTime, String endTime, String checkTime) throws ParseException {
+
+        SimpleDateFormat format = new SimpleDateFormat("hh:mm a");
+
+        Date start = format.parse(startTime);
+        Date end = format.parse(endTime);
+        Date check = format.parse(checkTime);
+
+        return check.compareTo(start) >= 0 && check.compareTo(end) <= 0;
+
     }
 }
