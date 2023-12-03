@@ -64,7 +64,7 @@ public class SelectDoctor extends AppCompatActivity {
                                     String lastName = document.getString("Last Name");
                                     String uid = document.getString("UID");
 
-                                    double rating = document.getDouble("Rating") != null ? document.getDouble("Rating") : 0;
+                                    double rating = document.getDouble("AvgRating") != null ? document.getDouble("AvgRating") : 0;
                                     float doctorRating = (float)rating;
                                     long numRating = document.getLong("numOfRatings") != null ? document.getLong("numOfRatings") : 0;
                                     int numOfRating = (int)numRating;
