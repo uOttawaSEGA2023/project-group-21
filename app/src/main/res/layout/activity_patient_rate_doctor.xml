@@ -116,8 +116,9 @@
 
     <RatingBar
         android:id="@+id/patientRatingBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="193dp"
+        android:layout_height="46dp"
+        android:background="@color/intermediate_purple"
         android:max="4"
         android:numStars="4"
         android:progressTint="#FFC107"
@@ -125,24 +126,26 @@
         android:stepSize="0.5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.683"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.35" />
+        app:layout_constraintVertical_bias="0.42" />
 
-    <TextView
-        android:id="@+id/ratingLabelNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Rating"
+    <EditText
+        android:id="@+id/patientRatingNum"
+        android:layout_width="47dp"
+        android:layout_height="44dp"
+        android:background="@drawable/rounded_text_box"
+        android:ems="10"
+        android:inputType="number|numberDecimal"
+        android:text="1.3"
+        android:textAlignment="center"
         android:textColor="@color/main"
-        android:textSize="30dp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toStartOf="@+id/patientRatingBar"
+        app:layout_constraintHorizontal_bias="0.705"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.45" />
+        app:layout_constraintVertical_bias="0.422" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
