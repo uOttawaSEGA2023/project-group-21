@@ -30,6 +30,8 @@ public class PatientRatingAdapter extends RecyclerView.Adapter<PatientRatingAdap
 
     private List<Appointment> pAppointmentList;
 
+    public String doctorToRate;
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         // Declare variables
@@ -72,6 +74,8 @@ public class PatientRatingAdapter extends RecyclerView.Adapter<PatientRatingAdap
         // Find the appointment matching the date and time
         findAppointment(appointmentDate, appointmentTime, holder);
 
+        getAppointmentDoctorID(appointmentDate, appointmentTime, holder);
+
         holder.patientAdapterDateLabelTxt.setText(currentAppointment.getAppointmentDate());
         holder.patientAdapterCardStartTimeTxt.setText(currentAppointment.getAppointmentTime());
         holder.patientAdapterRateShiftButton.setText("Rate");
@@ -100,6 +104,9 @@ public class PatientRatingAdapter extends RecyclerView.Adapter<PatientRatingAdap
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(holder.itemView.getContext(), PatientRateDoctor.class);
+                String doctorToRateID =  doctorToRate;
+                //Log.d("Doctor ID", doctorToRateID);
+                intent.putExtra("doctorToRateID", doctorToRateID);
                 holder.itemView.getContext().startActivity(intent);
             }
         });
@@ -169,6 +176,43 @@ public class PatientRatingAdapter extends RecyclerView.Adapter<PatientRatingAdap
                                     getDoctorFirstName(doctorUID, holder);
                                     getDoctorLastName(doctorUID, holder);
                                     break;
+                                }
+                            }
+                        }
+                    } else {
+                        Log.d("Firestore", "No such document");
+                    }
+                }
+            });
+        }
+    }
+
+    private void getAppointmentDoctorID(String appointmentDate, String appointmentTime, ViewHolder holder){
+        FirebaseAuth fAuth = FirebaseAuth.getInstance();
+        FirebaseFirestore fStore = FirebaseFirestore.getInstance();
+
+        if (fAuth.getCurrentUser() != null) {
+            String currentUserID = fAuth.getCurrentUser().getUid();
+
+            DocumentReference userRef = fStore.collection("Users").document(currentUserID);
+            userRef.get().addOnCompleteListener(task -> {
+
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document != null && document.exists()) {
+                        List<HashMap<String, Object>> appointments = (List<HashMap<String, Object>>) document.get("Appointments");
+
+                        if (appointments != null) {
+                            for (HashMap<String, Object> appointment : appointments) {
+                                String appointmentDateFromList = (String) appointment.get("appointmentDate");
+                                String appointmentTimeFromList = (String) appointment.get("appointmentTime");
+                                String doctorUID = (String) appointment.get("doctorUID");
+
+                                // Check if date and time match to get specific doctorUID
+                                if (appointmentDateFromList.equals(appointmentDate) && appointmentTimeFromList.equals(appointmentTime)) {
+                                    doctorToRate = doctorUID;
+                                    Log.d("Doctor UID", doctorToRate);
+                                    return;
                                 }
                             }
                         }

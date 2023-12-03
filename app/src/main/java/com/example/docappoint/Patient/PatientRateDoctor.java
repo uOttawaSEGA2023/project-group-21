@@ -1,18 +1,33 @@
 package com.example.docappoint.Patient;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.docappoint.Doctor.DoctorNavigation;
+import com.example.docappoint.Doctor.SetShift;
 import com.example.docappoint.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class PatientRateDoctor extends AppCompatActivity {
 
@@ -69,6 +84,57 @@ public class PatientRateDoctor extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), PatientPastAppointments.class));
                 finish();
+            }
+        });
+
+        patientRateConfirmBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+
+                FirebaseAuth fAuth = FirebaseAuth.getInstance();
+                FirebaseFirestore fStore = FirebaseFirestore.getInstance();
+
+                Intent intent = getIntent();
+                String doctorID = intent.getStringExtra("doctorToRateID");
+
+                float userRating = patientRateRatingBar.getRating();
+
+                if (fAuth.getCurrentUser() != null) {
+
+                    DocumentReference userRef = fStore.collection("Users").document(doctorID);
+                    userRef.get().addOnCompleteListener(task -> {
+
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document != null && document.exists()) {
+
+                                Map<String, Object> rating = new HashMap<>();
+                                rating.put("Rating", String.valueOf(rating));
+
+                                // Update the field in the document
+                                userRef.update("Rating", userRating)
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                Toast.makeText(PatientRateDoctor.this, "Gave rating of " + userRating, Toast.LENGTH_SHORT).show();
+                                                startActivity(new Intent(getApplicationContext(), PatientPastAppointments.class));
+                                                finish();
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                Log.d("Rate doctor", "Error rating doctor", e);
+                                            }
+                                        });
+
+
+                            } else {
+                                Log.d("Firestore", "No such document");
+                            }
+                        }
+                    });
+                }
             }
         });
 
