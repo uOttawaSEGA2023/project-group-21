@@ -7,6 +7,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +33,8 @@ public class Appointment implements Serializable {
         this.isAccepted = isAccepted;
         this.isRejected = isRejected;
     }
+
+
 
     public String getAppointmentDate() {
         return this.appointmentDate;
@@ -175,6 +178,7 @@ public class Appointment implements Serializable {
             }
         });
     }
+
 
 }
 
