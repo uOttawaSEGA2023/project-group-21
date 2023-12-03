@@ -43,7 +43,7 @@ public class BookAppointment extends AppCompatActivity implements AdapterView.On
     private String selectedStartTime;
     private FirebaseAuth fAuth;
     private FirebaseFirestore fStore;
-    private String userId, firstName, lastName;
+    private String userId;
     private ArrayAdapter<CharSequence> timeAdapter;
     private List<CharSequence> availableTimes;
 
@@ -56,6 +56,14 @@ public class BookAppointment extends AppCompatActivity implements AdapterView.On
         initializeFirebase();
         initializeSpinner();
         setupListeners();
+
+        String doctorUID = getIntent().getStringExtra("uid");
+        if (doctorUID != null) {
+            findUnavailableTimes(doctorUID, selectedDate);
+        } else {
+            Log.e("BookAppointment", "Doctor UID is null.");
+        }
+
     }
 
     private void initializeViews() {
@@ -66,6 +74,7 @@ public class BookAppointment extends AppCompatActivity implements AdapterView.On
         apptStartTime = findViewById(R.id.patientAppointmentStartTime);
 
         selectedDate = Calendar.getInstance();
+
 
     }
 
@@ -176,7 +185,7 @@ public class BookAppointment extends AppCompatActivity implements AdapterView.On
                         String appointmentDate = (String) appointmentMap.get("appointmentDate");
                         if (selectedDateString.equals(appointmentDate)) {
                             String appointmentTime = (String) appointmentMap.get("appointmentTime");
-                            defaultTimes.remove(appointmentTime); // Remove the unavailable time
+                            defaultTimes.remove(appointmentTime);
                         }
                     }
                 }
