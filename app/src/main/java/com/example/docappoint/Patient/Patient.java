@@ -6,7 +6,7 @@ import com.example.docappoint.User;
 public class Patient extends User {
 
     // Unique attributes for Patient
-    private int healthCardNum;
+    private final int healthCardNum;
 
     // Constructor for Patient
     public Patient(String firstName, String lastName, String email, String password, String confirmPassword, String phoneNumber, String

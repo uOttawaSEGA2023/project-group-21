@@ -187,7 +187,6 @@ public class DoctorRejectApproval extends AppCompatActivity {
                                         Toast.makeText(DoctorRejectApproval.this, "Failed to approve user" + e.getMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 });
-                        ;
 
                     }
 

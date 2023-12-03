@@ -205,7 +205,6 @@ public class DoctorApproval extends AppCompatActivity {
                                         Toast.makeText(DoctorApproval.this, "Failed to approve user" + e.getMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 });
-                        ;
 
                     }
 

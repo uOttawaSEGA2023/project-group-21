@@ -28,7 +28,7 @@ import java.util.Locale;
 
 public class PatientRatingAdapter extends RecyclerView.Adapter<PatientRatingAdapter.ViewHolder> {
 
-    private List<Appointment> pAppointmentList;
+    private final List<Appointment> pAppointmentList;
 
     public String doctorToRate;
 

@@ -6,13 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DoctorChip {
-    private String firstName;
-    private String lastName;
-    private ArrayList<String> specialties;
-    private float rating;
-    private int numberOfRatings;
-    private ArrayList<Appointment> appointments;
-    private String uid;
+    private final String firstName;
+    private final String lastName;
+    private final ArrayList<String> specialties;
+    private final float rating;
+    private final int numberOfRatings;
+    private final ArrayList<Appointment> appointments;
+    private final String uid;
 
     public DoctorChip(String firstName, String lastName, ArrayList<String> specialties, float rating, int numberOfRatings, ArrayList<Appointment> l, String uid){
         this.firstName = firstName;

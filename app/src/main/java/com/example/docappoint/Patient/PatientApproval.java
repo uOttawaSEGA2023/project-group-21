@@ -65,7 +65,7 @@ public class PatientApproval extends AppCompatActivity {
 
         // Retrieve user data from the intent extras
         Intent intent = getIntent();
-        if (intent != null && intent.getBooleanExtra("isAppointRequest", false) != true) {
+        if (intent != null && !intent.getBooleanExtra("isAppointRequest", false)) {
             String firstName = intent.getStringExtra("firstName");
             String lastName = intent.getStringExtra("lastName");
             String healthCardNumber = intent.getStringExtra("healthCardNumber");
@@ -144,7 +144,7 @@ public class PatientApproval extends AppCompatActivity {
             });
 
         }
-        else if(intent != null && intent.getBooleanExtra("isAppointRequest", false) == true){
+        else if(intent != null && intent.getBooleanExtra("isAppointRequest", false)){
             String firstName = intent.getStringExtra("firstName");
             String lastName = intent.getStringExtra("lastName");
             String healthCardNumber = intent.getStringExtra("healthCardNumber");
@@ -264,7 +264,6 @@ public class PatientApproval extends AppCompatActivity {
                                         Toast.makeText(PatientApproval.this, "Failed to approve user" + e.getMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 });
-                        ;
 
                     }
 

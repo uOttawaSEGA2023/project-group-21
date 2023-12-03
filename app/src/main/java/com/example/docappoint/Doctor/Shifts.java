@@ -2,9 +2,9 @@ package com.example.docappoint.Doctor;
 
 public class Shifts {
 
-    private String shiftDate;
-    private String shiftStartTime;
-    private String shiftEndTime;
+    private final String shiftDate;
+    private final String shiftStartTime;
+    private final String shiftEndTime;
     private boolean shiftCompleted, isBooked;
 
     public Shifts(String shiftDate, String shiftStartTime, String shiftEndTime, Boolean shiftCompleted, Boolean isBooked) {

@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHolder> {
-    private List<ListRequest> accountApprovalList;
+    private final List<ListRequest> accountApprovalList;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView accountFirstName, accountLastName, accountType;
@@ -58,7 +58,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
 
         holder.seeMoreButton.setOnClickListener(v -> {
             Context context = holder.itemView.getContext();
-            if (wasRejected == false) {
+            if (!wasRejected) {
                 if ("Doctor".equals(holder.accountType.getText().toString())) {
                     Intent intent = new Intent(context, DoctorApproval.class);
 

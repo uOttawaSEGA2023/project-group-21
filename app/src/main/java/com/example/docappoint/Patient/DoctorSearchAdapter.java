@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DoctorSearchAdapter extends RecyclerView.Adapter<DoctorSearchAdapter.ViewHolder> {
-    private ArrayList<DoctorChip> doctorList;
+    private final ArrayList<DoctorChip> doctorList;
     private ArrayList<DoctorChip> doctorListFiltered;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -108,7 +108,7 @@ public class DoctorSearchAdapter extends RecyclerView.Adapter<DoctorSearchAdapte
 
                 if ((firstName != null && firstName.toLowerCase().contains(query)) ||
                         (lastName != null && lastName.toLowerCase().contains(query)) ||
-                        (specialties != null && containsSpecialty(specialties, query)) ) {
+                        (containsSpecialty(specialties, query)) ) {
                     filteredList.add(doctor);
                 }
             }

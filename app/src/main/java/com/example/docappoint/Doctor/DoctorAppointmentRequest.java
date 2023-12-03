@@ -14,15 +14,15 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 
 public class DoctorAppointmentRequest {
-    private String accountFirstName;
-    private String accountLastName;
-    private String accountAddress;
-    private String accountPhoneNumber;
-    private String accountEmail;
-    private String accountHealthCardNumber;
-    private String appointmentDate;
-    private String appointmentTime;
-    private Appointment appointment;
+    private final String accountFirstName;
+    private final String accountLastName;
+    private final String accountAddress;
+    private final String accountPhoneNumber;
+    private final String accountEmail;
+    private final String accountHealthCardNumber;
+    private final String appointmentDate;
+    private final String appointmentTime;
+    private final Appointment appointment;
 
     private DoctorAppointmentRequest(String accountFirstName, String accountLastName, String accountHealthCardNumber,
                                      String accountAddress, String accountPhoneNumber, String accountEmail,
