@@ -38,7 +38,7 @@ public class DoctorPastAppointmentAdapter extends RecyclerView.Adapter<DoctorPas
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         // Declare variables
-        public TextView patientAdapterDoctorFirstNameTxt, patientAdapterDoctorLastNameTxt, patientAdapterDateLabelTxt, patientAdapterCardStartTimeTxt, patientAdapterCardEndTimeTxt;
+        public TextView patientAdapterDoctorFirstNameTxt, patientAdapterDoctorLastNameTxt, patientAdapterDateLabelTxt, patientAdapterCardStartTimeTxt, patientAdapterCardEndTimeTxt, patientAdapterDoctorLabelTxt;
         public Button patientAdapterClearShiftButton;
 
         // Link to xml files
@@ -53,6 +53,8 @@ public class DoctorPastAppointmentAdapter extends RecyclerView.Adapter<DoctorPas
             // Shows doctor name
             patientAdapterDoctorFirstNameTxt = view.findViewById(R.id.patientAppointmentFirstNameRecycle);
             patientAdapterDoctorLastNameTxt = view.findViewById(R.id.patientAppointmentLastNameRecycle);
+            patientAdapterDoctorLabelTxt = view.findViewById(R.id.drLabel);
+       patientAdapterDoctorLabelTxt.setVisibility(View.GONE);
         }
     }
 
@@ -111,10 +113,10 @@ public class DoctorPastAppointmentAdapter extends RecyclerView.Adapter<DoctorPas
         return pAppointmentList.size();
     }
 
-    // Gets the first name for doctor
-        private void getDoctorFirstName(String doctorUID, com.example.docappoint.Doctor.DoctorPastAppointmentAdapter.ViewHolder holder) {
+    // Gets the first name for patient
+        private void getPatientFirstName(String patientUID, com.example.docappoint.Doctor.DoctorPastAppointmentAdapter.ViewHolder holder) {
             FirebaseFirestore.getInstance().collection("Users")
-                    .document(doctorUID)
+                    .document(patientUID)
                     .get()
                     .addOnSuccessListener(documentSnapshot -> {
                         if (documentSnapshot.exists()) {
@@ -124,13 +126,13 @@ public class DoctorPastAppointmentAdapter extends RecyclerView.Adapter<DoctorPas
                             }
                         }
                     })
-                    .addOnFailureListener(e -> Log.e("Get Doctor First Name", "Error getting first name: " + e.getMessage()));
+                    .addOnFailureListener(e -> Log.e("Get Patient First Name", "Error getting first name: " + e.getMessage()));
         }
 
-        // Gets the last name for doctor
-        private void getDoctorLastName(String doctorUID, com.example.docappoint.Doctor.DoctorPastAppointmentAdapter.ViewHolder holder) {
+        // Gets the last name for patient
+        private void getPatientLastName(String patientUID, com.example.docappoint.Doctor.DoctorPastAppointmentAdapter.ViewHolder holder) {
             FirebaseFirestore.getInstance().collection("Users")
-                    .document(doctorUID)
+                    .document(patientUID)
                     .get()
                     .addOnSuccessListener(documentSnapshot -> {
                         if (documentSnapshot.exists()) {
@@ -140,7 +142,7 @@ public class DoctorPastAppointmentAdapter extends RecyclerView.Adapter<DoctorPas
                             }
                         }
                     })
-                    .addOnFailureListener(e -> Log.e("Get Doctor Last Name", "Error getting last name: " + e.getMessage()));
+                    .addOnFailureListener(e -> Log.e("Get Patient Last Name", "Error getting last name: " + e.getMessage()));
         }
 
         private void findAppointment(String appointmentDate, String appointmentTime, com.example.docappoint.Doctor.DoctorPastAppointmentAdapter.ViewHolder holder) {
@@ -162,13 +164,13 @@ public class DoctorPastAppointmentAdapter extends RecyclerView.Adapter<DoctorPas
                                 for (HashMap<String, Object> appointment : appointments) {
                                     String appointmentDateFromList = (String) appointment.get("appointmentDate");
                                     String appointmentTimeFromList = (String) appointment.get("appointmentTime");
-                                    String doctorUID = (String) appointment.get("doctorUID");
+                                    String patientUID = (String) appointment.get("patientUID");
 
                                     // Check if date and time match to get specific doctorUID
                                     if (appointmentDateFromList.equals(appointmentDate) && appointmentTimeFromList.equals(appointmentTime)) {
 
-                                        getDoctorFirstName(doctorUID, holder);
-                                        getDoctorLastName(doctorUID, holder);
+                                        getPatientFirstName(patientUID, holder);
+                                        getPatientLastName(patientUID, holder);
                                         break;
                                     }
                                 }
