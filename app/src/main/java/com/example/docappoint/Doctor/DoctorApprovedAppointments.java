@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,6 +35,7 @@ public class DoctorApprovedAppointments extends AppCompatActivity {
     RecyclerView dAppointmentRecyclerView;
     FirebaseUser currentUser;
     Button doctorApprovedAppointmentsBackBtn;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +43,12 @@ public class DoctorApprovedAppointments extends AppCompatActivity {
         setContentView(R.layout.activity_doctor_pending_appt_requests);
 
         doctorApprovedAppointmentsBackBtn = findViewById(R.id.doctorApptRequestsBackButton);
+        context = this;
 
         // Recycler view
         dAppointmentRecyclerView = findViewById(R.id.viewDoctorAppointmentsRequests);
         dAppointmentRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        PatientAppointmentAdapter dAdapter = new PatientAppointmentAdapter(dAppointmentList);
+        DoctorApprovedAdapter dAdapter = new DoctorApprovedAdapter(dAppointmentList, context);
         dAppointmentRecyclerView.setAdapter(dAdapter);
 
         // Get current user to access "Users" collection
