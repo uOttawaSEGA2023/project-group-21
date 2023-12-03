@@ -152,28 +152,35 @@ public class SetShift extends AppCompatActivity implements AdapterView.OnItemSel
                                     }
                                 }
 
-                                // ADD SHIFTS OBJECTS TO NEW FIELD IN "USERS" COLLECTION IN FIREBASE FOR THE CURRENT DOCTOR (FAUTH ACCOUNT)
-                                Shifts shift = new Shifts(selectedDate, getStartTime(), getEndTime(), false, false);
+                                if(getStartTime().equals(getEndTime())){
+                                    Toast.makeText(SetShift.this, "Shift start time and end time can not be the same", Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
+                                else{
+                                    // ADD SHIFTS OBJECTS TO NEW FIELD IN "USERS" COLLECTION IN FIREBASE FOR THE CURRENT DOCTOR (FAUTH ACCOUNT)
+                                    Shifts shift = new Shifts(selectedDate, getStartTime(), getEndTime(), false, false);
 
-                                Log.d("CALENDAR DATE, ", "calendar date " + calendar);
-                                Log.d("CURRENT DATE", "currentDate " + currentDate);
+                                    Log.d("CALENDAR DATE, ", "calendar date " + calendar);
+                                    Log.d("CURRENT DATE", "currentDate " + currentDate);
 
-                                // Make new Shifts field in the doctor's document with new shift object
-                                doctorRef.update("Shifts", FieldValue.arrayUnion(shift))
-                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                            @Override
-                                            public void onSuccess(Void aVoid) {
-                                                Toast.makeText(SetShift.this, "Success! Shift Added!", Toast.LENGTH_SHORT).show();
-                                                startActivity(new Intent(getApplicationContext(), DoctorNavigation.class));
-                                                finish();
-                                            }
-                                        })
-                                        .addOnFailureListener(new OnFailureListener() {
-                                            @Override
-                                            public void onFailure(@NonNull Exception e) {
-                                                Log.d("SetShift", "Error adding shift to doctor's document", e);
-                                            }
-                                        });
+                                    // Make new Shifts field in the doctor's document with new shift object
+                                    doctorRef.update("Shifts", FieldValue.arrayUnion(shift))
+                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void aVoid) {
+                                                    Toast.makeText(SetShift.this, "Success! Shift Added!", Toast.LENGTH_SHORT).show();
+                                                    startActivity(new Intent(getApplicationContext(), DoctorNavigation.class));
+                                                    finish();
+                                                }
+                                            })
+                                            .addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+                                                    Log.d("SetShift", "Error adding shift to doctor's document", e);
+                                                }
+                                            });
+
+                                }
 
                             }
                         }
