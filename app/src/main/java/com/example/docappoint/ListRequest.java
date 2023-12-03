@@ -6,18 +6,18 @@ import java.util.List;
 public class ListRequest {
 
     // MANDATORY FIELDS
-    private String accountFirstName;
-    private String accountLastName;
+    private final String accountFirstName;
+    private final String accountLastName;
 
-    private String accountType;
+    private final String accountType;
 
     private boolean wasRejected;
 
-    private String accountAddress;
-    private String accountPhoneNumber;
-    private String accountEmail;
-    private String accountPassword;
-    private  String accountUID;
+    private final String accountAddress;
+    private final String accountPhoneNumber;
+    private final String accountEmail;
+    private final String accountPassword;
+    private final String accountUID;
 
     // UNIQUE PATIENT FIELDS
     private String accountHealthCardNumber;
@@ -70,7 +70,7 @@ public class ListRequest {
         return accountType;
     }
 
-    public boolean getStatus(){ return wasRejected; };
+    public boolean getStatus(){ return wasRejected; }
 
     public String getAccountAddress() {
         return accountAddress;

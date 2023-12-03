@@ -33,7 +33,7 @@ import java.util.Locale;
 
 public class DoctorPastAppointmentAdapter extends RecyclerView.Adapter<DoctorPastAppointmentAdapter.ViewHolder> {
 
-    private List<Appointment> pAppointmentList;
+    private final List<Appointment> pAppointmentList;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 

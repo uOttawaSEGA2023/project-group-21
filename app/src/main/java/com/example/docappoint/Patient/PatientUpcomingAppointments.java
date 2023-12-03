@@ -75,7 +75,7 @@ public class PatientUpcomingAppointments extends AppCompatActivity {
                                 Boolean isRejected = (Boolean) appointmentData.get("isRejected");
 
 
-                                if (hasHappened == false && isAccepted) {
+                                if (!hasHappened && isAccepted) {
                                     Appointment patientAppointment = new Appointment(appointmentDate, appointmentStartTime, appointmentRating, hasHappened, patientUID, doctorUID, isAccepted, isRejected);
                                     retrievedPatientAppointments.add(patientAppointment);
                                 }

@@ -13,11 +13,11 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Appointment implements Serializable {
-    private String appointmentDate;
-    private String appointmentTime;
+    private final String appointmentDate;
+    private final String appointmentTime;
     private float appointmentRating;
-    private String patientUID;
-    private String doctorUID;
+    private final String patientUID;
+    private final String doctorUID;
     private boolean hasHappened;
     private boolean isAccepted;
     private boolean isRejected;

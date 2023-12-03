@@ -29,7 +29,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ShiftAdapter extends RecyclerView.Adapter<ShiftAdapter.ViewHolder> {
 
-    private List<Shifts> shiftList;
+    private final List<Shifts> shiftList;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView shiftAdapterDateLabelTxt, shiftAdapterCardStartTimeTxt, shiftAdapterCardEndTimeTxt;
@@ -156,7 +156,7 @@ public class ShiftAdapter extends RecyclerView.Adapter<ShiftAdapter.ViewHolder> 
                                     }
 
 
-                                    if(isChecked.get() == false){
+                                    if(!isChecked.get()){
                                         // Delete matching appointment
                                         userRef.update("Shifts", FieldValue.arrayRemove(shift))
                                                 .addOnSuccessListener(aVoid -> {

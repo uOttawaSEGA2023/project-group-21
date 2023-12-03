@@ -32,7 +32,7 @@ import java.util.Locale;
 
 public class PatientAppointmentAdapter extends RecyclerView.Adapter<PatientAppointmentAdapter.ViewHolder> {
 
-    private List<Appointment> pAppointmentList;
+    private final List<Appointment> pAppointmentList;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 

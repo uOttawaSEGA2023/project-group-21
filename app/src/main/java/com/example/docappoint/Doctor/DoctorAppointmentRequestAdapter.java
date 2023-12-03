@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class DoctorAppointmentRequestAdapter extends RecyclerView.Adapter<DoctorAppointmentRequestAdapter.ViewHolder> {
-    private List<DoctorAppointmentRequest> accountApprovalList;
+    private final List<DoctorAppointmentRequest> accountApprovalList;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView accountFirstName, accountLastName, startTime, endTime,date;

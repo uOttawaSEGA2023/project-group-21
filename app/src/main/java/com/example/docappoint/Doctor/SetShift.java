@@ -126,7 +126,6 @@ public class SetShift extends AppCompatActivity implements AdapterView.OnItemSel
                     Log.d("CALENDAR DATE, ", "calendar date " + calendar);
                     Log.d("CURRENT DATE", "currentDate " + currentDate);
                     Toast.makeText(SetShift.this, "Cannot book past dates", Toast.LENGTH_SHORT).show();
-                    return;
                 }
                 else{
                     //check doctor document to see if shift is already booked and if there is a conflict
@@ -154,7 +153,6 @@ public class SetShift extends AppCompatActivity implements AdapterView.OnItemSel
 
                                 if(getStartTime().equals(getEndTime())){
                                     Toast.makeText(SetShift.this, "Shift start time and end time can not be the same", Toast.LENGTH_SHORT).show();
-                                    return;
                                 }
                                 else{
                                     // ADD SHIFTS OBJECTS TO NEW FIELD IN "USERS" COLLECTION IN FIREBASE FOR THE CURRENT DOCTOR (FAUTH ACCOUNT)

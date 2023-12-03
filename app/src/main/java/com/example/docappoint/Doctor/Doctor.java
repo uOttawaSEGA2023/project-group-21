@@ -9,11 +9,11 @@ import java.util.List;
 public class Doctor extends User {
 
     // Unique attributes for Doctor
-    private int employeeNum;
-    private String[] specialties;
+    private final int employeeNum;
+    private final String[] specialties;
 
-    private float rating;
-    private int numRatings;
+    private final float rating;
+    private final int numRatings;
 
     private List<Appointment> appointments;
 

@@ -174,7 +174,6 @@ public class PatientRejectApproval extends AppCompatActivity {
                                         Toast.makeText(PatientRejectApproval.this, "Failed to approve user" + e.getMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 });
-                        ;
 
                     }
 
