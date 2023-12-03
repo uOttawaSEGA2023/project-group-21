@@ -128,7 +128,9 @@ public class PatientRateDoctor extends AppCompatActivity {
                                                         average += r;
                                                     }
 
-                                                    average = average / ratings.size();
+                                                    average += userRating;
+
+                                                    average = average / (ratings.size()+1);
                                                 }
 
                                                 userRef.update("AvgRating", average);
