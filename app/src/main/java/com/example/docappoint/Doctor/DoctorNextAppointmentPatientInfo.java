@@ -17,7 +17,7 @@ public class DoctorNextAppointmentPatientInfo extends AppCompatActivity {
 
     // Declare variables
     public static final String PATIENT_UID_KEY = "patientUID";
-    TextView doctorNextAppointmentFirstNameTxt, doctorNextAppointmentLastNameTxt, doctorNextAppointmentHealthCardTxt, doctorNextAppointmentAddressTxt, doctorNextAppointmentEmailTxt;
+    TextView doctorNextAppointmentFirstNameTxt, doctorNextAppointmentLastNameTxt,  doctorNextAppointmentPhoneNumberTxt, doctorNextAppointmentHealthCardTxt, doctorNextAppointmentAddressTxt, doctorNextAppointmentEmailTxt;
     Button doctorNextAppointmentBackBtn, doctorNextAppointmentRejectBtn;
 
     @Override
@@ -31,6 +31,7 @@ public class DoctorNextAppointmentPatientInfo extends AppCompatActivity {
         doctorNextAppointmentHealthCardTxt = findViewById(R.id.patientApprovalHealthCardNumberTextDoc);
         doctorNextAppointmentAddressTxt = findViewById(R.id.patientApprovalAddressTextDoc);
         doctorNextAppointmentEmailTxt = findViewById(R.id.patientApprovalEmailTextDoc);
+        doctorNextAppointmentPhoneNumberTxt = findViewById(R.id.patientApprovalPhoneNumberTextDoc);
         doctorNextAppointmentBackBtn = findViewById(R.id.patientApprovalBackButtonDoc);
 
        doctorNextAppointmentRejectBtn = findViewById(R.id.patientApprovalDenyRequestButtonDoc);
@@ -62,6 +63,7 @@ public class DoctorNextAppointmentPatientInfo extends AppCompatActivity {
                 String firstName = documentSnapshot.getString("First Name");
                 String lastName = documentSnapshot.getString("Last Name");
                 String healthCardNumber = documentSnapshot.getString("HealthCardNumber");
+                String phoneNumber = documentSnapshot.getString("Phone Number");
                 String address = documentSnapshot.getString("Address");
                 String email = documentSnapshot.getString("Email");
 
@@ -71,6 +73,7 @@ public class DoctorNextAppointmentPatientInfo extends AppCompatActivity {
                 doctorNextAppointmentHealthCardTxt.setText(healthCardNumber);
                 doctorNextAppointmentAddressTxt.setText(address);
                 doctorNextAppointmentEmailTxt.setText(email);
+                doctorNextAppointmentPhoneNumberTxt.setText(phoneNumber);
             }
         });
     }

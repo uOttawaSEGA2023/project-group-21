@@ -21,6 +21,10 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -46,6 +50,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 public class DoctorApprovedAdapter extends RecyclerView.Adapter<DoctorApprovedAdapter.ViewHolder> {
 
@@ -53,7 +58,7 @@ public class DoctorApprovedAdapter extends RecyclerView.Adapter<DoctorApprovedAd
     private final Context context;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView patientFirstNameTxt, patientLastNameTxt, dateLabelTxt, cardStartTimeTxt, cardEndTimeTxt, drApprovedLabelTxt;
+        public TextView patientFirstNameTxt, patientLastNameTxt, dateLabelTxt, cardStartTimeTxt, cardEndTimeTxt, drApprovedLabelTxt,patientApprovedEndTimeLabel;
         public Button cancelAppointmentBtn;
 
         public ViewHolder(View view) {
@@ -66,6 +71,8 @@ public class DoctorApprovedAdapter extends RecyclerView.Adapter<DoctorApprovedAd
             cancelAppointmentBtn = view.findViewById(R.id.cancelPatientAppointment);
             drApprovedLabelTxt = view.findViewById(R.id.drLabel);
             drApprovedLabelTxt.setVisibility(View.GONE);
+            patientApprovedEndTimeLabel = view.findViewById(R.id.patientAppointmentCardEndLabel);
+           // patientApprovedEndTimeLabel.setVisibility(View.GONE);
         }
     }
 
@@ -92,7 +99,28 @@ public class DoctorApprovedAdapter extends RecyclerView.Adapter<DoctorApprovedAd
 
         holder.dateLabelTxt.setText(currentAppointment.getAppointmentDate());
         holder.cardStartTimeTxt.setText(currentAppointment.getAppointmentTime());
+       // holder.cardEndTimeTxt.setVisibility(View.GONE);
+
+        // THIS SHOULD CHANGE AND CONVERTED TO SDF FORM TO +30 MINUTES AND CONVERT BACK TO STRING
         holder.cardEndTimeTxt.setText(currentAppointment.getAppointmentTime());
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("h:mm a", Locale.getDefault());
+        try {
+            Date startTime = dateFormat.parse(currentAppointment.getAppointmentTime());
+            if (startTime != null) {
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(startTime);
+                calendar.add(Calendar.MINUTE, 30);
+                String endTimeString = dateFormat.format(calendar.getTime());
+                holder.cardEndTimeTxt.setText(endTimeString);
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+            holder.cardEndTimeTxt.setText("");
+        }
+        holder.dateLabelTxt.setText(currentAppointment.getAppointmentDate());
+
+
         holder.cancelAppointmentBtn.setOnClickListener(v -> {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(v.getContext());
             alertDialogBuilder.setTitle("Cancel Appointment");

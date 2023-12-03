@@ -28,6 +28,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -44,7 +46,7 @@ public class DoctorNavigation extends AppCompatActivity {
     ImageButton doctorSettingsBtn;
 
     TextView doctorNavigationDateTxt, doctorNavigationStartTimeTxt,doctorNavigationEndTimeTxt, doctorNavigationApptFirstNameTxt,
-            doctorNavigationApptLastNameTxt,doctorNavigationApptDateTxt, doctorNavigationApptStartTimeTxt, doctorNavigationApptEndTimeTxt;
+            doctorNavigationApptLastNameTxt,doctorNavigationApptDateTxt, doctorNavigationApptStartTimeTxt, doctorNavigationApptEndTimeTxt, doctorNavigationApptEndTimeLabel;
 
 
     @Override
@@ -65,6 +67,7 @@ public class DoctorNavigation extends AppCompatActivity {
         doctorNavigationApptDateTxt = findViewById(R.id.dateDoctorAppointmentCard);
         doctorNavigationApptFirstNameTxt = findViewById(R.id.DoctorAppointmentfirstNameRecycle);
         doctorNavigationApptLastNameTxt = findViewById(R.id.DoctorAppointmentlastNameRecycle);
+        doctorNavigationApptEndTimeLabel = findViewById(R.id.doctorAppointmentCardEndLabel);
         viewNextAppointmentBtn = findViewById(R.id.seeMoreButton7);
 
         // Link xml files to display next shift (next shift)
@@ -473,8 +476,33 @@ public class DoctorNavigation extends AppCompatActivity {
     private void updateUIWithNextAppointment(String date, String time, String firstName, String lastName) {
         doctorNavigationApptDateTxt.setText(date);
         doctorNavigationApptStartTimeTxt.setText(time);
+       // doctorNavigationApptEndTimeTxt.setVisibility(View.GONE);
         doctorNavigationApptFirstNameTxt.setText(firstName);
         doctorNavigationApptLastNameTxt.setText(lastName);
+        //doctorNavigationApptEndTimeLabel.setVisibility(View.GONE);
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("h:mm a", Locale.getDefault());
+        try {
+            Date startTime = dateFormat.parse(time);
+
+            if (startTime != null) {
+
+                // Add 30 minutes to the start time
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(startTime);
+                calendar.add(Calendar.MINUTE, 30);
+
+                String endTimeString = dateFormat.format(calendar.getTime());
+
+                doctorNavigationApptEndTimeTxt.setVisibility(View.VISIBLE);
+                doctorNavigationApptEndTimeTxt.setText(endTimeString);
+                doctorNavigationApptEndTimeLabel.setVisibility(View.VISIBLE);
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+            doctorNavigationApptEndTimeTxt.setVisibility(View.GONE);
+            doctorNavigationApptEndTimeLabel.setVisibility(View.GONE);
+        }
     }
 
     // Callback interface
