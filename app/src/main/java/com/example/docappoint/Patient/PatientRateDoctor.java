@@ -24,9 +24,11 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class PatientRateDoctor extends AppCompatActivity {
@@ -112,11 +114,27 @@ public class PatientRateDoctor extends AppCompatActivity {
                                 rating.put("Rating", String.valueOf(rating));
 
                                 // Update the field in the document
-                                userRef.update("Rating", userRating)
+                                userRef.update("Rating", FieldValue.arrayUnion(userRating))
                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void aVoid) {
                                                 Toast.makeText(PatientRateDoctor.this, "Gave rating of " + userRating, Toast.LENGTH_SHORT).show();
+                                                List<Double> ratings = (List<Double>) document.get("Rating");
+                                                float average = 0.0f;
+
+                                                if(ratings != null){
+                                                    //tally the average rating
+                                                    for(Double r : ratings){
+                                                        average += r;
+                                                    }
+
+                                                    average = average / ratings.size();
+                                                }
+
+                                                userRef.update("AvgRating", average);
+
+                                                userRef.update("numOfRatings", ratings.size() +1);
+
                                                 startActivity(new Intent(getApplicationContext(), PatientPastAppointments.class));
                                                 finish();
                                             }

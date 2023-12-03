@@ -228,6 +228,9 @@ public class DoctorRegister extends AppCompatActivity {
                 int numOfRating = 0;
                 userInfo.put("numOfRatings", numOfRating);
 
+                float avgRating = 0.0f;
+                userInfo.put("AvgRating", avgRating);
+
                 ArrayList<Appointment> l = new ArrayList<Appointment>();
 
                 userInfo.put("docAppointments", l);
