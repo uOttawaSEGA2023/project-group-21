@@ -310,8 +310,8 @@ public class DoctorRegister extends AppCompatActivity {
         regDoctorFirstName.setText("Doctor" + random.nextInt(1000));
         regDoctorLastName.setText("Test" + random.nextInt(1000));
         regDoctorEmployeeNumber.setText("1234");
-        regDoctorAddress.setText("93 Switch Grass Cres");
-        regDoctorPhoneNumber.setText("6135016672");
+        regDoctorAddress.setText("55 Jane Street");
+        regDoctorPhoneNumber.setText("613562-5700");
         regDoctorEmail.setText("doctortest" + random.nextInt(1000) + "@gmail.com");
         regDoctorPassword.setText("password123");
         regDoctorConfirmPassword.setText("password123");

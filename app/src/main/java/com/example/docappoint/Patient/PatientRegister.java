@@ -249,8 +249,8 @@ public class PatientRegister extends AppCompatActivity {
         regPatientFirstName.setText("Patient" + random.nextInt(1000));
         regPatientLastName.setText("Test" + random.nextInt(1000));
         regPatientHealthCardNum.setText("1234567890");
-        regPatientAddress.setText("93 Switch Grass Cres");
-        regPatientPhoneNumber.setText("6135016672");
+        regPatientAddress.setText("55 Jane Street");
+        regPatientPhoneNumber.setText("6135625700");
         regPatientEmail.setText("patienttest" + random.nextInt(1000) + "@gmail.com");
         regPatientPassword.setText("password123");
         regPatientConfirmPassword.setText("password123");
