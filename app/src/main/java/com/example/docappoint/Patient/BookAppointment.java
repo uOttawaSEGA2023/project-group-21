@@ -36,7 +36,7 @@ import java.util.Map;
 public class BookAppointment extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private CalendarView patientCalendarView;
-    private TextView bookAppointmentEndTime;
+    public TextView bookAppointmentEndTime;
     private Calendar selectedDate;
     private Button confirmButton, bookAppointmentBackBtn;
     private Spinner apptStartTime;
@@ -135,7 +135,7 @@ public class BookAppointment extends AppCompatActivity implements AdapterView.On
     public void onNothingSelected(AdapterView<?> parent) {
     }
 
-    private void updateEndTime() {
+    public void updateEndTime() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("h:mm a", Locale.getDefault());
         try {
             Date startTime = dateFormat.parse(selectedStartTime);
@@ -151,7 +151,7 @@ public class BookAppointment extends AppCompatActivity implements AdapterView.On
         }
     }
 
-    private boolean isDateTimeInPast(Calendar selectedDate, String selectedStartTime) {
+    public boolean isDateTimeInPast(Calendar selectedDate, String selectedStartTime) {
         Calendar now = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("h:mm a", Locale.getDefault());
         try {
@@ -168,7 +168,7 @@ public class BookAppointment extends AppCompatActivity implements AdapterView.On
         }
     }
 
-    private void findUnavailableTimes(String doctorUID, final Calendar selectedDate) {
+    public void findUnavailableTimes(String doctorUID, final Calendar selectedDate) {
         FirebaseFirestore fStore = FirebaseFirestore.getInstance();
         DocumentReference docRef = fStore.collection("Users").document(doctorUID);
 
@@ -244,7 +244,7 @@ public class BookAppointment extends AppCompatActivity implements AdapterView.On
     }
 
 
-    private List<CharSequence> generateDefaultTimes() {
+    public List<CharSequence> generateDefaultTimes() {
         List<CharSequence> times = new ArrayList<>();
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR_OF_DAY, 9);

@@ -38,7 +38,7 @@ import java.util.Locale;
 
 public class SetShift extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    // Decalre firebase variables
+    // Declare firebase variables
     private FirebaseAuth fAuth;
     private FirebaseFirestore fStore;
 

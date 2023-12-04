@@ -41,7 +41,7 @@ public class PatientRegister extends AppCompatActivity {
     FirebaseFirestore pStore;
     private String profilePicture = " ";
 
-    private boolean validPhoneNumberCheck(String number) {
+    public boolean validPhoneNumberCheck(String number) {
         PhoneNumberUtil phoneNumberUtil = PhoneNumberUtil.getInstance();
 
         try {
@@ -53,12 +53,12 @@ public class PatientRegister extends AppCompatActivity {
 
     }
 
-    private boolean validAddressCheck(String address) {
+    public boolean validAddressCheck(String address) {
         String regex = "^\\d+\\s+[a-zA-Z]+(\\s+[a-zA-Z]+)*(\\s+[a-zA-Z]+(\\s+[a-zA-Z]+)*)?$";
         return address.matches(regex);
     }
 
-    private boolean validHealthCardCheck(String enumber) {
+    public boolean validHealthCardCheck(String enumber) {
         if (enumber.length() != 10) {
             return false;
         }
@@ -72,7 +72,7 @@ public class PatientRegister extends AppCompatActivity {
         return true;
     }
 
-    private boolean validPasswordCheck(String password) {
+    public boolean validPasswordCheck(String password) {
         if (password.length() < 8) {
             return false;
         }

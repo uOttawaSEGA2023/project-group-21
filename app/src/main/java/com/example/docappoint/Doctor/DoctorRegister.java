@@ -56,7 +56,7 @@ public class DoctorRegister extends AppCompatActivity {
     private String profilePicture = " ";
 
     //Check if phone number is valid using the libphonenumber API
-    private boolean validPhoneNumberCheck(String number) {
+    public boolean validPhoneNumberCheck(String number) {
         PhoneNumberUtil phoneNumberUtil = PhoneNumberUtil.getInstance();
 
         try {
@@ -68,12 +68,12 @@ public class DoctorRegister extends AppCompatActivity {
 
     }
 
-    private boolean validAddressCheck(String address) {
+    public boolean validAddressCheck(String address) {
         String regex = "^\\d+\\s+[a-zA-Z]+(\\s+[a-zA-Z]+)*(\\s+[a-zA-Z]+(\\s+[a-zA-Z]+)*)?$";
         return address.matches(regex);
     }
 
-    private boolean validEmployeeNumCheck(String enumber) {
+    public boolean validEmployeeNumCheck(String enumber) {
         System.out.println(enumber.length());
 
         if (enumber.length() != 4) {
@@ -89,7 +89,7 @@ public class DoctorRegister extends AppCompatActivity {
         return true;
     }
 
-    private boolean validPasswordCheck(String password) {
+    public boolean validPasswordCheck(String password) {
         if (password.length() < 8) {
             return false;
         }
