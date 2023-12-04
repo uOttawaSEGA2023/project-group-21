@@ -39,6 +39,7 @@ public class PatientRegister extends AppCompatActivity {
 
     // Add Firestore database (using Firestore to query user)
     FirebaseFirestore pStore;
+    private String profilePicture = " ";
 
     private boolean validPhoneNumberCheck(String number) {
         PhoneNumberUtil phoneNumberUtil = PhoneNumberUtil.getInstance();
@@ -197,6 +198,7 @@ public class PatientRegister extends AppCompatActivity {
                 userInfo.put("Email", regPatientEmail.getText().toString());
                 userInfo.put("Password", regPatientPassword.getText().toString());
                 userInfo.put("UID", pDoc.getId());
+                userInfo.put("Profile Picture", profilePicture);
 
                 // Specify the user is a patient user
                 userInfo.put("isPatient", 1);
@@ -252,5 +254,6 @@ public class PatientRegister extends AppCompatActivity {
         regPatientEmail.setText("patienttest" + random.nextInt(1000) + "@gmail.com");
         regPatientPassword.setText("password123");
         regPatientConfirmPassword.setText("password123");
+
     }
 }

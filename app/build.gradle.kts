@@ -69,6 +69,7 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore:24.8.1")
     implementation("com.googlecode.libphonenumber:libphonenumber:8.12.30")
     implementation("com.google.android.libraries.places:places:2.5.0")
+    implementation("com.google.firebase:firebase-storage:20.3.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -83,6 +84,9 @@ dependencies {
     // TODO: Add the dependencies for Firebase products you want to use
     // When using the BoM, don't specify versions in Firebase dependencies
     implementation("com.google.firebase:firebase-analytics-ktx")
+
+    implementation("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
 
 
     // Add the dependencies for any other desired Firebase products

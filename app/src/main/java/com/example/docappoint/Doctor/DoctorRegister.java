@@ -53,6 +53,8 @@ public class DoctorRegister extends AppCompatActivity {
     // Add Firestore database (using Firestore to query user)
     FirebaseFirestore dStore;
 
+    private String profilePicture = " ";
+
     //Check if phone number is valid using the libphonenumber API
     private boolean validPhoneNumberCheck(String number) {
         PhoneNumberUtil phoneNumberUtil = PhoneNumberUtil.getInstance();
@@ -220,6 +222,7 @@ public class DoctorRegister extends AppCompatActivity {
                 userInfo.put("Email", regDoctorEmail.getText().toString());
                 userInfo.put("Password", regDoctorPassword.getText().toString());
                 userInfo.put("UID", dDoc.getId());
+                userInfo.put("Profile Picture", profilePicture);
 
                 //Adding additional Doctor info
                 float rating = 0.0f;
