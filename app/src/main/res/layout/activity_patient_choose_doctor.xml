@@ -72,7 +72,7 @@
         app:layout_constraintVertical_bias="0"
         />
 
-    <TextView
+    <ImageView
         android:id="@+id/patientProfilePic"
         android:layout_width="42dp"
         android:layout_height="40dp"
@@ -81,7 +81,7 @@
         android:background="@drawable/profilepicture"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-
+        app:srcCompat="@drawable/account"
         />
 
     <TextView

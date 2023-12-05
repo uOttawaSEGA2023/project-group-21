@@ -68,6 +68,7 @@ public class DoctorSearchAdapter extends RecyclerView.Adapter<DoctorSearchAdapte
         holder.doctorSpecialties.setText(TextUtils.join(", ", currentDoctor.getSpecialties()));
         holder.doctorRatingNumber.setText(String.valueOf(currentDoctor.getRatingNumber()));
         holder.doctorNumRatings.setText(String.valueOf(currentDoctor.getNumberOfRatings()));
+
         holder.doctorRatingBar.setRating(currentDoctor.getRatingNumber());
 
         String imageUrl = currentDoctor.getPfp();

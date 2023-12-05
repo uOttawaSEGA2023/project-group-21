@@ -67,6 +67,7 @@
         android:layout_width="135dp"
         android:layout_height="70dp"
         android:src="@drawable/whitelogo"
+        app:srcCompat="@drawable/account"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.8"
