@@ -32,7 +32,7 @@ public class DoctorSearchAdapter extends RecyclerView.Adapter<DoctorSearchAdapte
     private ArrayList<DoctorChip> doctorListFiltered;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView doctorFirstName, doctorLastName, doctorSpecialties, doctorRatingNumber, doctorNumRatings, doctorNextAvailableTime, doctorNextAvailableDate;
+        public TextView doctorFirstName, doctorLastName, doctorSpecialties, doctorRatingNumber, doctorNumRatings;
         public ImageView doctorProfilePicture;
         public RatingBar doctorRatingBar;
         public Button doctorBook;
@@ -67,9 +67,6 @@ public class DoctorSearchAdapter extends RecyclerView.Adapter<DoctorSearchAdapte
         holder.doctorSpecialties.setText(TextUtils.join(", ", currentDoctor.getSpecialties()));
         holder.doctorRatingNumber.setText(String.valueOf(currentDoctor.getRatingNumber()));
         holder.doctorNumRatings.setText(String.valueOf(currentDoctor.getNumberOfRatings()));
-        holder.doctorNextAvailableTime.setText(currentDoctor.getNextAvailableTime());
-        holder.doctorNextAvailableDate.setText(currentDoctor.getNextAvailableDate());
-
         holder.doctorRatingBar.setRating(currentDoctor.getRatingNumber());
 
 
