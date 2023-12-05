@@ -31,7 +31,8 @@
                 android:layout_width="155dp"
                 android:layout_height="35dp"
                 android:layout_marginBottom="4dp"
-                android:hint="specalties"
+                android:text="specalties"
+                android:textColor="@color/white"
                 android:paddingLeft="3dp"
                 android:paddingTop="7dp"
                 android:textSize="7.5sp"
@@ -47,16 +48,15 @@
                 android:id="@+id/lastNameDoctorRecycle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="lastName"
+                android:layout_marginStart="4dp"
+                android:text="Sabaratnam"
                 android:textColor="@color/white"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.899"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@id/firstNameDoctorSelectRecycle"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.104" />
+                app:layout_constraintVertical_bias="0.106" />
 
             <RatingBar
                 android:id="@+id/ratingBarRecycle"
@@ -87,44 +87,45 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="15dp"
                 android:text="Specialties:"
+                android:textColor="@color/white"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/ratingBarRecycle"
                 app:layout_constraintEnd_toStartOf="@+id/doctorSpecialtiesRecycler"
-                app:layout_constraintHorizontal_bias="0.993"
+                app:layout_constraintHorizontal_bias="0.986"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/firstNameDoctorSelectRecycle"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintVertical_bias="1.0" />
 
             <TextView
                 android:id="@+id/DrTitleDoctorRecycle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Dr."
+                android:layout_marginStart="141dp"
+                android:text="Dr."
                 android:textColor="@color/white"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/firstNameDoctorSelectRecycle"
-                app:layout_constraintHorizontal_bias="0.993"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.104" />
+                app:layout_constraintVertical_bias="0.106" />
 
             <TextView
                 android:id="@+id/firstNameDoctorSelectRecycle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="firstName"
+                android:layout_marginTop="20dp"
                 android:paddingLeft="3dp"
+                android:text="Arun"
                 android:textColor="@color/white"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.592"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0.005"
+                app:layout_constraintStart_toEndOf="@id/DrTitleDoctorRecycle"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.104" />
+                app:layout_constraintVertical_bias="0.005" />
 
             <ImageView
                 android:id="@+id/doctorProfilePicRecycler"
@@ -145,6 +146,7 @@
                 android:paddingTop="3.2dp"
                 android:paddingBottom="3dp"
                 android:text="0.0"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.4"
@@ -159,6 +161,8 @@
                 android:paddingLeft="3dp"
                 android:paddingBottom="1dp"
                 android:text="ratings"
+                android:textColor="@color/white"
+
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.47"
@@ -173,52 +177,13 @@
                 android:paddingLeft="0.5dp"
                 android:paddingBottom="0.5dp"
                 android:text="0"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/numRatingsTextRecycler"
                 app:layout_constraintHorizontal_bias="0.979"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.55" />
-
-            <TextView
-                android:id="@+id/nextAvailableTimeTextRecycle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="4dp"
-                android:text="Next Available"
-                android:textColor="@color/light_purple"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/numRatingsTextRecycler"
-                app:layout_constraintHorizontal_bias="0.253"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.746" />
-
-            <TextView
-                android:id="@+id/nextAvailableTimeRecycle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
-                android:text="12:00 PM"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.05"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <TextView
-                android:id="@+id/nextAvailableDateRecycle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="2dp"
-                android:text="November 16th, 2023"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.018"
-                app:layout_constraintStart_toEndOf="@+id/nextAvailableTimeRecycle"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.844" />
 
             <Button
                 android:id="@+id/doctorBookAppointmentButtonRecycle"
@@ -229,10 +194,9 @@
                 android:textSize="11dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.937"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.831" />
+                app:layout_constraintVertical_bias="0.83" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

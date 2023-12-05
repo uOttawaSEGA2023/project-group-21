@@ -29,25 +29,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="18dp"
-                android:hint="Date"
+                android:text="N/A"
                 android:textColor="@color/white"
                 android:textSize="18dp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.21" />
 
             <TextView
                 android:id="@+id/doctorShiftCardEndTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="62dp"
-                android:layout_marginTop="64dp"
-                android:text="End Time"
+                android:layout_marginStart="4dp"
+                android:text="--:--"
                 android:textSize="11dp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/doctorShiftCardEndLabel"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.752" />
 
             <TextView
                 android:id="@+id/doctorShiftCardEndLabel"
@@ -57,6 +60,7 @@
                 android:layout_marginTop="64dp"
                 android:text="End:"
                 android:textSize="11dp"
+                android:textColor="@color/white"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -65,13 +69,15 @@
                 android:id="@+id/doctorShiftCardStartTime2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="68dp"
-                android:layout_marginTop="48dp"
-                android:text="Start Time"
+                android:layout_marginStart="5dp"
+                android:text="--:--"
                 android:textSize="11dp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/doctorShiftCardStartLabel"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.564" />
 
             <TextView
                 android:id="@+id/doctorShiftCardStartLabel"
@@ -80,6 +86,7 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="48dp"
                 android:text="Start:"
+                android:textColor="@color/white"
                 android:textSize="11dp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -89,11 +96,12 @@
                 android:id="@+id/doctorCancelSheiftButton"
                 android:layout_width="75dp"
                 android:layout_height="30dp"
-                android:layout_marginStart="228dp"
-                android:layout_marginTop="37dp"
                 android:background="@drawable/rounded_back_button"
                 android:text="Cancel"
                 android:textSize="11dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.937"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

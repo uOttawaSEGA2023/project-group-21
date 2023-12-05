@@ -28,97 +28,115 @@
                 android:id="@+id/DoctorAppointmentfirstNameRecycle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:layout_marginStart="28dp"
                 android:layout_marginTop="16dp"
-                android:hint="Arun"
+                android:text="----"
                 android:textColor="@color/white"
                 android:textSize="20dp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/DoctorAppointmentlastNameRecycle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:hint="Sabaratnam"
+                android:text="-------"
                 android:paddingLeft="5dp"
                 android:textColor="@color/white"
                 android:textSize="20dp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/DoctorAppointmentfirstNameRecycle"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.163" />
 
             <TextView
                 android:id="@+id/doctorAppointmentCardStartLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
                 android:layout_marginTop="72dp"
                 android:text="Start:"
                 android:textSize="11dp"
                 android:textStyle="bold"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.092"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/doctorAppointmentCardEndLabel2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="87dp"
                 android:text="End:"
                 android:textSize="11dp"
                 android:textStyle="bold"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.09"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.79" />
 
             <TextView
                 android:id="@+id/doctorAppointmentCardStartTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="65dp"
-                android:layout_marginTop="72dp"
-                android:text="Start Time"
+                android:layout_marginStart="4dp"
+                android:text="--:--"
                 android:textSize="11dp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/doctorAppointmentCardStartLabel"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.654" />
 
             <TextView
                 android:id="@+id/doctorAppointmentCardEndTime2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="60dp"
-                android:layout_marginTop="87dp"
-                android:text="End Time"
+                android:layout_marginStart="4dp"
+                android:text="--:--"
                 android:textSize="11dp"
+                android:textColor="@color/white"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/doctorAppointmentCardEndLabel2"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.79" />
 
             <TextView
                 android:id="@+id/dateDoctorAppointmentCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:layout_marginStart="28dp"
                 android:layout_marginTop="44dp"
-                android:text="Date"
+                android:text="N/A"
                 android:textSize="14dp"
+                android:textColor="@color/white"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
             <Button
                 android:id="@+id/seeMoreButton"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
-                android:layout_marginStart="224dp"
-                android:layout_marginTop="48dp"
                 android:background="@drawable/rounded_back_button"
                 android:text="View More"
                 android:textSize="12dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.915"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

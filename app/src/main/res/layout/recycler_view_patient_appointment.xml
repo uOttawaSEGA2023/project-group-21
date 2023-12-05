@@ -29,40 +29,44 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="16dp"
-                android:hint="Dr. "
+                android:text="Dr. "
                 android:textColor="@color/white"
                 android:textSize="20dp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.173" />
 
             <TextView
                 android:id="@+id/patientAppointmentFirstNameRecycle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="16dp"
-                android:hint="Arun"
+                android:text="----"
                 android:textColor="@color/white"
                 android:textSize="20dp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@id/drLabel"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.173" />
 
             <TextView
                 android:id="@+id/patientAppointmentLastNameRecycle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="16dp"
-                android:hint="Sabaratnam"
-                android:paddingLeft="4dp"
+                android:text="-------"
                 android:textColor="@color/white"
                 android:textSize="20dp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.02"
                 app:layout_constraintStart_toEndOf="@id/patientAppointmentFirstNameRecycle"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.173" />
 
             <TextView
                 android:id="@+id/patientAppointmentCardStartLabel"
@@ -72,6 +76,7 @@
                 android:layout_marginTop="72dp"
                 android:text="Start:"
                 android:textSize="11dp"
+                android:textColor="@color/white"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -84,6 +89,7 @@
                 android:layout_marginTop="87dp"
                 android:text="End:"
                 android:textSize="11dp"
+                android:textColor="@color/white"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -96,6 +102,7 @@
                 android:layout_marginTop="72dp"
                 android:text="Start Time"
                 android:textSize="11dp"
+                android:textColor="@color/white"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -108,6 +115,7 @@
                 android:layout_marginTop="87dp"
                 android:text="End Time"
                 android:textSize="11dp"
+                android:textColor="@color/white"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -120,6 +128,7 @@
                 android:layout_marginTop="44dp"
                 android:text="Date"
                 android:textSize="14dp"
+                android:textColor="@color/white"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -128,11 +137,12 @@
                 android:id="@+id/cancelPatientAppointment"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
-                android:layout_marginStart="224dp"
-                android:layout_marginTop="48dp"
                 android:background="@drawable/rounded_back_button"
                 android:text="Cancel"
                 android:textSize="12dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.937"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

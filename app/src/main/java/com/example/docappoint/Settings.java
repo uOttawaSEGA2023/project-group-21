@@ -52,7 +52,6 @@ public class Settings extends AppCompatActivity {
     String userId;
 
     ImageView profilePictureSettings;
-    private ActivityResultLauncher<Intent> photoLauncher;
     private Uri imagePath;
 
     @Override
@@ -80,7 +79,6 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
                 if (error != null) {
-                    // Handle the error
                     Log.e("Settings", "Error fetching User data: " + error.getMessage());
                     return;
                 }
@@ -89,7 +87,6 @@ public class Settings extends AppCompatActivity {
                     String firstName = documentSnapshot.getString("First Name");
                     String lastName = documentSnapshot.getString("Last Name");
 
-                    // Concatenate the first name and last name with a space in between
                     String fullName = (firstName != null ? firstName : "") + " " + (lastName != null ? lastName : "");
                     nameAccountSettings.setText(fullName);
 
@@ -99,8 +96,6 @@ public class Settings extends AppCompatActivity {
                     // Load profile picture
                     String profilePictureUrl = documentSnapshot.getString("Profile Picture");
                     if (profilePictureUrl != null && !profilePictureUrl.isEmpty()) {
-                        // Use your preferred image loading library or method to load the image into the ImageView
-                        // For simplicity, assuming you have a method loadImageIntoImageView
                         loadImageIntoImageView(profilePictureUrl);
                     }
                 }
@@ -220,13 +215,11 @@ public class Settings extends AppCompatActivity {
             userDocument
                     .update("Profile Picture", url)
                     .addOnSuccessListener(aVoid -> {
-                        // Profile picture URL updated successfully
-                        // Load the updated profile picture into the ImageView
                         loadImageIntoImageView(url);
                         Toast.makeText(Settings.this, "Profile picture updated", Toast.LENGTH_SHORT).show();
                     })
                     .addOnFailureListener(e -> {
-                        // Handle the failure
+                        // Handle failure
                         Toast.makeText(Settings.this, "Failed to update profile picture: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     });
         }

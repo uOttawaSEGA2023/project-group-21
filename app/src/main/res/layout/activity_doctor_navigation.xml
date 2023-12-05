@@ -60,6 +60,7 @@
         />
 
     <ImageView
+        android:id="@+id/backdrop2"
         android:layout_width="330dp"
         android:layout_height="125dp"
         android:background="@drawable/purplecard"
@@ -72,6 +73,7 @@
         app:layout_constraintVertical_bias="0.75" />
 
     <ImageView
+        android:id="@+id/backdrop5"
         android:layout_width="330dp"
         android:layout_height="125dp"
         android:background="@drawable/purplecard"
@@ -81,16 +83,17 @@
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.315" />
+        app:layout_constraintVertical_bias="0.31" />
 
     <TextView
         android:id="@+id/doctorAppointmentCardEndTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:text="End Time"
+        android:text="--:--"
         android:textSize="11dp"
         android:textStyle="bold"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/doctorAppointmentCardEndLabel"
         app:layout_constraintTop_toTopOf="parent"
@@ -131,6 +134,7 @@
         android:text="Start:"
         android:textSize="11dp"
         android:textStyle="bold"
+        android:textColor="@color/white"
         app:cardBackgroundColor="@color/main"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -144,14 +148,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:hint="Sabaratnam"
+        android:text="-------"
         android:textColor="@color/white"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/DoctorAppointmentfirstNameRecycle"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.292" />
+        app:layout_constraintVertical_bias="0.288" />
 
     <TextView
         android:id="@+id/clickableViewAllNextAppt"
@@ -167,7 +171,7 @@
         app:layout_constraintHorizontal_bias="0.869"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.2275" />
+        app:layout_constraintVertical_bias="0.2225" />
 
     <TextView
         android:id="@+id/nextAppointment"
@@ -182,36 +186,37 @@
         app:layout_constraintHorizontal_bias="0.221"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.219" />
+        app:layout_constraintVertical_bias="0.214" />
 
     <TextView
         android:id="@+id/DoctorAppointmentfirstNameRecycle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Arun"
+        android:layout_gravity="start"
+        android:layout_marginStart="26dp"
+        android:text="---"
+        android:textAlignment="viewStart"
         android:textColor="@color/white"
         android:textSize="20dp"
         android:textStyle="bold"
         app:cardBackgroundColor="@color/main"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.18"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/backdrop5"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.292" />
+        app:layout_constraintVertical_bias="0.288" />
 
     <TextView
         android:id="@+id/dateDoctorAppointmentCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Date"
+        android:layout_marginStart="26dp"
+        android:text="N/A"
         android:textSize="14dp"
         android:textStyle="bold"
+        android:textColor="@color/white"
         app:cardBackgroundColor="@color/main"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.173"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/backdrop5"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.323" />
 
@@ -220,9 +225,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:text="Start Time"
+        android:text="--:--"
         android:textSize="11dp"
         android:textStyle="bold"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/doctorAppointmentCardStartLabel"
         app:layout_constraintTop_toTopOf="parent"
@@ -234,7 +240,7 @@
         android:layout_height="35dp"
         android:background="@drawable/rounded_back_button"
         android:text="View More"
-        android:textSize="12dp"
+        android:textSize="11dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.836"
@@ -249,6 +255,7 @@
         android:text="End:"
         android:textSize="11dp"
         android:textStyle="bold"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.169"
@@ -302,40 +309,42 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:text="Start Time"
+        android:text="--:--"
         android:textSize="11dp"
         android:textStyle="bold"
+        android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@id/doctorShiftCardStartLabel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.712" />
+        app:layout_constraintVertical_bias="0.72" />
 
     <TextView
         android:id="@+id/doctorShiftDateLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Date"
-        android:textSize="14dp"
+        android:layout_marginStart="25dp"
+        android:text="N/A"
+        android:textSize="20dp"
         android:textStyle="bold"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.18"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/backdrop2"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.675" />
+        app:layout_constraintVertical_bias="0.686" />
 
     <TextView
         android:id="@+id/doctorShiftCardEndTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:text="End Time"
+        android:text="--:--"
         android:textSize="11dp"
         android:textStyle="bold"
+        android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@id/doctorShiftCardEndLabel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.7325" />
+        app:layout_constraintVertical_bias="0.74" />
 
 
     <TextView
@@ -357,7 +366,7 @@
     <Button
         android:id="@+id/doctorCancelShiftButton"
         android:layout_width="75dp"
-        android:layout_height="40dp"
+        android:layout_height="35dp"
         android:background="@drawable/rounded_back_button"
         android:text="Cancel"
         android:textSize="11dp"
@@ -375,12 +384,13 @@
         android:text="Start:"
         android:textSize="11dp"
         android:textStyle="bold"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.172"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.712" />
+        app:layout_constraintVertical_bias="0.72" />
 
     <TextView
         android:id="@+id/doctorShiftCardEndLabel"
@@ -389,12 +399,13 @@
         android:text="End:"
         android:textSize="11dp"
         android:textStyle="bold"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.169"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.7325" />
+        app:layout_constraintVertical_bias="0.74" />
 
 
     <ImageView
@@ -421,7 +432,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.285"
+        app:layout_constraintHorizontal_bias="0.30"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.13" />

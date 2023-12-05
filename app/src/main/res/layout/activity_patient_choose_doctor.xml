@@ -29,50 +29,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
+    <TextView
         android:id="@+id/adminName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:editable="false"
         android:text="Name"
         android:textColor="@color/white"
         android:textSize="15dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/header"
-        app:layout_constraintEnd_toStartOf="@+id/patientLogo"
-        app:layout_constraintHorizontal_bias="0.549"
-        app:layout_constraintStart_toStartOf="@+id/header"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.195"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.482"
+        app:layout_constraintVertical_bias="0.024"
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/patientTitle2"
+        android:id="@+id/patientTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="10dp"
         android:text="Patient"
         android:textSize="10dp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.197"
+        app:layout_constraintHorizontal_bias="0.19"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/doctorSelectSettingButton"
-        style="@style/backButton"
-        android:layout_width="45dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="11dp"
-        android:text="S"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.985"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.05" />
 
     <ImageView
         android:id="@+id/patientLogo"
@@ -85,7 +70,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/pfp"
+        android:id="@+id/patientProfilePic"
         android:layout_width="42dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
@@ -128,6 +113,7 @@
         android:id="@+id/selectDoctorSearchView"
         android:layout_width="362dp"
         android:layout_height="56dp"
+        style="@style/AllButtons"
         android:background="@color/main"
         android:iconifiedByDefault="false"
         android:queryHint="Search Here..."
@@ -136,7 +122,7 @@
         app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/chooseDoctorTextView"
-        app:layout_constraintVertical_bias="0.011" />
-
+        app:layout_constraintVertical_bias="0.011"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
