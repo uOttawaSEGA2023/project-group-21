@@ -171,6 +171,12 @@ public class Settings extends AppCompatActivity {
     }
 
     private void uploadImage() {
+
+        if (imagePath == null) {
+            Toast.makeText(this, "Please select an image first", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Uploading...");
         progressDialog.show();
