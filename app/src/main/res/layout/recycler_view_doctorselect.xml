@@ -136,7 +136,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.155"
-                app:srcCompat="@drawable/profilepicture" />
+                app:srcCompat="@drawable/account"
+                style="@style/textField" />
 
             <TextView
                 android:id="@+id/numberRatingTextRecycler"
