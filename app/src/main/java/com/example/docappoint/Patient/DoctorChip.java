@@ -68,68 +68,6 @@ public class DoctorChip {
         return uid;
     }
 
-    public String getNextAvailableDate(){
-        return this.nextAvailableDate;
-    }
-
-    public String getNextAvailableTime(){
-        return this.nextAvailableTime;
-    }
-
-
-    public void calculateNextAvailableSlot() {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("Users").document(this.uid).collection("Appointments")
-                .whereEqualTo("isAccepted", false)
-                .whereEqualTo("hasHappened", false)
-                .orderBy("appointmentDate")
-                .orderBy("appointmentTime")
-                .get()
-                .addOnSuccessListener(queryDocumentSnapshots -> {
-                    Calendar calendar = null;
-                    SimpleDateFormat dateFormat = null;
-                    SimpleDateFormat timeFormat = null;
-                    if (!queryDocumentSnapshots.isEmpty()) {
-                        // Assuming working hours are from 9 AM to 5 PM
-                        calendar = Calendar.getInstance();
-                        dateFormat = new SimpleDateFormat("MMMM d, yyyy", Locale.getDefault());
-                        timeFormat = new SimpleDateFormat("h:mm a", Locale.getDefault());
-
-                        // Find the next available slot based on current date and time
-                        boolean slotFound = false;
-                        while (!slotFound) {
-                            String currentDate = dateFormat.format(calendar.getTime());
-                            for (int hour = 9; hour <= 17; hour++) {
-                                calendar.set(Calendar.HOUR_OF_DAY, hour);
-                                for (int minute = 0; minute < 60; minute += 30) { // Assuming 30-minute slots
-                                    calendar.set(Calendar.MINUTE, minute);
-                                    String potentialSlotTime = timeFormat.format(calendar.getTime());
-
-                                    boolean isOccupied = queryDocumentSnapshots.getDocuments().stream().anyMatch(doc -> {
-                                        String docDate = doc.getString("appointmentDate");
-                                        String docTime = doc.getString("appointmentTime");
-                                        return currentDate.equals(docDate) && potentialSlotTime.equals(docTime);
-                                    });
-
-                                    if (!isOccupied) {
-                                        this.nextAvailableDate = currentDate;
-                                        this.nextAvailableTime = potentialSlotTime;
-                                        slotFound = true;
-                                        break;
-                                    }
-                                }
-                                if (slotFound) break;
-                            }
-                            if (!slotFound) calendar.add(Calendar.DATE, 1); // Check the next day
-                        }
-                    } else {
-                        // No appointments, so the doctor is available from the next slot from now
-                        this.nextAvailableDate = dateFormat.format(calendar.getTime());
-                        this.nextAvailableTime = timeFormat.format(calendar.getTime());
-                    }
-                })
-                .addOnFailureListener(e -> Log.e("DoctorChip", "Error fetching appointments", e));
-    }
 }
 
 
