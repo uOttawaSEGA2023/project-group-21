@@ -130,7 +130,8 @@ public class PatientRateDoctor extends AppCompatActivity {
 
                                                     average += userRating;
 
-                                                    average = average / (ratings.size()+1);
+                                                    average = average / (ratings.size() + 1);
+
                                                 }
                                                 else if(ratings == null){
                                                     average = userRating;

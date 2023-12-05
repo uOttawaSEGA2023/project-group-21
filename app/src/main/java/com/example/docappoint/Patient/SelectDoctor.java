@@ -72,8 +72,10 @@ public class SelectDoctor extends AppCompatActivity {
 
                                     ArrayList<Appointment> l = (ArrayList<Appointment>)document.get("docAppointments") ;
 
+                                    String pfp = document.getString("Profile Picture");
 
-                                    DoctorChip doctorChip = new DoctorChip(firstName, lastName, specialties,doctorRating, numOfRating, l, uid);
+
+                                    DoctorChip doctorChip = new DoctorChip(firstName, lastName, specialties,doctorRating, numOfRating, l, uid, pfp);
                                     doctorChips.add(doctorChip);
                                 }
                             }

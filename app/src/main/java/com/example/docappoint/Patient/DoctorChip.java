@@ -30,10 +30,11 @@ public class DoctorChip {
     private final int numberOfRatings;
     private final ArrayList<Appointment> appointments;
     private final String uid;
-    private String nextAvailableDate = "0";
-    private String nextAvailableTime = "0";
 
-    public DoctorChip(String firstName, String lastName, ArrayList<String> specialties, float rating, int numberOfRatings, ArrayList<Appointment> l, String uid){
+    private String pfp;
+
+
+    public DoctorChip(String firstName, String lastName, ArrayList<String> specialties, float rating, int numberOfRatings, ArrayList<Appointment> l, String uid, String pfp){
         this.firstName = firstName;
         this.lastName = lastName;
         this.specialties = specialties;
@@ -41,6 +42,7 @@ public class DoctorChip {
         this.numberOfRatings = numberOfRatings;
         this.appointments = l;
         this.uid = uid;
+        this.pfp = pfp;
     }
 
     public String getAccountFirstName() {
@@ -65,8 +67,10 @@ public class DoctorChip {
 
 
     public String getUID() {
-        return uid;
+        return this.uid;
     }
+
+    public String getPfp(){return this.pfp;}
 
 }
 

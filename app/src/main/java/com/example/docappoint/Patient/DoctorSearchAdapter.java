@@ -16,6 +16,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.docappoint.R;
 import com.example.docappoint.Settings;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -69,8 +70,10 @@ public class DoctorSearchAdapter extends RecyclerView.Adapter<DoctorSearchAdapte
         holder.doctorNumRatings.setText(String.valueOf(currentDoctor.getNumberOfRatings()));
         holder.doctorRatingBar.setRating(currentDoctor.getRatingNumber());
 
-
-        // holder.doctorProfilePicture.setImageBitmap(currentDoctor.getProfilePicture());
+        String imageUrl = currentDoctor.getPfp();
+        if (imageUrl != null && !imageUrl.isEmpty()) {
+            loadImageFromUrl(imageUrl, holder.doctorProfilePicture, holder.itemView.getContext());
+        }
 
         holder.doctorBook.setOnClickListener(v -> {
             Context context = holder.itemView.getContext();
@@ -125,6 +128,12 @@ public class DoctorSearchAdapter extends RecyclerView.Adapter<DoctorSearchAdapte
             }
         }
         return false;
+    }
+
+    private void loadImageFromUrl(String imageUrl, ImageView imageView, Context context) {
+        Glide.with(context)
+                .load(imageUrl)
+                .into(imageView);
     }
 
 
