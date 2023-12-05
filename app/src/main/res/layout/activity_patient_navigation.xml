@@ -70,7 +70,7 @@ tools:context=".Patient.PatientHomepage">
         android:id="@+id/drLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
+        android:layout_marginStart="32dp"
         android:text="Dr."
         android:textColor="@color/white"
         android:textSize="20dp"
@@ -141,20 +141,6 @@ tools:context=".Patient.PatientHomepage">
         app:layout_constraintStart_toEndOf="@id/patientAppointmentCardStartLabel"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.358" />
-
-    <Button
-        android:id="@+id/patientAppointmentViewMoreButton"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:background="@drawable/rounded_back_button"
-        android:text="View More"
-        android:textSize="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.836"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.341" />
 
     <TextView
         android:id="@+id/patientAppointmentCardEndLabel"
@@ -269,40 +255,39 @@ tools:context=".Patient.PatientHomepage">
     <Button
         android:id="@+id/patientBookApptButton"
         style="@style/AllButtons"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:text="Book appointment"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.558"
-        app:layout_constraintHorizontal_bias="0.5"/>
-
-    <Button
-        android:id="@+id/viewPatientUpcomingAppointments"
-        style="@style/AllButtons"
-        android:layout_width="135dp"
-        android:layout_height="40dp"
-        android:text="Upcoming"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.48" />
+        app:layout_constraintVertical_bias="0.55" />
 
     <Button
         android:id="@+id/viewPatientPastAppointments"
         style="@style/AllButtons"
         android:layout_width="135dp"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:text="Past"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintHorizontal_bias="0.798"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.48" />
+        app:layout_constraintVertical_bias="0.471" />
+
+    <Button
+        android:id="@+id/viewPatientUpcomingAppointments"
+        style="@style/AllButtons"
+        android:layout_width="135dp"
+        android:layout_height="45dp"
+        android:text="Upcoming"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.201"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.471" />
 
     <TextView
         android:id="@+id/lastDoctorLabel"
@@ -323,9 +308,6 @@ tools:context=".Patient.PatientHomepage">
         android:id="@+id/backdrop4"
         android:layout_width="330dp"
         android:layout_height="125dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="20dp"
         android:background="@drawable/rounded_button"
         app:cardBackgroundColor="@color/main"
         app:cardCornerRadius="15dp"
@@ -334,27 +316,13 @@ tools:context=".Patient.PatientHomepage">
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.865" />
-
-    <Button
-        android:id="@+id/patientNavigationRateD"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:background="@drawable/rounded_back_button"
-        android:text="View More"
-        android:textSize="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.836"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.341" />
+        app:layout_constraintVertical_bias="0.835" />
 
     <TextView
         android:id="@+id/drLabel2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="32dp"
         android:text="Dr."
         android:textColor="@color/white"
         android:textSize="20dp"
@@ -363,7 +331,7 @@ tools:context=".Patient.PatientHomepage">
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@id/backdrop4"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.7475" />
+        app:layout_constraintVertical_bias="0.748" />
 
     <TextView
         android:id="@+id/doctorAppointmentfirstNameRecycle2"
@@ -412,7 +380,7 @@ tools:context=".Patient.PatientHomepage">
         android:transformPivotY="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.313"
+        app:layout_constraintHorizontal_bias="0.305"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.837" />
@@ -441,7 +409,7 @@ tools:context=".Patient.PatientHomepage">
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.176"
+        app:layout_constraintHorizontal_bias="0.166"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.835" />

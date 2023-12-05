@@ -68,21 +68,6 @@
         app:layout_constraintVertical_bias="0.805"
         app:layout_constraintHorizontal_bias="0.5" />
 
-    <TextView
-        android:id="@+id/forgotPasswordClickableText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="FORGOT PASSWORD?"
-        android:textColor="@color/main"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.69"
-        app:layout_constraintHorizontal_bias="0.5" />
-
     <EditText
         android:id="@+id/loginPassword"
         style="@style/textField"
@@ -105,11 +90,10 @@
         android:text="Log in"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/backdrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="2.2"
+        app:layout_constraintVertical_bias="0.625"
         app:layout_constraintHorizontal_bias="0.5"/>
 
     <EditText
