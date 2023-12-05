@@ -60,14 +60,17 @@
         app:layout_constraintVertical_bias="0.05" />
 
     <ImageView
-        android:id="@+id/patientLogo"
-        android:layout_width="116dp"
-        android:layout_height="68dp"
+        android:id="@+id/docAppointLogo"
+        android:layout_width="135dp"
+        android:layout_height="70dp"
         android:src="@drawable/whitelogo"
-        app:layout_constraintEnd_toEndOf="@+id/header"
-        app:layout_constraintHorizontal_bias="0.572"
-        app:layout_constraintStart_toStartOf="@+id/header"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0"
+        />
 
     <TextView
         android:id="@+id/patientProfilePic"
