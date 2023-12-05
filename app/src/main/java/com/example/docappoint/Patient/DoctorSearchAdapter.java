@@ -45,8 +45,6 @@ public class DoctorSearchAdapter extends RecyclerView.Adapter<DoctorSearchAdapte
             doctorBook = view.findViewById(R.id.doctorBookAppointmentButtonRecycle);
             doctorRatingNumber = view.findViewById(R.id.numberRatingTextRecycler);
             doctorNumRatings = view.findViewById(R.id.numRatingsRecycler);
-            doctorNextAvailableTime = view.findViewById(R.id.nextAvailableTimeRecycle);
-            doctorNextAvailableDate = view.findViewById(R.id.nextAvailableDateRecycle);
             doctorProfilePicture = view.findViewById(R.id.doctorProfilePicRecycler);
             doctorRatingBar = view.findViewById(R.id.ratingBarRecycle);
         }
