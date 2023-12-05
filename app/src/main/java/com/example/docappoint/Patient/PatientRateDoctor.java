@@ -137,7 +137,7 @@ public class PatientRateDoctor extends AppCompatActivity {
                                                     average = userRating;
                                                 }
 
-                                                userRef.update("AvgRating", average);
+                                                userRef.update("AvgRating", (float)Math.round(average * 10d)/ 10d);
 
                                                 userRef.update("numOfRatings", ratings.size() +1);
 
